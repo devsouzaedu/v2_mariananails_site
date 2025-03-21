@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 51, 51, 51;
+  --background-rgb: 252, 249, 250;
+  --accent-rgb: 219, 39, 119, 0.05;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: 
+    linear-gradient(135deg, rgba(252, 231, 243, 0.8) 0%, rgba(255, 255, 255, 1) 100%);
+  font-family: var(--font-funnel), var(--font-pt-sans), sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  h1 {
+    @apply text-4xl font-serif font-bold text-primary-800;
+  }
+  h2 {
+    @apply text-3xl font-serif font-semibold text-primary-700;
+  }
+  h3 {
+    @apply text-2xl font-serif font-medium text-primary-600;
+  }
+  p {
+    @apply leading-relaxed text-gray-800;
+  }
+  a {
+    @apply text-primary-600 hover:text-primary-700 transition-colors;
+  }
+  
+  /* Títulos podem usar a fonte manuscrita para um visual mais divertido */
+  .font-handwritten {
+    font-family: var(--font-funnel), var(--font-pt-sans), sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+  
+  /* Garantir que texto na seção Cursos seja branco */
+  section.bg-gradient-to-r.from-primary-600.to-primary-700 * {
+    @apply text-white;
+  }
+  section.bg-gradient-to-r.from-primary-600.to-primary-700 a.bg-white {
+    @apply text-primary-600;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-600 text-white px-6 py-3 rounded-lg shadow hover:bg-primary-700 transition-all;
+  }
+  .btn-secondary {
+    @apply bg-white text-primary-600 border border-primary-600 px-6 py-3 rounded-lg shadow hover:bg-primary-50 transition-all;
+  }
+  .section {
+    @apply py-16 md:py-24;
+  }
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  .card {
+    @apply bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow transition-shadow p-6;
+  }
+  .input {
+    @apply border border-gray-200 rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-transparent;
+  }
+  .textarea {
+    @apply border border-gray-200 rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-transparent;
+  }
+} 
