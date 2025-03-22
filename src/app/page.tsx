@@ -10,10 +10,10 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             <div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-handwritten font-bold text-gray-900 mb-4">
-                Transforme suas <span className="text-primary-600">unhas</span> em obras de arte
+                Transforme suas <span className="text-primary-600">unhas</span> em obras de arte!
               </h1>
               <p className="text-lg text-gray-700 mb-8 max-w-lg">
-                Serviços de manicure e pedicure profissionais em Barueri e Alphaville. Atendimento personalizado com produtos de alta qualidade.
+                Especialista em Nail Design em Barueri e Alphaville. Aprenda a fazer nails profissionais com técnicas avançadas.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a 
@@ -115,7 +115,7 @@ export default function Home() {
                 Sobre <span className="text-primary-600">Mariana Nails</span>
               </h2>
               <p className="text-gray-700 mb-4">
-                Com mais de 10 anos de experiência no mercado de beleza, a Mariana Nails se destaca pela excelência e qualidade nos serviços de manicure, pedicure e nail design.
+                Com mais de +5 anos de experiência no mercado de beleza, Mariana se destaca pela excelência e qualidade nos serviços de manicure, pedicure e nail design.
               </p>
               <p className="text-gray-700 mb-6">
                 Nossa missão é proporcionar momentos de autocuidado e bem-estar, realçando a beleza natural das suas unhas com técnicas modernas e produtos de alta qualidade.

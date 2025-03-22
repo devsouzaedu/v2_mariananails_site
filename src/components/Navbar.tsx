@@ -6,6 +6,7 @@ import AnimatedBanner from './AnimatedBanner'
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [showCursosSubmenu, setShowCursosSubmenu] = useState(false)
 
   // Impedir rolagem quando o menu estiver aberto
   useEffect(() => {
@@ -22,6 +23,10 @@ export default function Navbar() {
 
   const closeMenu = () => {
     setIsMenuOpen(false)
+  }
+
+  const toggleCursosSubmenu = () => {
+    setShowCursosSubmenu(!showCursosSubmenu)
   }
 
   return (
@@ -46,9 +51,46 @@ export default function Navbar() {
                 <Link href="/galeria" className="text-gray-800 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
                   Galeria
                 </Link>
-                <Link href="/cursos" className="text-gray-800 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
-                  Cursos
-                </Link>
+                
+                {/* Menu Cursos com submenu */}
+                <div className="relative">
+                  <button 
+                    onClick={toggleCursosSubmenu}
+                    className="text-gray-800 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors flex items-center"
+                  >
+                    Cursos
+                    <svg 
+                      className={`w-4 h-4 ml-1 transition-transform ${showCursosSubmenu ? 'rotate-180' : ''}`} 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24" 
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                  </button>
+                  
+                  {/* Submenu de Cursos */}
+                  {showCursosSubmenu && (
+                    <div className="absolute left-0 mt-1 w-48 bg-white rounded-md shadow-lg py-1 z-30">
+                      <Link 
+                        href="/cursos" 
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600"
+                        onClick={() => setShowCursosSubmenu(false)}
+                      >
+                        Cursos Básicos
+                      </Link>
+                      <Link 
+                        href="/cursos/especializacao" 
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600"
+                        onClick={() => setShowCursosSubmenu(false)}
+                      >
+                        Especializações
+                      </Link>
+                    </div>
+                  )}
+                </div>
+                
                 <Link href="/contato" className="text-gray-800 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
                   Contato
                 </Link>
@@ -122,12 +164,23 @@ export default function Navbar() {
             >
               Galeria
             </Link>
-            <Link href="/cursos" 
-              className="text-primary-700 hover:text-primary-800 block text-2xl font-handwritten font-medium"
-              onClick={closeMenu}
-            >
-              Cursos
-            </Link>
+            
+            {/* Seção de cursos no menu mobile */}
+            <div className="flex flex-col items-center space-y-4">
+              <Link href="/cursos" 
+                className="text-primary-700 hover:text-primary-800 block text-2xl font-handwritten font-medium"
+                onClick={closeMenu}
+              >
+                Cursos Básicos
+              </Link>
+              <Link href="/cursos/especializacao" 
+                className="text-primary-600 hover:text-primary-800 block text-xl font-handwritten font-medium"
+                onClick={closeMenu}
+              >
+                Especializações
+              </Link>
+            </div>
+            
             <Link href="/contato" 
               className="text-primary-700 hover:text-primary-800 block text-2xl font-handwritten font-medium"
               onClick={closeMenu}
