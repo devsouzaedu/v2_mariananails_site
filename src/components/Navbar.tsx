@@ -1,8 +1,8 @@
 "use client"
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import AnimatedBanner from './AnimatedBanner'
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -26,19 +26,12 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="bg-white/80 backdrop-blur-md fixed w-full z-20 shadow-sm">
+      <AnimatedBanner />
+      <nav className="bg-white/80 backdrop-blur-md fixed w-full z-20 shadow-sm top-7">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
+          <div className="flex justify-between items-center h-14">
             <div className="flex-shrink-0">
-              <Link href="/" className="flex items-center">
-                <Image 
-                  src="/images/logo_mariana_nails.png" 
-                  alt="Mariana Nails" 
-                  width={150} 
-                  height={50}
-                  className="h-12 w-auto"
-                />
-              </Link>
+              {/* Logo removida */}
             </div>
             
             {/* Desktop menu */}
@@ -153,11 +146,9 @@ export default function Navbar() {
           </div>
           
           <div className="pb-12 flex justify-center">
-            <Image 
+            <img 
               src="/images/logo_mariana_nails.png" 
               alt="Mariana Nails" 
-              width={120} 
-              height={40}
               className="h-10 w-auto opacity-80"
             />
           </div>
