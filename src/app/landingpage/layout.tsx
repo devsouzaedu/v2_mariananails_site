@@ -18,9 +18,7 @@ export const metadata = {
 export const dynamic = 'force-dynamic'
 export const runtime = 'edge'
 
-// Esta é uma configuração crítica que informa ao Next.js para NÃO usar o layout raiz
-export const layoutSegments = []
-
+// Usando uma abordagem de substituição completa do HTML
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
