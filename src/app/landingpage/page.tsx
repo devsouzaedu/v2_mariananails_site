@@ -1,8 +1,10 @@
 import Image from "next/image";
 
+export const runtime = 'edge';
+
 export default function Landingpage() {
   return (
-    <div className="flex flex-col min-h-screen bg-black text-white">
+    <div className="flex flex-col min-h-screen bg-black">
       {/* Hero section with background image */}
       <div className="relative w-full h-[50vh] md:h-[60vh] max-h-[600px]">
         {/* Background div with image */}
@@ -74,9 +76,9 @@ export default function Landingpage() {
         </div>
       </div>
 
-      {/* Bio section - Removido padding superior (pt-6) e inferior (pb-12) */}
+      {/* Bio section */}
       <div className="container mx-auto px-6 max-w-4xl">
-        <div className="prose prose-lg prose-invert mx-auto">
+        <div className="mx-auto">
           <p className="mb-6 text-base md:text-lg text-white">
             Mariana Nails é Nail Designer há mais de 3 anos, atendendo com excelência clientes de Barueri e região. 
             Especialista em alongamento, decoração e cuidado das unhas, Mariana é conhecida por sua atenção aos 
@@ -89,10 +91,10 @@ export default function Landingpage() {
         </div>
       </div>
 
-      {/* Cards section - Removido padding superior (py-12 virou pb-12) */}
+      {/* Cards section */}
       <div className="container mx-auto px-6 pb-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Card 1 - Link adicionado */}
+          {/* Card 1 */}
           <a 
             href="https://pay.kiwify.com.br/0DJ2eOj" 
             target="_blank" 
@@ -108,14 +110,14 @@ export default function Landingpage() {
               }}
             >
               <div className="absolute inset-0 bg-black/50 rounded-2xl"></div>
-              <div className="relative z-10 flex flex-col items-center justify-center h-full p-6 text-center text-white">
-                <h3 className="text-2xl font-bold mb-3">Cursos & Apostilas</h3>
-                <p>Apostilas</p>
+              <div className="relative z-10 flex flex-col items-center justify-center h-full p-6 text-center">
+                <h3 className="text-2xl font-bold mb-3 text-white">Cursos & Apostilas</h3>
+                <p className="text-white">Apostilas</p>
               </div>
             </div>
           </a>
 
-          {/* Card 2 - Link adicionado */}
+          {/* Card 2 */}
           <a 
             href="https://wa.me/5511944598264?text=Gostaria%20de%20agendar%20um%20horario%20%2F%20conhecer%20mais%20do%20seu%20trabalho%20Mariana" 
             target="_blank" 
@@ -131,14 +133,14 @@ export default function Landingpage() {
               }}
             >
               <div className="absolute inset-0 bg-black/50 rounded-2xl"></div>
-              <div className="relative z-10 flex flex-col items-center justify-center h-full p-6 text-center text-white">
-                <h3 className="text-2xl font-bold mb-3">Agendar Agora</h3>
-                <p>Garanta seu horário de forma rápida e fácil.</p>
+              <div className="relative z-10 flex flex-col items-center justify-center h-full p-6 text-center">
+                <h3 className="text-2xl font-bold mb-3 text-white">Agendar Agora</h3>
+                <p className="text-white">Garanta seu horário de forma rápida e fácil.</p>
               </div>
             </div>
           </a>
 
-          {/* Card 3 - Link adicionado */}
+          {/* Card 3 */}
           <a 
             href="https://www.espacooliverbeauty.com.br/" 
             target="_blank" 
@@ -154,14 +156,14 @@ export default function Landingpage() {
               }}
             >
               <div className="absolute inset-0 bg-black/50 rounded-2xl"></div>
-              <div className="relative z-10 flex flex-col items-center justify-center h-full p-6 text-center text-white">
-                <h3 className="text-2xl font-bold mb-3">Conheça o Espaço Beauty</h3>
-                <p>Veja fotos e saiba mais sobre nosso ambiente.</p>
+              <div className="relative z-10 flex flex-col items-center justify-center h-full p-6 text-center">
+                <h3 className="text-2xl font-bold mb-3 text-white">Conheça o Espaço Beauty</h3>
+                <p className="text-white">Veja fotos e saiba mais sobre nosso ambiente.</p>
               </div>
             </div>
           </a>
 
-          {/* Card 4 - Link adicionado */}
+          {/* Card 4 */}
           <a 
             href="https://www.mariananails.com.br/" 
             target="_blank" 
@@ -177,9 +179,9 @@ export default function Landingpage() {
               }}
             >
               <div className="absolute inset-0 bg-black/50 rounded-2xl"></div>
-              <div className="relative z-10 flex flex-col items-center justify-center h-full p-6 text-center text-white">
-                <h3 className="text-2xl font-bold mb-3">Site Mariana Nails</h3>
-                <p>Acesse o site completo para mais informações e serviços.</p>
+              <div className="relative z-10 flex flex-col items-center justify-center h-full p-6 text-center">
+                <h3 className="text-2xl font-bold mb-3 text-white">Site Mariana Nails</h3>
+                <p className="text-white">Acesse o site completo para mais informações e serviços.</p>
               </div>
             </div>
           </a>

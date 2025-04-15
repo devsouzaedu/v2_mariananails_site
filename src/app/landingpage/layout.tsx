@@ -14,6 +14,10 @@ export const metadata: Metadata = {
   description: 'Serviços de manicure e pedicure de alta qualidade em Barueri e Alphaville. Cursos de Nail Design e Nail Art.',
 }
 
+// Esta configuração evita que este layout seja automaticamente aninhado dentro do layout raiz
+export const dynamic = 'force-dynamic'
+export const runtime = 'edge'
+
 export default function LandingPageLayout({
   children,
 }: {
@@ -21,7 +25,7 @@ export default function LandingPageLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body className={`min-h-screen ${poppins.className}`}>
+      <body className={`${poppins.className}`} style={{ margin: 0, padding: 0 }}>
         {children}
       </body>
     </html>
