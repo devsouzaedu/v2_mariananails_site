@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Landingpage() {
   return (
-    <div className="flex flex-col min-h-screen bg-black text-white font-sans">
+    <div className="flex flex-col min-h-screen bg-black text-white">
       {/* Hero section with background image */}
       <div className="relative w-full h-[50vh] md:h-[60vh] max-h-[600px]">
         {/* Background div with image */}
@@ -77,12 +77,12 @@ export default function Landingpage() {
       {/* Bio section - Removido padding superior (pt-6) e inferior (pb-12) */}
       <div className="container mx-auto px-6 max-w-4xl">
         <div className="prose prose-lg prose-invert mx-auto">
-          <p className="mb-6 text-base md:text-lg">
+          <p className="mb-6 text-base md:text-lg text-white">
             Mariana Nails é Nail Designer há mais de 3 anos, atendendo com excelência clientes de Barueri e região. 
             Especialista em alongamento, decoração e cuidado das unhas, Mariana é conhecida por sua atenção aos 
             detalhes e estilo autêntico, trazendo beleza e autoestima para cada cliente que passa por suas mãos.
           </p>
-          <p className="mb-6 text-base md:text-lg">
+          <p className="mb-6 text-base md:text-lg text-white">
             Hoje, ela une sua experiência, criatividade e sensibilidade para transformar não só unhas, mas também 
             histórias — empoderando, ensinando e inspirando diariamente por meio do seu trabalho e dos seus conteúdos.
           </p>
