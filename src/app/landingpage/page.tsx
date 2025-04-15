@@ -1,10 +1,13 @@
 import Image from "next/image";
 
+// Configurações para isolar completamente esta página
+export const dynamic = 'force-dynamic';
 export const runtime = 'edge';
+export const revalidate = 0;
 
 export default function Landingpage() {
   return (
-    <div className="flex flex-col min-h-screen bg-black">
+    <div className="flex flex-col min-h-screen bg-black" style={{ isolation: 'isolate' }}>
       {/* Hero section with background image */}
       <div className="relative w-full h-[50vh] md:h-[60vh] max-h-[600px]">
         {/* Background div with image */}
@@ -44,6 +47,7 @@ export default function Landingpage() {
                   alt="YouTube"
                   width={28}
                   height={28}
+                  priority
                 />
               </div>
             </a>
@@ -59,6 +63,7 @@ export default function Landingpage() {
                   alt="WhatsApp"
                   width={28}
                   height={28}
+                  priority
                 />
               </div>
             </a>
