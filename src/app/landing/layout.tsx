@@ -7,29 +7,22 @@ const poppins = Poppins({
   display: 'swap'
 })
 
-// Definiu00e7u00e3o de metadados (server component)
-export const metadata = {
-  title: 'Mariana Nails - Landing Page',
-  description: 'Serviços de manicure e pedicure de alta qualidade em Barueri e Alphaville. Cursos de Nail Design e Nail Art.'
-}
-
-// Layout isolado para a landing page
+// Layout isolado para a landing page - versão mínima
 export default function LandingPageLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
       <head>
+        <title>Mariana Nails - Landing Page</title>
+        <meta name="description" content="Serviços de manicure e pedicure de alta qualidade em Barueri e Alphaville. Cursos de Nail Design e Nail Art." />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <style>{`
-          /* Estilos específicos para Safari */
           html, body {
             background-color: black !important;
             min-height: 100% !important;
             height: 100% !important;
             margin: 0 !important;
             padding: 0 !important;
-          }
-          * {
-            box-sizing: border-box;
+            color: white !important;
           }
         `}</style>
       </head>
@@ -38,52 +31,10 @@ export default function LandingPageLayout({ children }: { children: React.ReactN
         padding: 0, 
         backgroundColor: 'black',
         color: 'white',
-        fontFamily: 'Poppins, sans-serif',
-        height: '100%',
-        minHeight: '100%',
-        overflow: 'auto'
+        fontFamily: 'Poppins, sans-serif'
       }} className={poppins.className}>
-        {/* SafariFix componente para corrigir problemas no Safari */}
-        <SafariFix />
-        {/* Apenas o conteúdo da página, sem o Navbar e sem o Footer */}
         {children}
       </body>
     </html>
   )
-}
-
-// Componente client para lidar com o Safari
-'use client';
-
-import { useEffect } from 'react';
-
-function SafariFix() {
-  // Para aplicar CSS client-side no Safari
-  useEffect(() => {
-    // Função para detectar Safari
-    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-    
-    if (isSafari) {
-      // Aplicar CSS específico para Safari
-      document.documentElement.style.backgroundColor = 'black';
-      document.documentElement.style.height = '100%';
-      document.body.style.backgroundColor = 'black';
-      document.body.style.minHeight = '100%';
-      document.body.style.height = '100%';
-      document.body.style.margin = '0';
-      document.body.style.padding = '0';
-      document.body.style.overflowX = 'hidden';
-      
-      // Remover qualquer fundo indesejado
-      const allElements = document.querySelectorAll('*');
-      allElements.forEach(el => {
-        // Evitar elementos específicos que não devem ser modificados
-        if (!el.classList.contains('no-safari-fix')) {
-          (el as HTMLElement).style.backgroundColor = 'black';
-        }
-      });
-    }
-  }, []);
-  
-  return null; // Este componente não renderiza nada visualmente
 }
