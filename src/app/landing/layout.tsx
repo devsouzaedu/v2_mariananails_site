@@ -1,7 +1,4 @@
-'use client';
-
 import { Poppins } from 'next/font/google'
-import { useEffect } from 'react';
 
 // Configurar a fonte Poppins - somente para a landing page
 const poppins = Poppins({ 
@@ -10,6 +7,7 @@ const poppins = Poppins({
   display: 'swap'
 })
 
+// Definiu00e7u00e3o de metadados (server component)
 export const metadata = {
   title: 'Mariana Nails - Landing Page',
   description: 'Serviços de manicure e pedicure de alta qualidade em Barueri e Alphaville. Cursos de Nail Design e Nail Art.'
@@ -17,33 +15,6 @@ export const metadata = {
 
 // Layout isolado para a landing page
 export default function LandingPageLayout({ children }: { children: React.ReactNode }) {
-  // Para aplicar CSS client-side no Safari
-  useEffect(() => {
-    // Função para detectar Safari
-    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-    
-    if (isSafari) {
-      // Aplicar CSS específico para Safari
-      document.documentElement.style.backgroundColor = 'black';
-      document.documentElement.style.height = '100%';
-      document.body.style.backgroundColor = 'black';
-      document.body.style.minHeight = '100%';
-      document.body.style.height = '100%';
-      document.body.style.margin = '0';
-      document.body.style.padding = '0';
-      document.body.style.overflowX = 'hidden';
-      
-      // Remover qualquer fundo indesejado
-      const allElements = document.querySelectorAll('*');
-      allElements.forEach(el => {
-        // Evitar elementos específicos que não devem ser modificados
-        if (!el.classList.contains('no-safari-fix')) {
-          (el as HTMLElement).style.backgroundColor = 'black';
-        }
-      });
-    }
-  }, []);
-  
   return (
     <html lang="pt-BR">
       <head>
@@ -72,9 +43,47 @@ export default function LandingPageLayout({ children }: { children: React.ReactN
         minHeight: '100%',
         overflow: 'auto'
       }} className={poppins.className}>
+        {/* SafariFix componente para corrigir problemas no Safari */}
+        <SafariFix />
         {/* Apenas o conteúdo da página, sem o Navbar e sem o Footer */}
         {children}
       </body>
     </html>
   )
+}
+
+// Componente client para lidar com o Safari
+'use client';
+
+import { useEffect } from 'react';
+
+function SafariFix() {
+  // Para aplicar CSS client-side no Safari
+  useEffect(() => {
+    // Função para detectar Safari
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    
+    if (isSafari) {
+      // Aplicar CSS específico para Safari
+      document.documentElement.style.backgroundColor = 'black';
+      document.documentElement.style.height = '100%';
+      document.body.style.backgroundColor = 'black';
+      document.body.style.minHeight = '100%';
+      document.body.style.height = '100%';
+      document.body.style.margin = '0';
+      document.body.style.padding = '0';
+      document.body.style.overflowX = 'hidden';
+      
+      // Remover qualquer fundo indesejado
+      const allElements = document.querySelectorAll('*');
+      allElements.forEach(el => {
+        // Evitar elementos específicos que não devem ser modificados
+        if (!el.classList.contains('no-safari-fix')) {
+          (el as HTMLElement).style.backgroundColor = 'black';
+        }
+      });
+    }
+  }, []);
+  
+  return null; // Este componente não renderiza nada visualmente
 }
