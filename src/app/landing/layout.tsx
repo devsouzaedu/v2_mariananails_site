@@ -9,12 +9,7 @@ const poppins = Poppins({
 
 export const metadata = {
   title: 'Mariana Nails - Landing Page',
-  description: 'Serviços de manicure e pedicure de alta qualidade em Barueri e Alphaville. Cursos de Nail Design e Nail Art.',
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no, user-scalable=no',
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: 'black-translucent'
-  }
+  description: 'Serviços de manicure e pedicure de alta qualidade em Barueri e Alphaville. Cursos de Nail Design e Nail Art.'
 }
 
 // Layout isolado para a landing page
@@ -22,21 +17,14 @@ export default function LandingPageLayout({ children }: { children: React.ReactN
   return (
     <html lang="pt-BR">
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body style={{ 
         margin: 0, 
         padding: 0, 
         backgroundColor: 'black',
         color: 'white',
-        fontFamily: 'Poppins, sans-serif',
-        WebkitTextSizeAdjust: '100%', // Corrige problemas de texto no Safari
-        WebkitFontSmoothing: 'antialiased',
-        MozOsxFontSmoothing: 'grayscale',
-        overflowX: 'hidden'
+        fontFamily: 'Poppins, sans-serif'
       }} className={poppins.className}>
         {/* Apenas o conteúdo da página, sem o Navbar e sem o Footer */}
         {children}

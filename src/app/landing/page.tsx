@@ -3,11 +3,6 @@
 import Image from "next/image";
 import { useEffect } from 'react';
 
-// Configurações para isolar completamente esta página
-export const dynamic = 'force-dynamic';
-export const runtime = 'edge';
-export const revalidate = 0;
-
 export default function Landingpage() {
   // Ajuste para Safari no iPhone
   useEffect(() => {
