@@ -1,4 +1,6 @@
-import type { Metadata } from 'next'
+"use client";
+import type { Metadata } from 'next';
+import { usePathname } from 'next/navigation';
 import { PT_Sans, Playfair_Display } from 'next/font/google'
 import localFont from 'next/font/local'
 import './globals.css'
@@ -34,29 +36,38 @@ const playfair = Playfair_Display({
   display: 'swap'
 })
 
-export const metadata: Metadata = {
-  title: 'Mariana Nails - Especialista em Nail Design',
-  description: 'Serviços de manicure e pedicure de alta qualidade em Barueri e Alphaville. Cursos de Nail Design e Nail Art.',
-}
+// A metadata não pode ser exportada de um client component diretamente.
+// Se precisar de metadados dinâmicos, considere movê-los para page.tsx ou usar a API generateMetadata.
+// Por ora, vamos manter a exportação comentada ou remover se não for usada dinamicamente aqui.
+// export const metadata: Metadata = {
+  // title: 'Mariana Nails - Especialista em Nail Design',
+  // description: 'Serviços de manicure e pedicure de alta qualidade em Barueri e Alphaville. Cursos de Nail Design e Nail Art.',
+// }
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const pathname = usePathname();
+  const isLandingPage = pathname === '/landing';
   return (
     <html lang="pt-BR" className={`${funnelSans.variable} ${ptSans.variable} ${playfair.variable}`}>
       <body className="min-h-screen">
-        <div className="fixed inset-0 pointer-events-none z-0">
-          <div className="absolute inset-0 bg-primary-50 opacity-30 mix-blend-multiply" style={{ 
-            backgroundImage: 'radial-gradient(#ec4899 0.5px, transparent 0.5px), radial-gradient(#ec4899 0.5px, transparent 0.5px)',
-            backgroundSize: '20px 20px',
-            backgroundPosition: '0 0, 10px 10px',
-            opacity: 0.05
-          }}></div>
-        </div>
-        <Navbar />
-        <main className="flex-grow pt-20 relative z-10">
+        {!isLandingPage && (
+          <>
+            <div className="fixed inset-0 pointer-events-none z-0">
+              <div className="absolute inset-0 bg-primary-50 opacity-30 mix-blend-multiply" style={{ 
+                backgroundImage: 'radial-gradient(#ec4899 0.5px, transparent 0.5px), radial-gradient(#ec4899 0.5px, transparent 0.5px)',
+                backgroundSize: '20px 20px',
+                backgroundPosition: '0 0, 10px 10px',
+                opacity: 0.05
+              }}></div>
+            </div>
+            <Navbar />
+          </>
+        )}
+        <main className={`flex-grow relative z-10 ${isLandingPage ? '' : 'pt-20'}`}>
           {children}
         </main>
         <Footer />
