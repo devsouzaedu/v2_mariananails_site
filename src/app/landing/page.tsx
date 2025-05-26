@@ -3,9 +3,47 @@
 import Image from "next/image";
 import { useEffect } from 'react';
 
+// Estilos CSS injetados para garantir fundo preto em todo o site
+const globalStyles = `
+  html, body {
+    background-color: black !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 100% !important;
+    height: 100% !important;
+    width: 100% !important;
+    overflow-x: hidden !important;
+  }
+  * {
+    box-sizing: border-box;
+  }
+`;
+
 export default function Landingpage() {
-  // Ajuste para Safari no iPhone
+  // Ajuste para Safari no iPhone e injeção de estilos globais
   useEffect(() => {
+    // Injetar estilos globais para garantir fundo preto
+    const styleEl = document.createElement('style');
+    styleEl.setAttribute('type', 'text/css');
+    styleEl.textContent = globalStyles;
+    document.head.appendChild(styleEl);
+    
+    // Forçar o fundo para preto
+    document.documentElement.style.backgroundColor = 'black';
+    document.body.style.backgroundColor = 'black';
+    
+    // Remover qualquer background-image que possa estar causando as listras
+    const allElements = document.querySelectorAll('*');
+    allElements.forEach(el => {
+      const style = window.getComputedStyle(el);
+      if (style.backgroundImage !== 'none') {
+        const bgColor = style.backgroundColor;
+        if (bgColor === 'rgba(0, 0, 0, 0)' || bgColor === 'transparent') {
+          (el as HTMLElement).style.backgroundColor = 'black';
+        }
+      }
+    });
+    
     // Fix para o Safari no iOS - faz um ajuste para corrigir problemas de altura da viewport
     const setVH = () => {
       const vh = window.innerHeight * 0.01;
@@ -20,6 +58,7 @@ export default function Landingpage() {
     return () => {
       window.removeEventListener('resize', setVH);
       window.removeEventListener('orientationchange', setVH);
+      document.head.removeChild(styleEl);
     };
   }, []);
 
