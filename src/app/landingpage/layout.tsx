@@ -12,13 +12,7 @@ export const metadata = {
   description: 'Serviços de manicure e pedicure de alta qualidade em Barueri e Alphaville. Cursos de Nail Design e Nail Art.',
 }
 
-// Este layout substitui COMPLETAMENTE o layout raiz
-// Isso é feito usando o route segment config
-// https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config
-export const dynamic = 'force-dynamic'
-export const runtime = 'edge'
-
-// Layout de página totalmente independente
+// Layout isolado para a landing page
 export default function LandingPageLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
@@ -34,4 +28,4 @@ export default function LandingPageLayout({ children }: { children: React.ReactN
       </body>
     </html>
   )
-} 
+}
