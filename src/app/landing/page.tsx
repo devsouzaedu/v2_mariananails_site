@@ -1,4 +1,7 @@
+'use client';
+
 import Image from "next/image";
+import { useEffect } from 'react';
 
 // Configurações para isolar completamente esta página
 export const dynamic = 'force-dynamic';
@@ -6,8 +9,27 @@ export const runtime = 'edge';
 export const revalidate = 0;
 
 export default function Landingpage() {
+  // Ajuste para Safari no iPhone
+  useEffect(() => {
+    // Fix para o Safari no iOS - faz um ajuste para corrigir problemas de altura da viewport
+    const setVH = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+
+    setVH();
+    window.addEventListener('resize', setVH);
+    window.addEventListener('orientationchange', setVH);
+    
+    // Remover o listener quando o componente for desmontado
+    return () => {
+      window.removeEventListener('resize', setVH);
+      window.removeEventListener('orientationchange', setVH);
+    };
+  }, []);
+
   return (
-    <div className="flex flex-col min-h-screen bg-black" style={{ isolation: 'isolate' }}>
+    <div className="flex flex-col min-h-screen bg-black" style={{ isolation: 'isolate', minHeight: 'calc(var(--vh, 1vh) * 100)' }}>
       {/* Hero section with background image */}
       <div className="relative w-full h-[50vh] md:h-[60vh] max-h-[600px]">
         {/* Background div with image */}
