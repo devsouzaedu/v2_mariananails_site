@@ -1,5 +1,6 @@
 import { Poppins } from 'next/font/google'
 import '../globals.css'
+// Importando estilos mas não componentes compartilhados do layout principal
 
 // Configurar a fonte Poppins
 const poppins = Poppins({ 
@@ -8,15 +9,16 @@ const poppins = Poppins({
   display: 'swap'
 })
 
-// Configurações para isolar completamente este layout
+// Configurações para isolar completamente este layout, sem navbar ou banner
 export const metadata = {
   title: 'Mariana Nails - Landing Page',
   description: 'Serviços de manicure e pedicure de alta qualidade em Barueri e Alphaville. Cursos de Nail Design e Nail Art.',
 }
 
-// Configurações adicionais para isolar este layout
+// Configurações adicionais para isolar este layout completamente do layout principal
 export const dynamic = 'force-dynamic'
 export const runtime = 'edge'
+// Isso faz com que o layout raiz não seja utilizado nesta rota
 
 // Usando uma abordagem de substituição completa do HTML
 export default function Layout({ children }: { children: React.ReactNode }) {
