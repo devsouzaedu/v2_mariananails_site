@@ -1,95 +1,19 @@
 'use client';
 
 import Image from "next/image";
-import { useEffect, useLayoutEffect } from 'react';
-
-// Estilos CSS otimizados para Safari iOS
-const globalStyles = `
-  :root {
-    --vh: 1vh;
-  }
-  html, body {
-    background-color: black !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    min-height: 100% !important;
-    height: 100% !important;
-    width: 100% !important;
-    overflow-x: hidden !important;
-    -webkit-overflow-scrolling: touch;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-text-size-adjust: 100%;
-  }
-  #__next, main {
-    background-color: black !important;
-    min-height: calc(var(--vh, 1vh) * 100);
-  }
-  * {
-    box-sizing: border-box;
-  }
-  img {
-    -webkit-user-drag: none;
-  }
-`;
-
-// Hook personalizado para useLayoutEffect com fallback para useEffect no SSR
-const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
+import { useEffect } from 'react';
 
 export default function Landingpage() {
-  // Otimização para Safari no iOS
-  useIsomorphicLayoutEffect(() => {
-    // Garantir que o documento já esteja carregado
-    if (typeof document === 'undefined') return;
-    
-    // Injetar estilos globais com maior prioridade
-    const styleEl = document.createElement('style');
-    styleEl.setAttribute('type', 'text/css');
-    styleEl.setAttribute('id', 'safari-ios-fixes');
-    styleEl.textContent = globalStyles;
-    document.head.insertBefore(styleEl, document.head.firstChild);
-    
-    // Forçar o fundo para preto com !important
-    document.documentElement.style.cssText += 'background-color: black !important;';
-    document.body.style.cssText += 'background-color: black !important;';
-    
-    // Fix para elementos problemáticos que podem estar causando a tela branca
-    document.querySelectorAll('div, section, main').forEach(el => {
-      const htmlEl = el as HTMLElement;
-      const style = window.getComputedStyle(htmlEl);
-      
-      // Verificar se o elemento pode ter um background problemático
-      if (style.backgroundColor === 'rgba(0, 0, 0, 0)' || 
-          style.backgroundColor === 'transparent' || 
-          style.backgroundImage !== 'none') {
-        htmlEl.style.backgroundColor = 'black';
-      }
-    });
-    
-    // Fix para altura da viewport no iOS
-    const setVH = () => {
-      const vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty('--vh', `${vh}px`);
-    };
-
-    // Executar imediatamente e em cada evento de redimensionamento
-    setVH();
-    window.addEventListener('resize', setVH);
-    window.addEventListener('orientationchange', setVH);
-    window.addEventListener('scroll', () => {}, { passive: true }); // Fix para scroll suave no iOS
-    
-    // Forçar um reflow para garantir que os estilos sejam aplicados
-    document.body.offsetHeight;
-    
-    // Limpar listeners quando o componente for desmontado
-    return () => {
-      window.removeEventListener('resize', setVH);
-      window.removeEventListener('orientationchange', setVH);
-      window.removeEventListener('scroll', () => {});
-      if (styleEl.parentNode) {
-        styleEl.parentNode.removeChild(styleEl);
-      }
-    };
+  // Fix simples para Safari iOS - apenas o essencial aqui
+  // O restante está no layout.tsx usando Script
+  useEffect(() => {
+    // Forçar o fundo preto para casos extremos
+    if (typeof document !== 'undefined') {
+      document.documentElement.style.backgroundColor = 'black';
+      document.body.style.backgroundColor = 'black';
+    }
   }, []);
+
 
   return (
     <div className="flex flex-col min-h-screen bg-black" style={{ isolation: 'isolate', minHeight: 'calc(var(--vh, 1vh) * 100)' }}>
