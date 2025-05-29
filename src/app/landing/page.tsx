@@ -1,10 +1,13 @@
 'use client';
 
 import Image from "next/image";
-import { useEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 
-// Estilos CSS injetados para garantir fundo preto em todo o site
+// Estilos CSS otimizados para Safari iOS
 const globalStyles = `
+  :root {
+    --vh: 1vh;
+  }
   html, body {
     background-color: black !important;
     margin: 0 !important;
@@ -13,52 +16,78 @@ const globalStyles = `
     height: 100% !important;
     width: 100% !important;
     overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+  }
+  #__next, main {
+    background-color: black !important;
+    min-height: calc(var(--vh, 1vh) * 100);
   }
   * {
     box-sizing: border-box;
   }
+  img {
+    -webkit-user-drag: none;
+  }
 `;
 
+// Hook personalizado para useLayoutEffect com fallback para useEffect no SSR
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
+
 export default function Landingpage() {
-  // Ajuste para Safari no iPhone e injeção de estilos globais
-  useEffect(() => {
-    // Injetar estilos globais para garantir fundo preto
+  // Otimização para Safari no iOS
+  useIsomorphicLayoutEffect(() => {
+    // Garantir que o documento já esteja carregado
+    if (typeof document === 'undefined') return;
+    
+    // Injetar estilos globais com maior prioridade
     const styleEl = document.createElement('style');
     styleEl.setAttribute('type', 'text/css');
+    styleEl.setAttribute('id', 'safari-ios-fixes');
     styleEl.textContent = globalStyles;
-    document.head.appendChild(styleEl);
+    document.head.insertBefore(styleEl, document.head.firstChild);
     
-    // Forçar o fundo para preto
-    document.documentElement.style.backgroundColor = 'black';
-    document.body.style.backgroundColor = 'black';
+    // Forçar o fundo para preto com !important
+    document.documentElement.style.cssText += 'background-color: black !important;';
+    document.body.style.cssText += 'background-color: black !important;';
     
-    // Remover qualquer background-image que possa estar causando as listras
-    const allElements = document.querySelectorAll('*');
-    allElements.forEach(el => {
-      const style = window.getComputedStyle(el);
-      if (style.backgroundImage !== 'none') {
-        const bgColor = style.backgroundColor;
-        if (bgColor === 'rgba(0, 0, 0, 0)' || bgColor === 'transparent') {
-          (el as HTMLElement).style.backgroundColor = 'black';
-        }
+    // Fix para elementos problemáticos que podem estar causando a tela branca
+    document.querySelectorAll('div, section, main').forEach(el => {
+      const htmlEl = el as HTMLElement;
+      const style = window.getComputedStyle(htmlEl);
+      
+      // Verificar se o elemento pode ter um background problemático
+      if (style.backgroundColor === 'rgba(0, 0, 0, 0)' || 
+          style.backgroundColor === 'transparent' || 
+          style.backgroundImage !== 'none') {
+        htmlEl.style.backgroundColor = 'black';
       }
     });
     
-    // Fix para o Safari no iOS - faz um ajuste para corrigir problemas de altura da viewport
+    // Fix para altura da viewport no iOS
     const setVH = () => {
       const vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty('--vh', `${vh}px`);
     };
 
+    // Executar imediatamente e em cada evento de redimensionamento
     setVH();
     window.addEventListener('resize', setVH);
     window.addEventListener('orientationchange', setVH);
+    window.addEventListener('scroll', () => {}, { passive: true }); // Fix para scroll suave no iOS
     
-    // Remover o listener quando o componente for desmontado
+    // Forçar um reflow para garantir que os estilos sejam aplicados
+    document.body.offsetHeight;
+    
+    // Limpar listeners quando o componente for desmontado
     return () => {
       window.removeEventListener('resize', setVH);
       window.removeEventListener('orientationchange', setVH);
-      document.head.removeChild(styleEl);
+      window.removeEventListener('scroll', () => {});
+      if (styleEl.parentNode) {
+        styleEl.parentNode.removeChild(styleEl);
+      }
     };
   }, []);
 
