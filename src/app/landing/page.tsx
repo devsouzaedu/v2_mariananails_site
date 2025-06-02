@@ -110,7 +110,7 @@ export default function Landingpage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Card 1 */}
           <a 
-            href="https://pay.kiwify.com.br/0DJ2eOj" 
+            href="https://pay.kiwify.com.br/vYQ6Pl7" 
             target="_blank" 
             rel="noopener noreferrer"
             className="block rounded-2xl shadow-lg transition-transform duration-300 hover:scale-105 overflow-hidden"
