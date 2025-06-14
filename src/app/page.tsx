@@ -17,7 +17,7 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a 
-                  href="https://wa.me/5511999999999" 
+                  href="https://wa.me/5511944598264?text=Oi!%20gostaria%20de%20agendar%20um%20atendimento%20de%20unhas!%20vim%20do%20site" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="btn-primary text-center"
@@ -288,7 +288,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <a 
-                href="https://wa.me/5511999999999" 
+                href="https://wa.me/5511944598264?text=Oi!%20gostaria%20de%20agendar%20um%20atendimento%20de%20unhas!%20vim%20do%20site" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="btn-primary text-center"

@@ -61,7 +61,7 @@ export default function Landingpage() {
               </div>
             </a>
             <a
-              href="https://wa.me/5511900000000"
+              href="https://wa.me/5511944598264?text=Oi!%20gostaria%20de%20agendar%20um%20atendimento%20de%20unhas!%20vim%20do%20site"
               target="_blank"
               rel="noopener noreferrer"
               className="transition-transform hover:scale-110 duration-300"

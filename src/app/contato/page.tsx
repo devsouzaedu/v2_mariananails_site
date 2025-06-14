@@ -52,9 +52,9 @@ export default function ContatoPage() {
                   </div>
                   <div>
                     <h3 className="text-lg font-medium mb-1">Telefone</h3>
-                    <p className="text-gray-600">(11) 99999-9999</p>
+                    <p className="text-gray-600">(11) 94459-8264</p>
                     <a 
-                      href="https://wa.me/5511999999999" 
+                      href="https://wa.me/5511944598264?text=Oi!%20gostaria%20de%20agendar%20um%20atendimento%20de%20unhas!%20vim%20do%20site" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-primary-600 flex items-center mt-2 hover:text-primary-700 transition-colors"
