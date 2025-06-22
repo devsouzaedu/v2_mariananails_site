@@ -154,7 +154,7 @@ export default function CursosPage() {
                   
                   <div className="flex flex-wrap gap-4">
                     <a 
-                      href="https://wa.me/5511944598264?text=Oi!%20gostaria%20de%20agendar%20um%20atendimento%20de%20unhas!%20vim%20do%20site" 
+                      href="https://pay.kiwify.com.br/lf9IZHj" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="btn-primary"
@@ -397,7 +397,7 @@ export default function CursosPage() {
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <a 
-                href="https://wa.me/5511944598264?text=Oi!%20gostaria%20de%20agendar%20um%20atendimento%20de%20unhas!%20vim%20do%20site" 
+                href="https://pay.kiwify.com.br/lf9IZHj" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="bg-white text-primary-600 px-6 py-3 rounded-md shadow-md hover:bg-gray-100 transition-colors"

@@ -204,9 +204,9 @@ export default function Home() {
                 </div>
               </div>
               <div className="mt-8">
-                <Link href="/cursos" className="bg-white text-primary-600 px-6 py-3 rounded-md shadow-md hover:bg-gray-100 transition-colors">
+                <a href="https://pay.kiwify.com.br/lf9IZHj" target="_blank" rel="noopener noreferrer" className="bg-white text-primary-600 px-6 py-3 rounded-md shadow-md hover:bg-gray-100 transition-colors">
                   Conheça Nossos Cursos
-                </Link>
+                </a>
               </div>
             </div>
             <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">

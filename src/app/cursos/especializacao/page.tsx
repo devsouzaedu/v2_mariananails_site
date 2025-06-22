@@ -101,7 +101,7 @@ export default function EspecializacaoCursosPage() {
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <a 
-                  href="https://wa.me/5511944598264?text=Oi!%20gostaria%20de%20agendar%20um%20atendimento%20de%20unhas!%20vim%20do%20site" 
+                  href="https://pay.kiwify.com.br/lf9IZHj" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="btn-primary text-lg px-8 py-4"
@@ -230,7 +230,7 @@ export default function EspecializacaoCursosPage() {
                     
                     <div className="flex flex-wrap gap-4">
                       <a 
-                        href={`https://wa.me/5511944598264?text=Oi!%20gostaria%20de%20agendar%20um%20atendimento%20de%20unhas!%20vim%20do%20site`}
+                        href="https://pay.kiwify.com.br/lf9IZHj"
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="btn-primary"
@@ -366,7 +366,7 @@ export default function EspecializacaoCursosPage() {
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-6">
               <a 
-                href="https://wa.me/5511944598264?text=Oi!%20gostaria%20de%20agendar%20um%20atendimento%20de%20unhas!%20vim%20do%20site" 
+                href="https://pay.kiwify.com.br/lf9IZHj" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="bg-white text-primary-600 text-lg px-8 py-4 rounded-md shadow-lg hover:bg-gray-100 transition-colors"
