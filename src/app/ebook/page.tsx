@@ -58,7 +58,7 @@ export default function EbookPage() {
               src="/capa_ebook_2025.png" 
               alt="Capa do Guia de Ouro da Nail Designer Profissional" 
               fill
-              style={{ objectFit: 'cover' }}
+              style={{ objectFit: 'contain' }}
               className="rounded-lg"
               priority
             />

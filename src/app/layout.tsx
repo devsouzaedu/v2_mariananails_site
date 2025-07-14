@@ -51,10 +51,11 @@ export default function RootLayout({
 }) {
   const pathname = usePathname();
   const isLandingPage = pathname === '/landing';
+  const isEbookPage = pathname === '/ebook';
   return (
     <html lang="pt-BR" className={`${funnelSans.variable} ${ptSans.variable} ${playfair.variable}`}>
       <body className="min-h-screen">
-        {!isLandingPage && (
+        {!isLandingPage && !isEbookPage && (
           <>
             <div className="fixed inset-0 pointer-events-none z-0">
               <div className="absolute inset-0 bg-primary-50 opacity-30 mix-blend-multiply" style={{ 
@@ -67,11 +68,11 @@ export default function RootLayout({
             <Navbar />
           </>
         )}
-        <main className={`flex-grow relative z-10 ${isLandingPage ? '' : 'pt-20'}`}>
+        <main className={`flex-grow relative z-10 ${isLandingPage || isEbookPage ? '' : 'pt-20'}`}>
           {children}
         </main>
-        <Footer />
-        <WhatsAppButton />
+        {!isEbookPage && <Footer />}
+        {!isEbookPage && <WhatsAppButton />}
       </body>
     </html>
   )
