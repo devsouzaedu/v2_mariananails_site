@@ -1,21 +1,46 @@
 "use client";
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function EbookPage() {
   const [isDownloading, setIsDownloading] = useState(false);
 
-  const handleDownload = () => {
+  const handleDownload = async () => {
     setIsDownloading(true);
     
-    // Criar um link temporário para download
-    const link = document.createElement('a');
-    link.href = '/Guia de ouro da Nail Designer Profissional.pdf';
-    link.download = 'Guia de ouro da Nail Designer Profissional.pdf';
-    link.target = '_blank';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    try {
+      // Método mais forçado para download que funciona melhor no Safari
+      const response = await fetch('/Guia de ouro da Nail Designer Profissional2.pdf');
+      const blob = await response.blob();
+      
+      // Criar URL do blob
+      const url = window.URL.createObjectURL(blob);
+      
+      // Criar link temporário para download
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'Guia de ouro da Nail Designer Profissional2.pdf';
+      link.style.display = 'none';
+      
+      // Adicionar ao DOM, clicar e remover
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      // Limpar URL do blob
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Erro ao baixar o arquivo:', error);
+      // Fallback para método tradicional
+      const link = document.createElement('a');
+      link.href = '/Guia de ouro da Nail Designer Profissional2.pdf';
+      link.download = 'Guia de ouro da Nail Designer Profissional2.pdf';
+      link.target = '_blank';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
     
     // Resetar o estado após um breve delay
     setTimeout(() => {
@@ -25,12 +50,26 @@ export default function EbookPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary-400 via-primary-500 to-primary-600 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8 text-center">
+      <div className="max-w-2xl w-full space-y-8 text-center">
+        {/* Imagem de Capa */}
+        <div className="flex justify-center mb-8">
+          <div className="relative w-64 h-80 md:w-80 md:h-96 rounded-lg overflow-hidden shadow-2xl">
+            <Image 
+              src="/capa_ebook_2025.png" 
+              alt="Capa do Guia de Ouro da Nail Designer Profissional" 
+              fill
+              style={{ objectFit: 'cover' }}
+              className="rounded-lg"
+              priority
+            />
+          </div>
+        </div>
+
         <div>
           <h1 className="text-4xl md:text-5xl font-handwritten font-bold text-white mb-6">
             Guia de Ouro da Nail Designer Profissional
           </h1>
-          <p className="text-lg md:text-xl text-white mb-8 leading-relaxed">
+          <p className="text-lg md:text-xl text-white mb-8 leading-relaxed max-w-lg mx-auto">
             Preparamos um ebook exclusivo com dicas valiosas para você. Clique no botão abaixo para fazer o download gratuito.
           </p>
         </div>
