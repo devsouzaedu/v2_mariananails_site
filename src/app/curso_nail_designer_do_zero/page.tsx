@@ -203,8 +203,8 @@ export default function CursoNailDesignerPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-4">Realizar designs modernos e exclusivos</h3>
-              <p className="text-gray-600">Domine técnicas profissionais para criar nail arts únicas e desejadas no mercado</p>
+              <h3 className="text-xl font-bold text-gray-800 mb-4">Criar designs que fazem suas clientes voltarem sempre</h3>
+              <p className="text-gray-600">Domine técnicas exclusivas de nail art que transformam unhas simples em obras de arte. Suas clientes vão se apaixonar pelo seu trabalho e se tornarem suas maiores divulgadoras, garantindo agenda sempre lotada!</p>
             </div>
 
             <div className="bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-shadow">
@@ -213,8 +213,8 @@ export default function CursoNailDesignerPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 8.172V5L8 4z"></path>
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-4">Dominar aplicação de materiais</h3>
-              <p className="text-gray-600">Aplique esmaltes, gel, acrílico e outros materiais com perfeição total</p>
+              <h3 className="text-xl font-bold text-gray-800 mb-4">Dominar alongamentos que duram semanas sem quebrar</h3>
+              <p className="text-gray-600">Aprenda os segredos profissionais para aplicar gel, fibra de vidro e outros materiais com perfeição absoluta. Seus alongamentos vão ser resistentes, duradouros e com acabamento impecável que impressiona até as clientes mais exigentes!</p>
             </div>
 
             <div className="bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-shadow">
@@ -223,8 +223,8 @@ export default function CursoNailDesignerPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-4">Cuidar da saúde das unhas</h3>
-              <p className="text-gray-600">Garanta durabilidade nos serviços e saúde das unhas das suas clientes</p>
+              <h3 className="text-xl font-bold text-gray-800 mb-4">Garantir unhas saudáveis que suas clientes vão amar</h3>
+              <p className="text-gray-600">Torne-se especialista em cuidados que preservam a saúde natural das unhas. Suas clientes vão notar a diferença: unhas mais fortes, bonitas e saudáveis. Isso significa fidelização garantida e indicações constantes!</p>
             </div>
 
             <div className="bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-shadow">
@@ -233,8 +233,8 @@ export default function CursoNailDesignerPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-4">Iniciar sua carreira profissional</h3>
-              <p className="text-gray-600">Comece ou aprimore seus atendimentos como especialista em unhas</p>
+              <h3 className="text-xl font-bold text-gray-800 mb-4">Construir uma carreira lucrativa e reconhecida</h3>
+              <p className="text-gray-600">Transforme sua paixão por unhas em um negócio próspero! Aprenda não só as técnicas, mas também como precificar seus serviços, conquistar clientes e se destacar como a nail designer mais procurada da sua região!</p>
             </div>
           </div>
         </div>
@@ -697,10 +697,10 @@ export default function CursoNailDesignerPage() {
         <div className="container mx-auto max-w-6xl px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-handwritten font-bold text-gray-800 mb-6">
-              17 Certificados Inclusos e Válidos em todo território brasileiro!
+              3 Certificados Profissionais Inclusos e Válidos em todo território brasileiro!
             </h2>
             <p className="text-xl text-gray-600 mb-8">
-              Você vai ter acesso a estes lindos certificados disponíveis em sua área restrita após concluir o curso.
+              Você vai ter acesso a estes certificados profissionais disponíveis em sua área restrita após concluir o curso.
             </p>
             <div className="bg-gradient-to-r from-primary-50 to-primary-100 rounded-lg p-6 inline-block">
               <h3 className="text-2xl font-bold text-primary-800 mb-2">142 horas de carga horária!</h3>
@@ -713,8 +713,8 @@ export default function CursoNailDesignerPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((cert) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            {[1, 2, 3].map((cert) => (
               <div key={cert} className="bg-gradient-to-br from-primary-50 to-white border-2 border-primary-200 rounded-lg p-4 text-center">
                 <div className="w-16 h-16 bg-primary-600 text-white rounded-full flex items-center justify-center mx-auto mb-3">
                   <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -775,7 +775,7 @@ export default function CursoNailDesignerPage() {
                   <svg className="w-5 h-5 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
-                  17 Certificados
+                  3 Certificados Profissionais
                 </div>
                 <div className="flex items-center justify-center text-white">
                   <svg className="w-5 h-5 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
