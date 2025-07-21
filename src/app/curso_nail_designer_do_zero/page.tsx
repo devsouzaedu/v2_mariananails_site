@@ -153,7 +153,7 @@ export default function CursoNailDesignerPage() {
       </section>
 
       {/* Seção de Credibilidade */}
-      <section className="py-12 bg-white">
+      <section className="py-12 bg-primary-50">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-handwritten font-bold text-gray-800 mb-4">
@@ -188,7 +188,7 @@ export default function CursoNailDesignerPage() {
       </section>
 
       {/* O que você vai aprender */}
-      <section className="py-16 bg-gradient-to-br from-primary-50 to-white">
+      <section className="py-16 bg-white">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-handwritten font-bold text-gray-800 mb-6">
@@ -241,7 +241,7 @@ export default function CursoNailDesignerPage() {
       </section>
 
       {/* Conteúdo do Curso - Módulos */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-handwritten font-bold text-gray-800 mb-6">
@@ -417,60 +417,60 @@ export default function CursoNailDesignerPage() {
       </section>
 
       {/* Benefícios Exclusivos */}
-      <section className="py-16 bg-gradient-to-br from-primary-600 to-primary-700 text-white">
+      <section className="py-16 bg-primary-100">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-handwritten font-bold mb-6">
+            <h2 className="text-4xl font-handwritten font-bold mb-6 text-gray-800">
               E você ainda vai receber acesso a:
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="w-20 h-20 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-20 h-20 bg-primary-200 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-10 h-10 text-primary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
                 </svg>
               </div>
-              <h3 className="text-xl font-bold mb-3">Certificado Digital Reconhecido</h3>
-              <p className="text-white/80">Válido para atuação profissional em todo território nacional</p>
+              <h3 className="text-xl font-bold mb-3 text-gray-800">Certificado Digital Reconhecido</h3>
+              <p className="text-gray-600">Válido para atuação profissional em todo território nacional</p>
             </div>
 
             <div className="text-center">
-              <div className="w-20 h-20 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-20 h-20 bg-primary-200 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-10 h-10 text-primary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
               </div>
-              <h3 className="text-xl font-bold mb-3">Acesso Vitalício</h3>
-              <p className="text-white/80">Acesso imediato e para sempre ao conteúdo completo do curso</p>
+              <h3 className="text-xl font-bold mb-3 text-gray-800">Acesso Vitalício</h3>
+              <p className="text-gray-600">Acesso imediato e para sempre ao conteúdo completo do curso</p>
             </div>
 
             <div className="text-center">
-              <div className="w-20 h-20 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-20 h-20 bg-primary-200 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-10 h-10 text-primary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path>
                 </svg>
               </div>
-              <h3 className="text-xl font-bold mb-3">Suporte Completo</h3>
-              <p className="text-white/80">Disponível para tirar todas as suas dúvidas ao longo do aprendizado</p>
+              <h3 className="text-xl font-bold mb-3 text-gray-800">Suporte Completo</h3>
+              <p className="text-gray-600">Disponível para tirar todas as suas dúvidas ao longo do aprendizado</p>
             </div>
 
             <div className="text-center">
-              <div className="w-20 h-20 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-20 h-20 bg-primary-200 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-10 h-10 text-primary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                 </svg>
               </div>
-              <h3 className="text-xl font-bold mb-3">Comunidade Exclusiva</h3>
-              <p className="text-white/80">Grupo de alunos para compartilhar evolução e se inspirar</p>
+              <h3 className="text-xl font-bold mb-3 text-gray-800">Comunidade Exclusiva</h3>
+              <p className="text-gray-600">Grupo de alunos para compartilhar evolução e se inspirar</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA Intermediário */}
-      <section className="py-16 bg-yellow-500">
+      <section className="py-16 bg-primary-50">
         <div className="container mx-auto max-w-4xl px-4 text-center">
           <h2 className="text-4xl font-handwritten font-bold text-gray-800 mb-6">
             Comece Hoje a Construir uma Carreira Altamente Valorizada!
@@ -480,7 +480,7 @@ export default function CursoNailDesignerPage() {
             Agora é a sua vez de transformar paixão e talento em uma carreira admirada e cheia de possibilidades.
           </p>
           
-          <div className="bg-white/20 backdrop-blur-sm rounded-lg p-6 mb-8 inline-block">
+          <div className="bg-white rounded-lg shadow-lg p-6 mb-8 inline-block border border-primary-200">
             <div className="text-center">
               <div className="text-sm line-through opacity-70 mb-2">De R$ 39,99 por:</div>
               <div className="text-4xl font-bold text-gray-800 mb-2">R$ 19,99</div>
@@ -503,7 +503,7 @@ export default function CursoNailDesignerPage() {
       </section>
 
       {/* Transformações - Antes e Depois */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-handwritten font-bold text-gray-800 mb-6">
@@ -574,7 +574,7 @@ export default function CursoNailDesignerPage() {
       </section>
 
       {/* Depoimentos */}
-      <section className="py-16 bg-gradient-to-br from-primary-50 to-white">
+      <section className="py-16 bg-white">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-handwritten font-bold text-gray-800 mb-6">
@@ -693,7 +693,7 @@ export default function CursoNailDesignerPage() {
       </section>
 
       {/* Certificados */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-primary-50">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-handwritten font-bold text-gray-800 mb-6">
