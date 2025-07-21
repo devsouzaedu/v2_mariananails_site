@@ -64,12 +64,12 @@ export default function CursoNailDesignerPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-handwritten font-bold mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-handwritten font-bold mb-6 text-white">
                 <span className="text-yellow-300">CURSO COMPLETO</span><br />
                 Nail Art do Zero ao Profissional
               </h1>
               
-              <p className="text-xl mb-8 leading-relaxed">
+              <p className="text-xl mb-8 leading-relaxed text-white">
                 Comece <strong>hoje</strong>, no <strong>seu ritmo</strong>, com <strong>suporte online, garantia total</strong> e <strong>aprovado</strong> por mais de <strong>400 mil alunos!</strong>
               </p>
 
@@ -80,7 +80,7 @@ export default function CursoNailDesignerPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                     </svg>
                   </div>
-                  <span>Metodologia Exclusiva e Prática</span>
+                  <span className="text-white">Metodologia Exclusiva e Prática</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
@@ -88,7 +88,7 @@ export default function CursoNailDesignerPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                     </svg>
                   </div>
-                  <span>Certificado Digital Reconhecido</span>
+                  <span className="text-white">Certificado Digital Reconhecido</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
@@ -96,7 +96,7 @@ export default function CursoNailDesignerPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                     </svg>
                   </div>
-                  <span>Acesso Vitalício ao Conteúdo</span>
+                  <span className="text-white">Acesso Vitalício ao Conteúdo</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
@@ -104,16 +104,16 @@ export default function CursoNailDesignerPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                     </svg>
                   </div>
-                  <span>Suporte Completo para Dúvidas</span>
+                  <span className="text-white">Suporte Completo para Dúvidas</span>
                 </div>
               </div>
 
               {/* Preço */}
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 mb-8">
                 <div className="text-center">
-                  <div className="text-sm line-through opacity-70 mb-2">De R$ 39,99 por:</div>
+                  <div className="text-sm line-through opacity-70 mb-2 text-white">De R$ 39,99 por:</div>
                   <div className="text-4xl font-bold text-yellow-300 mb-2">R$ 19,99</div>
-                  <div className="text-sm">ou 3x de R$ 6,67 sem juros</div>
+                  <div className="text-sm text-white">ou 3x de R$ 6,67 sem juros</div>
                 </div>
               </div>
 
@@ -127,7 +127,7 @@ export default function CursoNailDesignerPage() {
                 >
                   🚀 QUERO COMEÇAR AGORA!
                 </a>
-                <p className="text-sm mt-3 opacity-80">✅ Acesso Imediato • 🔒 Compra 100% Segura</p>
+                <p className="text-sm mt-3 opacity-80 text-white">✅ Acesso Imediato • 🔒 Compra 100% Segura</p>
               </div>
             </div>
 
@@ -737,47 +737,47 @@ export default function CursoNailDesignerPage() {
               🚨 ÚLTIMAS {vagasRestantes} VAGAS!
             </div>
             
-            <h2 className="text-4xl md:text-5xl font-handwritten font-bold mb-6">
+            <h2 className="text-4xl md:text-5xl font-handwritten font-bold mb-6 text-white">
               Oferta Exclusiva Por Tempo Limitado!
             </h2>
             
             {/* Contador Final */}
             <div className="flex justify-center space-x-4 mb-8">
               <div className="bg-black/30 backdrop-blur-sm rounded-lg p-6 text-center">
-                <div className="text-3xl font-bold">{String(timeLeft.hours).padStart(2, '0')}</div>
-                <div className="text-sm">HORAS</div>
+                <div className="text-3xl font-bold text-white">{String(timeLeft.hours).padStart(2, '0')}</div>
+                <div className="text-sm text-white">HORAS</div>
               </div>
               <div className="bg-black/30 backdrop-blur-sm rounded-lg p-6 text-center">
-                <div className="text-3xl font-bold">{String(timeLeft.minutes).padStart(2, '0')}</div>
-                <div className="text-sm">MINUTOS</div>
+                <div className="text-3xl font-bold text-white">{String(timeLeft.minutes).padStart(2, '0')}</div>
+                <div className="text-sm text-white">MINUTOS</div>
               </div>
               <div className="bg-black/30 backdrop-blur-sm rounded-lg p-6 text-center">
-                <div className="text-3xl font-bold">{String(timeLeft.seconds).padStart(2, '0')}</div>
-                <div className="text-sm">SEGUNDOS</div>
+                <div className="text-3xl font-bold text-white">{String(timeLeft.seconds).padStart(2, '0')}</div>
+                <div className="text-sm text-white">SEGUNDOS</div>
               </div>
             </div>
           </div>
 
           <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 mb-8">
             <div className="text-center">
-              <div className="text-2xl line-through opacity-70 mb-4">De R$ 39,99</div>
+              <div className="text-2xl line-through opacity-70 mb-4 text-white">De R$ 39,99</div>
               <div className="text-6xl font-bold text-yellow-300 mb-4">R$ 19,99</div>
-              <div className="text-xl mb-6">ou 3x de R$ 6,67 sem juros</div>
+              <div className="text-xl mb-6 text-white">ou 3x de R$ 6,67 sem juros</div>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm mb-6">
-                <div className="flex items-center justify-center">
+                <div className="flex items-center justify-center text-white">
                   <svg className="w-5 h-5 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                   Acesso Vitalício
                 </div>
-                <div className="flex items-center justify-center">
+                <div className="flex items-center justify-center text-white">
                   <svg className="w-5 h-5 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                   17 Certificados
                 </div>
-                <div className="flex items-center justify-center">
+                <div className="flex items-center justify-center text-white">
                   <svg className="w-5 h-5 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
@@ -796,8 +796,8 @@ export default function CursoNailDesignerPage() {
             >
               🚀 SIM, QUERO COMEÇAR AGORA!
             </a>
-            <p className="text-lg">✅ Acesso Imediato • 🔒 Compra 100% Segura • 📱 Suporte Completo</p>
-            <p className="text-sm opacity-80">
+            <p className="text-lg text-white">✅ Acesso Imediato • 🔒 Compra 100% Segura • 📱 Suporte Completo</p>
+            <p className="text-sm opacity-80 text-white">
               Não perca esta oportunidade única! Esta oferta é válida apenas por tempo limitado.
             </p>
           </div>
