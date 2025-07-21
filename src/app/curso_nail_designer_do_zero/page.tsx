@@ -134,7 +134,7 @@ export default function CursoNailDesignerPage() {
             <div className="relative">
               <div className="relative h-[500px] rounded-lg overflow-hidden shadow-2xl">
                 <Image 
-                  src="/images/curso_unhas_nail_design_barueri_alphaville_nail_art_designer (33).jpg" 
+                  src="/images/capa_curso_2.PNG" 
                   alt="Curso Nail Designer do Zero ao Profissional" 
                   fill
                   style={{ objectFit: 'cover' }}
@@ -519,7 +519,7 @@ export default function CursoNailDesignerPage() {
             <div className="text-center">
               <div className="relative h-64 rounded-lg overflow-hidden shadow-lg mb-4">
                 <Image 
-                  src="/images/unhas_barueri_nail_art_a (1).jpg" 
+                  src="/images/unhas_card_curso_ (1).JPG" 
                   alt="Trabalhos de Alunas do Curso" 
                   fill
                   style={{ objectFit: 'cover' }}
@@ -533,7 +533,7 @@ export default function CursoNailDesignerPage() {
             <div className="text-center">
               <div className="relative h-64 rounded-lg overflow-hidden shadow-lg mb-4">
                 <Image 
-                  src="/images/unhas_barueri_nail_art_a (5).jpg" 
+                  src="/images/unhas_card_curso_ (2).JPG" 
                   alt="Nail Art Avançada" 
                   fill
                   style={{ objectFit: 'cover' }}
