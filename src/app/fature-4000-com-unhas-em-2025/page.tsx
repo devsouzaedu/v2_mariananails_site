@@ -24,7 +24,7 @@ export default function Fature4000ComUnhasEm2025() {
       </div>
 
       {/* Cabeçalho Principal - Fundo Preto, Letras Amarelas */}
-      <header className="bg-black text-[#ffcd10] py-8 px-2 text-center shadow-lg">
+      <header className="bg-black text-[#ffcd10] py-8 px-0 text-center shadow-lg">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight text-[#ffcd10]"> {/* Amarelo */}
           Torne-se uma Nail Designer de Sucesso e Fature <br className="hidden md:inline"/> +R$4.000 por Mês em 2025 com Mariana Nails!
         </h1>
@@ -34,7 +34,7 @@ export default function Fature4000ComUnhasEm2025() {
       </header>
 
       {/* Seção de Benefícios - Fundo Branco, Letras Pretas */}
-      <section className="py-8 px-2 bg-white border-b-4 border-pink-200">
+      <section className="py-8 px-0 bg-white border-b-4 border-pink-200">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-extrabold text-pink-600 mb-6">
             Por Que Escolher o Curso Mariana Nails?
@@ -93,7 +93,7 @@ export default function Fature4000ComUnhasEm2025() {
       </section>
 
       {/* O que o Curso Oferece - Fundo Preto, Letras Amarelas */}
-      <section className="py-8 px-2 bg-black text-[#ffcd10] border-b-4 border-pink-200">
+      <section className="py-8 px-0 bg-black text-[#ffcd10] border-b-4 border-pink-200">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-extrabold mb-6 text-[#ffcd10]">
             O Que Você Vai Aprender no Curso Mariana Nails
@@ -126,7 +126,7 @@ export default function Fature4000ComUnhasEm2025() {
       </section>
 
       {/* Seção de Bônus - Fundo Branco, Letras Pretas */}
-      <section className="py-8 px-2 bg-white border-b-4 border-pink-200">
+      <section className="py-8 px-0 bg-white border-b-4 border-pink-200">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-extrabold text-pink-600 mb-6">
             Bônus Exclusivos Para Você (Vagas Limitadas!)
@@ -153,7 +153,7 @@ export default function Fature4000ComUnhasEm2025() {
       </section>
 
       {/* Seção de Depoimentos - Fundo Preto, Letras Amarelas */}
-      <section className="py-8 px-2 bg-black text-[#ffcd10] border-b-4 border-pink-200">
+      <section className="py-8 px-0 bg-black text-[#ffcd10] border-b-4 border-pink-200">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-extrabold mb-6 text-[#ffcd10]">
             Histórias de Sucesso Reais de Nossas Alunas
@@ -176,7 +176,7 @@ export default function Fature4000ComUnhasEm2025() {
       </section>
 
       {/* Chamada para Ação (CTA) - Fundo Degradê original, texto branco/amarelo */}
-      <section className="py-8 px-2 bg-gradient-to-r from-purple-500 to-indigo-600 text-white text-center shadow-lg border-b-4 border-pink-200">
+      <section className="py-8 px-0 bg-gradient-to-r from-purple-500 to-indigo-600 text-white text-center shadow-lg border-b-4 border-pink-200">
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-4 leading-tight">
           Não Perca Mais Tempo! Torne-se Uma Nail Designer de Sucesso Hoje!
         </h2>
@@ -195,7 +195,7 @@ export default function Fature4000ComUnhasEm2025() {
       </section>
 
       {/* Seção de Garantia - Fundo Branco, Letras Pretas */}
-      <section className="py-8 px-2 bg-white border-b-4 border-pink-200">
+      <section className="py-8 px-0 bg-white border-b-4 border-pink-200">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-extrabold text-pink-600 mb-4">
             Sua Satisfação Garantida ou Seu Dinheiro de Volta!
@@ -208,7 +208,7 @@ export default function Fature4000ComUnhasEm2025() {
       </section>
 
       {/* Seção de FAQ - Fundo Preto, Letras Amarelas */}
-      <section className="py-8 px-2 bg-black text-[#ffcd10]">
+      <section className="py-8 px-0 bg-black text-[#ffcd10]">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-extrabold mb-6 text-[#ffcd10] text-center">
             Perguntas Frequentes (FAQ)
@@ -235,7 +235,7 @@ export default function Fature4000ComUnhasEm2025() {
       </section>
 
       {/* Galeria de Unhas do Curso */}
-      <section className="py-8 px-2 bg-white">
+      <section className="py-8 px-0 bg-white">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-extrabold text-pink-600 mb-6">
             Veja o que você vai aprender a fazer!
@@ -269,7 +269,7 @@ export default function Fature4000ComUnhasEm2025() {
       </section>
 
       {/* Rodapé - Fundo Preto */}
-      <footer className="bg-black text-white py-4 px-2 text-center">
+      <footer className="bg-black text-white py-4 px-0 text-center">
         <p className="text-xs mb-1">COPYRIGHT 2025 – Mariana Nails – Todos os direitos reservados</p>
         <p className="text-xs">Suporte: <a href="mailto:suporte@mariananails.com" className="text-pink-400 hover:underline">suporte@mariananails.com</a></p>
       </footer>
