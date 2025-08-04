@@ -16,12 +16,12 @@ export default function Fature4000ComUnhasEm2025() {
         />
       </div>
 
-      {/* Cabeçalho Principal - Fundo Preto, Letras Brancas */}
-      <header className="bg-black text-white py-16 px-4 text-center shadow-lg">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight text-pink-400"> {/* Detalhe em rosa */}
+      {/* Cabeçalho Principal - Fundo Preto, Letras Amarelas */}
+      <header className="bg-black text-[#ffcd10] py-16 px-4 text-center shadow-lg">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight text-[#ffcd10]"> {/* Amarelo */}
           Torne-se uma Nail Designer de Sucesso e Fature <br className="hidden md:inline"/> +R$4.000 por Mês em 2025 com Mariana Nails!
         </h1>
-        <p className="text-xl md:text-2xl font-light max-w-3xl mx-auto text-gray-200"> {/* Texto um pouco mais claro */}
+        <p className="text-xl md:text-2xl font-light max-w-3xl mx-auto text-[#ffcd10]">
           Conquiste sua independência financeira, seja sua própria chefe e transforme sua paixão por unhas em uma carreira lucrativa e valorizada no mercado da beleza!
         </p>
       </header>
@@ -58,16 +58,16 @@ export default function Fature4000ComUnhasEm2025() {
         </div>
       </section>
 
-      {/* O que o Curso Oferece - Fundo Preto, Letras Brancas */}
-      <section className="py-16 px-4 bg-gray-900 text-white border-b-4 border-pink-200">
+      {/* O que o Curso Oferece - Fundo Preto, Letras Amarelas */}
+      <section className="py-16 px-4 bg-black text-[#ffcd10] border-b-4 border-pink-200">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-pink-400 mb-12">
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-12 text-[#ffcd10]">
             O Que Você Vai Aprender no Curso Mariana Nails
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 text-left">
-            <div className="bg-gray-800 p-8 rounded-lg shadow-xl border border-pink-500"> {/* Detalhes e borda em rosa */}
-              <h3 className="text-2xl font-bold mb-4 text-white">Módulos Completos e Didáticos</h3>
-              <ul className="list-disc list-inside text-gray-200 space-y-2">
+            <div className="bg-gray-900 p-8 rounded-lg shadow-xl border border-pink-500">
+              <h3 className="text-2xl font-bold mb-4 text-[#ffcd10]">Módulos Completos e Didáticos</h3>
+              <ul className="list-disc list-inside text-[#ffcd10] space-y-2">
                 <li>+100 aulas em vídeo, passo a passo, pensadas para iniciantes e avançadas.</li>
                 <li>Técnicas de alongamento: Fibra de Vidro, Gel Moldado, Polygel e Gel na Tip.</li>
                 <li>Cutilagem perfeita, Esmaltação em Gel e Tradicional.</li>
@@ -77,9 +77,9 @@ export default function Fature4000ComUnhasEm2025() {
                 <li>Marketing para Nail Designers: Como atrair clientes e precificar seus serviços.</li>
               </ul>
             </div>
-            <div className="bg-gray-800 p-8 rounded-lg shadow-xl border border-pink-500">
-              <h3 className="text-2xl font-bold mb-4 text-white">Diferenciais Exclusivos</h3>
-              <ul className="list-disc list-inside text-gray-200 space-y-2">
+            <div className="bg-gray-900 p-8 rounded-lg shadow-xl border border-pink-500">
+              <h3 className="text-2xl font-bold mb-4 text-[#ffcd10]">Diferenciais Exclusivos</h3>
+              <ul className="list-disc list-inside text-[#ffcd10] space-y-2">
                 <li>Acesso vitalício ao curso e a todas as atualizações futuras.</li>
                 <li>Suporte direto com a instrutora Mariana Nails.</li>
                 <li>Comunidade exclusiva de alunas para troca de experiências e dicas.</li>
@@ -118,23 +118,23 @@ export default function Fature4000ComUnhasEm2025() {
         </div>
       </section>
 
-      {/* Seção de Depoimentos - Fundo Preto, Letras Brancas */}
-      <section className="py-16 px-4 bg-gray-900 text-white border-b-4 border-pink-200">
+      {/* Seção de Depoimentos - Fundo Preto, Letras Amarelas */}
+      <section className="py-16 px-4 bg-black text-[#ffcd10] border-b-4 border-pink-200">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-pink-400 mb-12">
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-12 text-[#ffcd10]">
             Histórias de Sucesso Reais de Nossas Alunas
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            <div className="bg-gray-800 p-8 rounded-lg shadow-xl border border-pink-500">
-              <p className="italic text-gray-200 mb-4">"Eu estava desempregada e desacreditada, mas o curso da Mariana Nails mudou minha vida! Hoje tenho minha própria clientela e faturo mais de R$4.000 por mês. É um sonho!"</p>
+            <div className="bg-gray-900 p-8 rounded-lg shadow-xl border border-pink-500">
+              <p className="italic mb-4 text-[#ffcd10]">"Eu estava desempregada e desacreditada, mas o curso da Mariana Nails mudou minha vida! Hoje tenho minha própria clientela e faturo mais de R$4.000 por mês. É um sonho!"</p>
               <p className="font-bold text-pink-400">Ana Paula, 29 anos - São Paulo/SP</p>
             </div>
-            <div className="bg-gray-800 p-8 rounded-lg shadow-xl border border-pink-500">
-              <p className="italic text-gray-200 mb-4">"Sempre amei unhas, mas nunca pensei que poderia viver disso. O curso é super didático, e a Mariana é uma excelente professora. Conquistei minha independência!"</p>
+            <div className="bg-gray-900 p-8 rounded-lg shadow-xl border border-pink-500">
+              <p className="italic mb-4 text-[#ffcd10]">"Sempre amei unhas, mas nunca pensei que poderia viver disso. O curso é super didático, e a Mariana é uma excelente professora. Conquistei minha independência!"</p>
               <p className="font-bold text-pink-400">Juliana Costa, 35 anos - Rio de Janeiro/RJ</p>
             </div>
-            <div className="bg-gray-800 p-8 rounded-lg shadow-xl border border-pink-500">
-              <p className="italic text-gray-200 mb-4">"Em menos de 3 meses após o curso, já estava com a agenda lotada! A qualidade do ensino é incrível, e o suporte me deu toda a confiança que eu precisava."</p>
+            <div className="bg-gray-900 p-8 rounded-lg shadow-xl border border-pink-500">
+              <p className="italic mb-4 text-[#ffcd10]">"Em menos de 3 meses após o curso, já estava com a agenda lotada! A qualidade do ensino é incrível, e o suporte me deu toda a confiança que eu precisava."</p>
               <p className="font-bold text-pink-400">Carla Santos, 25 anos - Belo Horizonte/MG</p>
             </div>
           </div>
@@ -173,28 +173,28 @@ export default function Fature4000ComUnhasEm2025() {
         </div>
       </section>
 
-      {/* Seção de FAQ - Fundo Preto, Letras Brancas */}
-      <section className="py-16 px-4 bg-gray-900 text-white">
+      {/* Seção de FAQ - Fundo Preto, Letras Amarelas */}
+      <section className="py-16 px-4 bg-black text-[#ffcd10]">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-pink-400 mb-12 text-center">
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-12 text-[#ffcd10] text-center">
             Perguntas Frequentes (FAQ)
           </h2>
           <div className="space-y-6">
-            <div className="bg-gray-800 p-6 rounded-lg shadow-md border border-pink-500">
-              <h3 className="text-xl font-bold mb-3 text-white">Preciso de experiência prévia para fazer o curso?</h3>
-              <p className="text-gray-200">Não! O curso foi desenvolvido do zero ao avançado, ideal para quem nunca teve contato com o mundo das unhas e para profissionais que buscam aprimoramento.</p>
+            <div className="bg-gray-900 p-6 rounded-lg shadow-md border border-pink-500">
+              <h3 className="text-xl font-bold mb-3 text-[#ffcd10]">Preciso de experiência prévia para fazer o curso?</h3>
+              <p className="text-[#ffcd10]">Não! O curso foi desenvolvido do zero ao avançado, ideal para quem nunca teve contato com o mundo das unhas e para profissionais que buscam aprimoramento.</p>
             </div>
-            <div className="bg-gray-800 p-6 rounded-lg shadow-md border border-pink-500">
-              <h3 className="text-xl font-bold mb-3 text-white">Preciso ter todos os materiais para começar o curso?</h3>
-              <p className="text-gray-200">Não necessariamente. No curso, ensinamos detalhadamente quais materiais você precisará, onde comprá-los com os melhores preços e como montar seu kit inicial.</p>
+            <div className="bg-gray-900 p-6 rounded-lg shadow-md border border-pink-500">
+              <h3 className="text-xl font-bold mb-3 text-[#ffcd10]">Preciso ter todos os materiais para começar o curso?</h3>
+              <p className="text-[#ffcd10]">Não necessariamente. No curso, ensinamos detalhadamente quais materiais você precisará, onde comprá-los com os melhores preços e como montar seu kit inicial.</p>
             </div>
-            <div className="bg-gray-800 p-6 rounded-lg shadow-md border border-pink-500">
-              <h3 className="text-xl font-bold mb-3 text-white">O pagamento é único ou mensal?</h3>
-              <p className="text-gray-200">O pagamento é único! Você paga apenas uma vez e tem acesso vitalício a todas as aulas, módulos e futuras atualizações do curso. Sem mensalidades ou taxas escondidas.</p>
+            <div className="bg-gray-900 p-6 rounded-lg shadow-md border border-pink-500">
+              <h3 className="text-xl font-bold mb-3 text-[#ffcd10]">O pagamento é único ou mensal?</h3>
+              <p className="text-[#ffcd10]">O pagamento é único! Você paga apenas uma vez e tem acesso vitalício a todas as aulas, módulos e futuras atualizações do curso. Sem mensalidades ou taxas escondidas.</p>
             </div>
-            <div className="bg-gray-800 p-6 rounded-lg shadow-md border border-pink-500">
-              <h3 className="text-xl font-bold mb-3 text-white">Recebo certificados ao finalizar o curso?</h3>
-              <p className="text-gray-200">Sim! Ao concluir os módulos, você receberá 20 certificados profissionais, que comprovam sua qualificação e são reconhecidos no mercado da beleza.</p>
+            <div className="bg-gray-900 p-6 rounded-lg shadow-md border border-pink-500">
+              <h3 className="text-xl font-bold mb-3 text-[#ffcd10]">Recebo certificados ao finalizar o curso?</h3>
+              <p className="text-[#ffcd10]">Sim! Ao concluir os módulos, você receberá 20 certificados profissionais, que comprovam sua qualificação e são reconhecidos no mercado da beleza.</p>
             </div>
           </div>
         </div>
