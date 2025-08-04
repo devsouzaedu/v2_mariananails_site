@@ -9,7 +9,7 @@ export default function Fature4000ComUnhasEm2025() {
   const [iconCertificateError, setIconCertificateError] = useState(false);
 
   return (
-    <div className="min-h-screen bg-pink-50 text-gray-800">
+    <div className="min-h-screen bg-black text-gray-800">
       {/* Imagem de Topo */}
       <div className="relative w-full h-auto">
         <Image 
@@ -24,7 +24,7 @@ export default function Fature4000ComUnhasEm2025() {
       </div>
 
       {/* Cabeçalho Principal - Fundo Preto, Letras Amarelas */}
-      <header className="bg-black text-[#ffcd10] py-8 px-0 text-center shadow-lg">
+      <header className="bg-black text-[#ffcd10] py-8 px-0 text-center">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight text-[#ffcd10]"> {/* Amarelo */}
           Torne-se uma Nail Designer de Sucesso e Fature <br className="hidden md:inline"/> +R$4.000 por Mês em 2025 com Mariana Nails!
         </h1>
@@ -33,14 +33,14 @@ export default function Fature4000ComUnhasEm2025() {
         </p>
       </header>
 
-      {/* Seção de Benefícios - Fundo Branco, Letras Pretas */}
-      <section className="py-8 px-0 bg-white border-b-4 border-pink-200">
+      {/* Seção de Benefícios - Fundo Preto, Cores Rosé */}
+      <section className="py-8 px-0" style={{ backgroundColor: '#000000' }}>
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-pink-600 mb-6">
+          <h2 className="text-2xl md:text-3xl font-extrabold mb-6" style={{ color: '#E4B7B2' }}>
             Por Que Escolher o Curso Mariana Nails?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-white p-4 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-pink-300 flex flex-col items-center">
+            <div className="p-4 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center" style={{ backgroundColor: '#000000', border: '1px solid #B76E79' }}>
               {iconGrowthError ? (
                 <span style={{ fontSize: '2rem' }}>📈</span>
               ) : (
@@ -51,12 +51,12 @@ export default function Fature4000ComUnhasEm2025() {
                   onError={() => setIconGrowthError(true)}
                 />
               )}
-              <h3 className="text-xl font-bold mb-2 text-gray-900">Do Zero ao Avançado</h3>
-              <p className="text-gray-700 text-sm">
+              <h3 className="text-xl font-bold mb-2" style={{ color: '#E4B7B2' }}>Do Zero ao Avançado</h3>
+              <p className="text-sm" style={{ color: '#F9F1F0' }}>
                 Mesmo sem experiência, você aprenderá todas as técnicas para se tornar uma Nail Designer completa e confiante.
               </p>
             </div>
-            <div className="bg-white p-4 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-pink-300 flex flex-col items-center">
+            <div className="p-4 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center" style={{ backgroundColor: '#000000', border: '1px solid #B76E79' }}>
               {iconMoneyError ? (
                 <span style={{ fontSize: '2rem' }}>💰</span>
               ) : (
@@ -67,12 +67,12 @@ export default function Fature4000ComUnhasEm2025() {
                   onError={() => setIconMoneyError(true)}
                 />
               )}
-              <h3 className="text-xl font-bold mb-2 text-gray-900">Fature +R$4.000/Mês</h3>
-              <p className="text-gray-700 text-sm">
+              <h3 className="text-xl font-bold mb-2" style={{ color: '#E4B7B2' }}>Fature +R$4.000/Mês</h3>
+              <p className="text-sm" style={{ color: '#F9F1F0' }}>
                 Descubra como transformar suas habilidades em uma fonte de renda sólida e lucrativa, alcançando sua independência financeira.
               </p>
             </div>
-            <div className="bg-white p-4 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-pink-300 flex flex-col items-center">
+            <div className="p-4 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center" style={{ backgroundColor: '#000000', border: '1px solid #B76E79' }}>
               {iconCertificateError ? (
                 <span style={{ fontSize: '2rem' }}>🎓</span>
               ) : (
@@ -83,9 +83,9 @@ export default function Fature4000ComUnhasEm2025() {
                   onError={() => setIconCertificateError(true)}
                 />
               )}
-              <h3 className="text-xl font-bold mb-2 text-gray-900">Certificação Reconhecida</h3>
-              <p className="text-gray-700 text-sm">
-                Receba 20 certificados profissionais que validarão suas habilidades e abrirão portas no mercado de trabalho.
+              <h3 className="text-xl font-bold mb-2" style={{ color: '#E4B7B2' }}>Certificação Internacional</h3>
+              <p className="text-sm" style={{ color: '#F9F1F0' }}>
+                Receba 3 certificados internacionais que validarão suas habilidades e abrirão portas no mercado de trabalho.
               </p>
             </div>
           </div>
@@ -114,11 +114,13 @@ export default function Fature4000ComUnhasEm2025() {
             <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-pink-500">
               <h3 className="text-xl font-bold mb-2 text-[#ffcd10]">Diferenciais Exclusivos</h3>
               <ul className="list-disc list-inside text-[#ffcd10] space-y-1 text-sm">
-                <li>Acesso vitalício ao curso e a todas as atualizações futuras.</li>
-                <li>Suporte direto com a instrutora Mariana Nails.</li>
-                <li>Comunidade exclusiva de alunas para troca de experiências e dicas.</li>
+                <li>3 Certificados Internacionais reconhecidos no mercado.</li>
+                <li>Grupo exclusivo no WhatsApp com mais de 200 alunas ativas.</li>
+                <li>Suporte 24 horas para tirar todas suas dúvidas.</li>
+                <li>Contato direto com a Mariana para mentoria personalizada.</li>
+                <li>Comunidade exclusiva para networking e troca de experiências.</li>
                 <li>Material de apoio em PDF para download.</li>
-                <li>Dicas de onde comprar materiais com os melhores preços.</li>
+                <li>Satisfação completa ou seu dinheiro de volta.</li>
               </ul>
             </div>
           </div>
@@ -175,23 +177,32 @@ export default function Fature4000ComUnhasEm2025() {
         </div>
       </section>
 
-      {/* Chamada para Ação (CTA) - Fundo Degradê original, texto branco/amarelo */}
-      <section className="py-8 px-0 bg-gradient-to-r from-purple-500 to-indigo-600 text-white text-center shadow-lg border-b-4 border-pink-200">
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-4 leading-tight">
-          Não Perca Mais Tempo! Torne-se Uma Nail Designer de Sucesso Hoje!
-        </h2>
-        <p className="text-base md:text-lg mb-4 font-light">
-          Garanta seu acesso completo e comece sua jornada para faturar alto com unhas em 2025!
-        </p>
-        <div className="bg-yellow-300 text-purple-800 p-4 rounded-lg shadow-2xl inline-block mb-4 animate-pulse border border-pink-500">
-          <p className="text-2xl md:text-3xl font-bold">De <span className="line-through">R$199,90</span> por Apenas</p>
-          <p className="text-4xl md:text-5xl font-extrabold mt-1">10x de R$9,90</p>
-          <p className="text-2xl md:text-3xl font-bold">ou R$79,90 à vista!</p>
+      {/* Chamada para Ação (CTA) - Fundo Degradê roxo para rosa */}
+      <section className="py-12 px-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-center">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-6 leading-tight">
+            Não Perca Mais Tempo! Torne-se Uma Nail Designer de Sucesso Hoje!
+          </h2>
+          <p className="text-lg md:text-xl mb-8 font-light max-w-3xl mx-auto">
+            Garanta seu acesso completo e comece sua jornada para faturar alto com unhas em 2025!
+          </p>
+          
+          <div className="bg-white/95 text-gray-800 p-6 rounded-xl shadow-2xl inline-block mb-8 max-w-md mx-auto">
+            <p className="text-lg md:text-xl font-semibold text-gray-600 mb-2">De <span className="line-through">R$120,00</span> por Apenas</p>
+            <p className="text-3xl md:text-4xl font-extrabold text-purple-600 mb-2">R$20,00</p>
+            <p className="text-lg md:text-xl font-semibold text-gray-800">à vista!</p>
+          </div>
+          
+          <div className="mb-6">
+            <a href="https://pay.kiwify.com.br/lf9IZHj" target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-full text-lg md:text-xl uppercase transition-all duration-300 transform hover:scale-105 shadow-lg inline-block">
+              🚀 Quero me Tornar uma Nail Designer Agora!
+            </a>
+          </div>
+          
+          <p className="text-sm md:text-base font-light opacity-90">
+            ⏰ Vagas Limitadas para as 10 Primeiras Alunas!
+          </p>
         </div>
-        <a href="#" className="bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-full text-xl md:text-2xl uppercase transition-all duration-300 transform hover:scale-105 shadow-lg border-2 border-white">
-          Quero me Tornar uma Nail Designer Agora!
-        </a>
-        <p className="text-base mt-4 font-light">Vagas Limitadas para as 10 Primeiras Alunas!</p>
       </section>
 
       {/* Seção de Garantia - Fundo Branco, Letras Pretas */}
@@ -202,7 +213,7 @@ export default function Fature4000ComUnhasEm2025() {
           </h2>
           <img src="/images/icon-guarantee.svg" alt="Garantia de 7 Dias" className="h-16 w-16 mx-auto mb-4 text-green-500"/>
           <p className="text-base text-gray-700 leading-relaxed">
-            Temos tanta certeza da qualidade do nosso curso que oferecemos uma <strong>garantia incondicional de 7 dias</strong>. Se por qualquer motivo você não se sentir satisfeita, basta solicitar o reembolso total, sem burocracia ou letras miúdas. Seu investimento está 100% seguro!
+            Temos tanta certeza da qualidade do nosso curso que oferecemos uma <strong>garantia de satisfação completa</strong>. Se por qualquer motivo você não se sentir satisfeita, basta solicitar o reembolso total, sem burocracia ou letras miúdas. Seu investimento está 100% seguro! <strong>Satisfação completa ou seu dinheiro de volta.</strong>
           </p>
         </div>
       </section>
@@ -228,7 +239,7 @@ export default function Fature4000ComUnhasEm2025() {
             </div>
             <div className="bg-gray-900 p-4 rounded-lg shadow-md border border-pink-500">
               <h3 className="text-lg font-bold mb-2 text-[#ffcd10]">Recebo certificados ao finalizar o curso?</h3>
-              <p className="text-[#ffcd10] text-sm">Sim! Ao concluir os módulos, você receberá 20 certificados profissionais, que comprovam sua qualificação e são reconhecidos no mercado da beleza.</p>
+              <p className="text-[#ffcd10] text-sm">Sim! Ao concluir os módulos, você receberá 3 certificados internacionais, que comprovam sua qualificação e são reconhecidos no mercado da beleza.</p>
             </div>
           </div>
         </div>
