@@ -11,7 +11,7 @@ export default function Fature4000ComUnhasEm2025() {
   return (
     <div className="min-h-screen bg-pink-50 text-gray-800">
       {/* Imagem de Topo */}
-      <div className="relative w-full h-auto mb-2">
+      <div className="relative w-full h-auto">
         <Image 
           src="/images/mariana_nails_rota_curso_topo2.png" // Imagem atualizada
           alt="Mariana Nails - Fature R$4000 com Unhas em 2025"
