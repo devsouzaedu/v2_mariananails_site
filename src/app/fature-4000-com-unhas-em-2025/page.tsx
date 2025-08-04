@@ -17,7 +17,7 @@ export default function Fature4000ComUnhasEm2025() {
       </div>
 
       {/* Cabeçalho Principal - Fundo Preto, Letras Brancas */}
-      <header className="bg-gray-900 text-white py-16 px-4 text-center shadow-lg">
+      <header className="bg-black text-white py-16 px-4 text-center shadow-lg">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight text-pink-400"> {/* Detalhe em rosa */}
           Torne-se uma Nail Designer de Sucesso e Fature <br className="hidden md:inline"/> +R$4.000 por Mês em 2025 com Mariana Nails!
         </h1>
