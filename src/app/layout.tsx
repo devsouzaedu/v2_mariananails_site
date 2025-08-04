@@ -1,7 +1,7 @@
 "use client";
 import type { Metadata } from 'next';
 import { usePathname } from 'next/navigation';
-import { PT_Sans, Playfair_Display } from 'next/font/google'
+import { PT_Sans, Playfair_Display, Instrument_Serif, Instrument_Sans } from 'next/font/google'
 import localFont from 'next/font/local'
 import './globals.css'
 import Navbar from '@/components/Navbar'
@@ -36,6 +36,18 @@ const playfair = Playfair_Display({
   display: 'swap'
 })
 
+const instrumentSerif = Instrument_Serif({
+  subsets: ['latin'],
+  variable: '--font-instrument-serif',
+  display: 'swap'
+})
+
+const instrumentSans = Instrument_Sans({
+  subsets: ['latin'],
+  variable: '--font-instrument-sans',
+  display: 'swap'
+})
+
 // A metadata não pode ser exportada de um client component diretamente.
 // Se precisar de metadados dinâmicos, considere movê-los para page.tsx ou usar a API generateMetadata.
 // Por ora, vamos manter a exportação comentada ou remover se não for usada dinamicamente aqui.
@@ -54,7 +66,7 @@ export default function RootLayout({
   const isEbookPage = pathname === '/ebook';
   const isCursoPage = pathname === '/curso_nail_designer_do_zero';
   return (
-    <html lang="pt-BR" className={`${funnelSans.variable} ${ptSans.variable} ${playfair.variable}`}>
+    <html lang="pt-BR" className={`${funnelSans.variable} ${ptSans.variable} ${playfair.variable} ${instrumentSerif.variable} ${instrumentSans.variable}`}>
       <body className="min-h-screen">
         {!isLandingPage && !isEbookPage && !isCursoPage && (
           <>

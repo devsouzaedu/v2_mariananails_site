@@ -12,7 +12,7 @@ body {
   color: rgb(var(--foreground-rgb));
   background: 
     linear-gradient(135deg, rgba(252, 231, 243, 0.8) 0%, rgba(255, 255, 255, 1) 100%);
-  font-family: var(--font-funnel), var(--font-pt-sans), sans-serif;
+  font-family: var(--font-instrument-sans), sans-serif;
 }
 
 @layer base {
@@ -20,16 +20,20 @@ body {
     scroll-behavior: smooth;
   }
   h1 {
-    @apply text-4xl font-serif font-bold text-primary-800;
+    @apply text-4xl font-bold text-primary-800;
+    font-family: var(--font-instrument-serif), serif;
   }
   h2 {
-    @apply text-3xl font-serif font-semibold text-primary-700;
+    @apply text-3xl font-semibold text-primary-700;
+    font-family: var(--font-instrument-serif), serif;
   }
   h3 {
-    @apply text-2xl font-serif font-medium text-primary-600;
+    @apply text-2xl font-medium text-primary-600;
+    font-family: var(--font-instrument-serif), serif;
   }
   p {
     @apply leading-relaxed text-gray-800;
+    font-family: var(--font-instrument-sans), sans-serif;
   }
   a {
     @apply text-primary-600 hover:text-primary-700 transition-colors;
