@@ -93,7 +93,7 @@ export default function Fature4000ComUnhasEm2025() {
       </section>
 
       {/* O que o Curso Oferece - Fundo Preto, Letras Amarelas */}
-      <section className="py-8 px-0 bg-black text-[#ffcd10] border-b-4 border-pink-200">
+      <section className="py-8 px-0 bg-black text-[#ffcd10]">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-extrabold mb-6 text-[#ffcd10]">
             O Que Você Vai Aprender no Curso Mariana Nails
@@ -127,35 +127,35 @@ export default function Fature4000ComUnhasEm2025() {
         </div>
       </section>
 
-      {/* Seção de Bônus - Fundo Branco, Letras Pretas */}
-      <section className="py-8 px-0 bg-white border-b-4 border-pink-200">
+      {/* Seção de Bônus - Fundo Preto, Letras Amarelo Ouro */}
+      <section className="py-8 px-0 bg-black text-[#ffcd10]">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-pink-600 mb-6">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-[#ffcd10] mb-6">
             Bônus Exclusivos Para Você (Vagas Limitadas!)
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-pink-50 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 border border-pink-300">
-              <img src="/images/bonus-cilios.svg" alt="Bônus Extensão de Cílios" className="h-12 w-12 mx-auto mb-4 text-pink-500"/>
-              <h3 className="text-xl font-bold mb-2 text-gray-900">Curso de Extensão de Cílios</h3>
-              <p className="text-gray-700 text-sm">Aprenda uma nova habilidade e amplie seus serviços com certificado exclusivo.</p>
+            <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-[#ffcd10]">
+              <span className="text-4xl mb-4 block">👁️</span>
+              <h3 className="text-xl font-bold mb-2 text-[#ffcd10]">Curso de Extensão de Cílios</h3>
+              <p className="text-[#ffcd10] text-sm">Aprenda uma nova habilidade e amplie seus serviços com certificado exclusivo.</p>
             </div>
-            <div className="bg-pink-50 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 border border-pink-300">
-              <img src="/images/bonus-masculino.svg" alt="Bônus Manicure Masculina" className="h-12 w-12 mx-auto mb-4 text-pink-500"/>
-              <h3 className="text-xl font-bold mb-2 text-gray-900">Manicure Masculina</h3>
-              <p className="text-gray-700 text-sm">Domine as técnicas para atender o público masculino com excelência.</p>
+            <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-[#ffcd10]">
+              <span className="text-4xl mb-4 block">👨</span>
+              <h3 className="text-xl font-bold mb-2 text-[#ffcd10]">Manicure Masculina</h3>
+              <p className="text-[#ffcd10] text-sm">Domine as técnicas para atender o público masculino com excelência.</p>
             </div>
-            <div className="bg-pink-50 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 border border-pink-300">
-              <img src="/images/bonus-spa.svg" alt="Bônus Spa dos Pés" className="h-12 w-12 mx-auto mb-4 text-pink-500"/>
-              <h3 className="text-xl font-bold mb-2 text-gray-900">Spa dos Pés Profissional</h3>
-              <p className="text-gray-700 text-sm">Relaxe seus clientes e ofereça um serviço completo e diferenciado.</p>
+            <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-[#ffcd10]">
+              <span className="text-4xl mb-4 block">🦶</span>
+              <h3 className="text-xl font-bold mb-2 text-[#ffcd10]">Spa dos Pés Profissional</h3>
+              <p className="text-[#ffcd10] text-sm">Relaxe seus clientes e ofereça um serviço completo e diferenciado.</p>
             </div>
           </div>
-          <p className="text-red-600 text-base font-semibold mt-4">Corre! Bônus Limitados e com Certificado!</p>
+          <p className="text-[#ffcd10] text-base font-semibold mt-4">⏰ Corre! Bônus Limitados e com Certificado!</p>
         </div>
       </section>
 
       {/* Seção de Depoimentos - Fundo Preto, Letras Amarelas */}
-      <section className="py-8 px-0 bg-black text-[#ffcd10] border-b-4 border-pink-200">
+      <section className="py-8 px-0 bg-black text-[#ffcd10]">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-extrabold mb-6 text-[#ffcd10]">
             Histórias de Sucesso Reais de Nossas Alunas
@@ -205,14 +205,14 @@ export default function Fature4000ComUnhasEm2025() {
         </div>
       </section>
 
-      {/* Seção de Garantia - Fundo Branco, Letras Pretas */}
-      <section className="py-8 px-0 bg-white border-b-4 border-pink-200">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-pink-600 mb-4">
+      {/* Seção de Garantia - Fundo Preto, Letras Amarelo Ouro */}
+      <section className="py-8 px-0 bg-black text-[#ffcd10]">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-[#ffcd10] mb-4">
             Sua Satisfação Garantida ou Seu Dinheiro de Volta!
           </h2>
-          <img src="/images/icon-guarantee.svg" alt="Garantia de 7 Dias" className="h-16 w-16 mx-auto mb-4 text-green-500"/>
-          <p className="text-base text-gray-700 leading-relaxed">
+          <span className="text-6xl mb-4 block">✅</span>
+          <p className="text-base text-[#ffcd10] leading-relaxed">
             Temos tanta certeza da qualidade do nosso curso que oferecemos uma <strong>garantia de satisfação completa</strong>. Se por qualquer motivo você não se sentir satisfeita, basta solicitar o reembolso total, sem burocracia ou letras miúdas. Seu investimento está 100% seguro! <strong>Satisfação completa ou seu dinheiro de volta.</strong>
           </p>
         </div>
@@ -246,9 +246,9 @@ export default function Fature4000ComUnhasEm2025() {
       </section>
 
       {/* Galeria de Unhas do Curso */}
-      <section className="py-8 px-0 bg-white">
+      <section className="py-8 px-0 bg-black text-[#ffcd10]">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-pink-600 mb-6">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-[#ffcd10] mb-6">
             Veja o que você vai aprender a fazer!
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
@@ -266,7 +266,7 @@ export default function Fature4000ComUnhasEm2025() {
               'unhas_mariana_nails_curso (11).JPG',
               'unhas_mariana_nails_curso (12).JPG',
             ].map((img, idx) => (
-              <div key={img} className="overflow-hidden rounded-lg border-2 border-pink-200 shadow-sm hover:shadow-lg transition-all">
+              <div key={img} className="overflow-hidden rounded-lg border-2 border-[#ffcd10] shadow-sm hover:shadow-lg transition-all">
                 <img
                   src={`/images/${img}`}
                   alt={`Unhas do curso Mariana Nails ${idx + 1}`}
