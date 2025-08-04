@@ -1,6 +1,12 @@
+import React, { useState } from 'react';
 import Image from 'next/image';
 
 export default function Fature4000ComUnhasEm2025() {
+  // Estados para fallback dos ícones
+  const [iconGrowthError, setIconGrowthError] = useState(false);
+  const [iconMoneyError, setIconMoneyError] = useState(false);
+  const [iconCertificateError, setIconCertificateError] = useState(false);
+
   return (
     <div className="min-h-screen bg-pink-50 text-gray-800">
       {/* Imagem de Topo */}
@@ -34,21 +40,48 @@ export default function Fature4000ComUnhasEm2025() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="bg-white p-4 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-pink-300 flex flex-col items-center">
-              <img src="/images/icon-growth.svg" alt="Crescimento Profissional" className="h-10 w-10 mb-2" onError={(e) => {e.currentTarget.style.display='none'; e.currentTarget.parentElement.insertAdjacentHTML('afterbegin', '<span style=\'font-size:2rem;\'>📈</span>')}}/>
+              {iconGrowthError ? (
+                <span style={{ fontSize: '2rem' }}>📈</span>
+              ) : (
+                <img
+                  src="/images/icon-growth.svg"
+                  alt="Crescimento Profissional"
+                  className="h-10 w-10 mb-2"
+                  onError={() => setIconGrowthError(true)}
+                />
+              )}
               <h3 className="text-xl font-bold mb-2 text-gray-900">Do Zero ao Avançado</h3>
               <p className="text-gray-700 text-sm">
                 Mesmo sem experiência, você aprenderá todas as técnicas para se tornar uma Nail Designer completa e confiante.
               </p>
             </div>
             <div className="bg-white p-4 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-pink-300 flex flex-col items-center">
-              <img src="/images/icon-money.svg" alt="Alta Renda" className="h-10 w-10 mb-2" onError={(e) => {e.currentTarget.style.display='none'; e.currentTarget.parentElement.insertAdjacentHTML('afterbegin', '<span style=\'font-size:2rem;\'>💰</span>')}}/>
+              {iconMoneyError ? (
+                <span style={{ fontSize: '2rem' }}>💰</span>
+              ) : (
+                <img
+                  src="/images/icon-money.svg"
+                  alt="Alta Renda"
+                  className="h-10 w-10 mb-2"
+                  onError={() => setIconMoneyError(true)}
+                />
+              )}
               <h3 className="text-xl font-bold mb-2 text-gray-900">Fature +R$4.000/Mês</h3>
               <p className="text-gray-700 text-sm">
                 Descubra como transformar suas habilidades em uma fonte de renda sólida e lucrativa, alcançando sua independência financeira.
               </p>
             </div>
             <div className="bg-white p-4 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-pink-300 flex flex-col items-center">
-              <img src="/images/icon-certificate.svg" alt="Certificação Profissional" className="h-10 w-10 mb-2" onError={(e) => {e.currentTarget.style.display='none'; e.currentTarget.parentElement.insertAdjacentHTML('afterbegin', '<span style=\'font-size:2rem;\'>🎓</span>')}}/>
+              {iconCertificateError ? (
+                <span style={{ fontSize: '2rem' }}>🎓</span>
+              ) : (
+                <img
+                  src="/images/icon-certificate.svg"
+                  alt="Certificação Profissional"
+                  className="h-10 w-10 mb-2"
+                  onError={() => setIconCertificateError(true)}
+                />
+              )}
               <h3 className="text-xl font-bold mb-2 text-gray-900">Certificação Reconhecida</h3>
               <p className="text-gray-700 text-sm">
                 Receba 20 certificados profissionais que validarão suas habilidades e abrirão portas no mercado de trabalho.
