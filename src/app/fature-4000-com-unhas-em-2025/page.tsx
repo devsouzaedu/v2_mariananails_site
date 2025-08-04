@@ -1,6 +1,21 @@
+import Image from 'next/image';
+
 export default function Fature4000ComUnhasEm2025() {
   return (
     <div className="min-h-screen bg-pink-50 text-gray-800">
+      {/* Imagem de Topo */}
+      <div className="relative w-full h-auto">
+        <Image 
+          src="/images/mariana_nails_rota_curso_topo.png"
+          alt="Mariana Nails - Fature R$4000 com Unhas em 2025"
+          width={1920} // Ajuste conforme a largura real da imagem ou a largura desejada no layout
+          height={1080} // Ajuste conforme a altura real da imagem ou a altura desejada no layout
+          layout="responsive" // Garante que a imagem seja responsiva
+          objectFit="cover" // Garante que a imagem cubra a área sem distorção
+          priority // Otimiza o carregamento para a primeira visualização
+        />
+      </div>
+
       {/* Cabeçalho Principal */}
       <header className="bg-gradient-to-r from-pink-400 to-rose-500 text-white py-16 px-4 text-center shadow-lg">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
