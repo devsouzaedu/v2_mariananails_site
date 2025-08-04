@@ -99,29 +99,94 @@ export default function Fature4000ComUnhasEm2025() {
             O Que Você Vai Aprender no Curso Mariana Nails
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-            <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-pink-500">
-              <h3 className="text-xl font-bold mb-2 text-[#ffcd10]">Módulos Completos e Didáticos</h3>
-              <ul className="list-disc list-inside text-[#ffcd10] space-y-1 text-sm">
-                <li>+100 aulas em vídeo, passo a passo, pensadas para iniciantes e avançadas.</li>
-                <li>Técnicas de alongamento: Fibra de Vidro, Gel Moldado, Polygel e Gel na Tip.</li>
-                <li>Cutilagem perfeita, Esmaltação em Gel e Tradicional.</li>
-                <li>Manicure e Pedicure Profissional.</li>
-                <li>Decoração de Unhas (Nail Art) e Francesinha.</li>
-                <li>Remoção Segura e Manutenção.</li>
-                <li>Marketing para Nail Designers: Como atrair clientes e precificar seus serviços.</li>
+            <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-[#ffcd10]">
+              <div className="flex items-center mb-3">
+                <span className="text-3xl mr-3">📚</span>
+                <h3 className="text-xl font-bold text-[#ffcd10]">Módulos Completos e Didáticos</h3>
+              </div>
+              <ul className="text-[#ffcd10] space-y-2 text-sm">
+                <li className="flex items-start"><span className="text-lg mr-2">🎥</span>+100 aulas em vídeo, passo a passo, pensadas para iniciantes e avançadas.</li>
+                <li className="flex items-start"><span className="text-lg mr-2">💎</span>Técnicas de alongamento: Fibra de Vidro, Gel Moldado, Polygel e Gel na Tip.</li>
+                <li className="flex items-start"><span className="text-lg mr-2">✂️</span>Cutilagem perfeita, Esmaltação em Gel e Tradicional.</li>
+                <li className="flex items-start"><span className="text-lg mr-2">👐</span>Manicure e Pedicure Profissional.</li>
+                <li className="flex items-start"><span className="text-lg mr-2">🎨</span>Decoração de Unhas (Nail Art) e Francesinha.</li>
+                <li className="flex items-start"><span className="text-lg mr-2">🔧</span>Remoção Segura e Manutenção.</li>
+                <li className="flex items-start"><span className="text-lg mr-2">📈</span>Marketing para Nail Designers: Como atrair clientes e precificar seus serviços.</li>
               </ul>
             </div>
-            <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-pink-500">
-              <h3 className="text-xl font-bold mb-2 text-[#ffcd10]">Diferenciais Exclusivos</h3>
-              <ul className="list-disc list-inside text-[#ffcd10] space-y-1 text-sm">
-                <li>3 Certificados Internacionais reconhecidos no mercado.</li>
-                <li>Grupo exclusivo no WhatsApp com mais de 200 alunas ativas.</li>
-                <li>Suporte 24 horas para tirar todas suas dúvidas.</li>
-                <li>Contato direto com a Mariana para mentoria personalizada.</li>
-                <li>Comunidade exclusiva para networking e troca de experiências.</li>
-                <li>Material de apoio em PDF para download.</li>
-                <li>Satisfação completa ou seu dinheiro de volta.</li>
+            <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-[#ffcd10]">
+              <div className="flex items-center mb-3">
+                <span className="text-3xl mr-3">⭐</span>
+                <h3 className="text-xl font-bold text-[#ffcd10]">Diferenciais Exclusivos</h3>
+              </div>
+              <ul className="text-[#ffcd10] space-y-2 text-sm">
+                <li className="flex items-start"><span className="text-lg mr-2">🏆</span>3 Certificados Internacionais reconhecidos no mercado.</li>
+                <li className="flex items-start"><span className="text-lg mr-2">💬</span>Grupo exclusivo no WhatsApp com mais de 200 alunas ativas.</li>
+                <li className="flex items-start"><span className="text-lg mr-2">🕒</span>Suporte 24 horas para tirar todas suas dúvidas.</li>
+                <li className="flex items-start"><span className="text-lg mr-2">👩‍🏫</span>Contato direto com a Mariana para mentoria personalizada.</li>
+                <li className="flex items-start"><span className="text-lg mr-2">🤝</span>Comunidade exclusiva para networking e troca de experiências.</li>
+                <li className="flex items-start"><span className="text-lg mr-2">📄</span>Material de apoio em PDF para download.</li>
+                <li className="flex items-start"><span className="text-lg mr-2">💯</span>Satisfação completa ou seu dinheiro de volta.</li>
               </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Seção É Perfeita Para Você */}
+      <section className="py-8 px-0 bg-black text-[#ffcd10]">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-[#ffcd10] mb-8">
+            É Perfeita Para Você Que:
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+            <div className="space-y-3">
+              <div className="flex items-start">
+                <span className="text-[#ffcd10] text-xl mr-3 mt-1">✅</span>
+                <p className="text-white text-sm">Já é manicure e deseja aprimorar suas habilidades para oferecer os serviços mais modernos do mercado.</p>
+              </div>
+              <div className="flex items-start">
+                <span className="text-[#ffcd10] text-xl mr-3 mt-1">✅</span>
+                <p className="text-white text-sm">Está começando e quer aprender técnicas avançadas para ter um diferencial competitivo desde o início.</p>
+              </div>
+              <div className="flex items-start">
+                <span className="text-[#ffcd10] text-xl mr-3 mt-1">✅</span>
+                <p className="text-white text-sm">Já fez cursos anteriormente, mas ainda não se sente pronta para atender clientes de forma profissional.</p>
+              </div>
+              <div className="flex items-start">
+                <span className="text-[#ffcd10] text-xl mr-3 mt-1">✅</span>
+                <p className="text-white text-sm">Quer aprender do zero e fazer parte do mundo das unhas, seja para ter uma renda extra ou transformar sua vida com uma nova profissão.</p>
+              </div>
+              <div className="flex items-start">
+                <span className="text-[#ffcd10] text-xl mr-3 mt-1">✅</span>
+                <p className="text-white text-sm">Quer ter mais dinheiro para dar o melhor para sua família.</p>
+              </div>
+              <div className="flex items-start">
+                <span className="text-[#ffcd10] text-xl mr-3 mt-1">✅</span>
+                <p className="text-white text-sm">Quer um passo a passo detalhado com tudo que precisa.</p>
+              </div>
+            </div>
+            <div className="space-y-3">
+              <div className="flex items-start">
+                <span className="text-[#ffcd10] text-xl mr-3 mt-1">✅</span>
+                <p className="text-white text-sm">Quer lotar sua agenda de clientes satisfeitas.</p>
+              </div>
+              <div className="flex items-start">
+                <span className="text-[#ffcd10] text-xl mr-3 mt-1">✅</span>
+                <p className="text-white text-sm">Quer entregar um trabalho de excelência.</p>
+              </div>
+              <div className="flex items-start">
+                <span className="text-[#ffcd10] text-xl mr-3 mt-1">✅</span>
+                <p className="text-white text-sm">Quer viver das unhas.</p>
+              </div>
+              <div className="flex items-start">
+                <span className="text-[#ffcd10] text-xl mr-3 mt-1">✅</span>
+                <p className="text-white text-sm">Quer descobrir os segredos que me tornaram valorizada e reconhecida.</p>
+              </div>
+              <div className="flex items-start">
+                <span className="text-[#ffcd10] text-xl mr-3 mt-1">✅</span>
+                <p className="text-white text-sm">Quer conseguir muitas clientes fiéis e ganhar de R$ 5.000 a R$ 10.000 por mês.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -154,6 +219,38 @@ export default function Fature4000ComUnhasEm2025() {
         </div>
       </section>
 
+      {/* Seção Não Precisa de Faculdade */}
+      <section className="py-8 px-0 bg-black text-[#ffcd10]">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-[#ffcd10] mb-6">
+            Você Não Precisa de Uma Faculdade Cara Para Ganhar 10 Mil Por Mês!
+          </h2>
+          <div className="bg-gray-900 p-6 rounded-xl border border-[#ffcd10] mb-6">
+            <p className="text-white text-lg leading-relaxed mb-4">
+              Um ensino de alta qualidade por um investimento <strong className="text-[#ffcd10]">100 vezes menor</strong> que o ensino superior tradicional, além de habilidades para exercer a sua profissão com confiança e segurança.
+            </p>
+            <p className="text-[#ffcd10] text-xl font-bold">
+              É assim que você vai se tornar uma profissional reconhecida, que ganha de <span className="text-2xl">R$ 5.000 a R$ 10.000 reais por mês</span>, atuando em um mercado em constante crescimento.
+            </p>
+          </div>
+          <div className="flex justify-center items-center space-x-8">
+            <div className="text-center">
+              <span className="text-4xl block mb-2">🎓</span>
+              <p className="text-white text-sm">Faculdade Tradicional</p>
+              <p className="text-red-500 font-bold">R$ 200.000+</p>
+            </div>
+            <div className="text-center">
+              <span className="text-4xl block mb-2">VS</span>
+            </div>
+            <div className="text-center">
+              <span className="text-4xl block mb-2">💎</span>
+              <p className="text-white text-sm">Curso Mariana Nails</p>
+              <p className="text-[#ffcd10] font-bold text-xl">R$ 20,00</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Seção de Depoimentos - Fundo Preto, Letras Amarelas */}
       <section className="py-8 px-0 bg-black text-[#ffcd10]">
         <div className="max-w-6xl mx-auto text-center">
@@ -177,31 +274,63 @@ export default function Fature4000ComUnhasEm2025() {
         </div>
       </section>
 
-      {/* Chamada para Ação (CTA) - Fundo Degradê roxo para rosa */}
-      <section className="py-12 px-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-center">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-6 leading-tight">
-            Não Perca Mais Tempo! Torne-se Uma Nail Designer de Sucesso Hoje!
+      {/* Nova Seção CTA Completa */}
+      <section className="py-12 px-4 bg-black text-[#ffcd10]">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-[#ffcd10] mb-6">
+            Quando Somados, Só Esses Presentes Valem Mais de R$ 197 Reais!
           </h2>
-          <p className="text-lg md:text-xl mb-8 font-light max-w-3xl mx-auto">
-            Garanta seu acesso completo e comece sua jornada para faturar alto com unhas em 2025!
+          <p className="text-white text-lg mb-6">
+            Mas você não vai pagar tudo isso se garantir a sua vaga HOJE.
           </p>
           
-          <div className="bg-white/95 text-gray-800 p-6 rounded-xl shadow-2xl inline-block mb-8 max-w-md mx-auto">
-            <p className="text-lg md:text-xl font-semibold text-gray-600 mb-2">De <span className="line-through">R$120,00</span> por Apenas</p>
-            <p className="text-3xl md:text-4xl font-extrabold text-purple-600 mb-2">R$20,00</p>
-            <p className="text-lg md:text-xl font-semibold text-gray-800">à vista!</p>
+          <div className="bg-gray-900 border-2 border-[#ffcd10] p-6 rounded-xl mb-8">
+            <h3 className="text-xl font-bold text-[#ffcd10] mb-4">O que você vai receber:</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-left text-white">
+              <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> Acesso de 1 ano ao curso</div>
+              <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> Área de membros estilo Netflix</div>
+              <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> As melhores técnicas</div>
+              <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> Aulas práticas</div>
+              <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> Aulas em vídeo sem enrolação</div>
+              <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> Didática realmente simples</div>
+              <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> Suporte via WhatsApp</div>
+              <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> Técnicas que aumentam faturamento</div>
+            </div>
           </div>
-          
+
+          <div className="bg-black border-4 border-[#ffcd10] p-8 rounded-xl mb-8">
+            <p className="text-white text-lg mb-2">De R$ 197,00</p>
+            <p className="text-6xl font-extrabold text-[#ffcd10] mb-2">R$ 19,90</p>
+            <p className="text-white text-xl">À vista!</p>
+            <p className="text-sm text-white mt-2 opacity-75">Com R$ 177,10 de DESCONTO!</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div className="bg-gray-900 p-4 rounded-lg border border-red-500">
+              <h4 className="text-red-500 font-bold mb-3">❌ Cursos Comuns:</h4>
+              <ul className="text-white text-sm space-y-1">
+                <li>❌ Aulas teóricas rasas</li>
+                <li>❌ Técnicas desvalorizadas</li>
+                <li>❌ Métodos ultrapassados</li>
+                <li>❌ Resultado: profissional zézinha</li>
+              </ul>
+            </div>
+            <div className="bg-gray-900 p-4 rounded-lg border border-[#ffcd10]">
+              <h4 className="text-[#ffcd10] font-bold mb-3">✅ Nosso Curso:</h4>
+              <ul className="text-white text-sm space-y-1">
+                <li>✅ Aulas teóricas sólidas e prática detalhada</li>
+                <li>✅ Técnicas que encantam clientes</li>
+                <li>✅ Professora com 12+ anos de experiência</li>
+                <li>✅ Resultado: uma Rainha das unhas</li>
+              </ul>
+            </div>
+          </div>
+
           <div className="mb-6">
-            <a href="https://pay.kiwify.com.br/lf9IZHj" target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-full text-lg md:text-xl uppercase transition-all duration-300 transform hover:scale-105 shadow-lg inline-block">
-              🚀 Quero me Tornar uma Nail Designer Agora!
+            <a href="https://pay.kiwify.com.br/lf9IZHj" target="_blank" rel="noopener noreferrer" className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-full text-lg md:text-xl uppercase transition-all duration-300 transform hover:scale-105 shadow-lg inline-block">
+              🎯 QUERO SER UMA MASTER QUEEN AGORA!
             </a>
           </div>
-          
-          <p className="text-sm md:text-base font-light opacity-90">
-            ⏰ Vagas Limitadas para as 10 Primeiras Alunas!
-          </p>
         </div>
       </section>
 
@@ -284,6 +413,18 @@ export default function Fature4000ComUnhasEm2025() {
         <p className="text-xs mb-1">COPYRIGHT 2025 – Mariana Nails – Todos os direitos reservados</p>
         <p className="text-xs">Suporte: <a href="mailto:suporte@mariananails.com" className="text-pink-400 hover:underline">suporte@mariananails.com</a></p>
       </footer>
+
+      {/* Botão Fixo - Garantir Minha Vaga */}
+      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
+        <a 
+          href="https://pay.kiwify.com.br/lf9IZHj" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-full text-lg shadow-2xl animate-pulse transition-all duration-300 transform hover:scale-105 border-2 border-black"
+        >
+          🎯 GARANTIR MINHA VAGA
+        </a>
+      </div>
     </div>
   );
 }
