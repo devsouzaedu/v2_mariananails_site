@@ -2,6 +2,44 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 
+// Estilos de animação inline
+const animationStyles = `
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes slideInUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes fadeInStagger {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  
+  .animate-fadeIn {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  
+  .animate-slideInUp {
+    animation: slideInUp 1s ease-out forwards;
+  }
+  
+  .animate-fadeInStagger > * {
+    animation: fadeInStagger 0.8s ease-out forwards;
+    animation-delay: calc(var(--delay, 0) * 0.1s);
+  }
+  
+  .animate-fadeInStagger > *:nth-child(1) { --delay: 1; }
+  .animate-fadeInStagger > *:nth-child(2) { --delay: 2; }
+  .animate-fadeInStagger > *:nth-child(3) { --delay: 3; }
+  .animate-fadeInStagger > *:nth-child(4) { --delay: 4; }
+  .animate-fadeInStagger > *:nth-child(5) { --delay: 5; }
+  .animate-fadeInStagger > *:nth-child(6) { --delay: 6; }
+`;
+
 export default function Fature4000ComUnhasEm2025() {
   // Estados para fallback dos ícones
   const [iconGrowthError, setIconGrowthError] = useState(false);
@@ -10,6 +48,8 @@ export default function Fature4000ComUnhasEm2025() {
 
   return (
     <div className="min-h-screen bg-black text-gray-800">
+      {/* Estilos de Animação */}
+      <style jsx>{animationStyles}</style>
       {/* Imagem de Topo */}
       <div className="relative w-full h-auto">
         <Image 
@@ -25,10 +65,10 @@ export default function Fature4000ComUnhasEm2025() {
 
       {/* Cabeçalho Principal - Fundo Preto, Letras Amarelas */}
       <header className="bg-black text-[#ffcd10] py-6 px-6 text-center">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 leading-tight text-[#ffcd10]"> {/* Amarelo */}
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 leading-tight text-[#ffcd10] animate-fadeIn"> {/* Amarelo */}
           Torne-se uma Nail Designer de Sucesso e Fature <br className="hidden md:inline"/> +R$4.000 por Mês em 2025 com Mariana Nails!
         </h1>
-        <p className="text-base md:text-lg font-light max-w-3xl mx-auto text-[#ffcd10] mb-1">
+        <p className="text-base md:text-lg font-light max-w-3xl mx-auto text-[#ffcd10] mb-1 animate-slideInUp">
           Conquiste sua independência financeira, seja sua própria chefe e transforme sua paixão por unhas em uma carreira lucrativa e valorizada no mercado da beleza!
         </p>
       </header>
@@ -39,8 +79,8 @@ export default function Fature4000ComUnhasEm2025() {
           <h2 className="text-2xl md:text-3xl font-extrabold mb-6" style={{ color: '#E4B7B2' }}>
             Por Que Escolher o Curso Mariana Nails?
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="p-4 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center" style={{ backgroundColor: '#000000', border: '1px solid #B76E79' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fadeInStagger">
+            <div className="p-4 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-500 flex flex-col items-center transform hover:scale-105" style={{ backgroundColor: '#000000', border: '1px solid #B76E79' }}>
               {iconGrowthError ? (
                 <span style={{ fontSize: '2rem' }}>📈</span>
               ) : (
@@ -56,7 +96,7 @@ export default function Fature4000ComUnhasEm2025() {
                 Mesmo sem experiência, você aprenderá todas as técnicas para se tornar uma Nail Designer completa e confiante.
               </p>
             </div>
-            <div className="p-4 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center" style={{ backgroundColor: '#000000', border: '1px solid #B76E79' }}>
+            <div className="p-4 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-500 flex flex-col items-center transform hover:scale-105" style={{ backgroundColor: '#000000', border: '1px solid #B76E79' }}>
               {iconMoneyError ? (
                 <span style={{ fontSize: '2rem' }}>💰</span>
               ) : (
@@ -72,7 +112,7 @@ export default function Fature4000ComUnhasEm2025() {
                 Descubra como transformar suas habilidades em uma fonte de renda sólida e lucrativa, alcançando sua independência financeira.
               </p>
             </div>
-            <div className="p-4 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center" style={{ backgroundColor: '#000000', border: '1px solid #B76E79' }}>
+            <div className="p-4 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-500 flex flex-col items-center transform hover:scale-105" style={{ backgroundColor: '#000000', border: '1px solid #B76E79' }}>
               {iconCertificateError ? (
                 <span style={{ fontSize: '2rem' }}>🎓</span>
               ) : (
@@ -98,8 +138,8 @@ export default function Fature4000ComUnhasEm2025() {
           <h2 className="text-2xl md:text-3xl font-extrabold mb-4 text-[#E4B7B2]">
             O Que Você Vai Aprender no Curso Mariana Nails
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-            <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-[#ffcd10]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left animate-slideInUp">
+            <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-[#ffcd10] transform hover:scale-105 transition-all duration-300">
               <div className="flex items-center mb-3">
                 <span className="text-3xl mr-3">📚</span>
                 <h3 className="text-xl font-bold text-[#ffcd10]">Módulos Completos e Didáticos</h3>
@@ -114,7 +154,7 @@ export default function Fature4000ComUnhasEm2025() {
                 <li className="flex items-start"><span className="text-lg mr-2">📈</span>Marketing para Nail Designers: Como atrair clientes e precificar seus serviços.</li>
               </ul>
             </div>
-            <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-[#ffcd10]">
+            <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-[#ffcd10] transform hover:scale-105 transition-all duration-300">
               <div className="flex items-center mb-3">
                 <span className="text-3xl mr-3">⭐</span>
                 <h3 className="text-xl font-bold text-[#ffcd10]">Diferenciais Exclusivos</h3>
@@ -139,7 +179,7 @@ export default function Fature4000ComUnhasEm2025() {
           <h2 className="text-2xl md:text-3xl font-extrabold text-[#E4B7B2] mb-6">
             É Perfeita Para Você Que:
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left animate-fadeInStagger">
             <div className="space-y-3">
               <div className="flex items-start">
                 <span className="text-[#ffcd10] text-xl mr-3 mt-1">✅</span>
@@ -190,32 +230,18 @@ export default function Fature4000ComUnhasEm2025() {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* Seção de Bônus - Fundo Preto, Letras Amarelo Ouro */}
-      <section className="py-6 px-6 bg-black text-[#ffcd10]">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-[#ffcd10] mb-4">
-            Bônus Exclusivos Para Você (Vagas Limitadas!)
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-[#ffcd10]">
-              <span className="text-4xl mb-4 block">👁️</span>
-              <h3 className="text-xl font-bold mb-2 text-[#ffcd10]">Curso de Extensão de Cílios</h3>
-              <p className="text-[#ffcd10] text-sm">Aprenda uma nova habilidade e amplie seus serviços com certificado exclusivo.</p>
-            </div>
-            <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-[#ffcd10]">
-              <span className="text-4xl mb-4 block">👨</span>
-              <h3 className="text-xl font-bold mb-2 text-[#ffcd10]">Manicure Masculina</h3>
-              <p className="text-[#ffcd10] text-sm">Domine as técnicas para atender o público masculino com excelência.</p>
-            </div>
-            <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-[#ffcd10]">
-              <span className="text-4xl mb-4 block">🦶</span>
-              <h3 className="text-xl font-bold mb-2 text-[#ffcd10]">Spa dos Pés Profissional</h3>
-              <p className="text-[#ffcd10] text-sm">Relaxe seus clientes e ofereça um serviço completo e diferenciado.</p>
-            </div>
-          </div>
-          <p className="text-[#ffcd10] text-base font-semibold mt-4">⏰ Corre! Bônus Limitados e com Certificado!</p>
+        
+        {/* Botão CTA Após "Perfeita Para Você" */}
+        <div className="text-center mt-6">
+          <a 
+            href="https://pay.kiwify.com.br/lf9IZHj" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-full text-lg shadow-xl transition-all duration-300 transform hover:scale-105 inline-block animate-bounce"
+            style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
+          >
+            🎯 GARANTIR MINHA VAGA
+          </a>
         </div>
       </section>
 
@@ -257,20 +283,33 @@ export default function Fature4000ComUnhasEm2025() {
           <h2 className="text-2xl md:text-3xl font-extrabold mb-4 text-[#E4B7B2]">
             Histórias de Sucesso Reais de Nossas Alunas
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-pink-500">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fadeInStagger">
+            <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-pink-500 transform hover:scale-105 transition-all duration-300">
               <p className="italic mb-2 text-[#ffcd10] text-sm">"Eu estava desempregada e desacreditada, mas o curso da Mariana Nails mudou minha vida! Hoje tenho minha própria clientela e faturo mais de R$4.000 por mês. É um sonho!"</p>
               <p className="font-bold text-pink-400 text-xs">Ana Paula, 29 anos - São Paulo/SP</p>
             </div>
-            <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-pink-500">
+            <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-pink-500 transform hover:scale-105 transition-all duration-300">
               <p className="italic mb-2 text-[#ffcd10] text-sm">"Sempre amei unhas, mas nunca pensei que poderia viver disso. O curso é super didático, e a Mariana é uma excelente professora. Conquistei minha independência!"</p>
               <p className="font-bold text-pink-400 text-xs">Juliana Costa, 35 anos - Rio de Janeiro/RJ</p>
             </div>
-            <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-pink-500">
+            <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-pink-500 transform hover:scale-105 transition-all duration-300">
               <p className="italic mb-2 text-[#ffcd10] text-sm">"Em menos de 3 meses após o curso, já estava com a agenda lotada! A qualidade do ensino é incrível, e o suporte me deu toda a confiança que eu precisava."</p>
               <p className="font-bold text-pink-400 text-xs">Carla Santos, 25 anos - Belo Horizonte/MG</p>
             </div>
           </div>
+        </div>
+        
+        {/* Botão CTA Após Depoimentos */}
+        <div className="text-center mt-6">
+          <a 
+            href="https://pay.kiwify.com.br/lf9IZHj" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="bg-[#E4B7B2] hover:bg-pink-400 text-black font-bold py-3 px-6 rounded-full text-lg shadow-xl transition-all duration-300 transform hover:scale-105 inline-block animate-pulse"
+            style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
+          >
+            🎯 GARANTIR MINHA VAGA
+          </a>
         </div>
       </section>
 
@@ -321,14 +360,14 @@ export default function Fature4000ComUnhasEm2025() {
                 <li>✅ Aulas teóricas sólidas e prática detalhada</li>
                 <li>✅ Técnicas que encantam clientes</li>
                 <li>✅ Professora com 12+ anos de experiência</li>
-                <li>✅ Resultado: uma Rainha das unhas</li>
+                <li>✅ Resultado: uma profissional de excelência</li>
               </ul>
             </div>
           </div>
 
           <div className="mb-6">
             <a href="https://pay.kiwify.com.br/lf9IZHj" target="_blank" rel="noopener noreferrer" className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-full text-lg md:text-xl uppercase transition-all duration-300 transform hover:scale-105 shadow-lg inline-block" style={{ fontFamily: 'var(--font-instrument-serif), serif' }}>
-              🎯 QUERO SER UMA MASTER QUEEN AGORA!
+              🎯 QUERO GARANTIR MINHA VAGA AGORA!
             </a>
           </div>
         </div>
@@ -380,7 +419,7 @@ export default function Fature4000ComUnhasEm2025() {
           <h2 className="text-2xl md:text-3xl font-extrabold text-[#E4B7B2] mb-4">
             Veja o que você vai aprender a fazer!
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 animate-fadeInStagger">
             {[
               'unhas_mariana_nails_curso (1).JPG',
               'unhas_mariana_nails_curso (2).jpg',
