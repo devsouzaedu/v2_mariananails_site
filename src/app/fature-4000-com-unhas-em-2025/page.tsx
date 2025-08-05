@@ -24,17 +24,17 @@ export default function Fature4000ComUnhasEm2025() {
       </div>
 
       {/* Cabeçalho Principal - Fundo Preto, Letras Amarelas */}
-      <header className="bg-black text-[#ffcd10] py-8 px-0 text-center">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight text-[#ffcd10]"> {/* Amarelo */}
+      <header className="bg-black text-[#ffcd10] py-6 px-6 text-center">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 leading-tight text-[#ffcd10]"> {/* Amarelo */}
           Torne-se uma Nail Designer de Sucesso e Fature <br className="hidden md:inline"/> +R$4.000 por Mês em 2025 com Mariana Nails!
         </h1>
-        <p className="text-base md:text-lg font-light max-w-3xl mx-auto text-[#ffcd10] mb-2">
+        <p className="text-base md:text-lg font-light max-w-3xl mx-auto text-[#ffcd10] mb-1">
           Conquiste sua independência financeira, seja sua própria chefe e transforme sua paixão por unhas em uma carreira lucrativa e valorizada no mercado da beleza!
         </p>
       </header>
 
       {/* Seção de Benefícios - Fundo Preto, Cores Rosé */}
-      <section className="py-8 px-0" style={{ backgroundColor: '#000000' }}>
+      <section className="py-6 px-6" style={{ backgroundColor: '#000000' }}>
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-extrabold mb-6" style={{ color: '#E4B7B2' }}>
             Por Que Escolher o Curso Mariana Nails?
@@ -92,10 +92,10 @@ export default function Fature4000ComUnhasEm2025() {
         </div>
       </section>
 
-      {/* O que o Curso Oferece - Fundo Preto, Letras Amarelas */}
-      <section className="py-8 px-0 bg-black text-[#ffcd10]">
+      {/* O que o Curso Oferece - Fundo Preto, Letras Rosé */}
+      <section className="py-6 px-6 bg-black text-[#E4B7B2]">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-extrabold mb-6 text-[#ffcd10]">
+          <h2 className="text-2xl md:text-3xl font-extrabold mb-4 text-[#E4B7B2]">
             O Que Você Vai Aprender no Curso Mariana Nails
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
@@ -134,9 +134,9 @@ export default function Fature4000ComUnhasEm2025() {
       </section>
 
       {/* Seção É Perfeita Para Você */}
-      <section className="py-8 px-0 bg-black text-[#ffcd10]">
+      <section className="py-6 px-6 bg-black text-[#ffcd10]">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-[#ffcd10] mb-8">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-[#E4B7B2] mb-6">
             É Perfeita Para Você Que:
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
@@ -193,9 +193,9 @@ export default function Fature4000ComUnhasEm2025() {
       </section>
 
       {/* Seção de Bônus - Fundo Preto, Letras Amarelo Ouro */}
-      <section className="py-8 px-0 bg-black text-[#ffcd10]">
+      <section className="py-6 px-6 bg-black text-[#ffcd10]">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-[#ffcd10] mb-6">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-[#ffcd10] mb-4">
             Bônus Exclusivos Para Você (Vagas Limitadas!)
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -220,9 +220,9 @@ export default function Fature4000ComUnhasEm2025() {
       </section>
 
       {/* Seção Não Precisa de Faculdade */}
-      <section className="py-8 px-0 bg-black text-[#ffcd10]">
+      <section className="py-6 px-6 bg-black text-[#ffcd10]">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-[#ffcd10] mb-6">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-[#E4B7B2] mb-4">
             Você Não Precisa de Uma Faculdade Cara Para Ganhar 10 Mil Por Mês!
           </h2>
           <div className="bg-gray-900 p-6 rounded-xl border border-[#ffcd10] mb-6">
@@ -251,10 +251,10 @@ export default function Fature4000ComUnhasEm2025() {
         </div>
       </section>
 
-      {/* Seção de Depoimentos - Fundo Preto, Letras Amarelas */}
-      <section className="py-8 px-0 bg-black text-[#ffcd10]">
+      {/* Seção de Depoimentos - Fundo Preto, Letras Rosé */}
+      <section className="py-6 px-6 bg-black text-[#ffcd10]">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-extrabold mb-6 text-[#ffcd10]">
+          <h2 className="text-2xl md:text-3xl font-extrabold mb-4 text-[#E4B7B2]">
             Histórias de Sucesso Reais de Nossas Alunas
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -275,9 +275,9 @@ export default function Fature4000ComUnhasEm2025() {
       </section>
 
       {/* Nova Seção CTA Completa */}
-      <section className="py-12 px-4 bg-black text-[#ffcd10]">
+      <section className="py-8 px-6 bg-black text-[#ffcd10]">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-[#ffcd10] mb-6">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-[#ffcd10] mb-4">
             Quando Somados, Só Esses Presentes Valem Mais de R$ 197 Reais!
           </h2>
           <p className="text-white text-lg mb-6">
@@ -327,7 +327,7 @@ export default function Fature4000ComUnhasEm2025() {
           </div>
 
           <div className="mb-6">
-            <a href="https://pay.kiwify.com.br/lf9IZHj" target="_blank" rel="noopener noreferrer" className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-full text-lg md:text-xl uppercase transition-all duration-300 transform hover:scale-105 shadow-lg inline-block font-['var(--font-instrument-serif)']">
+            <a href="https://pay.kiwify.com.br/lf9IZHj" target="_blank" rel="noopener noreferrer" className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-full text-lg md:text-xl uppercase transition-all duration-300 transform hover:scale-105 shadow-lg inline-block" style={{ fontFamily: 'var(--font-instrument-serif), serif' }}>
               🎯 QUERO SER UMA MASTER QUEEN AGORA!
             </a>
           </div>
@@ -335,7 +335,7 @@ export default function Fature4000ComUnhasEm2025() {
       </section>
 
       {/* Seção de Garantia - Fundo Preto, Letras Amarelo Ouro */}
-      <section className="py-8 px-0 bg-black text-[#ffcd10]">
+      <section className="py-6 px-6 bg-black text-[#ffcd10]">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-extrabold text-[#ffcd10] mb-4">
             Sua Satisfação Garantida ou Seu Dinheiro de Volta!
@@ -348,9 +348,9 @@ export default function Fature4000ComUnhasEm2025() {
       </section>
 
       {/* Seção de FAQ - Fundo Preto, Letras Amarelas */}
-      <section className="py-8 px-0 bg-black text-[#ffcd10]">
+      <section className="py-6 px-6 bg-black text-[#ffcd10]">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-extrabold mb-6 text-[#ffcd10] text-center">
+          <h2 className="text-2xl md:text-3xl font-extrabold mb-4 text-[#ffcd10] text-center">
             Perguntas Frequentes (FAQ)
           </h2>
           <div className="space-y-4">
@@ -375,9 +375,9 @@ export default function Fature4000ComUnhasEm2025() {
       </section>
 
       {/* Galeria de Unhas do Curso */}
-      <section className="py-8 px-0 bg-black text-[#ffcd10]">
+      <section className="py-6 px-6 bg-black text-[#ffcd10]">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-[#ffcd10] mb-6">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-[#E4B7B2] mb-4">
             Veja o que você vai aprender a fazer!
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
@@ -395,7 +395,7 @@ export default function Fature4000ComUnhasEm2025() {
               'unhas_mariana_nails_curso (11).JPG',
               'unhas_mariana_nails_curso (12).JPG',
             ].map((img, idx) => (
-              <div key={img} className="overflow-hidden rounded-lg border-2 border-[#ffcd10] shadow-sm hover:shadow-lg transition-all">
+              <div key={img} className="overflow-hidden rounded-lg border-2 border-[#E4B7B2] shadow-sm hover:shadow-lg transition-all">
                 <img
                   src={`/images/${img}`}
                   alt={`Unhas do curso Mariana Nails ${idx + 1}`}
@@ -409,7 +409,7 @@ export default function Fature4000ComUnhasEm2025() {
       </section>
 
       {/* Rodapé - Fundo Preto */}
-      <footer className="bg-black text-white py-4 px-0 text-center">
+      <footer className="bg-black text-white py-3 px-6 text-center">
         <p className="text-xs mb-1">COPYRIGHT 2025 – Mariana Nails – Todos os direitos reservados</p>
         <p className="text-xs">Suporte: <a href="mailto:suporte@mariananails.com" className="text-pink-400 hover:underline">suporte@mariananails.com</a></p>
       </footer>
@@ -420,7 +420,8 @@ export default function Fature4000ComUnhasEm2025() {
           href="https://pay.kiwify.com.br/lf9IZHj" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded-full text-sm shadow-2xl animate-pulse transition-all duration-300 transform hover:scale-105 border-2 border-black font-['var(--font-instrument-serif)']"
+          className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded-full text-sm shadow-2xl animate-pulse transition-all duration-300 transform hover:scale-105 border-2 border-black"
+          style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
         >
           🎯 GARANTIR MINHA VAGA
         </a>
