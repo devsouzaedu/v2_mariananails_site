@@ -1,43 +1,126 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+
+// Hook para animações por scroll
+const useScrollAnimation = () => {
+  const [visibleElements, setVisibleElements] = useState(new Set());
+  const observerRef = useRef<IntersectionObserver | null>(null);
+
+  useEffect(() => {
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleElements(prev => new Set([...prev, entry.target]));
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '50px' }
+    );
+
+    // Observar todos os elementos com classe de animação
+    const elements = document.querySelectorAll('[data-animate]');
+    elements.forEach(el => {
+      if (observerRef.current) {
+        observerRef.current.observe(el);
+      }
+    });
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, []);
+
+  const isVisible = (element: Element) => visibleElements.has(element);
+  
+  return { isVisible, observerRef };
+};
+
+// Função para gerar data dinâmica
+const getDynamicDate = () => {
+  const hoje = new Date();
+  const diasSemana = ['Domingo', 'Segunda-Feira', 'Terça-Feira', 'Quarta-Feira', 'Quinta-Feira', 'Sexta-Feira', 'Sábado'];
+  const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+  
+  const diaSemana = diasSemana[hoje.getDay()];
+  const dia = hoje.getDate();
+  const mes = meses[hoje.getMonth()];
+  const ano = hoje.getFullYear();
+  
+  return { diaSemana, dia, mes, ano };
+};
 
 // Estilos de animação inline
 const animationStyles = `
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
+    from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
   }
   
   @keyframes slideInUp {
-    from { opacity: 0; transform: translateY(50px); }
+    from { opacity: 0; transform: translateY(60px); }
     to { opacity: 1; transform: translateY(0); }
   }
   
-  @keyframes fadeInStagger {
-    0% { opacity: 0; transform: translateY(30px); }
-    100% { opacity: 1; transform: translateY(0); }
+  @keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
   }
   
-  .animate-fadeIn {
+  @keyframes slideInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  
+  .scroll-animate {
+    opacity: 0;
+    transition: all 0.8s ease-out;
+  }
+  
+  .scroll-animate.visible {
+    opacity: 1;
+  }
+  
+  .animate-fadeIn.visible {
     animation: fadeIn 0.8s ease-out forwards;
   }
   
-  .animate-slideInUp {
+  .animate-slideInUp.visible {
     animation: slideInUp 1s ease-out forwards;
   }
   
-  .animate-fadeInStagger > * {
-    animation: fadeInStagger 0.8s ease-out forwards;
-    animation-delay: calc(var(--delay, 0) * 0.1s);
+  .animate-slideInLeft.visible {
+    animation: slideInLeft 0.8s ease-out forwards;
   }
   
-  .animate-fadeInStagger > *:nth-child(1) { --delay: 1; }
-  .animate-fadeInStagger > *:nth-child(2) { --delay: 2; }
-  .animate-fadeInStagger > *:nth-child(3) { --delay: 3; }
-  .animate-fadeInStagger > *:nth-child(4) { --delay: 4; }
-  .animate-fadeInStagger > *:nth-child(5) { --delay: 5; }
-  .animate-fadeInStagger > *:nth-child(6) { --delay: 6; }
+  .animate-slideInRight.visible {
+    animation: slideInRight 0.8s ease-out forwards;
+  }
+  
+  .animate-scaleIn.visible {
+    animation: scaleIn 0.6s ease-out forwards;
+  }
+  
+  .animate-fadeInStagger.visible > * {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  
+  .animate-fadeInStagger.visible > *:nth-child(1) { animation-delay: 0.1s; }
+  .animate-fadeInStagger.visible > *:nth-child(2) { animation-delay: 0.2s; }
+  .animate-fadeInStagger.visible > *:nth-child(3) { animation-delay: 0.3s; }
+  .animate-fadeInStagger.visible > *:nth-child(4) { animation-delay: 0.4s; }
+  .animate-fadeInStagger.visible > *:nth-child(5) { animation-delay: 0.5s; }
+  .animate-fadeInStagger.visible > *:nth-child(6) { animation-delay: 0.6s; }
+  .animate-fadeInStagger.visible > *:nth-child(7) { animation-delay: 0.7s; }
+  .animate-fadeInStagger.visible > *:nth-child(8) { animation-delay: 0.8s; }
 `;
 
 export default function Fature4000ComUnhasEm2025() {
@@ -45,11 +128,50 @@ export default function Fature4000ComUnhasEm2025() {
   const [iconGrowthError, setIconGrowthError] = useState(false);
   const [iconMoneyError, setIconMoneyError] = useState(false);
   const [iconCertificateError, setIconCertificateError] = useState(false);
+  
+  // Hook para animações por scroll
+  const { isVisible } = useScrollAnimation();
+  
+  // Data dinâmica
+  const { diaSemana, dia, mes, ano } = getDynamicDate();
+  
+  // Efeito para re-observar elementos após renderização
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const elements = document.querySelectorAll('[data-animate]');
+      elements.forEach(el => {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: '50px' }
+        );
+        observer.observe(el);
+      });
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="min-h-screen bg-black text-gray-800">
       {/* Estilos de Animação */}
       <style jsx>{animationStyles}</style>
+      
+      {/* Banner Promocional Dinâmico */}
+      <div className="bg-gradient-to-r from-red-600 to-red-700 text-white text-center py-3 px-4 relative overflow-hidden">
+        <div className="absolute inset-0 bg-black opacity-20"></div>
+        <div className="relative z-10">
+          <p className="text-sm md:text-base font-bold animate-pulse">
+            ⚠️ Atenção! {diaSemana}, {dia} de {mes} de {ano} é o 
+            <span className="text-yellow-300"> último dia com valor promocional!</span>
+          </p>
+        </div>
+      </div>
       {/* Imagem de Topo */}
       <div className="relative w-full h-auto">
         <Image 
@@ -65,10 +187,10 @@ export default function Fature4000ComUnhasEm2025() {
 
       {/* Cabeçalho Principal - Fundo Preto, Letras Amarelas */}
       <header className="bg-black text-[#ffcd10] py-6 px-6 text-center">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 leading-tight text-[#ffcd10] animate-fadeIn"> {/* Amarelo */}
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 leading-tight text-[#ffcd10] scroll-animate animate-fadeIn" data-animate> {/* Amarelo */}
           Torne-se uma Nail Designer de Sucesso e Fature <br className="hidden md:inline"/> +R$4.000 por Mês em 2025 com Mariana Nails!
         </h1>
-        <p className="text-base md:text-lg font-light max-w-3xl mx-auto text-[#ffcd10] mb-1 animate-slideInUp">
+        <p className="text-base md:text-lg font-light max-w-3xl mx-auto text-[#ffcd10] mb-1 scroll-animate animate-slideInUp" data-animate>
           Conquiste sua independência financeira, seja sua própria chefe e transforme sua paixão por unhas em uma carreira lucrativa e valorizada no mercado da beleza!
         </p>
       </header>
@@ -76,11 +198,11 @@ export default function Fature4000ComUnhasEm2025() {
       {/* Seção de Benefícios - Fundo Preto, Cores Rosé */}
       <section className="py-6 px-6" style={{ backgroundColor: '#000000' }}>
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-extrabold mb-6" style={{ color: '#E4B7B2' }}>
+          <h2 className="text-2xl md:text-3xl font-extrabold mb-6 scroll-animate animate-fadeIn" style={{ color: '#E4B7B2' }} data-animate>
             Por Que Escolher o Curso Mariana Nails?
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fadeInStagger">
-            <div className="p-4 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-500 flex flex-col items-center transform hover:scale-105" style={{ backgroundColor: '#000000', border: '1px solid #B76E79' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 scroll-animate animate-fadeInStagger" data-animate>
+            <div className="p-4 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-500 flex flex-col items-center transform hover:scale-105 scroll-animate animate-scaleIn" style={{ backgroundColor: '#000000', border: '1px solid #B76E79' }} data-animate>
               {iconGrowthError ? (
                 <span style={{ fontSize: '2rem' }}>📈</span>
               ) : (
@@ -96,7 +218,7 @@ export default function Fature4000ComUnhasEm2025() {
                 Mesmo sem experiência, você aprenderá todas as técnicas para se tornar uma Nail Designer completa e confiante.
               </p>
             </div>
-            <div className="p-4 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-500 flex flex-col items-center transform hover:scale-105" style={{ backgroundColor: '#000000', border: '1px solid #B76E79' }}>
+            <div className="p-4 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-500 flex flex-col items-center transform hover:scale-105 scroll-animate animate-scaleIn" style={{ backgroundColor: '#000000', border: '1px solid #B76E79' }} data-animate>
               {iconMoneyError ? (
                 <span style={{ fontSize: '2rem' }}>💰</span>
               ) : (
@@ -112,7 +234,7 @@ export default function Fature4000ComUnhasEm2025() {
                 Descubra como transformar suas habilidades em uma fonte de renda sólida e lucrativa, alcançando sua independência financeira.
               </p>
             </div>
-            <div className="p-4 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-500 flex flex-col items-center transform hover:scale-105" style={{ backgroundColor: '#000000', border: '1px solid #B76E79' }}>
+            <div className="p-4 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-500 flex flex-col items-center transform hover:scale-105 scroll-animate animate-scaleIn" style={{ backgroundColor: '#000000', border: '1px solid #B76E79' }} data-animate>
               {iconCertificateError ? (
                 <span style={{ fontSize: '2rem' }}>🎓</span>
               ) : (
@@ -135,11 +257,11 @@ export default function Fature4000ComUnhasEm2025() {
       {/* O que o Curso Oferece - Fundo Preto, Letras Rosé */}
       <section className="py-6 px-6 bg-black text-[#E4B7B2]">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-extrabold mb-4 text-[#E4B7B2]">
+          <h2 className="text-2xl md:text-3xl font-extrabold mb-4 text-[#E4B7B2] scroll-animate animate-slideInLeft" data-animate>
             O Que Você Vai Aprender no Curso Mariana Nails
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left animate-slideInUp">
-            <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-[#ffcd10] transform hover:scale-105 transition-all duration-300">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left scroll-animate animate-slideInUp" data-animate>
+            <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-[#ffcd10] transform hover:scale-105 transition-all duration-300 scroll-animate animate-slideInUp" data-animate>
               <div className="flex items-center mb-3">
                 <span className="text-3xl mr-3">📚</span>
                 <h3 className="text-xl font-bold text-[#ffcd10]">Módulos Completos e Didáticos</h3>
@@ -154,7 +276,7 @@ export default function Fature4000ComUnhasEm2025() {
                 <li className="flex items-start"><span className="text-lg mr-2">📈</span>Marketing para Nail Designers: Como atrair clientes e precificar seus serviços.</li>
               </ul>
             </div>
-            <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-[#ffcd10] transform hover:scale-105 transition-all duration-300">
+            <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-[#ffcd10] transform hover:scale-105 transition-all duration-300 scroll-animate animate-slideInUp" data-animate>
               <div className="flex items-center mb-3">
                 <span className="text-3xl mr-3">⭐</span>
                 <h3 className="text-xl font-bold text-[#ffcd10]">Diferenciais Exclusivos</h3>
@@ -176,10 +298,10 @@ export default function Fature4000ComUnhasEm2025() {
       {/* Seção É Perfeita Para Você */}
       <section className="py-6 px-6 bg-black text-[#ffcd10]">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-[#E4B7B2] mb-6">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-[#E4B7B2] mb-6 scroll-animate animate-fadeIn" data-animate>
             É Perfeita Para Você Que:
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left animate-fadeInStagger">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left scroll-animate animate-fadeInStagger" data-animate>
             <div className="space-y-3">
               <div className="flex items-start">
                 <span className="text-[#ffcd10] text-xl mr-3 mt-1">✅</span>
@@ -248,7 +370,7 @@ export default function Fature4000ComUnhasEm2025() {
       {/* Seção Não Precisa de Faculdade */}
       <section className="py-6 px-6 bg-black text-[#ffcd10]">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-[#E4B7B2] mb-4">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-[#E4B7B2] mb-4 scroll-animate animate-slideInRight" data-animate>
             Você Não Precisa de Uma Faculdade Cara Para Ganhar 10 Mil Por Mês!
           </h2>
           <div className="bg-gray-900 p-6 rounded-xl border border-[#ffcd10] mb-6">
@@ -280,19 +402,19 @@ export default function Fature4000ComUnhasEm2025() {
       {/* Seção de Depoimentos - Fundo Preto, Letras Rosé */}
       <section className="py-6 px-6 bg-black text-[#ffcd10]">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-extrabold mb-4 text-[#E4B7B2]">
+          <h2 className="text-2xl md:text-3xl font-extrabold mb-4 text-[#E4B7B2] scroll-animate animate-fadeIn" data-animate>
             Histórias de Sucesso Reais de Nossas Alunas
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fadeInStagger">
-            <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-pink-500 transform hover:scale-105 transition-all duration-300">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 scroll-animate animate-fadeInStagger" data-animate>
+            <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-pink-500 transform hover:scale-105 transition-all duration-300 scroll-animate animate-fadeIn" data-animate>
               <p className="italic mb-2 text-[#ffcd10] text-sm">"Eu estava desempregada e desacreditada, mas o curso da Mariana Nails mudou minha vida! Hoje tenho minha própria clientela e faturo mais de R$4.000 por mês. É um sonho!"</p>
               <p className="font-bold text-pink-400 text-xs">Ana Paula, 29 anos - São Paulo/SP</p>
             </div>
-            <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-pink-500 transform hover:scale-105 transition-all duration-300">
+            <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-pink-500 transform hover:scale-105 transition-all duration-300 scroll-animate animate-fadeIn" data-animate>
               <p className="italic mb-2 text-[#ffcd10] text-sm">"Sempre amei unhas, mas nunca pensei que poderia viver disso. O curso é super didático, e a Mariana é uma excelente professora. Conquistei minha independência!"</p>
               <p className="font-bold text-pink-400 text-xs">Juliana Costa, 35 anos - Rio de Janeiro/RJ</p>
             </div>
-            <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-pink-500 transform hover:scale-105 transition-all duration-300">
+            <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-pink-500 transform hover:scale-105 transition-all duration-300 scroll-animate animate-fadeIn" data-animate>
               <p className="italic mb-2 text-[#ffcd10] text-sm">"Em menos de 3 meses após o curso, já estava com a agenda lotada! A qualidade do ensino é incrível, e o suporte me deu toda a confiança que eu precisava."</p>
               <p className="font-bold text-pink-400 text-xs">Carla Santos, 25 anos - Belo Horizonte/MG</p>
             </div>
@@ -416,10 +538,10 @@ export default function Fature4000ComUnhasEm2025() {
       {/* Galeria de Unhas do Curso */}
       <section className="py-6 px-6 bg-black text-[#ffcd10]">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-[#E4B7B2] mb-4">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-[#E4B7B2] mb-4 scroll-animate animate-scaleIn" data-animate>
             Veja o que você vai aprender a fazer!
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 animate-fadeInStagger">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 scroll-animate animate-fadeInStagger" data-animate>
             {[
               'unhas_mariana_nails_curso (1).JPG',
               'unhas_mariana_nails_curso (2).jpg',
