@@ -37,7 +37,7 @@ export default function CursoNailDesignerPage() {
           {/* Oferta Limitada */}
           <div className="text-center mb-8">
             <div className="inline-block bg-red-600 text-white px-6 py-2 rounded-full font-bold text-sm mb-4 animate-pulse">
-              🔥 OFERTA POR TEMPO LIMITADO
+              🔥 OFERTA POR TEMPO LIMITADO!!
             </div>
             
             {/* Contador */}
