@@ -47,7 +47,7 @@ export default function Fature4000ComUnhasEm2025() {
                 <img
                   src="/images/icon-growth.svg"
                   alt="Crescimento Profissional"
-                  className="h-10 w-10 mb-2"
+                  className="h-16 w-16 mb-2"
                   onError={() => setIconGrowthError(true)}
                 />
               )}
@@ -63,7 +63,7 @@ export default function Fature4000ComUnhasEm2025() {
                 <img
                   src="/images/icon-money.svg"
                   alt="Alta Renda"
-                  className="h-10 w-10 mb-2"
+                  className="h-16 w-16 mb-2"
                   onError={() => setIconMoneyError(true)}
                 />
               )}
@@ -79,7 +79,7 @@ export default function Fature4000ComUnhasEm2025() {
                 <img
                   src="/images/icon-certificate.svg"
                   alt="Certificação Profissional"
-                  className="h-10 w-10 mb-2"
+                  className="h-16 w-16 mb-2"
                   onError={() => setIconCertificateError(true)}
                 />
               )}
@@ -327,7 +327,7 @@ export default function Fature4000ComUnhasEm2025() {
           </div>
 
           <div className="mb-6">
-            <a href="https://pay.kiwify.com.br/lf9IZHj" target="_blank" rel="noopener noreferrer" className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-full text-lg md:text-xl uppercase transition-all duration-300 transform hover:scale-105 shadow-lg inline-block">
+            <a href="https://pay.kiwify.com.br/lf9IZHj" target="_blank" rel="noopener noreferrer" className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-full text-lg md:text-xl uppercase transition-all duration-300 transform hover:scale-105 shadow-lg inline-block font-['var(--font-instrument-serif)']">
               🎯 QUERO SER UMA MASTER QUEEN AGORA!
             </a>
           </div>
@@ -420,7 +420,7 @@ export default function Fature4000ComUnhasEm2025() {
           href="https://pay.kiwify.com.br/lf9IZHj" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-full text-lg shadow-2xl animate-pulse transition-all duration-300 transform hover:scale-105 border-2 border-black"
+          className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded-full text-sm shadow-2xl animate-pulse transition-all duration-300 transform hover:scale-105 border-2 border-black font-['var(--font-instrument-serif)']"
         >
           🎯 GARANTIR MINHA VAGA
         </a>
