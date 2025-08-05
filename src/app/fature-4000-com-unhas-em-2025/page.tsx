@@ -1,6 +1,14 @@
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import Script from 'next/script';
+
+// Declaração global para o Facebook Pixel
+declare global {
+  interface Window {
+    fbq: any;
+  }
+}
 
 // Hook para animações por scroll
 const useScrollAnimation = () => {
@@ -156,17 +164,61 @@ export default function Fature4000ComUnhasEm2025() {
     
     return () => clearTimeout(timer);
   }, []);
+  
+  // Função para tracking de evento de checkout
+  const handleCheckoutClick = (buttonLocation: string) => {
+    if (typeof window !== 'undefined' && window.fbq) {
+      console.log('Meta Pixel - Evento InitiateCheckout disparado:', buttonLocation);
+      window.fbq('track', 'InitiateCheckout', {
+        content_name: 'Curso Mariana Nails - Fature +R$4000/Mês',
+        content_category: 'Course',
+        content_ids: ['curso-mariana-nails-2025'],
+        currency: 'BRL',
+        value: 19.90,
+        button_location: buttonLocation
+      });
+    } else {
+      console.log('Meta Pixel não carregado ainda ou window.fbq não disponível');
+    }
+  };
 
   return (
     <div className="min-h-screen bg-black text-gray-800">
+      {/* Meta Pixel Code */}
+      <Script
+        id="facebook-pixel"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '734205242727008');
+            fbq('track', 'PageView');
+          `,
+        }}
+      />
+      <noscript>
+        <img
+          height="1"
+          width="1"
+          style={{ display: 'none' }}
+          src="https://www.facebook.com/tr?id=734205242727008&ev=PageView&noscript=1"
+        />
+      </noscript>
+      
       {/* Estilos de Animação */}
       <style jsx>{animationStyles}</style>
       
       {/* Banner Promocional Dinâmico */}
-      <div className="bg-gradient-to-r from-red-600 to-red-700 text-white text-center py-3 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 bg-black opacity-20"></div>
+      <div className="bg-black text-white text-center py-3 px-4 relative overflow-hidden">
         <div className="relative z-10">
-          <p className="text-sm md:text-base font-bold animate-pulse">
+          <p className="text-sm md:text-base font-bold animate-pulse" style={{ fontFamily: 'var(--font-instrument-serif), serif' }}>
             ⚠️ Atenção! {diaSemana}, {dia} de {mes} de {ano} é o 
             <span className="text-yellow-300"> último dia com valor promocional!</span>
           </p>
@@ -361,6 +413,7 @@ export default function Fature4000ComUnhasEm2025() {
             rel="noopener noreferrer"
             className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-full text-lg shadow-xl transition-all duration-300 transform hover:scale-105 inline-block animate-bounce"
             style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
+            onClick={() => handleCheckoutClick('after-perfeita-para-voce')}
           >
             🎯 GARANTIR MINHA VAGA
           </a>
@@ -429,6 +482,7 @@ export default function Fature4000ComUnhasEm2025() {
             rel="noopener noreferrer"
             className="bg-[#E4B7B2] hover:bg-pink-400 text-black font-bold py-3 px-6 rounded-full text-lg shadow-xl transition-all duration-300 transform hover:scale-105 inline-block animate-pulse"
             style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
+            onClick={() => handleCheckoutClick('after-depoimentos')}
           >
             🎯 GARANTIR MINHA VAGA
           </a>
@@ -488,7 +542,7 @@ export default function Fature4000ComUnhasEm2025() {
           </div>
 
           <div className="mb-6">
-            <a href="https://pay.kiwify.com.br/lf9IZHj" target="_blank" rel="noopener noreferrer" className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-full text-lg md:text-xl uppercase transition-all duration-300 transform hover:scale-105 shadow-lg inline-block" style={{ fontFamily: 'var(--font-instrument-serif), serif' }}>
+            <a href="https://pay.kiwify.com.br/lf9IZHj" target="_blank" rel="noopener noreferrer" className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-full text-lg md:text-xl uppercase transition-all duration-300 transform hover:scale-105 shadow-lg inline-block" style={{ fontFamily: 'var(--font-instrument-serif), serif' }} onClick={() => handleCheckoutClick('main-cta-section')}>
               🎯 QUERO GARANTIR MINHA VAGA AGORA!
             </a>
           </div>
@@ -583,6 +637,7 @@ export default function Fature4000ComUnhasEm2025() {
           rel="noopener noreferrer"
           className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded-full text-sm shadow-2xl animate-pulse transition-all duration-300 transform hover:scale-105 border-2 border-black"
           style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
+          onClick={() => handleCheckoutClick('fixed-bottom-button')}
         >
           🎯 GARANTIR MINHA VAGA
         </a>
