@@ -319,12 +319,12 @@ export default function Fature4000ComUnhasEm2025() {
                 <h3 className="text-xl font-bold text-[#ffcd10]">Módulos Completos e Didáticos</h3>
               </div>
               <ul className="text-[#ffcd10] space-y-2 text-sm">
-                <li className="flex items-start"><span className="text-lg mr-2">🎥</span>São + de 30 video aulas, passo a passo, pensadas para iniciantes e avançadas.</li>
-                <li className="flex items-start"><span className="text-lg mr-2">💎</span>Técnicas de alongamento, fibra de vidro, nail art, gel moldado.</li>
-                <li className="flex items-start"><span className="text-lg mr-2">✂️</span>Cutilagem perfeita, Esmaltação em Gel e Tradicional.</li>
-                <li className="flex items-start"><span className="text-lg mr-2">👐</span>Manicure e Pedicure Profissional.</li>
-                <li className="flex items-start"><span className="text-lg mr-2">🎨</span>Decoração de Unhas (Nail Art) e Francesinha.</li>
-                <li className="flex items-start"><span className="text-lg mr-2">🔧</span>Remoção Segura e Manutenção.</li>
+                <li className="flex items-start"><span className="text-lg mr-2">🎥</span>+ de 30 aulas em videoaula, passo a passo, pensadas para iniciantes.</li>
+                <li className="flex items-start"><span className="text-lg mr-2">💎</span>Técnicas de alongamento na fibra de vidro com controle de produtos.</li>
+                <li className="flex items-start"><span className="text-lg mr-2">✂️</span>Cutilagem, esmaltação em gel.</li>
+                <li className="flex items-start"><span className="text-lg mr-2">🎨</span>Decoração 3D com gel sólido.</li>
+                <li className="flex items-start"><span className="text-lg mr-2">✨</span>Decorações com esfumado, baby color, baby boomer.</li>
+                <li className="flex items-start"><span className="text-lg mr-2">🔧</span>Remoção segura e manutenção.</li>
                 <li className="flex items-start"><span className="text-lg mr-2">📈</span>Marketing para Nail Designers: Como atrair clientes e precificar seus serviços.</li>
               </ul>
             </div>
@@ -535,7 +535,7 @@ export default function Fature4000ComUnhasEm2025() {
               <ul className="text-white text-sm space-y-1">
                 <li>✅ Aulas teóricas sólidas e prática detalhada</li>
                 <li>✅ Técnicas que encantam clientes</li>
-                <li>✅ Professora com 12+ anos de experiência</li>
+                <li>✅ Instrutora com mais de 2 anos de experiência</li>
                 <li>✅ Resultado: uma profissional de excelência</li>
               </ul>
             </div>
