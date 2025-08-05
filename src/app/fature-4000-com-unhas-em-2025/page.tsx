@@ -319,8 +319,8 @@ export default function Fature4000ComUnhasEm2025() {
                 <h3 className="text-xl font-bold text-[#ffcd10]">Módulos Completos e Didáticos</h3>
               </div>
               <ul className="text-[#ffcd10] space-y-2 text-sm">
-                <li className="flex items-start"><span className="text-lg mr-2">🎥</span>+100 aulas em vídeo, passo a passo, pensadas para iniciantes e avançadas.</li>
-                <li className="flex items-start"><span className="text-lg mr-2">💎</span>Técnicas de alongamento: Fibra de Vidro, Gel Moldado, Polygel e Gel na Tip.</li>
+                <li className="flex items-start"><span className="text-lg mr-2">🎥</span>São + de 30 video aulas, passo a passo, pensadas para iniciantes e avançadas.</li>
+                <li className="flex items-start"><span className="text-lg mr-2">💎</span>Técnicas de alongamento, fibra de vidro, nail art, gel moldado.</li>
                 <li className="flex items-start"><span className="text-lg mr-2">✂️</span>Cutilagem perfeita, Esmaltação em Gel e Tradicional.</li>
                 <li className="flex items-start"><span className="text-lg mr-2">👐</span>Manicure e Pedicure Profissional.</li>
                 <li className="flex items-start"><span className="text-lg mr-2">🎨</span>Decoração de Unhas (Nail Art) e Francesinha.</li>
@@ -502,7 +502,7 @@ export default function Fature4000ComUnhasEm2025() {
           <div className="bg-gray-900 border-2 border-[#ffcd10] p-6 rounded-xl mb-8">
             <h3 className="text-xl font-bold text-[#ffcd10] mb-4">O que você vai receber:</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-left text-white">
-              <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> Acesso de 1 ano ao curso</div>
+              <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> Acesso vitalício ao curso</div>
               <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> Área de membros estilo Netflix</div>
               <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> As melhores técnicas</div>
               <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> Aulas práticas</div>
