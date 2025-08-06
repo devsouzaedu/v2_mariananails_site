@@ -296,7 +296,7 @@ export default function Fature4000ComUnhasEm2025() {
       {/* Banner Promocional Dinâmico */}
       <div className="bg-black text-white text-center py-3 px-4 relative overflow-hidden">
         <div className="relative z-10">
-          <p className="text-sm md:text-base font-bold animate-pulse" style={{ fontFamily: 'var(--font-instrument-serif), serif' }}>
+          <p className="text-sm md:text-base font-bold animate-pulse text-white" style={{ fontFamily: 'var(--font-instrument-serif), serif' }}>
             ⚠️ Atenção! {diaSemana}, {dia} de {mes} de {ano} é o 
             <span className="text-yellow-300"> último dia com valor promocional!</span>
           </p>
@@ -713,7 +713,7 @@ export default function Fature4000ComUnhasEm2025() {
           href="https://pay.kiwify.com.br/lf9IZHj" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded-full text-sm shadow-2xl animate-pulse transition-all duration-300 transform hover:scale-105 border-2 border-black"
+          className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-full text-base shadow-2xl animate-pulse transition-all duration-300 transform hover:scale-105 border-2 border-black"
           style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
           onClick={() => handleCheckoutClick('fixed-bottom-button')}
         >
