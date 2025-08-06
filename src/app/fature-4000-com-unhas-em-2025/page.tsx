@@ -708,12 +708,12 @@ export default function Fature4000ComUnhasEm2025() {
       </footer>
 
       {/* Botão Fixo - Garantir Minha Vaga */}
-      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
+      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 px-4">
         <a 
           href="https://pay.kiwify.com.br/lf9IZHj" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-full text-base shadow-2xl animate-pulse transition-all duration-300 transform hover:scale-105 border-2 border-black"
+          className="inline-block bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-full text-base shadow-2xl animate-pulse transition-all duration-300 transform hover:scale-105 border-2 border-black whitespace-nowrap"
           style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
           onClick={() => handleCheckoutClick('fixed-bottom-button')}
         >
