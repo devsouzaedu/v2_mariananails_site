@@ -47,6 +47,84 @@ const useScrollAnimation = () => {
   return { isVisible, observerRef };
 };
 
+// Componente para imagens otimizadas com WebP e fallback para JPEG
+interface OptimizedImageProps {
+  src: string; // Caminho da imagem sem extensão
+  alt: string;
+  className?: string;
+  loading?: 'lazy' | 'eager';
+  width?: number;
+  height?: number;
+}
+
+const OptimizedImage: React.FC<OptimizedImageProps> = ({ 
+  src, 
+  alt, 
+  className = "", 
+  loading = "lazy",
+  width,
+  height 
+}) => {
+  const [imageError, setImageError] = useState(false);
+  const [webpSupported, setWebpSupported] = useState<boolean | null>(null);
+
+  // Verificar suporte a WebP
+  useEffect(() => {
+    const checkWebPSupport = () => {
+      if (typeof window !== 'undefined') {
+        const webP = new window.Image();
+        webP.onload = webP.onerror = () => {
+          setWebpSupported(webP.height === 2);
+        };
+        webP.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+      }
+    };
+    
+    checkWebPSupport();
+  }, []);
+
+  // Determinar qual formato de imagem usar
+  const getImageSrc = () => {
+    if (webpSupported === null) return src; // Ainda verificando suporte
+    
+    if (webpSupported && !imageError) {
+      // Tentar WebP primeiro se suportado e não houve erro
+      return src.replace(/\.(jpg|jpeg|JPG|JPEG)$/i, '.webp');
+    } else {
+      // Fallback para JPEG original
+      return src;
+    }
+  };
+
+  const handleImageError = () => {
+    if (!imageError && webpSupported) {
+      // Se erro com WebP, tentar JPEG
+      setImageError(true);
+    }
+  };
+
+  if (webpSupported === null) {
+    // Loading placeholder enquanto verifica suporte WebP
+    return (
+      <div className={`bg-gray-200 animate-pulse ${className}`} style={{ width, height }}>
+        <div className="h-full w-full bg-gray-300 rounded"></div>
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={getImageSrc()}
+      alt={alt}
+      className={className}
+      loading={loading}
+      onError={handleImageError}
+      width={width}
+      height={height}
+    />
+  );
+};
+
 // Função para gerar data dinâmica
 const getDynamicDate = () => {
   const hoje = new Date();
@@ -611,7 +689,7 @@ export default function Fature4000ComUnhasEm2025() {
               'unhas_mariana_nails_curso (12).JPG',
             ].map((img, idx) => (
               <div key={img} className="overflow-hidden rounded-lg border-2 border-[#E4B7B2] shadow-sm hover:shadow-lg transition-all">
-                <img
+                <OptimizedImage
                   src={`/images/${img}`}
                   alt={`Unhas do curso Mariana Nails ${idx + 1}`}
                   className="w-full h-40 object-cover object-center hover:scale-105 transition-transform duration-300"
