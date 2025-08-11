@@ -305,7 +305,7 @@ export default function Fature4000ComUnhasEm2025() {
       {/* Imagem de Topo */}
       <div className="relative w-full h-auto">
         <Image 
-          src="/images/mariana_nails_rota_curso_topo2.png" // Imagem atualizada
+          src="/images/mariana_nails_rota_curso_topo2.webp" // Imagem atualizada
           alt="Mariana Nails - Fature R$4000 com Unhas em 2025"
           width={1920}
           height={1080}
@@ -675,18 +675,18 @@ export default function Fature4000ComUnhasEm2025() {
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 scroll-animate animate-fadeInStagger" data-animate>
             {[
-              'unhas_mariana_nails_curso (1).JPG',
-              'unhas_mariana_nails_curso (2).jpg',
-              'unhas_mariana_nails_curso (3).jpg',
-              'unhas_mariana_nails_curso (4).jpg',
-              'unhas_mariana_nails_curso (5).jpg',
-              'unhas_mariana_nails_curso (6).jpg',
-              'unhas_mariana_nails_curso (7).jpg',
-              'unhas_mariana_nails_curso (8).jpg',
-              'unhas_mariana_nails_curso (9).jpg',
-              'unhas_mariana_nails_curso (10).jpg',
-              'unhas_mariana_nails_curso (11).JPG',
-              'unhas_mariana_nails_curso (12).JPG',
+              'unhas_mariana_nails_curso (1).webp',
+              'unhas_mariana_nails_curso (2).webp',
+              'unhas_mariana_nails_curso (3).webp',
+              'unhas_mariana_nails_curso (4).webp',
+              'unhas_mariana_nails_curso (5).webp',
+              'unhas_mariana_nails_curso (6).webp',
+              'unhas_mariana_nails_curso (7).webp',
+              'unhas_mariana_nails_curso (8).webp',
+              'unhas_mariana_nails_curso (9).webp',
+              'unhas_mariana_nails_curso (10).webp',
+              'unhas_mariana_nails_curso (11).webp',
+              'unhas_mariana_nails_curso (12).webp',
             ].map((img, idx) => (
               <div key={img} className="overflow-hidden rounded-lg border-2 border-[#E4B7B2] shadow-sm hover:shadow-lg transition-all">
                 <OptimizedImage
