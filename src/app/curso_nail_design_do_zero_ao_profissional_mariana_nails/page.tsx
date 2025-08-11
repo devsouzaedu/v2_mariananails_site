@@ -251,7 +251,7 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
         content_category: 'Course',
         content_ids: ['curso-nail-design-mariana-nails'],
         currency: 'BRL',
-        value: 49.90,
+        value: 19.90,
         button_location: buttonLocation
       });
     }
@@ -368,7 +368,7 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
         <div className="min-h-screen bg-black text-white px-6 py-8">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-[#ffcd10] scroll-animate animate-fadeIn" data-animate>
-              Prazer, sou a Kamilla!
+              Prazer, sou a Mariana!
             </h1>
             
             <div className="text-left max-w-3xl mx-auto space-y-6 text-[#E4B7B2] text-lg leading-relaxed scroll-animate animate-slideInUp" data-animate>
@@ -414,7 +414,7 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
           <div className="max-w-4xl mx-auto text-center">
             <div className="text-left max-w-3xl mx-auto space-y-6 text-[#E4B7B2] text-lg leading-relaxed scroll-animate animate-slideInUp" data-animate>
               <p className="text-2xl font-bold text-[#ffcd10] text-center mb-8">
-                Imagina ter em mãos o passo a passo EXATO que as Nail Designers de sucesso escondem, do zero ao avançado, com mais de 130 aulas e 25 certificados...
+                Imagina ter em mãos o passo a passo EXATO que as Nail Designers de sucesso escondem, do zero ao avançado, com mais de 30 aulas e 3 certificados internacionais...
               </p>
             </div>
             
@@ -490,39 +490,45 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
               Se prepare para Dominar cada detalhe do Zero ao Avançado
             </h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm scroll-animate animate-fadeInStagger" data-animate>
-              {[
-                "🟣 Anatomia das Unhas Dominada",
-                "🟣 Fibra de Vidro", 
-                "🟣 O Segredo da Naturalidade Absoluta",
-                "🟣 Spa dos Pés",
-                "🟣 Formatos Russos Internacionais",
-                "🟣 Efeito Cascata Deslumbrante",
-                "🟣 Traços Finos Detalhados",
-                "🟣 Francesinhas eternas com variações Modernas",
-                "🟣 Banho de Gel com Brilho Espelhado",
-                "🟣 Blindagem de Fibra Ultra Resistente",
-                "🟣 Unha Stiletto Atraente",
-                "🟣 Unha Almond Sofisticada",
-                "🟣 Unha Ballerina Moderna",
-                "🟣 Unha Encapsulada de Luxo",
-                "🟣 Manicure e Pedicure de Alto Padrão",
-                "🟣 Expert em Manicure Masculina",
-                "🟣 Polygel Duradouro"
-              ].map((item, index) => (
-                <div key={index} className="text-[#E4B7B2] flex items-center">
-                  {item}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm scroll-animate animate-fadeInStagger" data-animate>
+              <div className="space-y-2">
+                <h3 className="text-lg font-bold text-[#ffcd10] mb-3">📚 Módulos Completos e Didáticos</h3>
+                <div className="text-[#E4B7B2] space-y-1">
+                  <p>🎥 + de 30 aulas em videoaula, passo a passo</p>
+                  <p>💎 Técnicas de alongamento na fibra de vidro</p>
+                  <p>✂️ Cutilagem, esmaltação em gel</p>
+                  <p>🎨 Decoração 3D com gel sólido</p>
+                  <p>✨ Decorações com esfumado, baby color, baby boomer</p>
+                  <p>🔧 Remoção segura e manutenção</p>
+                  <p>📈 Marketing para Nail Designers</p>
                 </div>
-              ))}
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-lg font-bold text-[#ffcd10] mb-3">⭐ Diferenciais Exclusivos</h3>
+                <div className="text-[#E4B7B2] space-y-1">
+                  <p>🏆 3 Certificados Internacionais</p>
+                  <p>💬 Grupo exclusivo no WhatsApp</p>
+                  <p>🕒 Suporte 24 horas</p>
+                  <p>👩‍🏫 Contato direto com a Mariana</p>
+                  <p>🤝 Comunidade exclusiva</p>
+                  <p>📄 Material de apoio em PDF</p>
+                  <p>💯 Satisfação completa garantida</p>
+                </div>
+              </div>
             </div>
             
-            {/* Bônus */}
+            {/* Benefícios adicionais */}
             <div className="mt-8 space-y-2 scroll-animate animate-slideInUp" data-animate>
-              <h3 className="text-xl font-bold text-[#ffcd10] mb-4">Bônus Exclusivos:</h3>
-              <div className="space-y-2 text-[#E4B7B2]">
-                <p>🎁 Bônus 01 - Curso de Extensão de Cílios Profissional</p>
-                <p>🎁 Bônus 02 - Curso de Unhas Encapsuladas do básico ao avançado</p>
-                <p>🎁 Bônus 03 - 25 Certificados Profissionais e Personalizados</p>
+              <h3 className="text-xl font-bold text-[#ffcd10] mb-4">O que você vai receber:</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-[#E4B7B2]">
+                <p>✅ Acesso vitalício ao curso</p>
+                <p>✅ Área de membros estilo Netflix</p>
+                <p>✅ As melhores técnicas</p>
+                <p>✅ Aulas práticas</p>
+                <p>✅ Aulas em vídeo sem enrolação</p>
+                <p>✅ Didática realmente simples</p>
+                <p>✅ Suporte via WhatsApp</p>
+                <p>✅ Técnicas que aumentam faturamento</p>
               </div>
             </div>
           </div>
@@ -532,7 +538,7 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
         <section className="py-8 px-6 text-center">
           <div className="max-w-4xl mx-auto">
             <p className="text-2xl font-bold text-[#ffcd10] mb-4 scroll-animate animate-scaleIn" data-animate>
-              O valor do curso de Nail Design é de R$ 49,90
+              O valor do curso de Nail Design é de R$ 19,90
             </p>
             
             <a
@@ -558,23 +564,23 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 scroll-animate animate-fadeInStagger" data-animate>
               <div className="bg-black p-4 rounded-lg border border-[#E4B7B2]">
                 <p className="text-[#E4B7B2] text-sm italic mb-3">
-                  "Nunca pensei que conseguiria aprender técnicas tão avançadas! O curso é incrível e mudou minha vida profissional."
+                  "Eu estava desempregada e desacreditada, mas o curso da Mariana Nails mudou minha vida! Hoje tenho minha própria clientela e faturo mais de R$4.000 por mês. É um sonho!"
                 </p>
-                <p className="text-[#ffcd10] font-bold text-xs">- Maria Silva, São Paulo</p>
+                <p className="text-[#ffcd10] font-bold text-xs">Ana Paula, 29 anos - São Paulo/SP</p>
               </div>
               
               <div className="bg-black p-4 rounded-lg border border-[#E4B7B2]">
                 <p className="text-[#E4B7B2] text-sm italic mb-3">
-                  "Em 3 meses já estava faturando mais de R$ 3.000! As técnicas são realmente diferenciadas."
+                  "Sempre amei unhas, mas nunca pensei que poderia viver disso. O curso é super didático, e a Mariana é uma excelente professora. Conquistei minha independência!"
                 </p>
-                <p className="text-[#ffcd10] font-bold text-xs">- Ana Costa, Rio de Janeiro</p>
+                <p className="text-[#ffcd10] font-bold text-xs">Juliana Costa, 35 anos - Rio de Janeiro/RJ</p>
               </div>
               
               <div className="bg-black p-4 rounded-lg border border-[#E4B7B2]">
                 <p className="text-[#E4B7B2] text-sm italic mb-3">
-                  "Saí do zero absoluto para ter agenda lotada. O método da Kamilla funciona mesmo!"
+                  "Em menos de 3 meses após o curso, já estava com a agenda lotada! A qualidade do ensino é incrível, e o suporte me deu toda a confiança que eu precisava."
                 </p>
-                <p className="text-[#ffcd10] font-bold text-xs">- Juliana Santos, Belo Horizonte</p>
+                <p className="text-[#ffcd10] font-bold text-xs">Carla Santos, 25 anos - Belo Horizonte/MG</p>
               </div>
             </div>
           </div>
