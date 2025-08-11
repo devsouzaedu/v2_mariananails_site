@@ -1,0 +1,614 @@
+"use client";
+import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
+import Script from 'next/script';
+
+// Declaração global para o Facebook Pixel
+declare global {
+  interface Window {
+    fbq: any;
+  }
+}
+
+// Hook para animações por scroll
+const useScrollAnimation = () => {
+  const [visibleElements, setVisibleElements] = useState(new Set());
+  const observerRef = useRef<IntersectionObserver | null>(null);
+
+  useEffect(() => {
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleElements(prev => new Set([...prev, entry.target]));
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '50px' }
+    );
+
+    // Observar todos os elementos com classe de animação
+    const elements = document.querySelectorAll('[data-animate]');
+    elements.forEach(el => {
+      if (observerRef.current) {
+        observerRef.current.observe(el);
+      }
+    });
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, []);
+
+  const isVisible = (element: Element) => visibleElements.has(element);
+  
+  return { isVisible, observerRef };
+};
+
+// Estilos de animação inline
+const animationStyles = `
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes slideInUp {
+    from { opacity: 0; transform: translateY(60px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  
+  @keyframes slideInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  
+  .scroll-animate {
+    opacity: 0;
+    transition: all 0.8s ease-out;
+  }
+  
+  .scroll-animate.visible {
+    opacity: 1;
+  }
+  
+  .animate-fadeIn.visible {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  
+  .animate-slideInUp.visible {
+    animation: slideInUp 1s ease-out forwards;
+  }
+  
+  .animate-slideInLeft.visible {
+    animation: slideInLeft 0.8s ease-out forwards;
+  }
+  
+  .animate-slideInRight.visible {
+    animation: slideInRight 0.8s ease-out forwards;
+  }
+  
+  .animate-scaleIn.visible {
+    animation: scaleIn 0.6s ease-out forwards;
+  }
+  
+  .animate-fadeInStagger.visible > * {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  
+  .animate-fadeInStagger.visible > *:nth-child(1) { animation-delay: 0.1s; }
+  .animate-fadeInStagger.visible > *:nth-child(2) { animation-delay: 0.2s; }
+  .animate-fadeInStagger.visible > *:nth-child(3) { animation-delay: 0.3s; }
+  .animate-fadeInStagger.visible > *:nth-child(4) { animation-delay: 0.4s; }
+  .animate-fadeInStagger.visible > *:nth-child(5) { animation-delay: 0.5s; }
+  .animate-fadeInStagger.visible > *:nth-child(6) { animation-delay: 0.6s; }
+  .animate-fadeInStagger.visible > *:nth-child(7) { animation-delay: 0.7s; }
+  .animate-fadeInStagger.visible > *:nth-child(8) { animation-delay: 0.8s; }
+`;
+
+// Função para gerar data dinâmica
+const getDynamicDate = () => {
+  const hoje = new Date();
+  const diasSemana = ['Domingo', 'Segunda-Feira', 'Terça-Feira', 'Quarta-Feira', 'Quinta-Feira', 'Sexta-Feira', 'Sábado'];
+  const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+  
+  const diaSemana = diasSemana[hoje.getDay()];
+  const dia = hoje.getDate();
+  const mes = meses[hoje.getMonth()];
+  const ano = hoje.getFullYear();
+  
+  return { diaSemana, dia, mes, ano };
+};
+
+export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
+  const [currentStep, setCurrentStep] = useState(0);
+  const [answers, setAnswers] = useState<string[]>([]);
+  
+  // Hook para animações por scroll
+  const { isVisible } = useScrollAnimation();
+  
+  // Data dinâmica
+  const { diaSemana, dia, mes, ano } = getDynamicDate();
+  
+  // Efeito para re-observar elementos após renderização
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const elements = document.querySelectorAll('[data-animate]');
+      elements.forEach(el => {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: '50px' }
+        );
+        observer.observe(el);
+      });
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, [currentStep]);
+
+  // Perguntas do quiz
+  const questions = [
+    {
+      id: 1,
+      title: "Até o final desse quiz, você vai descobrir o segredo para a sua paixão por unhas gerar renda!",
+      question: "Você já trabalhou com unhas antes?",
+      options: [
+        "Já sou profissional mas quero ir além!",
+        "Estou começando do zero",
+        "Quero ser profissional e ter minha renda 💰"
+      ]
+    },
+    {
+      id: 2,
+      title: "Qual o maior obstáculo que te impede de viver de unhas?",
+      question: "O que mais te segura hoje?",
+      options: [
+        "A insegurança de começar do zero 🤔",
+        "Preciso de um método claro, um passo a passo completo 🥇",
+        "Não sei como conseguir clientes 💅",
+        "Já tentei aprender antes e não deu certo 🫤"
+      ]
+    },
+    {
+      id: 3,
+      title: "Muita gente acha que para fazer unhas lindas é preciso ter o dom....",
+      question: "Você concorda?",
+      options: [
+        "Sim, acho que é preciso ter o dom. 🤔",
+        "Acho que é mais a técnica e prática! 💪",
+        "Basta investir no conhecimento certo! ⭐"
+      ]
+    },
+    {
+      id: 4,
+      title: "Você está a um passo de descobrir o segredo das manicures para ter a agenda lotada...",
+      question: "Qual a sua meta?",
+      options: [
+        "Uma renda a mais já seria um sonho! 💸",
+        "Entre R$1 mil e R$2 mil 🎯",
+        "Mais que 3 mil 💰",
+        "Quero viver do Nail Design! 🚀"
+      ]
+    },
+    {
+      id: 5,
+      title: "Sua meta pode virar realidade, mesmo que esteja começando do zero...",
+      question: "Você está prestes a ter acesso ao segredo que já formou milhares de Nail Designers de sucesso no Brasil. Pronta?",
+      options: [
+        "Pronta para ser Nail Designer de sucesso! 🔥",
+        "Com certeza, quero saber tudo! ✨"
+      ]
+    },
+    {
+      id: 6,
+      title: "O que você mais gostaria de ter daqui 3 meses, como Nail Designer de Alto valor?",
+      question: "",
+      options: [
+        "🗓️ Uma agenda sempre CHEIA!",
+        "🔥 O STATUS de AUTORIDADE em unhas na minha região!",
+        "🌟 A liberdade de cobrar ACIMA da média e viver sem aperto no bolso!"
+      ]
+    }
+  ];
+
+  // Função para avançar para próxima pergunta
+  const handleAnswer = (answer: string) => {
+    const newAnswers = [...answers];
+    newAnswers[currentStep] = answer;
+    setAnswers(newAnswers);
+    
+    if (currentStep < questions.length - 1) {
+      setCurrentStep(currentStep + 1);
+    } else {
+      // Ir para página de apresentação
+      setCurrentStep(questions.length);
+    }
+  };
+
+  // Função para tracking de evento
+  const handleCheckoutClick = (buttonLocation: string) => {
+    if (typeof window !== 'undefined' && window.fbq) {
+      console.log('Meta Pixel - Evento InitiateCheckout disparado:', buttonLocation);
+      window.fbq('track', 'InitiateCheckout', {
+        content_name: 'Curso Nail Design do Zero ao Profissional',
+        content_category: 'Course',
+        content_ids: ['curso-nail-design-mariana-nails'],
+        currency: 'BRL',
+        value: 49.90,
+        button_location: buttonLocation
+      });
+    }
+  };
+
+  // Renderizar pergunta atual
+  const renderQuestion = () => {
+    if (currentStep >= questions.length) {
+      return renderPresentationPage();
+    }
+
+    if (currentStep === questions.length - 1) {
+      return renderQuestion6();
+    }
+
+    const question = questions[currentStep];
+    
+    return (
+      <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center px-6 py-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight text-[#ffcd10] scroll-animate animate-fadeIn" data-animate>
+            {question.title}
+          </h1>
+          
+          {question.question && (
+            <h2 className="text-xl md:text-2xl font-semibold mb-8 text-[#E4B7B2] scroll-animate animate-slideInUp" data-animate>
+              {question.question}
+            </h2>
+          )}
+          
+          <div className="space-y-4 scroll-animate animate-fadeInStagger" data-animate>
+            {question.options.map((option, index) => (
+              <button
+                key={index}
+                onClick={() => handleAnswer(option)}
+                className="w-full max-w-md mx-auto block bg-gray-900 hover:bg-gray-800 text-white font-semibold py-4 px-6 rounded-lg text-lg border border-[#ffcd10] hover:border-[#E4B7B2] transition-all duration-300 transform hover:scale-105 shadow-lg"
+                style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
+              >
+                {option}
+              </button>
+            ))}
+          </div>
+          
+          {/* Indicador de progresso */}
+          <div className="mt-8">
+            <div className="flex justify-center space-x-2">
+              {questions.map((_, index) => (
+                <div
+                  key={index}
+                  className={`w-3 h-3 rounded-full ${
+                    index <= currentStep ? 'bg-[#ffcd10]' : 'bg-gray-600'
+                  }`}
+                />
+              ))}
+            </div>
+            <p className="text-sm text-gray-400 mt-2">
+              Pergunta {currentStep + 1} de {questions.length}
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  // Renderizar pergunta 6 (antes da apresentação)
+  const renderQuestion6 = () => {
+    const question = questions[5];
+    
+    return (
+      <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center px-6 py-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight text-[#ffcd10] scroll-animate animate-fadeIn" data-animate>
+            {question.title}
+          </h1>
+          
+          <div className="space-y-4 scroll-animate animate-fadeInStagger" data-animate>
+            {question.options.map((option, index) => (
+              <button
+                key={index}
+                onClick={() => handleAnswer(option)}
+                className="w-full max-w-md mx-auto block bg-gray-900 hover:bg-gray-800 text-white font-semibold py-4 px-6 rounded-lg text-lg border border-[#ffcd10] hover:border-[#E4B7B2] transition-all duration-300 transform hover:scale-105 shadow-lg"
+                style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
+              >
+                {option}
+              </button>
+            ))}
+          </div>
+          
+          {/* Indicador de progresso */}
+          <div className="mt-8">
+            <div className="flex justify-center space-x-2">
+              {questions.map((_, index) => (
+                <div
+                  key={index}
+                  className={`w-3 h-3 rounded-full ${
+                    index <= currentStep ? 'bg-[#ffcd10]' : 'bg-gray-600'
+                  }`}
+                />
+              ))}
+            </div>
+            <p className="text-sm text-gray-400 mt-2">
+              Pergunta {currentStep + 1} de {questions.length}
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  // Renderizar página de apresentação
+  const renderPresentationPage = () => {
+    if (currentStep === questions.length) {
+      return (
+        <div className="min-h-screen bg-black text-white px-6 py-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-[#ffcd10] scroll-animate animate-fadeIn" data-animate>
+              Prazer, sou a Kamilla!
+            </h1>
+            
+            <div className="text-left max-w-3xl mx-auto space-y-6 text-[#E4B7B2] text-lg leading-relaxed scroll-animate animate-slideInUp" data-animate>
+              <p>
+                Há mais de 10 anos eu não só vivo, mas <strong className="text-[#ffcd10]">PROSPERO</strong> com a minha paixão por unhas…
+              </p>
+              
+              <p>
+                O que vou te mostrar <strong className="text-[#ffcd10]">AGORA</strong> nesse texto é o <strong className="text-[#ffcd10]">SEGREDO</strong> que separa as Nail Designers <strong className="text-[#ffcd10]">COMUNS</strong>, que imploram pra ter serviço, daquelas que têm agenda <strong className="text-[#ffcd10]">LOTADA</strong> e são <strong className="text-[#ffcd10]">DISPUTADAS</strong> pelas melhores clientes!
+              </p>
+              
+              <p>
+                Lá no começo, eu via um mar de colegas talentosas afogadas no básico, naquela briga de foice por R$20, R$50... A frustração? <strong className="text-[#ffcd10]">GIGANTE!</strong> 😥
+              </p>
+              
+              <div className="bg-gray-900 p-6 rounded-xl border border-[#ffcd10] my-8">
+                <p className="text-xl font-bold text-[#ffcd10] mb-4">
+                  🚨 A VERDADE?
+                </p>
+                <p className="text-white">
+                  Você precisa de um <strong className="text-[#ffcd10]">DIFERENCIAL</strong>. Um arsenal de técnicas avançadas que poucas dominam, com um jeito de atender que <strong className="text-[#ffcd10]">FIDELIZA</strong> e faz as suas clientes te <strong className="text-[#ffcd10]">INDICAREM</strong> de olhos fechados, mesmo que você esteja começando do <strong className="text-[#ffcd10]">ZERO</strong>...
+                </p>
+              </div>
+            </div>
+            
+            <div className="mt-8">
+              <button
+                onClick={() => setCurrentStep(questions.length + 1)}
+                className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-full text-xl uppercase transition-all duration-300 transform hover:scale-105 shadow-lg"
+                style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
+              >
+                QUERO TER ESSE CONHECIMENTO EXCLUSIVO
+              </button>
+            </div>
+          </div>
+        </div>
+      );
+    }
+    
+    if (currentStep === questions.length + 1) {
+      return (
+        <div className="min-h-screen bg-black text-white px-6 py-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="text-left max-w-3xl mx-auto space-y-6 text-[#E4B7B2] text-lg leading-relaxed scroll-animate animate-slideInUp" data-animate>
+              <p className="text-2xl font-bold text-[#ffcd10] text-center mb-8">
+                Imagina ter em mãos o passo a passo EXATO que as Nail Designers de sucesso escondem, do zero ao avançado, com mais de 130 aulas e 25 certificados...
+              </p>
+            </div>
+            
+            <div className="mt-8">
+              <button
+                onClick={() => setCurrentStep(questions.length + 2)}
+                className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-full text-xl uppercase transition-all duration-300 transform hover:scale-105 shadow-lg"
+                style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
+              >
+                É ISSO O QUE EU PRECISO AGORA
+              </button>
+            </div>
+          </div>
+        </div>
+      );
+    }
+    
+    // Página final de venda
+    return renderFinalSalesPage();
+  };
+
+  // Renderizar página final de venda
+  const renderFinalSalesPage = () => {
+    return (
+      <div className="min-h-screen bg-black text-white">
+        {/* Meta Pixel Code */}
+        <Script
+          id="facebook-pixel"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              !function(f,b,e,v,n,t,s)
+              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+              n.queue=[];t=b.createElement(e);t.async=!0;
+              t.src=v;s=b.getElementsByTagName(e)[0];
+              s.parentNode.insertBefore(t,s)}(window, document,'script',
+              'https://connect.facebook.net/en_US/fbevents.js');
+              fbq('init', '734205242727008');
+              fbq('track', 'PageView');
+            `,
+          }}
+        />
+        
+        {/* Banner de urgência */}
+        <div className="bg-red-600 text-white text-center py-3 px-4">
+          <p className="text-sm md:text-base font-bold animate-pulse">
+            ⚠️ Devido a grande quantidade de acessos, esta página ficará disponível até o dia 11/08/25
+          </p>
+        </div>
+
+        {/* Cabeçalho principal */}
+        <header className="py-8 px-6 text-center">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight text-[#ffcd10] scroll-animate animate-fadeIn" data-animate>
+            Revelado: O único caminho que Transforma mulheres Iniciantes em Nail Designers DISPUTADAS com agenda lotada
+          </h1>
+          
+          <div className="flex items-center justify-center space-x-4 mb-4 text-sm text-[#E4B7B2]">
+            <span>🔴 102 pessoas assistindo</span>
+            <span>🔊 Clique para ativar o som</span>
+          </div>
+          
+          <p className="text-lg md:text-xl text-[#E4B7B2] max-w-3xl mx-auto scroll-animate animate-slideInUp" data-animate>
+            Imagina ser uma referência em Unhas a ponto de ter que recusar tantos clientes...
+          </p>
+        </header>
+
+        {/* Seção de conteúdo do curso */}
+        <section className="py-8 px-6">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-[#ffcd10] scroll-animate animate-fadeIn" data-animate>
+              Se prepare para Dominar cada detalhe do Zero ao Avançado
+            </h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm scroll-animate animate-fadeInStagger" data-animate>
+              {[
+                "🟣 Anatomia das Unhas Dominada",
+                "🟣 Fibra de Vidro", 
+                "🟣 O Segredo da Naturalidade Absoluta",
+                "🟣 Spa dos Pés",
+                "🟣 Formatos Russos Internacionais",
+                "🟣 Efeito Cascata Deslumbrante",
+                "🟣 Traços Finos Detalhados",
+                "🟣 Francesinhas eternas com variações Modernas",
+                "🟣 Banho de Gel com Brilho Espelhado",
+                "🟣 Blindagem de Fibra Ultra Resistente",
+                "🟣 Unha Stiletto Atraente",
+                "🟣 Unha Almond Sofisticada",
+                "🟣 Unha Ballerina Moderna",
+                "🟣 Unha Encapsulada de Luxo",
+                "🟣 Manicure e Pedicure de Alto Padrão",
+                "🟣 Expert em Manicure Masculina",
+                "🟣 Polygel Duradouro"
+              ].map((item, index) => (
+                <div key={index} className="text-[#E4B7B2] flex items-center">
+                  {item}
+                </div>
+              ))}
+            </div>
+            
+            {/* Bônus */}
+            <div className="mt-8 space-y-2 scroll-animate animate-slideInUp" data-animate>
+              <h3 className="text-xl font-bold text-[#ffcd10] mb-4">Bônus Exclusivos:</h3>
+              <div className="space-y-2 text-[#E4B7B2]">
+                <p>🎁 Bônus 01 - Curso de Extensão de Cílios Profissional</p>
+                <p>🎁 Bônus 02 - Curso de Unhas Encapsuladas do básico ao avançado</p>
+                <p>🎁 Bônus 03 - 25 Certificados Profissionais e Personalizados</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Seção de preço */}
+        <section className="py-8 px-6 text-center">
+          <div className="max-w-4xl mx-auto">
+            <p className="text-2xl font-bold text-[#ffcd10] mb-4 scroll-animate animate-scaleIn" data-animate>
+              O valor do curso de Nail Design é de R$ 49,90
+            </p>
+            
+            <a
+              href="https://pay.kiwify.com.br/lf9IZHj"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-full text-xl md:text-2xl uppercase transition-all duration-300 transform hover:scale-105 shadow-lg inline-block mb-8"
+              style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
+              onClick={() => handleCheckoutClick('final-page-main-button')}
+            >
+              GARANTIR MINHA VAGA COM DESCONTO HOJE
+            </a>
+          </div>
+        </section>
+
+        {/* Seção de depoimentos */}
+        <section className="py-8 px-6 bg-gray-900">
+          <div className="max-w-6xl mx-auto text-center">
+            <h3 className="text-2xl md:text-3xl font-bold mb-6 text-[#ffcd10] scroll-animate animate-fadeIn" data-animate>
+              Depoimentos reais de alunas que já estão se tornando Nail Designers de Valor!
+            </h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 scroll-animate animate-fadeInStagger" data-animate>
+              <div className="bg-black p-4 rounded-lg border border-[#E4B7B2]">
+                <p className="text-[#E4B7B2] text-sm italic mb-3">
+                  "Nunca pensei que conseguiria aprender técnicas tão avançadas! O curso é incrível e mudou minha vida profissional."
+                </p>
+                <p className="text-[#ffcd10] font-bold text-xs">- Maria Silva, São Paulo</p>
+              </div>
+              
+              <div className="bg-black p-4 rounded-lg border border-[#E4B7B2]">
+                <p className="text-[#E4B7B2] text-sm italic mb-3">
+                  "Em 3 meses já estava faturando mais de R$ 3.000! As técnicas são realmente diferenciadas."
+                </p>
+                <p className="text-[#ffcd10] font-bold text-xs">- Ana Costa, Rio de Janeiro</p>
+              </div>
+              
+              <div className="bg-black p-4 rounded-lg border border-[#E4B7B2]">
+                <p className="text-[#E4B7B2] text-sm italic mb-3">
+                  "Saí do zero absoluto para ter agenda lotada. O método da Kamilla funciona mesmo!"
+                </p>
+                <p className="text-[#ffcd10] font-bold text-xs">- Juliana Santos, Belo Horizonte</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Rodapé */}
+        <footer className="bg-black text-white py-4 px-6 text-center">
+          <p className="text-xs mb-1">COPYRIGHT 2025 – Mariana Nails – Todos os direitos reservados</p>
+          <p className="text-xs">Suporte: <a href="mailto:suporte@mariananails.com" className="text-[#E4B7B2] hover:underline">suporte@mariananails.com</a></p>
+        </footer>
+
+        {/* Botão fixo */}
+        <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 px-4">
+          <a 
+            href="https://pay.kiwify.com.br/lf9IZHj" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-block bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-full text-base shadow-2xl animate-pulse transition-all duration-300 transform hover:scale-105 border-2 border-black whitespace-nowrap"
+            style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
+            onClick={() => handleCheckoutClick('fixed-bottom-button')}
+          >
+            🎯 GARANTIR MINHA VAGA
+          </a>
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <div className="min-h-screen">
+      {/* Estilos de Animação */}
+      <style jsx>{animationStyles}</style>
+      
+      {renderQuestion()}
+    </div>
+  );
+}
