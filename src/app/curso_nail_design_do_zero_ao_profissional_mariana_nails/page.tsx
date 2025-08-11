@@ -430,10 +430,20 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
       return (
         <div className="min-h-screen bg-black text-white px-6 py-8">
           <div className="max-w-6xl mx-auto text-center">
-            <div className="max-w-4xl mx-auto mb-12">
+            <div className="max-w-4xl mx-auto mb-8">
               <p className="text-2xl md:text-3xl font-bold text-[#ffcd10] mb-8 scroll-animate animate-fadeIn" data-animate>
                 Imagina ter em mãos o passo a passo EXATO que as Nail Designers de sucesso escondem, do zero ao avançado, com mais de 30 aulas e 3 certificados internacionais...
               </p>
+            </div>
+            
+            <div className="mb-8">
+              <button
+                onClick={() => setCurrentStep(questions.length + 2)}
+                className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-full text-xl uppercase transition-all duration-300 transform hover:scale-105 shadow-lg"
+                style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
+              >
+                É ISSO O QUE EU PRECISO AGORA
+              </button>
             </div>
             
             {/* Galeria de Unhas */}
@@ -468,16 +478,6 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
                   </div>
                 ))}
               </div>
-            </div>
-            
-            <div className="mt-8">
-              <button
-                onClick={() => setCurrentStep(questions.length + 2)}
-                className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-full text-xl uppercase transition-all duration-300 transform hover:scale-105 shadow-lg"
-                style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
-              >
-                É ISSO O QUE EU PRECISO AGORA
-              </button>
             </div>
           </div>
         </div>
@@ -558,7 +558,7 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm scroll-animate animate-fadeInStagger" data-animate>
               <div className="space-y-2">
                 <h3 className="text-lg font-bold text-[#ffcd10] mb-3">📚 Módulos Completos e Didáticos</h3>
-                <div className="text-[#E4B7B2] space-y-1">
+                <div className="text-white space-y-1">
                   <p>🎥 + de 30 aulas em videoaula, passo a passo</p>
                   <p>💎 Técnicas de alongamento na fibra de vidro</p>
                   <p>✂️ Cutilagem, esmaltação em gel</p>
@@ -570,7 +570,7 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
               </div>
               <div className="space-y-2">
                 <h3 className="text-lg font-bold text-[#ffcd10] mb-3">⭐ Diferenciais Exclusivos</h3>
-                <div className="text-[#E4B7B2] space-y-1">
+                <div className="text-white space-y-1">
                   <p>🏆 3 Certificados Internacionais</p>
                   <p>💬 Grupo exclusivo no WhatsApp</p>
                   <p>🕒 Suporte 24 horas</p>
@@ -585,7 +585,7 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
             {/* Benefícios adicionais */}
             <div className="mt-8 space-y-2 scroll-animate animate-slideInUp" data-animate>
               <h3 className="text-xl font-bold text-[#ffcd10] mb-4">O que você vai receber:</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-[#E4B7B2]">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-white">
                 <p>✅ Acesso vitalício ao curso</p>
                 <p>✅ Área de membros estilo Netflix</p>
                 <p>✅ As melhores técnicas</p>
@@ -627,22 +627,22 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
             </h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 scroll-animate animate-fadeInStagger" data-animate>
-              <div className="bg-black p-4 rounded-lg border border-[#E4B7B2]">
-                <p className="text-[#E4B7B2] text-sm italic mb-3">
+              <div className="bg-black p-4 rounded-lg border border-[#ffcd10]">
+                <p className="text-white text-sm italic mb-3">
                   "Eu estava desempregada e desacreditada, mas o curso da Mariana Nails mudou minha vida! Hoje tenho minha própria clientela e faturo mais de R$4.000 por mês. É um sonho!"
                 </p>
                 <p className="text-[#ffcd10] font-bold text-xs">Ana Paula, 29 anos - São Paulo/SP</p>
               </div>
               
-              <div className="bg-black p-4 rounded-lg border border-[#E4B7B2]">
-                <p className="text-[#E4B7B2] text-sm italic mb-3">
+              <div className="bg-black p-4 rounded-lg border border-[#ffcd10]">
+                <p className="text-white text-sm italic mb-3">
                   "Sempre amei unhas, mas nunca pensei que poderia viver disso. O curso é super didático, e a Mariana é uma excelente professora. Conquistei minha independência!"
                 </p>
                 <p className="text-[#ffcd10] font-bold text-xs">Juliana Costa, 35 anos - Rio de Janeiro/RJ</p>
               </div>
               
-              <div className="bg-black p-4 rounded-lg border border-[#E4B7B2]">
-                <p className="text-[#E4B7B2] text-sm italic mb-3">
+              <div className="bg-black p-4 rounded-lg border border-[#ffcd10]">
+                <p className="text-white text-sm italic mb-3">
                   "Em menos de 3 meses após o curso, já estava com a agenda lotada! A qualidade do ensino é incrível, e o suporte me deu toda a confiança que eu precisava."
                 </p>
                 <p className="text-[#ffcd10] font-bold text-xs">Carla Santos, 25 anos - Belo Horizonte/MG</p>
