@@ -234,11 +234,14 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
     newAnswers[currentStep] = answer;
     setAnswers(newAnswers);
     
-    if (currentStep < questions.length - 1) {
+    if (currentStep === 2) {
+      // Após questão 3, ir para página de apresentação da Mariana
+      setCurrentStep(questions.length);
+    } else if (currentStep < questions.length - 1) {
       setCurrentStep(currentStep + 1);
     } else {
-      // Ir para página de apresentação
-      setCurrentStep(questions.length);
+      // Após última questão, ir para página "Imagina ter em mãos"
+      setCurrentStep(questions.length + 1);
     }
   };
 
@@ -366,37 +369,52 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
     if (currentStep === questions.length) {
       return (
         <div className="min-h-screen bg-black text-white px-6 py-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-[#ffcd10] scroll-animate animate-fadeIn" data-animate>
+          <div className="max-w-4xl mx-auto">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 leading-tight text-[#ffcd10] text-center scroll-animate animate-fadeIn" data-animate>
               Prazer, sou a Mariana!
             </h1>
             
-            <div className="text-left max-w-3xl mx-auto space-y-6 text-[#E4B7B2] text-lg leading-relaxed scroll-animate animate-slideInUp" data-animate>
-              <p>
-                Há mais de 10 anos eu não só vivo, mas <strong className="text-[#ffcd10]">PROSPERO</strong> com a minha paixão por unhas…
-              </p>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              {/* Imagem da Mariana */}
+              <div className="flex justify-center lg:justify-end scroll-animate animate-slideInLeft" data-animate>
+                <Image 
+                  src="/images/mariana_landingpage.png"
+                  alt="Mariana Nails"
+                  width={400}
+                  height={500}
+                  className="rounded-lg shadow-xl"
+                  priority
+                />
+              </div>
               
-              <p>
-                O que vou te mostrar <strong className="text-[#ffcd10]">AGORA</strong> nesse texto é o <strong className="text-[#ffcd10]">SEGREDO</strong> que separa as Nail Designers <strong className="text-[#ffcd10]">COMUNS</strong>, que imploram pra ter serviço, daquelas que têm agenda <strong className="text-[#ffcd10]">LOTADA</strong> e são <strong className="text-[#ffcd10]">DISPUTADAS</strong> pelas melhores clientes!
-              </p>
-              
-              <p>
-                Lá no começo, eu via um mar de colegas talentosas afogadas no básico, naquela briga de foice por R$20, R$50... A frustração? <strong className="text-[#ffcd10]">GIGANTE!</strong> 😥
-              </p>
-              
-              <div className="bg-gray-900 p-6 rounded-xl border border-[#ffcd10] my-8">
-                <p className="text-xl font-bold text-[#ffcd10] mb-4">
-                  🚨 A VERDADE?
+              {/* Texto */}
+              <div className="text-left space-y-6 text-white text-lg leading-relaxed scroll-animate animate-slideInRight" data-animate>
+                <p>
+                  Há mais de 10 anos eu não só vivo, mas <strong className="text-[#ffcd10]">PROSPERO</strong> com a minha paixão por unhas…
                 </p>
-                <p className="text-white">
-                  Você precisa de um <strong className="text-[#ffcd10]">DIFERENCIAL</strong>. Um arsenal de técnicas avançadas que poucas dominam, com um jeito de atender que <strong className="text-[#ffcd10]">FIDELIZA</strong> e faz as suas clientes te <strong className="text-[#ffcd10]">INDICAREM</strong> de olhos fechados, mesmo que você esteja começando do <strong className="text-[#ffcd10]">ZERO</strong>...
+                
+                <p>
+                  O que vou te mostrar <strong className="text-[#ffcd10]">AGORA</strong> nesse texto é o <strong className="text-[#ffcd10]">SEGREDO</strong> que separa as Nail Designers <strong className="text-[#ffcd10]">COMUNS</strong>, que imploram pra ter serviço, daquelas que têm agenda <strong className="text-[#ffcd10]">LOTADA</strong> e são <strong className="text-[#ffcd10]">DISPUTADAS</strong> pelas melhores clientes!
                 </p>
+                
+                <p>
+                  Lá no começo, eu via um mar de colegas talentosas afogadas no básico, naquela briga de foice por R$20, R$50... A frustração? <strong className="text-[#ffcd10]">GIGANTE!</strong> 😥
+                </p>
+                
+                <div className="bg-gray-900 p-6 rounded-xl border border-[#ffcd10] my-8">
+                  <p className="text-xl font-bold text-[#ffcd10] mb-4">
+                    🚨 A VERDADE?
+                  </p>
+                  <p className="text-white">
+                    Você precisa de um <strong className="text-[#ffcd10]">DIFERENCIAL</strong>. Um arsenal de técnicas avançadas que poucas dominam, com um jeito de atender que <strong className="text-[#ffcd10]">FIDELIZA</strong> e faz as suas clientes te <strong className="text-[#ffcd10]">INDICAREM</strong> de olhos fechados, mesmo que você esteja começando do <strong className="text-[#ffcd10]">ZERO</strong>...
+                  </p>
+                </div>
               </div>
             </div>
             
-            <div className="mt-8">
+            <div className="text-center mt-8">
               <button
-                onClick={() => setCurrentStep(questions.length + 1)}
+                onClick={() => setCurrentStep(3)} // Continuar para questão 4
                 className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-full text-xl uppercase transition-all duration-300 transform hover:scale-105 shadow-lg"
                 style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
               >
@@ -411,11 +429,45 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
     if (currentStep === questions.length + 1) {
       return (
         <div className="min-h-screen bg-black text-white px-6 py-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="text-left max-w-3xl mx-auto space-y-6 text-[#E4B7B2] text-lg leading-relaxed scroll-animate animate-slideInUp" data-animate>
-              <p className="text-2xl font-bold text-[#ffcd10] text-center mb-8">
+          <div className="max-w-6xl mx-auto text-center">
+            <div className="max-w-4xl mx-auto mb-12">
+              <p className="text-2xl md:text-3xl font-bold text-[#ffcd10] mb-8 scroll-animate animate-fadeIn" data-animate>
                 Imagina ter em mãos o passo a passo EXATO que as Nail Designers de sucesso escondem, do zero ao avançado, com mais de 30 aulas e 3 certificados internacionais...
               </p>
+            </div>
+            
+            {/* Galeria de Unhas */}
+            <div className="mb-12">
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-6 scroll-animate animate-fadeIn" data-animate>
+                Veja o que você vai aprender a fazer!
+              </h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 scroll-animate animate-fadeInStagger" data-animate>
+                {[
+                  'unhas_mariana_nails_curso (1).JPG',
+                  'unhas_mariana_nails_curso (2).jpg',
+                  'unhas_mariana_nails_curso (3).jpg',
+                  'unhas_mariana_nails_curso (4).jpg',
+                  'unhas_mariana_nails_curso (5).jpg',
+                  'unhas_mariana_nails_curso (6).jpg',
+                  'unhas_mariana_nails_curso (7).jpg',
+                  'unhas_mariana_nails_curso (8).jpg',
+                  'unhas_mariana_nails_curso (9).jpg',
+                  'unhas_mariana_nails_curso (10).jpg',
+                  'unhas_mariana_nails_curso (11).JPG',
+                  'unhas_mariana_nails_curso (12).JPG',
+                ].map((img, idx) => (
+                  <div key={img} className="overflow-hidden rounded-lg border-2 border-[#ffcd10] shadow-sm hover:shadow-lg transition-all">
+                    <Image
+                      src={`/images/${img}`}
+                      alt={`Unhas do curso Mariana Nails ${idx + 1}`}
+                      width={200}
+                      height={200}
+                      className="w-full h-32 object-cover object-center hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
             
             <div className="mt-8">
@@ -467,18 +519,31 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
           </p>
         </div>
 
+        {/* Imagem de Topo */}
+        <div className="relative w-full h-auto">
+          <Image 
+            src="/images/mariana_nails_rota_curso_topo2.png"
+            alt="Mariana Nails - Curso Nail Design"
+            width={1920}
+            height={1080}
+            layout="responsive"
+            objectFit="cover"
+            priority
+          />
+        </div>
+
         {/* Cabeçalho principal */}
         <header className="py-8 px-6 text-center">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight text-[#ffcd10] scroll-animate animate-fadeIn" data-animate>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight text-white scroll-animate animate-fadeIn" data-animate>
             Revelado: O único caminho que Transforma mulheres Iniciantes em Nail Designers DISPUTADAS com agenda lotada
           </h1>
           
-          <div className="flex items-center justify-center space-x-4 mb-4 text-sm text-[#E4B7B2]">
+          <div className="flex items-center justify-center space-x-4 mb-4 text-sm text-white">
             <span>🔴 102 pessoas assistindo</span>
             <span>🔊 Clique para ativar o som</span>
           </div>
           
-          <p className="text-lg md:text-xl text-[#E4B7B2] max-w-3xl mx-auto scroll-animate animate-slideInUp" data-animate>
+          <p className="text-lg md:text-xl text-white max-w-3xl mx-auto scroll-animate animate-slideInUp" data-animate>
             Imagina ser uma referência em Unhas a ponto de ter que recusar tantos clientes...
           </p>
         </header>
