@@ -302,16 +302,26 @@ export default function Fature4000ComUnhasEm2025() {
           </p>
         </div>
       </div>
+      {/* Preload de recursos críticos */}
+      <link rel="preload" as="image" href="/images/mariana_nails_rota_curso_topo2.webp" />
+      <link rel="preload" as="image" href="/images/thumb_unhas_mariana_nails_curso (1).webp" />
+      <link rel="preload" as="image" href="/images/thumb_unhas_mariana_nails_curso (2).webp" />
+      <link rel="preload" as="image" href="/images/thumb_unhas_mariana_nails_curso (3).webp" />
+      <link rel="preload" as="image" href="/images/thumb_unhas_mariana_nails_curso (4).webp" />
+      
       {/* Imagem de Topo */}
       <div className="relative w-full h-auto">
         <Image 
-          src="/images/mariana_nails_rota_curso_topo2.webp" // Imagem atualizada
+          src="/images/mariana_nails_rota_curso_topo2.webp"
           alt="Mariana Nails - Fature R$4000 com Unhas em 2025"
           width={1920}
           height={1080}
-          layout="responsive"
-          objectFit="cover"
+          className="w-full h-auto"
           priority
+          quality={85}
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
         />
       </div>
 
@@ -689,11 +699,17 @@ export default function Fature4000ComUnhasEm2025() {
               'unhas_mariana_nails_curso (12).webp',
             ].map((img, idx) => (
               <div key={img} className="overflow-hidden rounded-lg border-2 border-[#E4B7B2] shadow-sm hover:shadow-lg transition-all">
-                <OptimizedImage
-                  src={`/images/${img}`}
+                <Image
+                  src={`/images/thumb_${img}`}
                   alt={`Unhas do curso Mariana Nails ${idx + 1}`}
+                  width={200}
+                  height={160}
                   className="w-full h-40 object-cover object-center hover:scale-105 transition-transform duration-300"
-                  loading="lazy"
+                  loading={idx < 4 ? "eager" : "lazy"}
+                  quality={70}
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                  sizes="(max-width: 480px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 200px"
                 />
               </div>
             ))}
