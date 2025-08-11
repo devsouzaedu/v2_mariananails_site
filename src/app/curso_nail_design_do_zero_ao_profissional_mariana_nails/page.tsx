@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Script from 'next/script';
 
@@ -10,112 +10,10 @@ declare global {
   }
 }
 
-// Hook para animações por scroll
-const useScrollAnimation = () => {
-  const [visibleElements, setVisibleElements] = useState(new Set());
-  const observerRef = useRef<IntersectionObserver | null>(null);
+// Hook removido - sem animações
 
-  useEffect(() => {
-    observerRef.current = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVisibleElements(prev => new Set([...prev, entry.target]));
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '50px' }
-    );
-
-    // Observar todos os elementos com classe de animação
-    const elements = document.querySelectorAll('[data-animate]');
-    elements.forEach(el => {
-      if (observerRef.current) {
-        observerRef.current.observe(el);
-      }
-    });
-
-    return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-      }
-    };
-  }, []);
-
-  const isVisible = (element: Element) => visibleElements.has(element);
-  
-  return { isVisible, observerRef };
-};
-
-// Estilos de animação inline
-const animationStyles = `
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  @keyframes slideInUp {
-    from { opacity: 0; transform: translateY(60px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  @keyframes slideInLeft {
-    from { opacity: 0; transform: translateX(-50px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
-  
-  @keyframes slideInRight {
-    from { opacity: 0; transform: translateX(50px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
-  
-  @keyframes scaleIn {
-    from { opacity: 0; transform: scale(0.8); }
-    to { opacity: 1; transform: scale(1); }
-  }
-  
-  .scroll-animate {
-    opacity: 0;
-    transition: all 0.8s ease-out;
-  }
-  
-  .scroll-animate.visible {
-    opacity: 1;
-  }
-  
-  .animate-fadeIn.visible {
-    animation: fadeIn 0.8s ease-out forwards;
-  }
-  
-  .animate-slideInUp.visible {
-    animation: slideInUp 1s ease-out forwards;
-  }
-  
-  .animate-slideInLeft.visible {
-    animation: slideInLeft 0.8s ease-out forwards;
-  }
-  
-  .animate-slideInRight.visible {
-    animation: slideInRight 0.8s ease-out forwards;
-  }
-  
-  .animate-scaleIn.visible {
-    animation: scaleIn 0.6s ease-out forwards;
-  }
-  
-  .animate-fadeInStagger.visible > * {
-    animation: fadeIn 0.8s ease-out forwards;
-  }
-  
-  .animate-fadeInStagger.visible > *:nth-child(1) { animation-delay: 0.1s; }
-  .animate-fadeInStagger.visible > *:nth-child(2) { animation-delay: 0.2s; }
-  .animate-fadeInStagger.visible > *:nth-child(3) { animation-delay: 0.3s; }
-  .animate-fadeInStagger.visible > *:nth-child(4) { animation-delay: 0.4s; }
-  .animate-fadeInStagger.visible > *:nth-child(5) { animation-delay: 0.5s; }
-  .animate-fadeInStagger.visible > *:nth-child(6) { animation-delay: 0.6s; }
-  .animate-fadeInStagger.visible > *:nth-child(7) { animation-delay: 0.7s; }
-  .animate-fadeInStagger.visible > *:nth-child(8) { animation-delay: 0.8s; }
-`;
+// Estilos desabilitados - sem animações
+const animationStyles = ``;
 
 // Função para gerar data dinâmica
 const getDynamicDate = () => {
@@ -135,33 +33,8 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
   
-  // Hook para animações por scroll
-  const { isVisible } = useScrollAnimation();
-  
   // Data dinâmica
   const { diaSemana, dia, mes, ano } = getDynamicDate();
-  
-  // Efeito para re-observar elementos após renderização
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const elements = document.querySelectorAll('[data-animate]');
-      elements.forEach(el => {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-              }
-            });
-          },
-          { threshold: 0.1, rootMargin: '50px' }
-        );
-        observer.observe(el);
-      });
-    }, 100);
-    
-    return () => clearTimeout(timer);
-  }, [currentStep]);
 
   // Perguntas do quiz
   const questions = [
@@ -275,22 +148,22 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
     return (
       <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center px-6 py-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight text-[#ffcd10] scroll-animate animate-fadeIn" data-animate>
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight text-[#ffcd10] ">
             {question.title}
           </h1>
           
           {question.question && (
-            <h2 className="text-xl md:text-2xl font-semibold mb-8 text-[#E4B7B2] scroll-animate animate-slideInUp" data-animate>
+            <h2 className="text-xl md:text-2xl font-semibold mb-8 text-[#E4B7B2] ">
               {question.question}
             </h2>
           )}
           
-          <div className="space-y-4 scroll-animate animate-fadeInStagger" data-animate>
+          <div className="space-y-4 ">
             {question.options.map((option, index) => (
               <button
                 key={index}
                 onClick={() => handleAnswer(option)}
-                className="w-full max-w-md mx-auto block bg-gray-900 hover:bg-gray-800 text-white font-semibold py-4 px-6 rounded-lg text-lg border border-[#ffcd10] hover:border-[#E4B7B2] transition-all duration-300 transform hover:scale-105 shadow-lg"
+                className="w-full max-w-md mx-auto block bg-black hover:bg-black text-white font-semibold py-4 px-6 rounded-lg text-lg border border-[#ffcd10] hover:border-[#E4B7B2] transition-all duration-300 transform hover:scale-105 shadow-lg"
                 style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
               >
                 {option}
@@ -305,12 +178,12 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
                 <div
                   key={index}
                   className={`w-3 h-3 rounded-full ${
-                    index <= currentStep ? 'bg-[#ffcd10]' : 'bg-gray-600'
+                    index <= currentStep ? 'bg-[#ffcd10]' : 'bg-white'
                   }`}
                 />
               ))}
             </div>
-            <p className="text-sm text-gray-400 mt-2">
+            <p className="text-sm text-white mt-2">
               Pergunta {currentStep + 1} de {questions.length}
             </p>
           </div>
@@ -326,16 +199,16 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
     return (
       <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center px-6 py-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight text-[#ffcd10] scroll-animate animate-fadeIn" data-animate>
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight text-[#ffcd10] ">
             {question.title}
           </h1>
           
-          <div className="space-y-4 scroll-animate animate-fadeInStagger" data-animate>
+          <div className="space-y-4 ">
             {question.options.map((option, index) => (
               <button
                 key={index}
                 onClick={() => handleAnswer(option)}
-                className="w-full max-w-md mx-auto block bg-gray-900 hover:bg-gray-800 text-white font-semibold py-4 px-6 rounded-lg text-lg border border-[#ffcd10] hover:border-[#E4B7B2] transition-all duration-300 transform hover:scale-105 shadow-lg"
+                className="w-full max-w-md mx-auto block bg-black hover:bg-black text-white font-semibold py-4 px-6 rounded-lg text-lg border border-[#ffcd10] hover:border-[#E4B7B2] transition-all duration-300 transform hover:scale-105 shadow-lg"
                 style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
               >
                 {option}
@@ -350,12 +223,12 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
                 <div
                   key={index}
                   className={`w-3 h-3 rounded-full ${
-                    index <= currentStep ? 'bg-[#ffcd10]' : 'bg-gray-600'
+                    index <= currentStep ? 'bg-[#ffcd10]' : 'bg-white'
                   }`}
                 />
               ))}
             </div>
-            <p className="text-sm text-gray-400 mt-2">
+            <p className="text-sm text-white mt-2">
               Pergunta {currentStep + 1} de {questions.length}
             </p>
           </div>
@@ -370,13 +243,13 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
       return (
         <div className="min-h-screen bg-black text-white px-6 py-8">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 leading-tight text-[#ffcd10] text-center scroll-animate animate-fadeIn" data-animate>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 leading-tight text-[#ffcd10] text-center ">
               Prazer, sou a Mariana!
             </h1>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               {/* Imagem da Mariana */}
-              <div className="flex justify-center lg:justify-end scroll-animate animate-slideInLeft" data-animate>
+              <div className="flex justify-center lg:justify-end ">
                 <Image 
                   src="/images/mariana_landingpage.png"
                   alt="Mariana Nails"
@@ -388,7 +261,7 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
               </div>
               
               {/* Texto */}
-              <div className="text-left space-y-6 text-white text-lg leading-relaxed scroll-animate animate-slideInRight" data-animate>
+              <div className="text-left space-y-6 text-white text-lg leading-relaxed ">
                 <p>
                   Há mais de 10 anos eu não só vivo, mas <strong className="text-[#ffcd10]">PROSPERO</strong> com a minha paixão por unhas…
                 </p>
@@ -401,7 +274,7 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
                   Lá no começo, eu via um mar de colegas talentosas afogadas no básico, naquela briga de foice por R$20, R$50... A frustração? <strong className="text-[#ffcd10]">GIGANTE!</strong> 😥
                 </p>
                 
-                <div className="bg-gray-900 p-6 rounded-xl border border-[#ffcd10] my-8">
+                <div className="bg-black p-6 rounded-xl border border-[#ffcd10] my-8">
                   <p className="text-xl font-bold text-[#ffcd10] mb-4">
                     🚨 A VERDADE?
                   </p>
@@ -431,7 +304,7 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
         <div className="min-h-screen bg-black text-white px-6 py-8">
           <div className="max-w-6xl mx-auto text-center">
             <div className="max-w-4xl mx-auto mb-8">
-              <p className="text-2xl md:text-3xl font-bold text-[#ffcd10] mb-8 scroll-animate animate-fadeIn" data-animate>
+              <p className="text-2xl md:text-3xl font-bold text-[#ffcd10] mb-8 ">
                 Imagina ter em mãos o passo a passo EXATO que as Nail Designers de sucesso escondem, do zero ao avançado, com mais de 30 aulas e 3 certificados internacionais...
               </p>
             </div>
@@ -448,10 +321,10 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
             
             {/* Galeria de Unhas */}
             <div className="mb-12">
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-6 scroll-animate animate-fadeIn" data-animate>
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-6 ">
                 Veja o que você vai aprender a fazer!
               </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 scroll-animate animate-fadeInStagger" data-animate>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 ">
                 {[
                   'unhas_mariana_nails_curso (1).JPG',
                   'unhas_mariana_nails_curso (2).jpg',
@@ -514,7 +387,7 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
         
         {/* Banner de urgência */}
         <div className="bg-red-600 text-white text-center py-3 px-4">
-          <p className="text-sm md:text-base font-bold animate-pulse">
+          <p className="text-sm md:text-base font-bold ">
             ⚠️ Devido a grande quantidade de acessos, esta página ficará disponível até o dia 11/08/25
           </p>
         </div>
@@ -534,7 +407,7 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
 
         {/* Cabeçalho principal */}
         <header className="py-8 px-6 text-center">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight text-white scroll-animate animate-fadeIn" data-animate>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight text-white ">
             Revelado: O único caminho que Transforma mulheres Iniciantes em Nail Designers DISPUTADAS com agenda lotada
           </h1>
           
@@ -543,7 +416,7 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
             <span>🔊 Clique para ativar o som</span>
           </div>
           
-          <p className="text-lg md:text-xl text-white max-w-3xl mx-auto scroll-animate animate-slideInUp" data-animate>
+          <p className="text-lg md:text-xl text-white max-w-3xl mx-auto ">
             Imagina ser uma referência em Unhas a ponto de ter que recusar tantos clientes...
           </p>
         </header>
@@ -551,11 +424,11 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
         {/* Seção de conteúdo do curso */}
         <section className="py-8 px-6">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-[#ffcd10] scroll-animate animate-fadeIn" data-animate>
+            <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-[#ffcd10] ">
               Se prepare para Dominar cada detalhe do Zero ao Avançado
             </h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm scroll-animate animate-fadeInStagger" data-animate>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm ">
               <div className="space-y-2">
                 <h3 className="text-lg font-bold text-[#ffcd10] mb-3">📚 Módulos Completos e Didáticos</h3>
                 <div className="text-white space-y-1">
@@ -583,7 +456,7 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
             </div>
             
             {/* Benefícios adicionais */}
-            <div className="mt-8 space-y-2 scroll-animate animate-slideInUp" data-animate>
+            <div className="mt-8 space-y-2 ">
               <h3 className="text-xl font-bold text-[#ffcd10] mb-4">O que você vai receber:</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-white">
                 <p>✅ Acesso vitalício ao curso</p>
@@ -602,7 +475,7 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
         {/* Seção de preço */}
         <section className="py-8 px-6 text-center">
           <div className="max-w-4xl mx-auto">
-            <p className="text-2xl font-bold text-[#ffcd10] mb-4 scroll-animate animate-scaleIn" data-animate>
+            <p className="text-2xl font-bold text-[#ffcd10] mb-4 ">
               O valor do curso de Nail Design é de R$ 19,90
             </p>
             
@@ -620,13 +493,13 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
         </section>
 
         {/* Seção de depoimentos */}
-        <section className="py-8 px-6 bg-gray-900">
+        <section className="py-8 px-6 bg-black">
           <div className="max-w-6xl mx-auto text-center">
-            <h3 className="text-2xl md:text-3xl font-bold mb-6 text-[#ffcd10] scroll-animate animate-fadeIn" data-animate>
+            <h3 className="text-2xl md:text-3xl font-bold mb-6 text-[#ffcd10] ">
               Depoimentos reais de alunas que já estão se tornando Nail Designers de Valor!
             </h3>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 scroll-animate animate-fadeInStagger" data-animate>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
               <div className="bg-black p-4 rounded-lg border border-[#ffcd10]">
                 <p className="text-white text-sm italic mb-3">
                   "Eu estava desempregada e desacreditada, mas o curso da Mariana Nails mudou minha vida! Hoje tenho minha própria clientela e faturo mais de R$4.000 por mês. É um sonho!"
@@ -663,7 +536,7 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
             href="https://pay.kiwify.com.br/lf9IZHj" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-block bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-full text-base shadow-2xl animate-pulse transition-all duration-300 transform hover:scale-105 border-2 border-black whitespace-nowrap"
+            className="inline-block bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-full text-base shadow-2xl  transition-all duration-300 transform hover:scale-105 border-2 border-black whitespace-nowrap"
             style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
             onClick={() => handleCheckoutClick('fixed-bottom-button')}
           >
