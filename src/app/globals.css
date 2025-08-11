@@ -33,7 +33,7 @@ body {
     font-family: var(--font-instrument-serif), serif;
   }
   p {
-    @apply leading-relaxed text-gray-800;
+    @apply leading-relaxed text-white;
     font-family: var(--font-instrument-sans), sans-serif;
   }
   a {
