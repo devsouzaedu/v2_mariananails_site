@@ -779,42 +779,43 @@ export default function Fature4000ComUnhasEm2025() {
         <p className="text-xs">Suporte: <a href="mailto:suporte@mariananails.com" className="text-pink-400 hover:underline">suporte@mariananails.com</a></p>
       </footer>
 
-      {/* Seção de Segurança Flutuante */}
-      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-40 px-4 w-full max-w-lg">
-        <div className="bg-black/90 backdrop-blur-sm border border-[#ffcd10]/60 rounded-2xl p-4 shadow-2xl">
-          <div className="mb-3">
+      {/* Seção Flutuante Completa */}
+      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 px-4 w-full max-w-sm">
+        <div className="bg-black/90 backdrop-blur-sm border border-[#ffcd10]/60 rounded-2xl p-4 shadow-2xl space-y-3">
+          {/* Botão Garantir Minha Vaga */}
+          <a 
+            href="https://pay.kiwify.com.br/lf9IZHj" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="block bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-full text-base shadow-xl animate-pulse transition-all duration-300 transform hover:scale-105 border-2 border-black text-center"
+            style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
+            onClick={() => handleCheckoutClick('fixed-bottom-button')}
+          >
+            🎯 GARANTIR MINHA VAGA
+          </a>
+          
+          {/* Bandeiras de Pagamento */}
+          <div className="flex justify-center">
             <Image
               src="/images/bandeiras_1.png"
               alt="Formas de pagamento seguras - Pix, Visa, Mastercard, Hipercard"
-              width={400}
-              height={80}
+              width={280}
+              height={56}
               className="mx-auto"
               priority
             />
           </div>
-          <div className="space-y-2 text-center">
-            <p className="text-white font-medium text-sm leading-relaxed">
-              <span className="text-[#ffcd10] mr-1">✓</span>Compra 100% segura. Acesso imediato via Pix ou Cartão
+          
+          {/* Texto Compacto */}
+          <div className="text-center">
+            <p className="text-white font-medium text-xs leading-tight">
+              <span className="text-[#ffcd10]">✓</span> Compra 100% segura - Acesso imediato
             </p>
-            <p className="text-white font-medium text-sm leading-relaxed">
-              <span className="text-[#ffcd10] mr-1">✓</span>7 dias de garantia: Satisfação total ou seu dinheiro de volta
+            <p className="text-white font-medium text-xs leading-tight">
+              <span className="text-[#ffcd10]">✓</span> 7 dias de garantia ou dinheiro de volta
             </p>
           </div>
         </div>
-      </div>
-
-      {/* Botão Fixo - Garantir Minha Vaga */}
-      <div className="fixed bottom-32 left-1/2 transform -translate-x-1/2 z-50 px-4">
-        <a 
-          href="https://pay.kiwify.com.br/lf9IZHj" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="inline-block bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-full text-base shadow-2xl animate-pulse transition-all duration-300 transform hover:scale-105 border-2 border-black whitespace-nowrap"
-          style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
-          onClick={() => handleCheckoutClick('fixed-bottom-button')}
-        >
-          🎯 GARANTIR MINHA VAGA
-        </a>
       </div>
     </div>
   );
