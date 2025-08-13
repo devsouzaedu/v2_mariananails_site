@@ -540,6 +540,65 @@ export default function Fature4000ComUnhasEm2025() {
         </div>
       </section>
 
+      {/* Seção de Certificados */}
+      <section className="py-8 px-6 bg-black">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[#ffcd10] scroll-animate animate-fadeIn" data-animate>
+            🏆 Certificados Reconhecidos Internacionalmente
+          </h2>
+          <p className="text-white mb-8 text-lg scroll-animate animate-slideInUp" data-animate>
+            Comprove sua qualificação com certificados que demonstram sua expertise profissional
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 scroll-animate animate-fadeInStagger" data-animate>
+            <div className="scroll-animate animate-scaleIn" data-animate>
+              <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg border-2 border-[#ffcd10] overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-300">
+                <Image
+                  src="/images/certificado_1.png"
+                  alt="Certificado Módulo 1 - Curso Completo Nail Design"
+                  width={500}
+                  height={350}
+                  className="w-full h-auto object-cover"
+                  loading="lazy"
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkbHBktH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/2gAMAwEAAhEDEQA/AJt7AWCKSgKTJMoLJ4mQUo3KNyqiJ5H31m5OBpjZiU8I8TJyqLKUZ5nQQkIXbHCUAYAUAPyP/9k="
+                  quality={85}
+                />
+              </div>
+              <p className="text-[#ffcd10] font-bold mt-4 text-lg">Módulo 1 - Técnicas Fundamentais</p>
+              <p className="text-white text-sm mt-2">Certificação em técnicas básicas e intermediárias de nail design</p>
+            </div>
+            
+            <div className="scroll-animate animate-scaleIn" data-animate>
+              <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg border-2 border-[#ffcd10] overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-300">
+                <Image
+                  src="/images/certificado_2.png"
+                  alt="Certificado Módulo 2 - Curso Completo Nail Design"
+                  width={500}
+                  height={350}
+                  className="w-full h-auto object-cover"
+                  loading="lazy"
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkbHBktH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/2gAMAwEAAhEDEQA/AJt7AWCKSgKTJMoLJ4mQUo3KNyqiJ5H31m5OBpjZiU8I8TJyqLKUZ5nQQkIXbHCUAYAUAPyP/9k="
+                  quality={85}
+                />
+              </div>
+              <p className="text-[#ffcd10] font-bold mt-4 text-lg">Módulo 2 - Técnicas Avançadas</p>
+              <p className="text-white text-sm mt-2">Certificação em técnicas profissionais e nail art avançada</p>
+            </div>
+          </div>
+          
+          <div className="bg-gray-900 border-2 border-[#ffcd10] p-6 rounded-xl max-w-2xl mx-auto scroll-animate animate-fadeIn" data-animate>
+            <h3 className="text-xl font-bold text-[#ffcd10] mb-3">✨ Valorização Profissional</h3>
+            <p className="text-white text-sm leading-relaxed">
+              Estes certificados internacionais não só comprovam sua qualificação, mas também agregam valor aos seus serviços, 
+              permitindo que você <strong className="text-[#ffcd10]">cobre mais caro</strong> e seja reconhecida como uma 
+              <strong className="text-[#ffcd10]"> profissional certificada</strong> no mercado da beleza.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Seção de Depoimentos - Fundo Preto, Letras Rosé */}
       <section className="py-6 px-6 bg-black text-[#ffcd10]">
         <div className="max-w-6xl mx-auto text-center">
