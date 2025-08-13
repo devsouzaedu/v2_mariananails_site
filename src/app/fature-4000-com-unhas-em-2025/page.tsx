@@ -780,24 +780,24 @@ export default function Fature4000ComUnhasEm2025() {
       </footer>
 
       {/* Seção de Segurança Flutuante */}
-      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-40 px-4">
-        <div className="bg-black border-2 border-[#ffcd10] rounded-xl p-4 shadow-2xl max-w-md">
+      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-40 px-4 w-full max-w-lg">
+        <div className="bg-black/90 backdrop-blur-sm border border-[#ffcd10]/60 rounded-2xl p-4 shadow-2xl">
           <div className="mb-3">
             <Image
               src="/images/bandeiras_1.png"
               alt="Formas de pagamento seguras - Pix, Visa, Mastercard, Hipercard"
-              width={300}
-              height={60}
+              width={400}
+              height={80}
               className="mx-auto"
               priority
             />
           </div>
-          <div className="space-y-1 text-center">
-            <p className="text-white font-semibold text-xs">
-              <span className="text-[#ffcd10]">✓</span> Compra 100% segura. Acesso imediato via Pix ou Cartão.
+          <div className="space-y-2 text-center">
+            <p className="text-white font-medium text-sm leading-relaxed">
+              <span className="text-[#ffcd10] mr-1">✓</span>Compra 100% segura. Acesso imediato via Pix ou Cartão
             </p>
-            <p className="text-white font-semibold text-xs">
-              <span className="text-[#ffcd10]">✓</span> 7 dias de garantia: Satisfação total ou seu dinheiro de volta.
+            <p className="text-white font-medium text-sm leading-relaxed">
+              <span className="text-[#ffcd10] mr-1">✓</span>7 dias de garantia: Satisfação total ou seu dinheiro de volta
             </p>
           </div>
         </div>
