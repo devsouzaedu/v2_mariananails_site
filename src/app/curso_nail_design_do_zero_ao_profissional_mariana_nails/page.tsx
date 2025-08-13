@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Script from 'next/script';
 
@@ -174,6 +174,7 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [viewersCount, setViewersCount] = useState(102);
   
   // Data dinâmica
   const { diaSemana, dia, mes, ano } = getDynamicDate();
@@ -182,6 +183,24 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
     month: '2-digit',
     year: '2-digit',
   });
+
+  // Effect para contador dinâmico de visualizadores
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setViewersCount(prev => {
+        // Gera variação aleatória entre -2 e +5
+        const variation = Math.floor(Math.random() * 8) - 2;
+        const newCount = prev + variation;
+        
+        // Mantém o contador entre 95 e 120
+        if (newCount < 95) return 95;
+        if (newCount > 120) return 120;
+        return newCount;
+      });
+    }, 3000); // Atualiza a cada 3 segundos
+
+    return () => clearInterval(interval);
+  }, []);
 
   // Perguntas do quiz
   const questions = [
@@ -572,9 +591,8 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
             Revelado: O único caminho que Transforma mulheres Iniciantes em Nail Designers DISPUTADAS com agenda lotada
           </h1>
           
-          <div className="flex items-center justify-center space-x-4 mb-4 text-sm text-white animate-fade-in-up delay-200">
-            <span className="animate-pulse-slow">🔴 102 pessoas assistindo</span>
-            <span>🔊 Clique para ativar o som</span>
+          <div className="flex items-center justify-center mb-4 text-sm text-white animate-fade-in-up delay-200">
+            <span className="animate-pulse-slow">🔴 {viewersCount} pessoas assistindo</span>
           </div>
           
           <p className="text-lg md:text-xl text-white max-w-3xl mx-auto animate-fade-in-up delay-300">
