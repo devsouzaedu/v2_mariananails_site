@@ -10,10 +10,133 @@ declare global {
   }
 }
 
-// Hook removido - sem animações
+// Hook para animações
+import { useEffect } from 'react';
 
-// Estilos desabilitados - sem animações
-const animationStyles = ``;
+// Estilos de animação
+const animationStyles = `
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200px 0;
+    }
+    100% {
+      background-position: calc(200px + 100%) 0;
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.6s ease-out forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200px 100%;
+    animation: shimmer 1.5s infinite linear;
+  }
+
+  .image-placeholder {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .image-placeholder::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmer 2s infinite;
+  }
+
+  .image-container {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+
+  .image-container:hover {
+    transform: translateY(-2px);
+  }
+
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
+  .delay-400 { animation-delay: 0.4s; }
+  .delay-500 { animation-delay: 0.5s; }
+  .delay-600 { animation-delay: 0.6s; }
+`;
 
 // Função para gerar data dinâmica
 const getDynamicDate = () => {
@@ -153,22 +276,22 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
     return (
       <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center px-6 py-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight text-[#ffcd10] ">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight text-[#ffcd10] animate-fade-in-up">
             {question.title}
           </h1>
           
           {question.question && (
-            <h2 className="text-xl md:text-2xl font-semibold mb-8 text-[#E4B7B2] ">
+            <h2 className="text-xl md:text-2xl font-semibold mb-8 text-[#E4B7B2] animate-fade-in-up delay-200">
               {question.question}
             </h2>
           )}
           
-          <div className="space-y-4 ">
+          <div className="space-y-4">
             {question.options.map((option, index) => (
               <button
                 key={index}
                 onClick={() => handleAnswer(option)}
-                className="w-full max-w-md mx-auto block bg-black hover:bg-black text-white font-semibold py-4 px-6 rounded-lg text-lg border border-[#ffcd10] hover:border-[#E4B7B2] transition-all duration-300 transform hover:scale-105 shadow-lg"
+                className={`w-full max-w-md mx-auto block bg-black hover:bg-black text-white font-semibold py-4 px-6 rounded-lg text-lg border border-[#ffcd10] hover:border-[#E4B7B2] transition-all duration-300 transform hover:scale-105 shadow-lg animate-scale-in delay-${(index + 3) * 100}`}
                 style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
               >
                 {option}
@@ -254,19 +377,27 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               {/* Imagem da Mariana */}
-              <div className="flex justify-center lg:justify-end ">
-                <Image 
-                  src="/images/mariana_landingpage.png"
-                  alt="Mariana Nails"
-                  width={400}
-                  height={500}
-                  className="rounded-lg shadow-xl"
-                  priority
-                />
+              <div className="flex justify-center lg:justify-end animate-slide-in-left">
+                <div className="image-placeholder w-80 h-96 rounded-lg">
+                  <Image 
+                    src="/images/mariana_landingpage.png"
+                    alt="Mariana Nails"
+                    width={400}
+                    height={500}
+                    className="rounded-lg shadow-xl"
+                    priority
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkbHBktH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/2gAMAwEAAhEDEQA/AJt7AWCKSgKTJMoLJ4mQUo3KNyqiJ5H31m5OBpjZiU8I8TJyqLKUZ5nQQkIXbHCUAYAUAPyP/9k="
+                    onLoad={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.parentElement?.classList.remove('image-placeholder');
+                    }}
+                  />
+                </div>
               </div>
               
               {/* Texto */}
-              <div className="text-left space-y-6 text-white text-lg leading-relaxed ">
+              <div className="text-left space-y-6 text-white text-lg leading-relaxed animate-slide-in-right">
                 <p>
                   Há mais de 10 anos eu não só vivo, mas <strong className="text-[#ffcd10]">PROSPERO</strong> com a minha paixão por unhas…
                 </p>
@@ -326,33 +457,44 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
             
             {/* Galeria de Unhas */}
             <div className="mb-12">
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-6 ">
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-6 animate-fade-in-up">
                 Veja o que você vai aprender a fazer!
               </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 ">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
                 {[
-                  'unhas_mariana_nails_curso (1).JPG',
-                  'unhas_mariana_nails_curso (2).jpg',
-                  'unhas_mariana_nails_curso (3).jpg',
-                  'unhas_mariana_nails_curso (4).jpg',
-                  'unhas_mariana_nails_curso (5).jpg',
-                  'unhas_mariana_nails_curso (6).jpg',
-                  'unhas_mariana_nails_curso (7).jpg',
-                  'unhas_mariana_nails_curso (8).jpg',
-                  'unhas_mariana_nails_curso (9).jpg',
-                  'unhas_mariana_nails_curso (10).jpg',
-                  'unhas_mariana_nails_curso (11).JPG',
-                  'unhas_mariana_nails_curso (12).JPG',
+                  'unhas_mariana_nails_curso (1).webp',
+                  'unhas_mariana_nails_curso (2).webp',
+                  'unhas_mariana_nails_curso (3).webp',
+                  'unhas_mariana_nails_curso (4).webp',
+                  'unhas_mariana_nails_curso (5).webp',
+                  'unhas_mariana_nails_curso (6).webp',
+                  'unhas_mariana_nails_curso (7).webp',
+                  'unhas_mariana_nails_curso (8).webp',
+                  'unhas_mariana_nails_curso (9).webp',
+                  'unhas_mariana_nails_curso (10).webp',
+                  'unhas_mariana_nails_curso (11).webp',
+                  'unhas_mariana_nails_curso (12).webp',
                 ].map((img, idx) => (
-                  <div key={img} className="overflow-hidden rounded-lg border-2 border-[#ffcd10] shadow-sm hover:shadow-lg transition-all">
-                    <Image
-                      src={`/images/${img}`}
-                      alt={`Unhas do curso Mariana Nails ${idx + 1}`}
-                      width={200}
-                      height={200}
-                      className="w-full h-32 object-cover object-center hover:scale-105 transition-transform duration-300"
-                      loading="lazy"
-                    />
+                  <div 
+                    key={img} 
+                    className={`image-container overflow-hidden rounded-lg border-2 border-[#ffcd10] shadow-sm hover:shadow-lg transition-all animate-scale-in delay-${Math.min(600, (idx + 1) * 100)}`}
+                  >
+                    <div className="image-placeholder w-full h-32 rounded-lg">
+                      <Image
+                        src={`/images/${img}`}
+                        alt={`Unhas do curso Mariana Nails ${idx + 1}`}
+                        width={200}
+                        height={200}
+                        className="w-full h-32 object-cover object-center hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                        placeholder="blur"
+                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkbHBktH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/2gAMAwEAAhEDEQA/AJt7AWCKSgKTJMoLJ4mQUo3KNyqiJ5H31m5OBpjZiU8I8TJyqLKUZ5nQQkIXbHCUAYAUAPyP/9k="
+                        onLoad={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.parentElement?.classList.remove('image-placeholder');
+                        }}
+                      />
+                    </div>
                   </div>
                 ))}
               </div>
@@ -398,30 +540,38 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
         </div>
 
         {/* Imagem de Topo */}
-        <div className="relative w-full h-auto">
-          <Image 
-            src="/images/mariana_nails_rota_curso_topo2.png"
-            alt="Mariana Nails - Curso Nail Design"
-            width={1920}
-            height={1080}
-            layout="responsive"
-            objectFit="cover"
-            priority
-          />
+        <div className="relative w-full h-auto animate-fade-in-up">
+          <div className="image-placeholder w-full h-64 md:h-80 lg:h-96">
+            <Image 
+              src="/images/mariana_nails_rota_curso_topo2.webp"
+              alt="Mariana Nails - Curso Nail Design"
+              width={1920}
+              height={1080}
+              layout="responsive"
+              objectFit="cover"
+              priority
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkbHBktH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/2gAMAwEAAhEDEQA/AJt7AWCKSgKTJMoLJ4mQUo3KNyqiJ5H31m5OBpjZiU8I8TJyqLKUZ5nQQkIXbHCUAYAUAPyP/9k="
+              onLoad={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.parentElement?.classList.remove('image-placeholder');
+              }}
+            />
+          </div>
         </div>
 
         {/* Cabeçalho principal */}
         <header className="py-8 px-6 text-center">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight text-white ">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight text-white animate-fade-in-up">
             Revelado: O único caminho que Transforma mulheres Iniciantes em Nail Designers DISPUTADAS com agenda lotada
           </h1>
           
-          <div className="flex items-center justify-center space-x-4 mb-4 text-sm text-white">
-            <span>🔴 102 pessoas assistindo</span>
+          <div className="flex items-center justify-center space-x-4 mb-4 text-sm text-white animate-fade-in-up delay-200">
+            <span className="animate-pulse-slow">🔴 102 pessoas assistindo</span>
             <span>🔊 Clique para ativar o som</span>
           </div>
           
-          <p className="text-lg md:text-xl text-white max-w-3xl mx-auto ">
+          <p className="text-lg md:text-xl text-white max-w-3xl mx-auto animate-fade-in-up delay-300">
             Imagina ser uma referência em Unhas a ponto de ter que recusar tantos clientes...
           </p>
         </header>
@@ -488,7 +638,7 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
               href="https://pay.kiwify.com.br/lf9IZHj"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-full text-xl md:text-2xl uppercase transition-all duration-300 transform hover:scale-105 shadow-lg inline-block mb-8"
+              className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-full text-xl md:text-2xl uppercase transition-all duration-300 transform hover:scale-105 shadow-lg inline-block mb-8 animate-pulse-slow"
               style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
               onClick={() => handleCheckoutClick('final-page-main-button')}
             >
@@ -497,29 +647,83 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
           </div>
         </section>
 
+        {/* Seção de Certificados */}
+        <section className="py-8 px-6 bg-black">
+          <div className="max-w-6xl mx-auto text-center">
+            <h3 className="text-2xl md:text-3xl font-bold mb-6 text-[#ffcd10] animate-fade-in-up">
+              🏆 Certificados Reconhecidos Internacionalmente
+            </h3>
+            <p className="text-white mb-8 text-lg animate-fade-in-up delay-200">
+              Comprove sua qualificação com certificados que demonstram sua expertise profissional
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+              <div className="animate-scale-in delay-300">
+                <div className="image-placeholder rounded-lg border-2 border-[#ffcd10] overflow-hidden">
+                  <Image
+                    src="/images/certificado_1.png"
+                    alt="Certificado Módulo 1 - Curso Completo Nail Design"
+                    width={500}
+                    height={350}
+                    className="w-full h-auto object-cover"
+                    loading="lazy"
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkbHBktH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/2gAMAwEAAhEDEQA/AJt7AWCKSgKTJMoLJ4mQUo3KNyqiJ5H31m5OBpjZiU8I8TJyqLKUZ5nQQkIXbHCUAYAUAPyP/9k="
+                    onLoad={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.parentElement?.classList.remove('image-placeholder');
+                    }}
+                  />
+                </div>
+                <p className="text-[#ffcd10] font-bold mt-4">Módulo 1 - Técnicas Fundamentais</p>
+              </div>
+              
+              <div className="animate-scale-in delay-400">
+                <div className="image-placeholder rounded-lg border-2 border-[#ffcd10] overflow-hidden">
+                  <Image
+                    src="/images/certificado_2.png"
+                    alt="Certificado Módulo 2 - Curso Completo Nail Design"
+                    width={500}
+                    height={350}
+                    className="w-full h-auto object-cover"
+                    loading="lazy"
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkbHBktH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/2gAMAwEAAhEDEQA/AJt7AWCKSgKTJMoLJ4mQUo3KNyqiJ5H31m5OBpjZiU8I8TJyqLKUZ5nQQkIXbHCUAYAUAPyP/9k="
+                    onLoad={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.parentElement?.classList.remove('image-placeholder');
+                    }}
+                  />
+                </div>
+                <p className="text-[#ffcd10] font-bold mt-4">Módulo 2 - Técnicas Avançadas</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Seção de depoimentos */}
         <section className="py-8 px-6 bg-black">
           <div className="max-w-6xl mx-auto text-center">
-            <h3 className="text-2xl md:text-3xl font-bold mb-6 text-[#ffcd10] ">
+            <h3 className="text-2xl md:text-3xl font-bold mb-6 text-[#ffcd10] animate-fade-in-up">
               Depoimentos reais de alunas que já estão se tornando Nail Designers de Valor!
             </h3>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
-              <div className="bg-black p-4 rounded-lg border border-[#ffcd10]">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="bg-black p-4 rounded-lg border border-[#ffcd10] animate-scale-in delay-200 hover:shadow-lg transition-all duration-300">
                 <p className="text-white text-sm italic mb-3">
                   "Eu estava desempregada e desacreditada, mas o curso da Mariana Nails mudou minha vida! Hoje tenho minha própria clientela e faturo mais de R$4.000 por mês. É um sonho!"
                 </p>
                 <p className="text-[#ffcd10] font-bold text-xs">Ana Paula, 29 anos - São Paulo/SP</p>
               </div>
               
-              <div className="bg-black p-4 rounded-lg border border-[#ffcd10]">
+              <div className="bg-black p-4 rounded-lg border border-[#ffcd10] animate-scale-in delay-300 hover:shadow-lg transition-all duration-300">
                 <p className="text-white text-sm italic mb-3">
                   "Sempre amei unhas, mas nunca pensei que poderia viver disso. O curso é super didático, e a Mariana é uma excelente professora. Conquistei minha independência!"
                 </p>
                 <p className="text-[#ffcd10] font-bold text-xs">Juliana Costa, 35 anos - Rio de Janeiro/RJ</p>
               </div>
               
-              <div className="bg-black p-4 rounded-lg border border-[#ffcd10]">
+              <div className="bg-black p-4 rounded-lg border border-[#ffcd10] animate-scale-in delay-400 hover:shadow-lg transition-all duration-300">
                 <p className="text-white text-sm italic mb-3">
                   "Em menos de 3 meses após o curso, já estava com a agenda lotada! A qualidade do ensino é incrível, e o suporte me deu toda a confiança que eu precisava."
                 </p>
@@ -541,7 +745,7 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
             href="https://pay.kiwify.com.br/lf9IZHj" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-block bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-full text-base shadow-2xl  transition-all duration-300 transform hover:scale-105 border-2 border-black whitespace-nowrap"
+            className="inline-block bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-full text-base shadow-2xl transition-all duration-300 transform hover:scale-105 border-2 border-black whitespace-nowrap animate-pulse-slow"
             style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
             onClick={() => handleCheckoutClick('fixed-bottom-button')}
           >
