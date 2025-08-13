@@ -136,6 +136,24 @@ const animationStyles = `
   .delay-400 { animation-delay: 0.4s; }
   .delay-500 { animation-delay: 0.5s; }
   .delay-600 { animation-delay: 0.6s; }
+
+  .transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .transition-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+  }
 `;
 
 // Função para gerar data dinâmica
@@ -155,6 +173,7 @@ const getDynamicDate = () => {
 export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   
   // Data dinâmica
   const { diaSemana, dia, mes, ano } = getDynamicDate();
@@ -231,19 +250,29 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
 
   // Função para avançar para próxima pergunta
   const handleAnswer = (answer: string) => {
-    const newAnswers = [...answers];
-    newAnswers[currentStep] = answer;
-    setAnswers(newAnswers);
+    setIsTransitioning(true);
     
-    if (currentStep === 2) {
-      // Após questão 3, ir para página de apresentação da Mariana
-      setCurrentStep(questions.length);
-    } else if (currentStep < questions.length - 1) {
-      setCurrentStep(currentStep + 1);
-    } else {
-      // Após última questão, ir para página "Imagina ter em mãos"
-      setCurrentStep(questions.length + 1);
-    }
+    // Fade para branco
+    setTimeout(() => {
+      const newAnswers = [...answers];
+      newAnswers[currentStep] = answer;
+      setAnswers(newAnswers);
+      
+      if (currentStep === 2) {
+        // Após questão 3, ir para página de apresentação da Mariana
+        setCurrentStep(questions.length);
+      } else if (currentStep < questions.length - 1) {
+        setCurrentStep(currentStep + 1);
+      } else {
+        // Após última questão, ir para página "Imagina ter em mãos"
+        setCurrentStep(questions.length + 1);
+      }
+      
+      // Fade de volta
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 100);
+    }, 300);
   };
 
   // Função para tracking de evento
@@ -378,22 +407,14 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               {/* Imagem da Mariana */}
               <div className="flex justify-center lg:justify-end animate-slide-in-left">
-                <div className="image-placeholder w-80 h-96 rounded-lg">
-                  <Image 
-                    src="/images/mariana_landingpage.png"
-                    alt="Mariana Nails"
-                    width={400}
-                    height={500}
-                    className="rounded-lg shadow-xl"
-                    priority
-                    placeholder="blur"
-                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkbHBktH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/2gAMAwEAAhEDEQA/AJt7AWCKSgKTJMoLJ4mQUo3KNyqiJ5H31m5OBpjZiU8I8TJyqLKUZ5nQQkIXbHCUAYAUAPyP/9k="
-                    onLoad={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.parentElement?.classList.remove('image-placeholder');
-                    }}
-                  />
-                </div>
+                <Image 
+                  src="/images/mariana_landingpage.png"
+                  alt="Mariana Nails"
+                  width={400}
+                  height={500}
+                  className="rounded-lg shadow-xl"
+                  priority
+                />
               </div>
               
               {/* Texto */}
@@ -479,22 +500,15 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
                     key={img} 
                     className={`image-container overflow-hidden rounded-lg border-2 border-[#ffcd10] shadow-sm hover:shadow-lg transition-all animate-scale-in delay-${Math.min(600, (idx + 1) * 100)}`}
                   >
-                    <div className="image-placeholder w-full h-32 rounded-lg">
-                      <Image
-                        src={`/images/${img}`}
-                        alt={`Unhas do curso Mariana Nails ${idx + 1}`}
-                        width={200}
-                        height={200}
-                        className="w-full h-32 object-cover object-center hover:scale-105 transition-transform duration-300"
-                        loading="lazy"
-                        placeholder="blur"
-                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkbHBktH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/2gAMAwEAAhEDEQA/AJt7AWCKSgKTJMoLJ4mQUo3KNyqiJ5H31m5OBpjZiU8I8TJyqLKUZ5nQQkIXbHCUAYAUAPyP/9k="
-                        onLoad={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.parentElement?.classList.remove('image-placeholder');
-                        }}
-                      />
-                    </div>
+                    <Image
+                      src={`/images/${img}`}
+                      alt={`Unhas do curso Mariana Nails ${idx + 1}`}
+                      width={200}
+                      height={200}
+                      className="w-full h-32 object-cover object-center hover:scale-105 transition-transform duration-300"
+                      loading="eager"
+                      priority={idx < 4}
+                    />
                   </div>
                 ))}
               </div>
@@ -541,23 +555,15 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
 
         {/* Imagem de Topo */}
         <div className="relative w-full h-auto animate-fade-in-up">
-          <div className="image-placeholder w-full h-64 md:h-80 lg:h-96">
-            <Image 
-              src="/images/mariana_nails_rota_curso_topo2.webp"
-              alt="Mariana Nails - Curso Nail Design"
-              width={1920}
-              height={1080}
-              layout="responsive"
-              objectFit="cover"
-              priority
-              placeholder="blur"
-              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkbHBktH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/2gAMAwEAAhEDEQA/AJt7AWCKSgKTJMoLJ4mQUo3KNyqiJ5H31m5OBpjZiU8I8TJyqLKUZ5nQQkIXbHCUAYAUAPyP/9k="
-              onLoad={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.parentElement?.classList.remove('image-placeholder');
-              }}
-            />
-          </div>
+          <Image 
+            src="/images/mariana_nails_rota_curso_topo2.webp"
+            alt="Mariana Nails - Curso Nail Design"
+            width={1920}
+            height={1080}
+            layout="responsive"
+            objectFit="cover"
+            priority
+          />
         </div>
 
         {/* Cabeçalho principal */}
@@ -659,40 +665,30 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
               <div className="animate-scale-in delay-300">
-                <div className="image-placeholder rounded-lg border-2 border-[#ffcd10] overflow-hidden">
+                <div className="rounded-lg border-2 border-[#ffcd10] overflow-hidden">
                   <Image
                     src="/images/certificado_1.png"
                     alt="Certificado Módulo 1 - Curso Completo Nail Design"
                     width={500}
                     height={350}
                     className="w-full h-auto object-cover"
-                    loading="lazy"
-                    placeholder="blur"
-                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkbHBktH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/2gAMAwEAAhEDEQA/AJt7AWCKSgKTJMoLJ4mQUo3KNyqiJ5H31m5OBpjZiU8I8TJyqLKUZ5nQQkIXbHCUAYAUAPyP/9k="
-                    onLoad={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.parentElement?.classList.remove('image-placeholder');
-                    }}
+                    loading="eager"
+                    priority
                   />
                 </div>
                 <p className="text-[#ffcd10] font-bold mt-4">Módulo 1 - Técnicas Fundamentais</p>
               </div>
               
               <div className="animate-scale-in delay-400">
-                <div className="image-placeholder rounded-lg border-2 border-[#ffcd10] overflow-hidden">
+                <div className="rounded-lg border-2 border-[#ffcd10] overflow-hidden">
                   <Image
                     src="/images/certificado_2.png"
                     alt="Certificado Módulo 2 - Curso Completo Nail Design"
                     width={500}
                     height={350}
                     className="w-full h-auto object-cover"
-                    loading="lazy"
-                    placeholder="blur"
-                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkbHBktH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/2gAMAwEAAhEDEQA/AJt7AWCKSgKTJMoLJ4mQUo3KNyqiJ5H31m5OBpjZiU8I8TJyqLKUZ5nQQkIXbHCUAYAUAPyP/9k="
-                    onLoad={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.parentElement?.classList.remove('image-placeholder');
-                    }}
+                    loading="eager"
+                    priority
                   />
                 </div>
                 <p className="text-[#ffcd10] font-bold mt-4">Módulo 2 - Técnicas Avançadas</p>
@@ -733,6 +729,30 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
           </div>
         </section>
 
+        {/* Seção de Segurança */}
+        <section className="bg-black py-6 px-6 border-t border-[#ffcd10]">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="mb-4">
+              <Image
+                src="/images/bandeiras_1.png"
+                alt="Formas de pagamento seguras - Pix, Visa, Mastercard, Hipercard"
+                width={600}
+                height={120}
+                className="mx-auto"
+                priority
+              />
+            </div>
+            <div className="space-y-2">
+              <p className="text-white font-semibold text-sm md:text-base">
+                <span className="text-[#ffcd10]">✓</span> Compra 100% segura. Acesso imediato via Pix ou Cartão.
+              </p>
+              <p className="text-white font-semibold text-sm md:text-base">
+                <span className="text-[#ffcd10]">✓</span> 7 dias de garantia: Satisfação total ou seu dinheiro de volta.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Rodapé */}
         <footer className="bg-black text-white py-4 px-6 text-center">
           <p className="text-xs mb-1">COPYRIGHT 2025 – Mariana Nails – Todos os direitos reservados</p>
@@ -760,6 +780,9 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
     <div className="min-h-screen">
       {/* Estilos de Animação */}
       <style jsx>{animationStyles}</style>
+      
+      {/* Overlay de Transição */}
+      <div className={`transition-overlay ${isTransitioning ? 'active' : ''}`}></div>
       
       {renderQuestion()}
     </div>
