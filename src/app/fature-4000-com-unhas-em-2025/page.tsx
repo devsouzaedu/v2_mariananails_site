@@ -538,6 +538,57 @@ export default function Fature4000ComUnhasEm2025() {
         </div>
       </section>
 
+      {/* Seção de Feedbacks Reais */}
+      <section className="py-8 px-6 bg-black">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[#ffcd10] scroll-animate animate-fadeIn" data-animate>
+            📱 Feedbacks Reais de Nossas Alunas
+          </h2>
+          <p className="text-white mb-8 text-lg scroll-animate animate-slideInUp" data-animate>
+            Veja os resultados incríveis que nossas alunas estão conquistando após o curso!
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 scroll-animate animate-fadeInStagger" data-animate>
+            {[
+              { src: 'feedbacks (1).jpeg', alt: 'Feedback de aluna satisfeita com resultado das unhas' },
+              { src: 'feedbacks (2).jpeg', alt: 'Depoimento sobre conclusão do curso e diploma' },
+              { src: 'feedbacks (3).jpeg', alt: 'Aluna mostrando trabalho após aprender técnicas' },
+              { src: 'feedbacks (4).jpeg', alt: 'Feedback sobre primeira cliente atendida' },
+              { src: 'feedbacks (5).jpeg', alt: 'Depoimento sobre qualidade do curso e resultados' },
+              { src: 'feedbacks (1).png', alt: 'Certificado de conclusão do curso Mariana Nails' }
+            ].map((feedback, idx) => (
+              <div 
+                key={feedback.src} 
+                className="scroll-animate animate-scaleIn hover:scale-105 transition-transform duration-300" 
+                data-animate
+              >
+                <div className="bg-gray-900 rounded-xl border-2 border-[#ffcd10] overflow-hidden shadow-xl">
+                  <Image
+                    src={`/images/${feedback.src}`}
+                    alt={feedback.alt}
+                    width={400}
+                    height={500}
+                    className="w-full h-auto object-cover"
+                    loading="eager"
+                    priority={idx < 3}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="bg-gray-900 border-2 border-[#ffcd10] p-6 rounded-xl max-w-3xl mx-auto scroll-animate animate-fadeIn" data-animate>
+            <h3 className="text-xl font-bold text-[#ffcd10] mb-3">💎 Transformações Reais</h3>
+            <p className="text-white text-sm leading-relaxed">
+              Estes são apenas alguns dos <strong className="text-[#ffcd10]">centenas de feedbacks</strong> que 
+              recebemos diariamente! Nossas alunas não apenas aprendem as técnicas, mas também 
+              <strong className="text-[#ffcd10]"> conquistam sua independência financeira</strong> e se tornam 
+              referências em suas regiões.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Seção de Certificados */}
       <section className="py-8 px-6 bg-black">
         <div className="max-w-6xl mx-auto text-center">
