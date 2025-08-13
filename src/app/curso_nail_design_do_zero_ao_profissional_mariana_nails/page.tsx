@@ -35,6 +35,11 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
   
   // Data dinâmica
   const { diaSemana, dia, mes, ano } = getDynamicDate();
+  const dataLimite = new Date().toLocaleDateString('pt-BR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: '2-digit',
+  });
 
   // Perguntas do quiz
   const questions = [
@@ -388,7 +393,7 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
         {/* Banner de urgência */}
         <div className="bg-red-600 text-white text-center py-3 px-4">
           <p className="text-sm md:text-base font-bold ">
-            ⚠️ Devido a grande quantidade de acessos, esta página ficará disponível até o dia 11/08/25
+            ⚠️ Devido a grande quantidade de acessos, esta página ficará disponível até o dia {dataLimite}
           </p>
         </div>
 
