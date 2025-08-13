@@ -11,7 +11,6 @@ declare global {
 }
 
 // Hook para animações
-import { useEffect } from 'react';
 
 // Estilos de animação
 const animationStyles = `
