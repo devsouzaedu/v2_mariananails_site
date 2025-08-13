@@ -319,8 +319,6 @@ export default function Fature4000ComUnhasEm2025() {
           className="w-full h-auto"
           priority
           quality={85}
-          placeholder="blur"
-          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
         />
       </div>
@@ -559,9 +557,8 @@ export default function Fature4000ComUnhasEm2025() {
                   width={500}
                   height={350}
                   className="w-full h-auto object-cover"
-                  loading="lazy"
-                  placeholder="blur"
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkbHBktH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/2gAMAwEAAhEDEQA/AJt7AWCKSgKTJMoLJ4mQUo3KNyqiJ5H31m5OBpjZiU8I8TJyqLKUZ5nQQkIXbHCUAYAUAPyP/9k="
+                  loading="eager"
+                  priority
                   quality={85}
                 />
               </div>
@@ -577,9 +574,8 @@ export default function Fature4000ComUnhasEm2025() {
                   width={500}
                   height={350}
                   className="w-full h-auto object-cover"
-                  loading="lazy"
-                  placeholder="blur"
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkbHBktH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/2gAMAwEAAhEDEQA/AJt7AWCKSgKTJMoLJ4mQUo3KNyqiJ5H31m5OBpjZiU8I8TJyqLKUZ5nQQkIXbHCUAYAUAPyP/9k="
+                  loading="eager"
+                  priority
                   quality={85}
                 />
               </div>
@@ -764,10 +760,9 @@ export default function Fature4000ComUnhasEm2025() {
                   width={200}
                   height={160}
                   className="w-full h-40 object-cover object-center hover:scale-105 transition-transform duration-300"
-                  loading={idx < 4 ? "eager" : "lazy"}
-                  quality={70}
-                  placeholder="blur"
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                  loading="eager"
+                  priority={idx < 4}
+                  quality={85}
                   sizes="(max-width: 480px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 200px"
                 />
               </div>
@@ -776,14 +771,40 @@ export default function Fature4000ComUnhasEm2025() {
         </div>
       </section>
 
+
+
       {/* Rodapé - Fundo Preto */}
       <footer className="bg-black text-white py-3 px-6 text-center">
         <p className="text-xs mb-1">COPYRIGHT 2025 – Mariana Nails – Todos os direitos reservados</p>
         <p className="text-xs">Suporte: <a href="mailto:suporte@mariananails.com" className="text-pink-400 hover:underline">suporte@mariananails.com</a></p>
       </footer>
 
+      {/* Seção de Segurança Flutuante */}
+      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-40 px-4">
+        <div className="bg-black border-2 border-[#ffcd10] rounded-xl p-4 shadow-2xl max-w-md">
+          <div className="mb-3">
+            <Image
+              src="/images/bandeiras_1.png"
+              alt="Formas de pagamento seguras - Pix, Visa, Mastercard, Hipercard"
+              width={300}
+              height={60}
+              className="mx-auto"
+              priority
+            />
+          </div>
+          <div className="space-y-1 text-center">
+            <p className="text-white font-semibold text-xs">
+              <span className="text-[#ffcd10]">✓</span> Compra 100% segura. Acesso imediato via Pix ou Cartão.
+            </p>
+            <p className="text-white font-semibold text-xs">
+              <span className="text-[#ffcd10]">✓</span> 7 dias de garantia: Satisfação total ou seu dinheiro de volta.
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Botão Fixo - Garantir Minha Vaga */}
-      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 px-4">
+      <div className="fixed bottom-32 left-1/2 transform -translate-x-1/2 z-50 px-4">
         <a 
           href="https://pay.kiwify.com.br/lf9IZHj" 
           target="_blank" 

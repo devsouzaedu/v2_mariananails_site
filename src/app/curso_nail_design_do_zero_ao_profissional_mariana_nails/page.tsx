@@ -729,29 +729,7 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
           </div>
         </section>
 
-        {/* Seção de Segurança */}
-        <section className="bg-black py-6 px-6 border-t border-[#ffcd10]">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="mb-4">
-              <Image
-                src="/images/bandeiras_1.png"
-                alt="Formas de pagamento seguras - Pix, Visa, Mastercard, Hipercard"
-                width={600}
-                height={120}
-                className="mx-auto"
-                priority
-              />
-            </div>
-            <div className="space-y-2">
-              <p className="text-white font-semibold text-sm md:text-base">
-                <span className="text-[#ffcd10]">✓</span> Compra 100% segura. Acesso imediato via Pix ou Cartão.
-              </p>
-              <p className="text-white font-semibold text-sm md:text-base">
-                <span className="text-[#ffcd10]">✓</span> 7 dias de garantia: Satisfação total ou seu dinheiro de volta.
-              </p>
-            </div>
-          </div>
-        </section>
+
 
         {/* Rodapé */}
         <footer className="bg-black text-white py-4 px-6 text-center">
@@ -759,8 +737,32 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
           <p className="text-xs">Suporte: <a href="mailto:suporte@mariananails.com" className="text-[#E4B7B2] hover:underline">suporte@mariananails.com</a></p>
         </footer>
 
+        {/* Seção de Segurança Flutuante */}
+        <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-40 px-4">
+          <div className="bg-black border-2 border-[#ffcd10] rounded-xl p-4 shadow-2xl max-w-md">
+            <div className="mb-3">
+              <Image
+                src="/images/bandeiras_1.png"
+                alt="Formas de pagamento seguras - Pix, Visa, Mastercard, Hipercard"
+                width={300}
+                height={60}
+                className="mx-auto"
+                priority
+              />
+            </div>
+            <div className="space-y-1 text-center">
+              <p className="text-white font-semibold text-xs">
+                <span className="text-[#ffcd10]">✓</span> Compra 100% segura. Acesso imediato via Pix ou Cartão.
+              </p>
+              <p className="text-white font-semibold text-xs">
+                <span className="text-[#ffcd10]">✓</span> 7 dias de garantia: Satisfação total ou seu dinheiro de volta.
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Botão fixo */}
-        <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 px-4">
+        <div className="fixed bottom-32 left-1/2 transform -translate-x-1/2 z-50 px-4">
           <a 
             href="https://pay.kiwify.com.br/lf9IZHj" 
             target="_blank" 
