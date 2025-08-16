@@ -243,6 +243,65 @@ export default function Fature4000ComUnhasEm2025() {
     return () => clearTimeout(timer);
   }, []);
   
+  // Função para obter cookies
+  const getCookie = (name: string): string | null => {
+    if (typeof document === 'undefined') return null;
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop()?.split(';').shift() || null;
+    return null;
+  };
+
+  // Função para obter parâmetros UTM da URL atual
+  const getUrlParams = (): Record<string, string> => {
+    if (typeof window === 'undefined') return {};
+    
+    const params = new URLSearchParams(window.location.search);
+    const urlParams: Record<string, string> = {};
+    
+    // Parâmetros que a Kiwify aceita
+    const acceptedParams = [
+      'src', 'sck', 'utm_source', 'utm_medium', 'utm_campaign', 
+      'utm_term', 'utm_content', 's1', 's2', 's3'
+    ];
+    
+    acceptedParams.forEach(param => {
+      const value = params.get(param);
+      if (value) {
+        urlParams[param] = value;
+      }
+    });
+    
+    return urlParams;
+  };
+
+  // Função para construir URL do Kiwify com todos os parâmetros de rastreamento
+  const buildKiwifyUrl = (baseUrl: string): string => {
+    const fbc = getCookie('_fbc');
+    const fbp = getCookie('_fbp');
+    const urlParams = getUrlParams();
+    
+    const allParams: Record<string, string> = {
+      ...urlParams
+    };
+    
+    // Adicionar cookies do Facebook se existirem
+    if (fbc) allParams['_fbc'] = fbc;
+    if (fbp) allParams['_fbp'] = fbp;
+    
+    // Se não houver parâmetros, retornar URL original
+    if (Object.keys(allParams).length === 0) {
+      return baseUrl;
+    }
+    
+    // Construir query string
+    const queryString = Object.entries(allParams)
+      .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+      .join('&');
+    
+    return `${baseUrl}?${queryString}`;
+  };
+
   // Função para tracking de evento de checkout
   const handleCheckoutClick = (buttonLocation: string) => {
     if (typeof window !== 'undefined' && window.fbq) {
@@ -258,6 +317,13 @@ export default function Fature4000ComUnhasEm2025() {
     } else {
       console.log('Meta Pixel não carregado ainda ou window.fbq não disponível');
     }
+    
+    // Log dos parâmetros que estão sendo enviados
+    console.log('Parâmetros de rastreamento capturados:', {
+      _fbc: getCookie('_fbc'),
+      _fbp: getCookie('_fbp'),
+      urlParams: getUrlParams()
+    });
   };
 
   return (
@@ -494,7 +560,7 @@ export default function Fature4000ComUnhasEm2025() {
         {/* Botão CTA Após "Perfeita Para Você" */}
         <div className="text-center mt-6">
           <a 
-            href="https://pay.kiwify.com.br/lf9IZHj" 
+            href={buildKiwifyUrl("https://pay.kiwify.com.br/lf9IZHj")} 
             target="_blank" 
             rel="noopener noreferrer"
             className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-full text-lg shadow-xl transition-all duration-300 transform hover:scale-105 inline-block animate-bounce"
@@ -671,7 +737,7 @@ export default function Fature4000ComUnhasEm2025() {
         {/* Botão CTA Após Depoimentos */}
         <div className="text-center mt-6">
           <a 
-            href="https://pay.kiwify.com.br/lf9IZHj" 
+            href={buildKiwifyUrl("https://pay.kiwify.com.br/lf9IZHj")} 
             target="_blank" 
             rel="noopener noreferrer"
             className="bg-[#E4B7B2] hover:bg-pink-400 text-black font-bold py-3 px-6 rounded-full text-lg shadow-xl transition-all duration-300 transform hover:scale-105 inline-block animate-pulse"
@@ -736,7 +802,7 @@ export default function Fature4000ComUnhasEm2025() {
           </div>
 
           <div className="mb-6">
-            <a href="https://pay.kiwify.com.br/lf9IZHj" target="_blank" rel="noopener noreferrer" className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-full text-lg md:text-xl uppercase transition-all duration-300 transform hover:scale-105 shadow-lg inline-block" style={{ fontFamily: 'var(--font-instrument-serif), serif' }} onClick={() => handleCheckoutClick('main-cta-section')}>
+            <a href={buildKiwifyUrl("https://pay.kiwify.com.br/lf9IZHj")} target="_blank" rel="noopener noreferrer" className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-full text-lg md:text-xl uppercase transition-all duration-300 transform hover:scale-105 shadow-lg inline-block" style={{ fontFamily: 'var(--font-instrument-serif), serif' }} onClick={() => handleCheckoutClick('main-cta-section')}>
               🎯 QUERO GARANTIR MINHA VAGA AGORA!
             </a>
           </div>
@@ -835,7 +901,7 @@ export default function Fature4000ComUnhasEm2025() {
         <div className="bg-black/90 backdrop-blur-sm border border-[#ffcd10]/60 rounded-2xl p-4 shadow-2xl space-y-3">
           {/* Botão Garantir Minha Vaga */}
           <a 
-            href="https://pay.kiwify.com.br/lf9IZHj" 
+            href={buildKiwifyUrl("https://pay.kiwify.com.br/lf9IZHj")} 
             target="_blank" 
             rel="noopener noreferrer"
             className="block bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-full text-base shadow-xl animate-pulse transition-all duration-300 transform hover:scale-105 border-2 border-black text-center"

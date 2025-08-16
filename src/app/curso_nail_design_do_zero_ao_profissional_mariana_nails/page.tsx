@@ -293,6 +293,65 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
     }, 300);
   };
 
+  // Função para obter cookies
+  const getCookie = (name: string): string | null => {
+    if (typeof document === 'undefined') return null;
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop()?.split(';').shift() || null;
+    return null;
+  };
+
+  // Função para obter parâmetros UTM da URL atual
+  const getUrlParams = (): Record<string, string> => {
+    if (typeof window === 'undefined') return {};
+    
+    const params = new URLSearchParams(window.location.search);
+    const urlParams: Record<string, string> = {};
+    
+    // Parâmetros que a Kiwify aceita
+    const acceptedParams = [
+      'src', 'sck', 'utm_source', 'utm_medium', 'utm_campaign', 
+      'utm_term', 'utm_content', 's1', 's2', 's3'
+    ];
+    
+    acceptedParams.forEach(param => {
+      const value = params.get(param);
+      if (value) {
+        urlParams[param] = value;
+      }
+    });
+    
+    return urlParams;
+  };
+
+  // Função para construir URL do Kiwify com todos os parâmetros de rastreamento
+  const buildKiwifyUrl = (baseUrl: string): string => {
+    const fbc = getCookie('_fbc');
+    const fbp = getCookie('_fbp');
+    const urlParams = getUrlParams();
+    
+    const allParams: Record<string, string> = {
+      ...urlParams
+    };
+    
+    // Adicionar cookies do Facebook se existirem
+    if (fbc) allParams['_fbc'] = fbc;
+    if (fbp) allParams['_fbp'] = fbp;
+    
+    // Se não houver parâmetros, retornar URL original
+    if (Object.keys(allParams).length === 0) {
+      return baseUrl;
+    }
+    
+    // Construir query string
+    const queryString = Object.entries(allParams)
+      .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+      .join('&');
+    
+    return `${baseUrl}?${queryString}`;
+  };
+
   // Função para tracking de evento
   const handleCheckoutClick = (buttonLocation: string) => {
     if (typeof window !== 'undefined' && window.fbq) {
@@ -306,6 +365,13 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
         button_location: buttonLocation
       });
     }
+    
+    // Log dos parâmetros que estão sendo enviados
+    console.log('Parâmetros de rastreamento capturados:', {
+      _fbc: getCookie('_fbc'),
+      _fbp: getCookie('_fbp'),
+      urlParams: getUrlParams()
+    });
   };
 
   // Renderizar pergunta atual
@@ -658,7 +724,7 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
             </p>
             
             <a
-              href="https://pay.kiwify.com.br/lf9IZHj"
+              href={buildKiwifyUrl("https://pay.kiwify.com.br/lf9IZHj")}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-full text-xl md:text-2xl uppercase transition-all duration-300 transform hover:scale-105 shadow-lg inline-block mb-8 animate-pulse-slow"
@@ -809,7 +875,7 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
           <div className="bg-black/90 backdrop-blur-sm border border-[#ffcd10]/60 rounded-2xl p-4 shadow-2xl space-y-3">
             {/* Botão Garantir Minha Vaga */}
             <a 
-              href="https://pay.kiwify.com.br/lf9IZHj" 
+              href={buildKiwifyUrl("https://pay.kiwify.com.br/lf9IZHj")} 
               target="_blank" 
               rel="noopener noreferrer"
               className="block bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-full text-base shadow-xl transition-all duration-300 transform hover:scale-105 border-2 border-black text-center animate-pulse-slow"
