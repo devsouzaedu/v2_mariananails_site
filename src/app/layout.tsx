@@ -65,14 +65,15 @@ export default function RootLayout({
   const pathname = usePathname();
   const isLandingPage = pathname === '/landing';
   const isEbookPage = pathname === '/ebook';
+  const isEbookGuiadoPage = pathname === '/ebookguiado'; // Nova rota do ebook guiado
   const isCursoPage = pathname === '/curso_nail_designer_do_zero';
   const isFaturePage = pathname === '/fature-4000-com-unhas-em-2025'; // Adicionada a nova rota aqui
   const isQuizPage = pathname === '/curso_nail_design_do_zero_ao_profissional_mariana_nails';
   return (
     <html lang="pt-BR" className={`${funnelSans.variable} ${ptSans.variable} ${playfair.variable} ${instrumentSerif.variable} ${instrumentSans.variable}`}>
       <body className="min-h-screen">
-        {/* Condição para renderizar Navbar e banner apenas se NÃO for landing, ebook, curso, fature ou quiz */}
-        {!isLandingPage && !isEbookPage && !isCursoPage && !isFaturePage && !isQuizPage && (
+        {/* Condição para renderizar Navbar e banner apenas se NÃO for landing, ebook, ebookguiado, curso, fature ou quiz */}
+        {!isLandingPage && !isEbookPage && !isEbookGuiadoPage && !isCursoPage && !isFaturePage && !isQuizPage && (
           <>
             <div className="fixed inset-0 pointer-events-none z-0">
               <div className="absolute inset-0 bg-primary-50 opacity-30 mix-blend-multiply" style={{ 
@@ -85,12 +86,12 @@ export default function RootLayout({
             <Navbar />
           </>
         )}
-        <main className={`flex-grow relative z-10 ${isLandingPage || isEbookPage || isCursoPage || isFaturePage || isQuizPage ? '' : 'pt-20'}`}>
+        <main className={`flex-grow relative z-10 ${isLandingPage || isEbookPage || isEbookGuiadoPage || isCursoPage || isFaturePage || isQuizPage ? '' : 'pt-20'}`}>
           {children}
         </main>
-        {/* Condição para renderizar Footer e WhatsAppButton apenas se NÃO for ebook, curso, fature ou quiz */}
-        {!isEbookPage && !isCursoPage && !isFaturePage && !isQuizPage && <Footer />}
-        {!isEbookPage && !isCursoPage && !isFaturePage && !isQuizPage && <WhatsAppButton />}
+        {/* Condição para renderizar Footer e WhatsAppButton apenas se NÃO for ebook, ebookguiado, curso, fature ou quiz */}
+        {!isEbookPage && !isEbookGuiadoPage && !isCursoPage && !isFaturePage && !isQuizPage && <Footer />}
+        {!isEbookPage && !isEbookGuiadoPage && !isCursoPage && !isFaturePage && !isQuizPage && <WhatsAppButton />}
       </body>
     </html>
   )
