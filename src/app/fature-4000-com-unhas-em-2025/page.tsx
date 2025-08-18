@@ -252,17 +252,18 @@ export default function Fature4000ComUnhasEm2025() {
     return null;
   };
 
-  // Função para obter parâmetros UTM da URL atual
+  // Função para obter parâmetros UTM da URL atual - Versão otimizada
   const getUrlParams = (): Record<string, string> => {
     if (typeof window === 'undefined') return {};
     
     const params = new URLSearchParams(window.location.search);
     const urlParams: Record<string, string> = {};
     
-    // Parâmetros que a Kiwify aceita
+    // Parâmetros que a Kiwify aceita (incluindo todos os UTMs padrão)
     const acceptedParams = [
       'src', 'sck', 'utm_source', 'utm_medium', 'utm_campaign', 
-      'utm_term', 'utm_content', 's1', 's2', 's3'
+      'utm_term', 'utm_content', 'utm_id', 'utm_source_platform',
+      's1', 's2', 's3', 's4', 's5', 'fbclid', 'gclid'
     ];
     
     acceptedParams.forEach(param => {
@@ -277,6 +278,12 @@ export default function Fature4000ComUnhasEm2025() {
 
   // Função para construir URL do Kiwify com todos os parâmetros de rastreamento
   const buildKiwifyUrl = (baseUrl: string): string => {
+    if (typeof window === 'undefined') return baseUrl;
+    
+    // Método direto: pega todos os parâmetros da URL atual
+    const currentParams = window.location.search;
+    
+    // Captura também cookies do Facebook para rastreamento avançado
     const fbc = getCookie('_fbc');
     const fbp = getCookie('_fbp');
     const urlParams = getUrlParams();
@@ -289,7 +296,22 @@ export default function Fature4000ComUnhasEm2025() {
     if (fbc) allParams['_fbc'] = fbc;
     if (fbp) allParams['_fbp'] = fbp;
     
-    // Se não houver parâmetros, retornar URL original
+    // Se temos parâmetros na URL atual, usar método direto (mais simples)
+    if (currentParams && Object.keys(urlParams).length > 0) {
+      // Combinar parâmetros da URL com cookies do Facebook
+      const extraParams = [];
+      if (fbc) extraParams.push(`_fbc=${encodeURIComponent(fbc)}`);
+      if (fbp) extraParams.push(`_fbp=${encodeURIComponent(fbp)}`);
+      
+      if (extraParams.length > 0) {
+        const separator = currentParams.includes('?') ? '&' : '?';
+        return `${baseUrl}${currentParams}&${extraParams.join('&')}`;
+      } else {
+        return `${baseUrl}${currentParams}`;
+      }
+    }
+    
+    // Fallback: método original se não há parâmetros na URL
     if (Object.keys(allParams).length === 0) {
       return baseUrl;
     }
@@ -322,7 +344,9 @@ export default function Fature4000ComUnhasEm2025() {
     console.log('Parâmetros de rastreamento capturados:', {
       _fbc: getCookie('_fbc'),
       _fbp: getCookie('_fbp'),
-      urlParams: getUrlParams()
+      urlParams: getUrlParams(),
+      currentUrlParams: window.location.search,
+      finalKiwifyUrl: buildKiwifyUrl("https://pay.kiwify.com.br/lf9IZHj")
     });
   };
 
@@ -358,6 +382,28 @@ export default function Fature4000ComUnhasEm2025() {
       
       {/* Estilos de Animação */}
       <style jsx>{animationStyles}</style>
+
+      {/* Script adicional para garantir UTM tracking (método direto) */}
+      <Script
+        id="utm-tracking-direct"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            // Método direto de captura de UTMs (backup/alternativo)
+            document.addEventListener('DOMContentLoaded', function() {
+              const params = window.location.search;
+              const buttons = document.querySelectorAll('a[href*="pay.kiwify.com.br"]');
+              
+              buttons.forEach(function(btn) {
+                if (params && !btn.href.includes('?') && !btn.href.includes(params)) {
+                  btn.href = btn.href + params;
+                  console.log('UTM tracking aplicado diretamente ao botão:', btn.href);
+                }
+              });
+            });
+          `,
+        }}
+      />
       
       {/* Banner Promocional Dinâmico */}
       <div className="bg-black text-white text-center py-3 px-4 relative overflow-hidden">
