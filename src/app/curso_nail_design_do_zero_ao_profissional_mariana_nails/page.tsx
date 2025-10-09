@@ -352,27 +352,76 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
     return `${baseUrl}?${queryString}`;
   };
 
-  // Função para tracking de evento
+  // Função para gerar Event ID único (importante para deduplicação com CAPI)
+  const generateEventId = () => {
+    return `${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+  };
+
+  // Função para tracking de evento InitiateCheckout
   const handleCheckoutClick = (buttonLocation: string) => {
     if (typeof window !== 'undefined' && window.fbq) {
+      const eventId = generateEventId();
+      const fbc = getCookie('_fbc');
+      const fbp = getCookie('_fbp');
+      
       console.log('Meta Pixel - Evento InitiateCheckout disparado:', buttonLocation);
+      
+      // Enviar evento com dados enriquecidos
       window.fbq('track', 'InitiateCheckout', {
         content_name: 'Curso Nail Design do Zero ao Profissional',
         content_category: 'Course',
         content_ids: ['curso-nail-design-mariana-nails'],
+        content_type: 'product',
         currency: 'BRL',
-        value: 19.90,
-        button_location: buttonLocation
+        value: 50.00,
+        button_location: buttonLocation,
+        // Dados adicionais para melhor atribuição
+        source_url: window.location.href,
+        fbc: fbc || undefined,
+        fbp: fbp || undefined
+      }, {
+        eventID: eventId // Event ID para deduplicação com CAPI
       });
+      
+      console.log('✅ Evento InitiateCheckout enviado com Event ID:', eventId);
     }
     
     // Log dos parâmetros que estão sendo enviados
     console.log('Parâmetros de rastreamento capturados:', {
       _fbc: getCookie('_fbc'),
       _fbp: getCookie('_fbp'),
-      urlParams: getUrlParams()
+      urlParams: getUrlParams(),
+      user_agent: navigator.userAgent,
+      timestamp: new Date().toISOString()
     });
   };
+
+  // Disparar evento ViewContent quando a página de venda carregar
+  useEffect(() => {
+    if (currentStep === questions.length + 2 && typeof window !== 'undefined' && window.fbq) {
+      const eventId = generateEventId();
+      const fbc = getCookie('_fbc');
+      const fbp = getCookie('_fbp');
+      
+      console.log('Meta Pixel - Evento ViewContent disparado');
+      
+      window.fbq('track', 'ViewContent', {
+        content_name: 'Curso Nail Design do Zero ao Profissional',
+        content_category: 'Course',
+        content_ids: ['curso-nail-design-mariana-nails'],
+        content_type: 'product',
+        currency: 'BRL',
+        value: 50.00,
+        source_url: window.location.href,
+        fbc: fbc || undefined,
+        fbp: fbp || undefined
+      }, {
+        eventID: eventId
+      });
+      
+      console.log('✅ Evento ViewContent enviado com Event ID:', eventId);
+    }
+  }, [currentStep]);
 
   // Renderizar pergunta atual
   const renderQuestion = () => {
@@ -720,7 +769,7 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
         <section className="py-8 px-6 text-center">
           <div className="max-w-4xl mx-auto">
             <p className="text-2xl font-bold text-[#ffcd10] mb-4 ">
-              O valor do curso de Nail Design é de R$ 19,90
+              O valor do curso de Nail Design é de R$ 50,00
             </p>
             
             <a

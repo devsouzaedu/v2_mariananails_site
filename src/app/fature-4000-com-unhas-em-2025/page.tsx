@@ -324,18 +324,38 @@ export default function Fature4000ComUnhasEm2025() {
     return `${baseUrl}?${queryString}`;
   };
 
+  // Função para gerar Event ID único (importante para deduplicação com CAPI)
+  const generateEventId = () => {
+    return `${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+  };
+
   // Função para tracking de evento de checkout
   const handleCheckoutClick = (buttonLocation: string) => {
     if (typeof window !== 'undefined' && window.fbq) {
+      const eventId = generateEventId();
+      const fbc = getCookie('_fbc');
+      const fbp = getCookie('_fbp');
+      
       console.log('Meta Pixel - Evento InitiateCheckout disparado:', buttonLocation);
+      
+      // Enviar evento com dados enriquecidos
       window.fbq('track', 'InitiateCheckout', {
         content_name: 'Curso Mariana Nails - Fature +R$4000/Mês',
         content_category: 'Course',
         content_ids: ['curso-mariana-nails-2025'],
+        content_type: 'product',
         currency: 'BRL',
-        value: 19.90,
-        button_location: buttonLocation
+        value: 50.00,
+        button_location: buttonLocation,
+        // Dados adicionais para melhor atribuição
+        source_url: window.location.href,
+        fbc: fbc || undefined,
+        fbp: fbp || undefined
+      }, {
+        eventID: eventId // Event ID para deduplicação com CAPI
       });
+      
+      console.log('✅ Evento InitiateCheckout enviado com Event ID:', eventId);
     } else {
       console.log('Meta Pixel não carregado ainda ou window.fbq não disponível');
     }
@@ -346,9 +366,38 @@ export default function Fature4000ComUnhasEm2025() {
       _fbp: getCookie('_fbp'),
       urlParams: getUrlParams(),
       currentUrlParams: window.location.search,
-      finalKiwifyUrl: buildKiwifyUrl("https://pay.kiwify.com.br/lf9IZHj")
+      finalKiwifyUrl: buildKiwifyUrl("https://pay.kiwify.com.br/lf9IZHj"),
+      user_agent: navigator.userAgent,
+      timestamp: new Date().toISOString()
     });
   };
+
+  // Disparar evento ViewContent quando a página carregar
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.fbq) {
+      const eventId = generateEventId();
+      const fbc = getCookie('_fbc');
+      const fbp = getCookie('_fbp');
+      
+      console.log('Meta Pixel - Evento ViewContent disparado');
+      
+      window.fbq('track', 'ViewContent', {
+        content_name: 'Curso Mariana Nails - Fature +R$4000/Mês',
+        content_category: 'Course',
+        content_ids: ['curso-mariana-nails-2025'],
+        content_type: 'product',
+        currency: 'BRL',
+        value: 50.00,
+        source_url: window.location.href,
+        fbc: fbc || undefined,
+        fbp: fbp || undefined
+      }, {
+        eventID: eventId
+      });
+      
+      console.log('✅ Evento ViewContent enviado com Event ID:', eventId);
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-black text-gray-800">
@@ -644,7 +693,7 @@ export default function Fature4000ComUnhasEm2025() {
             <div className="text-center">
               <span className="text-4xl block mb-2">💎</span>
               <p className="text-white text-sm">Curso Mariana Nails</p>
-              <p className="text-[#ffcd10] font-bold text-xl">R$ 20,00</p>
+              <p className="text-[#ffcd10] font-bold text-xl">R$ 50,00</p>
             </div>
           </div>
         </div>
@@ -799,7 +848,7 @@ export default function Fature4000ComUnhasEm2025() {
       <section className="py-8 px-6 bg-black text-[#ffcd10]">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-extrabold text-[#ffcd10] mb-4">
-            Quando Somados, Só Esses Presentes Valem Mais de R$ 197 Reais!
+            Quando Somados, Só Esses Presentes Valem Mais de R$ 120 Reais!
           </h2>
           <p className="text-white text-lg mb-6">
             Mas você não vai pagar tudo isso se garantir a sua vaga HOJE.
@@ -820,10 +869,10 @@ export default function Fature4000ComUnhasEm2025() {
           </div>
 
           <div className="bg-black border-4 border-[#ffcd10] p-8 rounded-xl mb-8">
-            <p className="text-white text-lg mb-2">De R$ 197,00</p>
-            <p className="text-6xl font-extrabold text-[#ffcd10] mb-2">R$ 19,90</p>
+            <p className="text-white text-lg mb-2">De R$ 120,00</p>
+            <p className="text-6xl font-extrabold text-[#ffcd10] mb-2">R$ 50,00</p>
             <p className="text-white text-xl">À vista!</p>
-            <p className="text-sm text-white mt-2 opacity-75">Com R$ 177,10 de DESCONTO!</p>
+            <p className="text-sm text-white mt-2 opacity-75">Com R$ 70,00 de DESCONTO!</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
