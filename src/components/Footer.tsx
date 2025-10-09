@@ -18,10 +18,10 @@ export default function Footer() {
               Especialista em nail design, oferecendo serviços de alta qualidade em Barueri e Alphaville.
             </p>
             <div className="flex space-x-4 mt-6">
-              <a href="https://instagram.com/mariana_nails" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <a href="https://www.instagram.com/mariananailsz/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <Image src="/images/instagram (1).png" alt="Instagram" width={24} height={24} />
               </a>
-              <a href="https://tiktok.com/@mariana_nails" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+              <a href="https://www.tiktok.com/@mariananailsz" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
                 <Image src="/images/tiktok.png" alt="TikTok" width={24} height={24} />
               </a>
             </div>

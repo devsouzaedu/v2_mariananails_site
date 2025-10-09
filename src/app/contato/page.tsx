@@ -95,10 +95,10 @@ export default function ContatoPage() {
               <div className="mt-10">
                 <h3 className="text-xl font-serif font-semibold mb-4">Siga-nos nas Redes Sociais</h3>
                 <div className="flex space-x-4">
-                  <a href="https://instagram.com/mariana_nails" target="_blank" rel="noopener noreferrer" className="bg-primary-100 p-3 rounded-full text-primary-600 hover:bg-primary-200 transition-colors">
+                  <a href="https://www.instagram.com/mariananailsz/" target="_blank" rel="noopener noreferrer" className="bg-primary-100 p-3 rounded-full text-primary-600 hover:bg-primary-200 transition-colors">
                     <Image src="/images/instagram (1).png" alt="Instagram" width={24} height={24} />
                   </a>
-                  <a href="https://tiktok.com/@mariana_nails" target="_blank" rel="noopener noreferrer" className="bg-primary-100 p-3 rounded-full text-primary-600 hover:bg-primary-200 transition-colors">
+                  <a href="https://www.tiktok.com/@mariananailsz" target="_blank" rel="noopener noreferrer" className="bg-primary-100 p-3 rounded-full text-primary-600 hover:bg-primary-200 transition-colors">
                     <Image src="/images/tiktok.png" alt="TikTok" width={24} height={24} />
                   </a>
                 </div>

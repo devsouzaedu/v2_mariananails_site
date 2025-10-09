@@ -289,7 +289,7 @@ export default function EspecializacaoCursosPage() {
                 </div>
               </div>
               <a 
-                href="https://www.instagram.com/mariana_nails" 
+                href="https://www.instagram.com/mariananailsz/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="inline-flex items-center text-primary-600 hover:text-primary-700"
