@@ -51,41 +51,41 @@ export default function DashboardClient({
   const nivel = Math.floor(profile.pontos / 100) + 1
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-pink-100">
+    <div className="min-h-screen bg-black">
       {/* Header */}
-      <header className="bg-white shadow-sm sticky top-0 z-40">
+      <header className="bg-zinc-900 border-b border-zinc-800 sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-3">
-              <h1 className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600">
-                🦋 Mariposas
+              <h1 className="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600">
+                🦋 MARIPOSAS
               </h1>
             </div>
 
             {/* Mobile menu button */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden p-2 rounded-lg hover:bg-gray-100"
+              className="md:hidden p-2 rounded-lg hover:bg-zinc-800 text-white"
             >
               {menuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
 
             {/* Desktop menu */}
-            <div className="hidden md:flex items-center space-x-6">
-              <div className="flex items-center space-x-2 bg-gradient-to-r from-pink-100 to-purple-100 px-4 py-2 rounded-full">
-                <Star className="text-yellow-500" size={20} />
-                <span className="font-semibold text-gray-700">{profile.pontos} pts</span>
+            <div className="hidden md:flex items-center space-x-4">
+              <div className="flex items-center space-x-2 bg-zinc-800 border border-zinc-700 px-4 py-2 rounded-lg">
+                <Star className="text-yellow-500" size={18} />
+                <span className="font-semibold text-white text-sm">{profile.pontos} pts</span>
               </div>
-              <div className="flex items-center space-x-2 bg-gradient-to-r from-purple-100 to-pink-100 px-4 py-2 rounded-full">
-                <Trophy className="text-purple-500" size={20} />
-                <span className="font-semibold text-gray-700">Nível {nivel}</span>
+              <div className="flex items-center space-x-2 bg-zinc-800 border border-zinc-700 px-4 py-2 rounded-lg">
+                <Trophy className="text-purple-500" size={18} />
+                <span className="font-semibold text-white text-sm">Nível {nivel}</span>
               </div>
               <button
                 onClick={handleLogout}
-                className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 transition"
+                className="flex items-center space-x-2 text-zinc-400 hover:text-white transition px-3 py-2 rounded-lg hover:bg-zinc-800"
               >
-                <LogOut size={20} />
-                <span>Sair</span>
+                <LogOut size={18} />
+                <span className="text-sm">Sair</span>
               </button>
             </div>
           </div>
@@ -93,22 +93,22 @@ export default function DashboardClient({
           {/* Mobile menu */}
           {menuOpen && (
             <div className="md:hidden pb-4 space-y-3">
-              <div className="flex items-center justify-between bg-gradient-to-r from-pink-100 to-purple-100 px-4 py-2 rounded-lg">
+              <div className="flex items-center justify-between bg-zinc-800 border border-zinc-700 px-4 py-3 rounded-lg">
                 <div className="flex items-center space-x-2">
-                  <Star className="text-yellow-500" size={20} />
-                  <span className="font-semibold text-gray-700">{profile.pontos} pts</span>
+                  <Star className="text-yellow-500" size={18} />
+                  <span className="font-semibold text-white text-sm">{profile.pontos} pts</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <Trophy className="text-purple-500" size={20} />
-                  <span className="font-semibold text-gray-700">Nível {nivel}</span>
+                  <Trophy className="text-purple-500" size={18} />
+                  <span className="font-semibold text-white text-sm">Nível {nivel}</span>
                 </div>
               </div>
               <button
                 onClick={handleLogout}
-                className="w-full flex items-center justify-center space-x-2 text-gray-600 hover:text-gray-800 transition bg-gray-100 px-4 py-2 rounded-lg"
+                className="w-full flex items-center justify-center space-x-2 text-zinc-300 hover:text-white transition bg-zinc-800 border border-zinc-700 px-4 py-2 rounded-lg"
               >
-                <LogOut size={20} />
-                <span>Sair</span>
+                <LogOut size={18} />
+                <span className="text-sm">Sair</span>
               </button>
             </div>
           )}
@@ -116,52 +116,52 @@ export default function DashboardClient({
       </header>
 
       {/* Main content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white rounded-xl shadow-lg p-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-8">
+          <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-5 md:p-6 hover:border-zinc-700 transition">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-600 text-sm font-medium">Progresso</p>
-                <p className="text-3xl font-bold text-gray-800">{progressoPercentual}%</p>
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-zinc-400 text-xs md:text-sm font-medium">Progresso</p>
+                <p className="text-2xl md:text-3xl font-bold text-white">{progressoPercentual}%</p>
+                <p className="text-xs md:text-sm text-zinc-500 mt-1">
                   {videosCompletados} de {totalVideos} aulas
                 </p>
               </div>
-              <div className="w-16 h-16 bg-gradient-to-br from-pink-100 to-purple-100 rounded-full flex items-center justify-center">
-                <Award className="text-pink-500" size={32} />
+              <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-pink-500/20 to-purple-500/20 rounded-full flex items-center justify-center">
+                <Award className="text-pink-500" size={24} />
               </div>
             </div>
-            <div className="mt-4 w-full bg-gray-200 rounded-full h-2">
+            <div className="mt-4 w-full bg-zinc-800 rounded-full h-1.5 md:h-2">
               <div
-                className="bg-gradient-to-r from-pink-500 to-purple-600 h-2 rounded-full transition-all duration-500"
+                className="bg-gradient-to-r from-pink-500 to-purple-600 h-1.5 md:h-2 rounded-full transition-all duration-500"
                 style={{ width: `${progressoPercentual}%` }}
               />
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-lg p-6">
+          <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-5 md:p-6 hover:border-zinc-700 transition">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-600 text-sm font-medium">Badges Conquistadas</p>
-                <p className="text-3xl font-bold text-gray-800">{userBadges.length}</p>
-                <p className="text-sm text-gray-500 mt-1">de {allBadges.length} disponíveis</p>
+                <p className="text-zinc-400 text-xs md:text-sm font-medium">Badges Conquistadas</p>
+                <p className="text-2xl md:text-3xl font-bold text-white">{userBadges.length}</p>
+                <p className="text-xs md:text-sm text-zinc-500 mt-1">de {allBadges.length} disponíveis</p>
               </div>
-              <div className="w-16 h-16 bg-gradient-to-br from-yellow-100 to-orange-100 rounded-full flex items-center justify-center">
-                <Trophy className="text-yellow-500" size={32} />
+              <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 rounded-full flex items-center justify-center">
+                <Trophy className="text-yellow-500" size={24} />
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-lg p-6">
+          <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-5 md:p-6 hover:border-zinc-700 transition">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-600 text-sm font-medium">Pontos Totais</p>
-                <p className="text-3xl font-bold text-gray-800">{profile.pontos}</p>
-                <p className="text-sm text-gray-500 mt-1">Nível {nivel}</p>
+                <p className="text-zinc-400 text-xs md:text-sm font-medium">Pontos Totais</p>
+                <p className="text-2xl md:text-3xl font-bold text-white">{profile.pontos}</p>
+                <p className="text-xs md:text-sm text-zinc-500 mt-1">Nível {nivel}</p>
               </div>
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-100 to-pink-100 rounded-full flex items-center justify-center">
-                <Star className="text-purple-500" size={32} />
+              <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full flex items-center justify-center">
+                <Star className="text-purple-500" size={24} />
               </div>
             </div>
           </div>
@@ -169,20 +169,20 @@ export default function DashboardClient({
 
         {/* Badges Section */}
         {userBadges.length > 0 && (
-          <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-              <Trophy className="mr-2 text-yellow-500" size={28} />
+          <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-5 md:p-6 mb-6 md:mb-8">
+            <h2 className="text-xl md:text-2xl font-bold text-white mb-4 flex items-center">
+              <Trophy className="mr-2 text-yellow-500" size={24} />
               Suas Conquistas
             </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3 md:gap-4">
               {userBadges.map((ub) => (
                 <div
                   key={ub.id}
-                  className="flex flex-col items-center p-3 bg-gradient-to-br from-yellow-50 to-orange-50 rounded-lg hover:shadow-md transition"
+                  className="flex flex-col items-center p-3 bg-zinc-800 border border-zinc-700 rounded-lg hover:border-yellow-500/50 hover:bg-zinc-800/80 transition cursor-pointer"
                   title={ub.badge?.descricao}
                 >
-                  <div className="text-4xl mb-2">{ub.badge?.icone}</div>
-                  <p className="text-xs text-center font-medium text-gray-700">
+                  <div className="text-3xl md:text-4xl mb-2">{ub.badge?.icone}</div>
+                  <p className="text-xs text-center font-medium text-zinc-300 line-clamp-2">
                     {ub.badge?.nome}
                   </p>
                 </div>
@@ -212,11 +212,11 @@ export default function DashboardClient({
         )}
 
         {/* Videos Section */}
-        <div className="space-y-8">
+        <div className="space-y-6 md:space-y-8">
           {Object.entries(videosPorModulo).map(([modulo, videosDoModulo]) => (
-            <div key={modulo} className="bg-white rounded-xl shadow-lg p-6">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">{modulo}</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            <div key={modulo} className="space-y-4">
+              <h2 className="text-xl md:text-2xl font-bold text-white px-1">{modulo}</h2>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 md:gap-4">
                 {videosDoModulo.map((video) => {
                   const isCompleted = video.progresso?.completado || false
                   const thumbnail = `https://img.youtube.com/vi/${video.youtube_id}/maxresdefault.jpg`
@@ -224,39 +224,39 @@ export default function DashboardClient({
                   return (
                     <div
                       key={video.id}
-                      className="group cursor-pointer relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                      className="group cursor-pointer relative overflow-hidden rounded-lg bg-zinc-900 border border-zinc-800 hover:border-pink-500/50 transition-all duration-300 transform hover:scale-105"
                       onClick={() => setSelectedVideo(video)}
                     >
-                      <div className="relative aspect-video">
+                      <div className="relative aspect-video bg-zinc-800">
                         <img
                           src={thumbnail}
                           alt={video.titulo}
                           className="w-full h-full object-cover"
                         />
                         {isCompleted && (
-                          <div className="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-semibold flex items-center">
-                            ✓ Completo
+                          <div className="absolute top-1.5 right-1.5 bg-green-500 text-white px-2 py-0.5 rounded text-[10px] md:text-xs font-semibold flex items-center">
+                            ✓
                           </div>
                         )}
-                        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition-all duration-300 flex items-center justify-center">
                           <div className="transform scale-0 group-hover:scale-100 transition-transform duration-300">
-                            <div className="w-16 h-16 bg-white bg-opacity-90 rounded-full flex items-center justify-center">
-                              <div className="w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-pink-500 border-b-8 border-b-transparent ml-1"></div>
+                            <div className="w-12 h-12 md:w-14 md:h-14 bg-white/90 rounded-full flex items-center justify-center shadow-xl">
+                              <div className="w-0 h-0 border-t-[6px] border-t-transparent border-l-[10px] border-l-pink-500 border-b-[6px] border-b-transparent ml-1"></div>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div className="p-4 bg-white">
-                        <h3 className="font-semibold text-gray-800 mb-1 line-clamp-2">
+                      <div className="p-2.5 md:p-3">
+                        <h3 className="font-semibold text-white text-xs md:text-sm mb-1 line-clamp-2">
                           {video.titulo}
                         </h3>
-                        <div className="flex items-center justify-between text-sm text-gray-600">
-                          <span className="flex items-center">
-                            <Star className="mr-1 text-yellow-500" size={14} />
+                        <div className="flex items-center justify-between text-[10px] md:text-xs">
+                          <span className="flex items-center text-zinc-400">
+                            <Star className="mr-1 text-yellow-500" size={12} />
                             {video.pontos_ao_completar} pts
                           </span>
                           {video.progresso && !isCompleted && (
-                            <span className="text-pink-500 text-xs">Em progresso</span>
+                            <span className="text-pink-500">Em progresso</span>
                           )}
                         </div>
                       </div>

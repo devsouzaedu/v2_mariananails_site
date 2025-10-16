@@ -3,6 +3,10 @@ export default function PlataformaLayout({
 }: {
   children: React.ReactNode
 }) {
-  return children
+  return (
+    <div className="min-h-screen bg-black">
+      {children}
+    </div>
+  )
 }
 

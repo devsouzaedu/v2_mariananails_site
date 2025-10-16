@@ -59,9 +59,13 @@ export default function VideoPlayer({
   }, [video.youtube_id])
 
   const onPlayerReady = (event: any) => {
-    // Tentar continuar de onde parou
-    if (video.progresso?.ultima_posicao && !video.progresso.completado) {
-      event.target.seekTo(video.progresso.ultima_posicao)
+    try {
+      // Tentar continuar de onde parou
+      if (video.progresso?.ultima_posicao && !video.progresso.completado) {
+        event.target.seekTo(video.progresso.ultima_posicao)
+      }
+    } catch (error) {
+      console.log('Player ready')
     }
   }
 
@@ -243,68 +247,72 @@ export default function VideoPlayer({
   }
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden">
-        <div className="flex items-center justify-between p-4 border-b border-gray-200">
-          <h2 className="text-xl font-bold text-gray-800">{video.titulo}</h2>
+    <div className="fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center p-0 md:p-4">
+      <div className="bg-zinc-900 border border-zinc-800 rounded-none md:rounded-xl shadow-2xl w-full h-full md:max-w-6xl md:h-auto md:max-h-[95vh] overflow-hidden flex flex-col">
+        {/* Header */}
+        <div className="flex items-center justify-between p-3 md:p-4 border-b border-zinc-800 bg-zinc-900/95 backdrop-blur">
+          <h2 className="text-sm md:text-lg font-bold text-white truncate pr-4">{video.titulo}</h2>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-gray-100 rounded-full transition"
+            className="p-2 hover:bg-zinc-800 rounded-full transition flex-shrink-0"
           >
-            <X size={24} />
+            <X size={20} className="text-zinc-400" />
           </button>
         </div>
 
-        <div className="relative bg-black aspect-video">
-          <div id="youtube-player" ref={playerRef}></div>
+        {/* Player */}
+        <div className="relative bg-black flex-1 md:flex-none md:aspect-video">
+          <div id="youtube-player" ref={playerRef} className="w-full h-full"></div>
         </div>
 
-        <div className="p-6">
-          <div className="flex items-center justify-between mb-4">
+        {/* Progress Bar - Agora abaixo do player */}
+        <div className="px-4 py-3 md:py-4 bg-zinc-900 border-t border-zinc-800">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-xs md:text-sm text-zinc-400">Progresso</span>
+            <span className="text-xs md:text-sm font-semibold text-white">
+              {Math.round(watchedPercentage)}%
+            </span>
+          </div>
+          <div className="w-full bg-zinc-800 rounded-full h-1.5 md:h-2 overflow-hidden">
+            <div
+              className="bg-gradient-to-r from-pink-500 to-purple-600 h-1.5 md:h-2 rounded-full transition-all duration-300"
+              style={{ width: `${watchedPercentage}%` }}
+            />
+          </div>
+        </div>
+
+        {/* Info Section */}
+        <div className="px-4 py-3 md:p-5 bg-zinc-900">
+          <div className="flex items-center justify-between flex-wrap gap-3">
             <div className="flex items-center space-x-2">
-              <Star className="text-yellow-500" size={20} />
-              <span className="text-gray-700 font-semibold">
+              <Star className="text-yellow-500" size={18} />
+              <span className="text-zinc-300 font-semibold text-sm md:text-base">
                 {video.pontos_ao_completar} pontos ao completar
               </span>
             </div>
             {completed && (
-              <div className="flex items-center space-x-2 text-green-600">
-                <CheckCircle size={20} />
-                <span className="font-semibold">Completo!</span>
+              <div className="flex items-center space-x-2 text-green-400">
+                <CheckCircle size={18} />
+                <span className="font-semibold text-sm md:text-base">Completo!</span>
               </div>
             )}
           </div>
 
           {video.descricao && (
-            <div className="text-gray-600 mb-4">
+            <div className="text-zinc-400 mt-3 text-sm md:text-base">
               <p>{video.descricao}</p>
             </div>
           )}
-
-          <div className="bg-gray-100 rounded-lg p-4">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-gray-600">Progresso assistido</span>
-              <span className="text-sm font-semibold text-gray-700">
-                {Math.round(watchedPercentage)}%
-              </span>
-            </div>
-            <div className="w-full bg-gray-300 rounded-full h-2">
-              <div
-                className="bg-gradient-to-r from-pink-500 to-purple-600 h-2 rounded-full transition-all duration-300"
-                style={{ width: `${watchedPercentage}%` }}
-              />
-            </div>
-          </div>
         </div>
       </div>
 
       {/* Completion Message */}
       {showCompletionMessage && (
-        <div className="fixed top-4 right-4 bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg flex items-center space-x-3 animate-bounce">
-          <CheckCircle size={24} />
+        <div className="fixed top-4 right-4 md:top-6 md:right-6 bg-green-500 text-white px-4 py-3 md:px-6 md:py-4 rounded-lg shadow-2xl flex items-center space-x-3 animate-bounce z-[60] max-w-sm">
+          <CheckCircle size={20} />
           <div>
-            <p className="font-bold">Parabéns! 🎉</p>
-            <p className="text-sm">Você ganhou {video.pontos_ao_completar} pontos!</p>
+            <p className="font-bold text-sm md:text-base">Parabéns! 🎉</p>
+            <p className="text-xs md:text-sm">Você ganhou {video.pontos_ao_completar} pontos!</p>
           </div>
         </div>
       )}

@@ -56,19 +56,19 @@ export default function CadastroPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-pink-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-black flex items-center justify-center p-4">
       <div className="max-w-md w-full">
-        <div className="bg-white rounded-2xl shadow-xl p-8">
+        <div className="bg-zinc-900 rounded-2xl shadow-2xl border border-zinc-800 p-8">
           <div className="text-center mb-8">
             <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600 mb-2">
               🦋 Bem-vinda, Mariposa!
             </h1>
-            <p className="text-gray-600">Crie sua conta na plataforma</p>
+            <p className="text-zinc-400">Crie sua conta na plataforma</p>
           </div>
 
           <form onSubmit={handleSignup} className="space-y-5">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-zinc-300 mb-2">
                 Email *
               </label>
               <input
@@ -77,13 +77,13 @@ export default function CadastroPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-pink-500 focus:border-transparent outline-none transition"
+                className="w-full px-4 py-3 rounded-lg bg-zinc-800 border border-zinc-700 text-white placeholder-zinc-500 focus:ring-2 focus:ring-pink-500 focus:border-transparent outline-none transition"
                 placeholder="seu@email.com"
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="password" className="block text-sm font-medium text-zinc-300 mb-2">
                 Senha *
               </label>
               <input
@@ -93,13 +93,13 @@ export default function CadastroPage() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 minLength={6}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-pink-500 focus:border-transparent outline-none transition"
+                className="w-full px-4 py-3 rounded-lg bg-zinc-800 border border-zinc-700 text-white placeholder-zinc-500 focus:ring-2 focus:ring-pink-500 focus:border-transparent outline-none transition"
                 placeholder="Mínimo 6 caracteres"
               />
             </div>
 
             <div>
-              <label htmlFor="instagram" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="instagram" className="block text-sm font-medium text-zinc-300 mb-2">
                 Instagram (opcional)
               </label>
               <input
@@ -107,13 +107,13 @@ export default function CadastroPage() {
                 type="text"
                 value={instagram}
                 onChange={(e) => setInstagram(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-pink-500 focus:border-transparent outline-none transition"
+                className="w-full px-4 py-3 rounded-lg bg-zinc-800 border border-zinc-700 text-white placeholder-zinc-500 focus:ring-2 focus:ring-pink-500 focus:border-transparent outline-none transition"
                 placeholder="@seuinstagram"
               />
             </div>
 
             <div>
-              <label htmlFor="whatsapp" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="whatsapp" className="block text-sm font-medium text-zinc-300 mb-2">
                 WhatsApp (opcional)
               </label>
               <input
@@ -121,13 +121,13 @@ export default function CadastroPage() {
                 type="tel"
                 value={whatsapp}
                 onChange={(e) => setWhatsapp(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-pink-500 focus:border-transparent outline-none transition"
+                className="w-full px-4 py-3 rounded-lg bg-zinc-800 border border-zinc-700 text-white placeholder-zinc-500 focus:ring-2 focus:ring-pink-500 focus:border-transparent outline-none transition"
                 placeholder="(00) 00000-0000"
               />
             </div>
 
             {error && (
-              <div className="bg-red-50 text-red-600 px-4 py-3 rounded-lg text-sm">
+              <div className="bg-red-900/30 border border-red-800 text-red-400 px-4 py-3 rounded-lg text-sm">
                 {error}
               </div>
             )}
@@ -142,9 +142,9 @@ export default function CadastroPage() {
           </form>
 
           <div className="mt-6 text-center">
-            <p className="text-gray-600">
+            <p className="text-zinc-400">
               Já tem uma conta?{' '}
-              <Link href="/plataforma/login" className="text-pink-500 font-semibold hover:text-pink-600">
+              <Link href="/plataforma/login" className="text-pink-500 font-semibold hover:text-pink-400 transition">
                 Faça login
               </Link>
             </p>
