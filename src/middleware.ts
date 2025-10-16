@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { updateSession } from '@/lib/supabase/middleware';
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Se a rota contém landingpage, vamos garantir que os componentes da aplicação principal não sejam carregados
@@ -17,10 +18,15 @@ export function middleware(request: NextRequest) {
     return response;
   }
 
+  // Atualizar sessão do Supabase para rotas da plataforma
+  if (pathname.startsWith('/plataforma')) {
+    return await updateSession(request);
+  }
+
   return NextResponse.next();
 }
 
-// Configurar o middleware para ser executado apenas nas rotas landingpage
+// Configurar o middleware para ser executado nas rotas landingpage e plataforma
 export const config = {
-  matcher: ['/landingpage/:path*'],
+  matcher: ['/landingpage/:path*', '/plataforma/:path*'],
 }; 
