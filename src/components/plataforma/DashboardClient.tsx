@@ -3,15 +3,18 @@
 import { useState, useEffect } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
-import { Profile, VideoWithProgress, UserBadge, Badge } from '@/types/database.types'
+import { Profile, VideoWithProgress, UserBadge, Badge, Quiz as QuizType, QuizResposta } from '@/types/database.types'
 import VideoPlayer from './VideoPlayer'
-import { Trophy, Star, Award, LogOut, Menu, X } from 'lucide-react'
+import Quiz from './Quiz'
+import { Trophy, Star, Award, LogOut, Menu, X, Lock, ShoppingCart } from 'lucide-react'
 
 interface DashboardClientProps {
   profile: Profile
   videos: VideoWithProgress[]
   userBadges: UserBadge[]
   allBadges: Badge[]
+  quizzes: QuizType[]
+  quizRespostas: QuizResposta[]
 }
 
 export default function DashboardClient({
@@ -19,11 +22,14 @@ export default function DashboardClient({
   videos: initialVideos,
   userBadges: initialUserBadges,
   allBadges,
+  quizzes,
+  quizRespostas: initialQuizRespostas,
 }: DashboardClientProps) {
   const [selectedVideo, setSelectedVideo] = useState<VideoWithProgress | null>(null)
   const [profile, setProfile] = useState(initialProfile)
   const [videos, setVideos] = useState(initialVideos)
   const [userBadges, setUserBadges] = useState(initialUserBadges)
+  const [quizRespostas, setQuizRespostas] = useState(initialQuizRespostas)
   const [menuOpen, setMenuOpen] = useState(false)
   const router = useRouter()
 
@@ -211,59 +217,133 @@ export default function DashboardClient({
           />
         )}
 
-        {/* Videos Section */}
+        {/* Videos Section with Quizzes */}
         <div className="space-y-6 md:space-y-8">
           {Object.entries(videosPorModulo).map(([modulo, videosDoModulo]) => (
             <div key={modulo} className="space-y-4">
               <h2 className="text-xl md:text-2xl font-bold text-white px-1">{modulo}</h2>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 md:gap-4">
-                {videosDoModulo.map((video) => {
-                  const isCompleted = video.progresso?.completado || false
-                  const thumbnail = `https://img.youtube.com/vi/${video.youtube_id}/maxresdefault.jpg`
+              
+              {/* Renderizar vídeos e quizzes */}
+              {videosDoModulo.map((video, index) => {
+                const isCompleted = video.progresso?.completado || false
+                const thumbnail = `https://img.youtube.com/vi/${video.youtube_id}/maxresdefault.jpg`
+                
+                // Verificar se há quiz após este vídeo
+                const aulaNumero = (index + 1)
+                const temQuiz = aulaNumero % 5 === 0
+                const quiz = quizzes.find(
+                  q => q.modulo === modulo && q.aula_numero === aulaNumero
+                )
+                const respostaQuiz = quiz ? quizRespostas.find(r => r.quiz_id === quiz.id) : null
 
-                  return (
-                    <div
-                      key={video.id}
-                      className="group cursor-pointer relative overflow-hidden rounded-lg bg-zinc-900 border border-zinc-800 hover:border-pink-500/50 transition-all duration-300 transform hover:scale-105"
-                      onClick={() => setSelectedVideo(video)}
-                    >
-                      <div className="relative aspect-video bg-zinc-800">
-                        <img
-                          src={thumbnail}
-                          alt={video.titulo}
-                          className="w-full h-full object-cover"
-                        />
-                        {isCompleted && (
-                          <div className="absolute top-1.5 right-1.5 bg-green-500 text-white px-2 py-0.5 rounded text-[10px] md:text-xs font-semibold flex items-center">
-                            ✓
-                          </div>
-                        )}
-                        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition-all duration-300 flex items-center justify-center">
-                          <div className="transform scale-0 group-hover:scale-100 transition-transform duration-300">
-                            <div className="w-12 h-12 md:w-14 md:h-14 bg-white/90 rounded-full flex items-center justify-center shadow-xl">
-                              <div className="w-0 h-0 border-t-[6px] border-t-transparent border-l-[10px] border-l-pink-500 border-b-[6px] border-b-transparent ml-1"></div>
+                return (
+                  <div key={video.id}>
+                    {/* Card do Vídeo */}
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 md:gap-4 mb-4">
+                      <div
+                        className={`group relative overflow-hidden rounded-lg bg-zinc-900 border border-zinc-800 transition-all duration-300 ${
+                          video.is_locked 
+                            ? 'opacity-75' 
+                            : 'cursor-pointer hover:border-pink-500/50 transform hover:scale-105'
+                        }`}
+                        onClick={() => !video.is_locked && setSelectedVideo(video)}
+                      >
+                        <div className="relative aspect-video bg-zinc-800">
+                          <img
+                            src={thumbnail}
+                            alt={video.titulo}
+                            className={`w-full h-full object-cover ${video.is_locked ? 'blur-sm' : ''}`}
+                          />
+                          
+                          {/* Badge de conclusão */}
+                          {isCompleted && !video.is_locked && (
+                            <div className="absolute top-1.5 right-1.5 bg-green-500 text-white px-2 py-0.5 rounded text-[10px] md:text-xs font-semibold flex items-center">
+                              ✓
                             </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="p-2.5 md:p-3">
-                        <h3 className="font-semibold text-white text-xs md:text-sm mb-1 line-clamp-2">
-                          {video.titulo}
-                        </h3>
-                        <div className="flex items-center justify-between text-[10px] md:text-xs">
-                          <span className="flex items-center text-zinc-400">
-                            <Star className="mr-1 text-yellow-500" size={12} />
-                            {video.pontos_ao_completar} pts
-                          </span>
-                          {video.progresso && !isCompleted && (
-                            <span className="text-pink-500">Em progresso</span>
                           )}
+                          
+                          {/* Overlay de aula travada */}
+                          {video.is_locked && (
+                            <div className="absolute inset-0 bg-black/70 flex flex-col items-center justify-center">
+                              <Lock className="text-pink-500 mb-2" size={32} />
+                              <p className="text-white text-xs font-semibold text-center px-2">
+                                Aula Travada
+                              </p>
+                            </div>
+                          )}
+                          
+                          {/* Play button para aulas desbloqueadas */}
+                          {!video.is_locked && (
+                            <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition-all duration-300 flex items-center justify-center">
+                              <div className="transform scale-0 group-hover:scale-100 transition-transform duration-300">
+                                <div className="w-12 h-12 md:w-14 md:h-14 bg-white/90 rounded-full flex items-center justify-center shadow-xl">
+                                  <div className="w-0 h-0 border-t-[6px] border-t-transparent border-l-[10px] border-l-pink-500 border-b-[6px] border-b-transparent ml-1"></div>
+                                </div>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                        
+                        <div className="p-2.5 md:p-3">
+                          <h3 className="font-semibold text-white text-xs md:text-sm mb-1 line-clamp-2">
+                            {video.titulo}
+                          </h3>
+                          <div className="flex items-center justify-between text-[10px] md:text-xs">
+                            <span className="flex items-center text-zinc-400">
+                              <Star className="mr-1 text-yellow-500" size={12} />
+                              {video.pontos_ao_completar} pts
+                            </span>
+                            {!video.is_locked && video.progresso && !isCompleted && (
+                              <span className="text-pink-500">Em progresso</span>
+                            )}
+                            {video.is_locked && (
+                              <Lock className="text-pink-500" size={12} />
+                            )}
+                          </div>
                         </div>
                       </div>
                     </div>
-                  )
-                })}
-              </div>
+
+                    {/* Botão de compra para aulas travadas */}
+                    {video.is_locked && video.unlock_url && (
+                      <div className="bg-gradient-to-r from-pink-500/10 to-purple-500/10 border-2 border-pink-500/50 rounded-xl p-6 mb-6">
+                        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                          <div className="text-center md:text-left">
+                            <h3 className="text-xl font-bold text-white mb-2">
+                              🔒 Aula Bloqueada
+                            </h3>
+                            <p className="text-zinc-300 text-sm">
+                              Desbloqueie esta aula e todas as próximas com o curso completo!
+                            </p>
+                          </div>
+                          <a
+                            href={video.unlock_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center space-x-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-pink-500/50 transition-all transform hover:scale-105"
+                          >
+                            <ShoppingCart size={20} />
+                            <span>Comprar Curso Completo</span>
+                          </a>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Quiz após cada 5 aulas */}
+                    {temQuiz && quiz && (
+                      <Quiz
+                        quiz={quiz}
+                        userId={profile.id}
+                        respostaExistente={respostaQuiz}
+                        onComplete={() => {
+                          // Atualizar lista de respostas
+                          router.refresh()
+                        }}
+                      />
+                    )}
+                  </div>
+                )
+              })}
             </div>
           ))}
         </div>

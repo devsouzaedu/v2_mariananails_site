@@ -1,7 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import DashboardClient from '@/components/plataforma/DashboardClient'
-import { Profile, VideoWithProgress, UserBadge } from '@/types/database.types'
+import { Profile, VideoWithProgress, UserBadge, Quiz, QuizResposta } from '@/types/database.types'
 
 export default async function DashboardPage() {
   const supabase = await createClient()
@@ -48,6 +48,18 @@ export default async function DashboardPage() {
     .select('*')
     .order('valor_condicao', { ascending: true })
 
+  // Buscar todos os quizzes
+  const { data: quizzes } = await supabase
+    .from('quizzes')
+    .select('*')
+    .order('aula_numero', { ascending: true })
+
+  // Buscar respostas dos quizzes do usuário
+  const { data: quizRespostas } = await supabase
+    .from('quiz_respostas')
+    .select('*')
+    .eq('user_id', user.id)
+
   // Combinar vídeos com progresso
   const videosWithProgress: VideoWithProgress[] = (videos || []).map(video => {
     const progressoVideo = progresso?.find(p => p.video_id === video.id)
@@ -63,6 +75,8 @@ export default async function DashboardPage() {
       videos={videosWithProgress}
       userBadges={userBadges as UserBadge[]}
       allBadges={allBadges || []}
+      quizzes={quizzes as Quiz[] || []}
+      quizRespostas={quizRespostas as QuizResposta[] || []}
     />
   )
 }

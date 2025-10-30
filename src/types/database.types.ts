@@ -19,6 +19,8 @@ export interface Video {
   pontos_ao_completar: number
   modulo: string
   thumbnail_url?: string
+  is_locked: boolean
+  unlock_url?: string
   created_at: string
 }
 
@@ -54,5 +56,25 @@ export interface UserBadge {
 
 export interface VideoWithProgress extends Video {
   progresso?: ProgressoVideo
+}
+
+export interface Quiz {
+  id: number
+  modulo: string
+  aula_numero: number
+  pergunta: string
+  resposta_correta: string
+  resposta_2: string
+  resposta_3: string
+  created_at: string
+}
+
+export interface QuizResposta {
+  id: number
+  user_id: string
+  quiz_id: number
+  resposta_escolhida: string
+  correta: boolean
+  respondido_em: string
 }
 
