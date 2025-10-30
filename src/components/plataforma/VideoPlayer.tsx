@@ -26,34 +26,49 @@ export default function VideoPlayer({
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
-    // Carregar API do YouTube
-    const tag = document.createElement('script')
-    tag.src = 'https://www.youtube.com/iframe_api'
-    const firstScriptTag = document.getElementsByTagName('script')[0]
-    firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag)
+    // Carregar API do YouTube se ainda não estiver carregada
+    if (!(window as any).YT) {
+      const tag = document.createElement('script')
+      tag.src = 'https://www.youtube.com/iframe_api'
+      const firstScriptTag = document.getElementsByTagName('script')[0]
+      firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag)
+    }
 
     // Callback quando a API estiver pronta
-    ;(window as any).onYouTubeIframeAPIReady = () => {
-      const ytPlayer = new (window as any).YT.Player('youtube-player', {
-        height: '100%',
-        width: '100%',
-        videoId: video.youtube_id,
-        playerVars: {
-          autoplay: 1,
-          rel: 0,
-          modestbranding: 1,
-        },
-        events: {
-          onReady: onPlayerReady,
-          onStateChange: onPlayerStateChange,
-        },
-      })
-      setPlayer(ytPlayer)
+    const initPlayer = () => {
+      if ((window as any).YT && (window as any).YT.Player) {
+        const ytPlayer = new (window as any).YT.Player('youtube-player', {
+          height: '100%',
+          width: '100%',
+          videoId: video.youtube_id,
+          playerVars: {
+            autoplay: 1,
+            rel: 0,
+            modestbranding: 1,
+          },
+          events: {
+            onReady: onPlayerReady,
+            onStateChange: onPlayerStateChange,
+          },
+        })
+        setPlayer(ytPlayer)
+      }
+    }
+
+    if ((window as any).YT && (window as any).YT.Player) {
+      initPlayer()
+    } else {
+      ;(window as any).onYouTubeIframeAPIReady = initPlayer
     }
 
     return () => {
+      // Limpar interval
       if (intervalRef.current) {
         clearInterval(intervalRef.current)
+      }
+      // Destruir player
+      if (player && typeof player.destroy === 'function') {
+        player.destroy()
       }
     }
   }, [video.youtube_id])

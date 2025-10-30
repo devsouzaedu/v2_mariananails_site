@@ -26,6 +26,7 @@ export default function DashboardClient({
   quizRespostas: initialQuizRespostas,
 }: DashboardClientProps) {
   const [selectedVideo, setSelectedVideo] = useState<VideoWithProgress | null>(null)
+  const [lockedVideoModal, setLockedVideoModal] = useState<VideoWithProgress | null>(null)
   const [profile, setProfile] = useState(initialProfile)
   const [videos, setVideos] = useState(initialVideos)
   const [userBadges, setUserBadges] = useState(initialUserBadges)
@@ -41,6 +42,53 @@ export default function DashboardClient({
     acc[video.modulo].push(video)
     return acc
   }, {} as Record<string, VideoWithProgress[]>)
+
+  // Função para verificar se uma aula está desbloqueada
+  const isAulaDesbloqueada = (video: VideoWithProgress, index: number) => {
+    // Primeira aula sempre liberada
+    if (index === 0) return true
+
+    // Buscar todas as aulas anteriores (considerando TODOS os módulos em ordem)
+    const todasAulasOrdenadas = videos.sort((a, b) => a.ordem - b.ordem)
+    const indexGlobal = todasAulasOrdenadas.findIndex(v => v.id === video.id)
+    
+    if (indexGlobal === 0) return true
+
+    // Verificar se completou a aula anterior não-travada
+    for (let i = indexGlobal - 1; i >= 0; i--) {
+      const aulaAnterior = todasAulasOrdenadas[i]
+      
+      // Se a aula anterior é travada, continua procurando
+      if (aulaAnterior.is_locked) continue
+      
+      // Achou uma aula não-travada anterior, verifica se foi completada
+      return aulaAnterior.progresso?.completado || false
+    }
+
+    // Se todas as anteriores são travadas, libera
+    return true
+  }
+
+  // Função para verificar se o quiz está desbloqueado
+  const isQuizDesbloqueado = (modulo: string, aulaNumero: number) => {
+    // Buscar as 4 aulas anteriores do mesmo módulo
+    const videosDoModulo = videosPorModulo[modulo] || []
+    const aulasAnteriores = videosDoModulo.slice(Math.max(0, aulaNumero - 4), aulaNumero)
+    
+    // Verificar se todas as 4 aulas anteriores foram completadas
+    return aulasAnteriores.length === 4 && 
+           aulasAnteriores.every(video => video.progresso?.completado)
+  }
+
+  const handleVideoClick = (video: VideoWithProgress) => {
+    if (video.is_locked) {
+      // Se a aula é travada, abrir modal de compra
+      setLockedVideoModal(video)
+    } else {
+      // Se está desbloqueada, abrir player
+      setSelectedVideo(video)
+    }
+  }
 
   const handleLogout = async () => {
     const supabase = createClient()
@@ -217,6 +265,65 @@ export default function DashboardClient({
           />
         )}
 
+        {/* Modal de aula travada */}
+        {lockedVideoModal && (
+          <div className="fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center p-4">
+            <div className="bg-zinc-900 border-2 border-pink-500/50 rounded-xl p-6 md:p-8 max-w-lg w-full relative">
+              <button
+                onClick={() => setLockedVideoModal(null)}
+                className="absolute top-4 right-4 p-2 hover:bg-zinc-800 rounded-full transition"
+              >
+                <X size={20} className="text-zinc-400" />
+              </button>
+
+              <div className="text-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-pink-500/20 to-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Lock className="text-pink-500" size={40} />
+                </div>
+
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
+                  🔒 Aula Bloqueada
+                </h2>
+
+                <p className="text-zinc-300 mb-2">
+                  <strong>{lockedVideoModal.titulo}</strong>
+                </p>
+
+                <p className="text-zinc-400 mb-6">
+                  Desbloqueie esta aula e todas as próximas com o curso completo!
+                </p>
+
+                <div className="bg-zinc-800 border border-zinc-700 rounded-lg p-4 mb-6">
+                  <p className="text-sm text-zinc-300 mb-3">✨ O que você ganha:</p>
+                  <ul className="text-sm text-zinc-400 space-y-2 text-left">
+                    <li>✅ Acesso completo a todas as 25 aulas</li>
+                    <li>✅ Certificado de conclusão</li>
+                    <li>✅ Suporte 24h no grupo VIP</li>
+                    <li>✅ Atualizações gratuitas</li>
+                  </ul>
+                </div>
+
+                <a
+                  href={lockedVideoModal.unlock_url || '#'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center space-x-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-4 rounded-lg font-semibold hover:shadow-lg hover:shadow-pink-500/50 transition-all transform hover:scale-105 w-full"
+                >
+                  <ShoppingCart size={20} />
+                  <span>Comprar Curso Completo</span>
+                </a>
+
+                <button
+                  onClick={() => setLockedVideoModal(null)}
+                  className="mt-4 text-zinc-500 hover:text-zinc-300 text-sm transition"
+                >
+                  Voltar para as aulas
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Videos Section with Quizzes */}
         <div className="space-y-6 md:space-y-8">
           {Object.entries(videosPorModulo).map(([modulo, videosDoModulo]) => (
@@ -225,46 +332,48 @@ export default function DashboardClient({
               
               {/* Grid de vídeos */}
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 md:gap-4">
-                {videosDoModulo.map((video) => {
+                {videosDoModulo.map((video, index) => {
                   const isCompleted = video.progresso?.completado || false
+                  const isDesbloqueada = isAulaDesbloqueada(video, index)
+                  const isBloqueada = !isDesbloqueada || video.is_locked
                   const thumbnail = `https://img.youtube.com/vi/${video.youtube_id}/maxresdefault.jpg`
 
                   return (
                     <div key={video.id}>
                       <div
                         className={`group relative overflow-hidden rounded-lg bg-zinc-900 border border-zinc-800 transition-all duration-300 ${
-                          video.is_locked 
-                            ? 'opacity-75' 
+                          isBloqueada
+                            ? 'opacity-60 cursor-not-allowed'
                             : 'cursor-pointer hover:border-pink-500/50 transform hover:scale-105'
                         }`}
-                        onClick={() => !video.is_locked && setSelectedVideo(video)}
+                        onClick={() => isDesbloqueada && handleVideoClick(video)}
                       >
                         <div className="relative aspect-video bg-zinc-800">
                           <img
                             src={thumbnail}
                             alt={video.titulo}
-                            className={`w-full h-full object-cover ${video.is_locked ? 'blur-sm' : ''}`}
+                            className={`w-full h-full object-cover ${isBloqueada ? 'blur-sm' : ''}`}
                           />
                           
                           {/* Badge de conclusão */}
-                          {isCompleted && !video.is_locked && (
+                          {isCompleted && !isBloqueada && (
                             <div className="absolute top-1.5 right-1.5 bg-green-500 text-white px-2 py-0.5 rounded text-[10px] md:text-xs font-semibold flex items-center">
                               ✓
                             </div>
                           )}
                           
-                          {/* Overlay de aula travada */}
-                          {video.is_locked && (
+                          {/* Overlay de aula bloqueada */}
+                          {isBloqueada && (
                             <div className="absolute inset-0 bg-black/70 flex flex-col items-center justify-center">
                               <Lock className="text-pink-500 mb-2" size={32} />
                               <p className="text-white text-xs font-semibold text-center px-2">
-                                Aula Travada
+                                {video.is_locked ? 'Aula Paga' : 'Bloqueada'}
                               </p>
                             </div>
                           )}
                           
                           {/* Play button para aulas desbloqueadas */}
-                          {!video.is_locked && (
+                          {!isBloqueada && (
                             <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition-all duration-300 flex items-center justify-center">
                               <div className="transform scale-0 group-hover:scale-100 transition-transform duration-300">
                                 <div className="w-12 h-12 md:w-14 md:h-14 bg-white/90 rounded-full flex items-center justify-center shadow-xl">
@@ -284,10 +393,10 @@ export default function DashboardClient({
                               <Star className="mr-1 text-yellow-500" size={12} />
                               {video.pontos_ao_completar} pts
                             </span>
-                            {!video.is_locked && video.progresso && !isCompleted && (
+                            {!isBloqueada && video.progresso && !isCompleted && (
                               <span className="text-pink-500">Em progresso</span>
                             )}
-                            {video.is_locked && (
+                            {isBloqueada && (
                               <Lock className="text-pink-500" size={12} />
                             )}
                           </div>
@@ -298,55 +407,47 @@ export default function DashboardClient({
                 })}
               </div>
 
-              {/* Renderizar quizzes e botões de compra após cada 5 aulas */}
+              {/* Renderizar quizzes após cada 5 aulas (SE estiverem desbloqueados) */}
               {videosDoModulo.map((video, index) => {
                 const aulaNumero = index + 1
                 const temQuiz = aulaNumero % 5 === 0
+                
+                if (!temQuiz) return null
+
                 const quiz = quizzes.find(
                   q => q.modulo === modulo && q.aula_numero === aulaNumero
                 )
-                const respostaQuiz = quiz ? quizRespostas.find(r => r.quiz_id === quiz.id) : undefined
+                
+                if (!quiz) return null
 
-                if (!temQuiz && !video.is_locked) return null
+                const quizDesbloqueado = isQuizDesbloqueado(modulo, aulaNumero)
+                const respostaQuiz = quizRespostas.find(r => r.quiz_id === quiz.id)
 
-                return (
-                  <div key={`extra-${video.id}`}>
-                    {/* Botão de compra para aulas travadas */}
-                    {video.is_locked && video.unlock_url && (
-                      <div className="bg-gradient-to-r from-pink-500/10 to-purple-500/10 border-2 border-pink-500/50 rounded-xl p-6 mb-6">
-                        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                          <div className="text-center md:text-left">
-                            <h3 className="text-xl font-bold text-white mb-2">
-                              🔒 Aula Bloqueada
-                            </h3>
-                            <p className="text-zinc-300 text-sm">
-                              Desbloqueie esta aula e todas as próximas com o curso completo!
-                            </p>
-                          </div>
-                          <a
-                            href={video.unlock_url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center space-x-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-pink-500/50 transition-all transform hover:scale-105"
-                          >
-                            <ShoppingCart size={20} />
-                            <span>Comprar Curso Completo</span>
-                          </a>
+                if (!quizDesbloqueado) {
+                  // Mostrar quiz bloqueado
+                  return (
+                    <div key={`quiz-locked-${quiz.id}`} className="bg-zinc-900 border-2 border-zinc-800 rounded-xl p-6 my-6 opacity-60">
+                      <div className="flex items-center space-x-3 mb-4">
+                        <Lock className="text-zinc-500" size={24} />
+                        <div>
+                          <h3 className="text-xl font-bold text-zinc-500">Quiz Bloqueado</h3>
+                          <p className="text-zinc-600 text-sm">Complete as 4 aulas anteriores para desbloquear</p>
                         </div>
                       </div>
-                    )}
+                    </div>
+                  )
+                }
 
-                    {/* Quiz após cada 5 aulas */}
-                    {temQuiz && quiz && (
-                      <Quiz
-                        quiz={quiz}
-                        userId={profile.id}
-                        respostaExistente={respostaQuiz}
-                        onComplete={() => {
-                          router.refresh()
-                        }}
-                      />
-                    )}
+                return (
+                  <div key={`quiz-${quiz.id}`}>
+                    <Quiz
+                      quiz={quiz}
+                      userId={profile.id}
+                      respostaExistente={respostaQuiz}
+                      onComplete={() => {
+                        router.refresh()
+                      }}
+                    />
                   </div>
                 )
               })}
@@ -357,4 +458,3 @@ export default function DashboardClient({
     </div>
   )
 }
-
