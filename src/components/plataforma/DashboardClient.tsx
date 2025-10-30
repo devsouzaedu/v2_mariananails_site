@@ -305,7 +305,7 @@ export default function DashboardClient({
                 const quiz = quizzes.find(
                   q => q.modulo === modulo && q.aula_numero === aulaNumero
                 )
-                const respostaQuiz = quiz ? quizRespostas.find(r => r.quiz_id === quiz.id) : null
+                const respostaQuiz = quiz ? quizRespostas.find(r => r.quiz_id === quiz.id) : undefined
 
                 if (!temQuiz && !video.is_locked) return null
 
