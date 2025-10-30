@@ -223,23 +223,14 @@ export default function DashboardClient({
             <div key={modulo} className="space-y-4">
               <h2 className="text-xl md:text-2xl font-bold text-white px-1">{modulo}</h2>
               
-              {/* Renderizar vídeos e quizzes */}
-              {videosDoModulo.map((video, index) => {
-                const isCompleted = video.progresso?.completado || false
-                const thumbnail = `https://img.youtube.com/vi/${video.youtube_id}/maxresdefault.jpg`
-                
-                // Verificar se há quiz após este vídeo
-                const aulaNumero = (index + 1)
-                const temQuiz = aulaNumero % 5 === 0
-                const quiz = quizzes.find(
-                  q => q.modulo === modulo && q.aula_numero === aulaNumero
-                )
-                const respostaQuiz = quiz ? quizRespostas.find(r => r.quiz_id === quiz.id) : null
+              {/* Grid de vídeos */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 md:gap-4">
+                {videosDoModulo.map((video) => {
+                  const isCompleted = video.progresso?.completado || false
+                  const thumbnail = `https://img.youtube.com/vi/${video.youtube_id}/maxresdefault.jpg`
 
-                return (
-                  <div key={video.id}>
-                    {/* Card do Vídeo */}
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 md:gap-4 mb-4">
+                  return (
+                    <div key={video.id}>
                       <div
                         className={`group relative overflow-hidden rounded-lg bg-zinc-900 border border-zinc-800 transition-all duration-300 ${
                           video.is_locked 
@@ -303,7 +294,23 @@ export default function DashboardClient({
                         </div>
                       </div>
                     </div>
+                  )
+                })}
+              </div>
 
+              {/* Renderizar quizzes e botões de compra após cada 5 aulas */}
+              {videosDoModulo.map((video, index) => {
+                const aulaNumero = index + 1
+                const temQuiz = aulaNumero % 5 === 0
+                const quiz = quizzes.find(
+                  q => q.modulo === modulo && q.aula_numero === aulaNumero
+                )
+                const respostaQuiz = quiz ? quizRespostas.find(r => r.quiz_id === quiz.id) : null
+
+                if (!temQuiz && !video.is_locked) return null
+
+                return (
+                  <div key={`extra-${video.id}`}>
                     {/* Botão de compra para aulas travadas */}
                     {video.is_locked && video.unlock_url && (
                       <div className="bg-gradient-to-r from-pink-500/10 to-purple-500/10 border-2 border-pink-500/50 rounded-xl p-6 mb-6">
@@ -336,7 +343,6 @@ export default function DashboardClient({
                         userId={profile.id}
                         respostaExistente={respostaQuiz}
                         onComplete={() => {
-                          // Atualizar lista de respostas
                           router.refresh()
                         }}
                       />
