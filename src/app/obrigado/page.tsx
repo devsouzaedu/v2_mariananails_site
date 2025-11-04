@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import Image from 'next/image';
 import Script from 'next/script';
 import { useSearchParams } from 'next/navigation';
@@ -11,7 +11,11 @@ declare global {
   }
 }
 
-export default function ObrigadoPage() {
+// Forçar renderização dinâmica (evita prerender)
+export const dynamic = 'force-dynamic';
+
+// Componente que usa useSearchParams (precisa estar em Suspense)
+function ObrigadoContent() {
   const searchParams = useSearchParams();
   const [transactionData, setTransactionData] = useState({
     transactionId: '',
@@ -362,6 +366,22 @@ export default function ObrigadoPage() {
         </p>
       </footer>
     </div>
+  );
+}
+
+// Componente principal com Suspense
+export default function ObrigadoPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black text-white flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-[#ffcd10] mx-auto mb-4"></div>
+          <p className="text-xl text-[#ffcd10]">Carregando...</p>
+        </div>
+      </div>
+    }>
+      <ObrigadoContent />
+    </Suspense>
   );
 }
 
