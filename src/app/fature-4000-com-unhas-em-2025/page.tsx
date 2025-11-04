@@ -215,6 +215,12 @@ export default function Fature4000ComUnhasEm2025() {
   const [iconMoneyError, setIconMoneyError] = useState(false);
   const [iconCertificateError, setIconCertificateError] = useState(false);
   
+  // Estados para modal de captura de email
+  const [showEmailModal, setShowEmailModal] = useState(false);
+  const [userEmail, setUserEmail] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [pendingButtonLocation, setPendingButtonLocation] = useState('');
+  
   // Hook para animações por scroll
   const { isVisible } = useScrollAnimation();
   
@@ -277,7 +283,7 @@ export default function Fature4000ComUnhasEm2025() {
   };
 
   // Função para construir URL do Kiwify com todos os parâmetros de rastreamento
-  const buildKiwifyUrl = (baseUrl: string): string => {
+  const buildKiwifyUrl = (baseUrl: string, email?: string): string => {
     if (typeof window === 'undefined') return baseUrl;
     
     // Método direto: pega todos os parâmetros da URL atual
@@ -296,12 +302,22 @@ export default function Fature4000ComUnhasEm2025() {
     if (fbc) allParams['_fbc'] = fbc;
     if (fbp) allParams['_fbp'] = fbp;
     
+    // Adicionar email se fornecido (importante para atribuição)
+    if (email && email.trim()) {
+      allParams['email'] = email.trim();
+      allParams['customer_email'] = email.trim(); // Formato Kiwify
+    }
+    
     // Se temos parâmetros na URL atual, usar método direto (mais simples)
     if (currentParams && Object.keys(urlParams).length > 0) {
-      // Combinar parâmetros da URL com cookies do Facebook
+      // Combinar parâmetros da URL com cookies do Facebook e email
       const extraParams = [];
       if (fbc) extraParams.push(`_fbc=${encodeURIComponent(fbc)}`);
       if (fbp) extraParams.push(`_fbp=${encodeURIComponent(fbp)}`);
+      if (email && email.trim()) {
+        extraParams.push(`email=${encodeURIComponent(email.trim())}`);
+        extraParams.push(`customer_email=${encodeURIComponent(email.trim())}`);
+      }
       
       if (extraParams.length > 0) {
         const separator = currentParams.includes('?') ? '&' : '?';
@@ -329,16 +345,41 @@ export default function Fature4000ComUnhasEm2025() {
     return `${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
   };
 
-  // Função para tracking de evento de checkout
+  // Função para abrir modal e capturar email antes do checkout
   const handleCheckoutClick = (buttonLocation: string) => {
+    setPendingButtonLocation(buttonLocation);
+    setShowEmailModal(true);
+    setEmailError('');
+  };
+
+  // Validar email
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  // Processar checkout após captura do email
+  const processCheckout = () => {
+    // Validar email
+    if (!userEmail || !userEmail.trim()) {
+      setEmailError('Por favor, insira seu email');
+      return;
+    }
+
+    if (!validateEmail(userEmail)) {
+      setEmailError('Por favor, insira um email válido');
+      return;
+    }
+
+    // Disparar evento do Meta Pixel com email
     if (typeof window !== 'undefined' && window.fbq) {
       const eventId = generateEventId();
       const fbc = getCookie('_fbc');
       const fbp = getCookie('_fbp');
       
-      console.log('Meta Pixel - Evento InitiateCheckout disparado:', buttonLocation);
+      console.log('Meta Pixel - Evento InitiateCheckout disparado:', pendingButtonLocation);
       
-      // Enviar evento com dados enriquecidos
+      // Enviar evento com dados enriquecidos incluindo email
       window.fbq('track', 'InitiateCheckout', {
         content_name: 'Curso Mariana Nails - Fature +R$4000/Mês',
         content_category: 'Course',
@@ -346,30 +387,35 @@ export default function Fature4000ComUnhasEm2025() {
         content_type: 'product',
         currency: 'BRL',
         value: 50.00,
-        button_location: buttonLocation,
+        button_location: pendingButtonLocation,
         // Dados adicionais para melhor atribuição
         source_url: window.location.href,
         fbc: fbc || undefined,
-        fbp: fbp || undefined
+        fbp: fbp || undefined,
+        // EMAIL CAPTURADO - Enriquece o evento!
+        email: userEmail.toLowerCase().trim()
       }, {
         eventID: eventId // Event ID para deduplicação com CAPI
       });
       
       console.log('✅ Evento InitiateCheckout enviado com Event ID:', eventId);
-    } else {
-      console.log('Meta Pixel não carregado ainda ou window.fbq não disponível');
+      console.log('📧 Email capturado e incluído:', userEmail.toLowerCase().trim());
     }
     
     // Log dos parâmetros que estão sendo enviados
     console.log('Parâmetros de rastreamento capturados:', {
       _fbc: getCookie('_fbc'),
       _fbp: getCookie('_fbp'),
+      email: userEmail.toLowerCase().trim(),
       urlParams: getUrlParams(),
       currentUrlParams: window.location.search,
-      finalKiwifyUrl: buildKiwifyUrl("https://pay.kiwify.com.br/lf9IZHj"),
+      finalKiwifyUrl: buildKiwifyUrl("https://pay.kiwify.com.br/lf9IZHj", userEmail),
       user_agent: navigator.userAgent,
       timestamp: new Date().toISOString()
     });
+
+    // Redirecionar para Kiwify com email nos parâmetros
+    window.location.href = buildKiwifyUrl("https://pay.kiwify.com.br/lf9IZHj", userEmail);
   };
 
   // Disparar evento ViewContent quando a página carregar
@@ -654,16 +700,13 @@ export default function Fature4000ComUnhasEm2025() {
         
         {/* Botão CTA Após "Perfeita Para Você" */}
         <div className="text-center mt-6">
-          <a 
-            href={buildKiwifyUrl("https://pay.kiwify.com.br/lf9IZHj")} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-full text-lg shadow-xl transition-all duration-300 transform hover:scale-105 inline-block animate-bounce"
-            style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
+          <button
             onClick={() => handleCheckoutClick('after-perfeita-para-voce')}
+            className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-full text-lg shadow-xl transition-all duration-300 transform hover:scale-105 inline-block animate-bounce cursor-pointer"
+            style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
           >
             🎯 GARANTIR MINHA VAGA
-          </a>
+          </button>
         </div>
       </section>
 
@@ -831,16 +874,13 @@ export default function Fature4000ComUnhasEm2025() {
         
         {/* Botão CTA Após Depoimentos */}
         <div className="text-center mt-6">
-          <a 
-            href={buildKiwifyUrl("https://pay.kiwify.com.br/lf9IZHj")} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="bg-[#E4B7B2] hover:bg-pink-400 text-black font-bold py-3 px-6 rounded-full text-lg shadow-xl transition-all duration-300 transform hover:scale-105 inline-block animate-pulse"
-            style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
+          <button
             onClick={() => handleCheckoutClick('after-depoimentos')}
+            className="bg-[#E4B7B2] hover:bg-pink-400 text-black font-bold py-3 px-6 rounded-full text-lg shadow-xl transition-all duration-300 transform hover:scale-105 inline-block animate-pulse cursor-pointer"
+            style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
           >
             🎯 GARANTIR MINHA VAGA
-          </a>
+          </button>
         </div>
       </section>
 
@@ -897,9 +937,13 @@ export default function Fature4000ComUnhasEm2025() {
           </div>
 
           <div className="mb-6">
-            <a href={buildKiwifyUrl("https://pay.kiwify.com.br/lf9IZHj")} target="_blank" rel="noopener noreferrer" className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-full text-lg md:text-xl uppercase transition-all duration-300 transform hover:scale-105 shadow-lg inline-block" style={{ fontFamily: 'var(--font-instrument-serif), serif' }} onClick={() => handleCheckoutClick('main-cta-section')}>
+            <button
+              onClick={() => handleCheckoutClick('main-cta-section')}
+              className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-full text-lg md:text-xl uppercase transition-all duration-300 transform hover:scale-105 shadow-lg inline-block cursor-pointer"
+              style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
+            >
               🎯 QUERO GARANTIR MINHA VAGA AGORA!
-            </a>
+            </button>
           </div>
         </div>
       </section>
@@ -983,7 +1027,95 @@ export default function Fature4000ComUnhasEm2025() {
         </div>
       </section>
 
+      {/* Modal de Captura de Email */}
+      {showEmailModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn">
+          <div className="relative bg-gradient-to-b from-gray-900 to-black border-2 border-[#ffcd10] rounded-2xl p-8 max-w-md w-full shadow-2xl animate-scaleIn">
+            {/* Botão Fechar */}
+            <button
+              onClick={() => setShowEmailModal(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl transition-colors"
+              aria-label="Fechar"
+            >
+              ✕
+            </button>
 
+            {/* Ícone */}
+            <div className="text-center mb-4">
+              <span className="text-6xl">📧</span>
+            </div>
+
+            {/* Título */}
+            <h3 className="text-2xl font-bold text-[#ffcd10] text-center mb-2">
+              Último Passo!
+            </h3>
+            <p className="text-white text-center mb-6">
+              Insira seu melhor email para garantir sua vaga e receber acesso imediato ao curso:
+            </p>
+
+            {/* Formulário */}
+            <div className="space-y-4">
+              <div>
+                <input
+                  type="email"
+                  placeholder="seu@email.com"
+                  value={userEmail}
+                  onChange={(e) => {
+                    setUserEmail(e.target.value);
+                    setEmailError('');
+                  }}
+                  onKeyPress={(e) => {
+                    if (e.key === 'Enter') {
+                      processCheckout();
+                    }
+                  }}
+                  className="w-full px-4 py-3 rounded-lg bg-gray-800 border-2 border-gray-700 text-white placeholder-gray-400 focus:border-[#ffcd10] focus:outline-none transition-colors"
+                  autoFocus
+                />
+                {emailError && (
+                  <p className="text-red-400 text-sm mt-2">⚠️ {emailError}</p>
+                )}
+              </div>
+
+              <button
+                onClick={processCheckout}
+                className="w-full bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-4 px-6 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+              >
+                🎯 CONTINUAR PARA O PAGAMENTO
+              </button>
+
+              <p className="text-gray-400 text-xs text-center">
+                🔒 Seus dados estão seguros e protegidos
+              </p>
+            </div>
+
+            {/* Benefícios Rápidos */}
+            <div className="mt-6 pt-6 border-t border-gray-700">
+              <p className="text-[#ffcd10] text-sm font-bold mb-3 text-center">
+                ✨ O que você vai receber:
+              </p>
+              <div className="space-y-2 text-white text-sm">
+                <div className="flex items-center">
+                  <span className="text-green-400 mr-2">✓</span>
+                  Acesso imediato ao curso completo
+                </div>
+                <div className="flex items-center">
+                  <span className="text-green-400 mr-2">✓</span>
+                  3 Certificados internacionais
+                </div>
+                <div className="flex items-center">
+                  <span className="text-green-400 mr-2">✓</span>
+                  Grupo VIP no WhatsApp
+                </div>
+                <div className="flex items-center">
+                  <span className="text-green-400 mr-2">✓</span>
+                  Suporte 24 horas
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Rodapé - Fundo Preto */}
       <footer className="bg-black text-white py-3 px-6 text-center">
@@ -995,16 +1127,13 @@ export default function Fature4000ComUnhasEm2025() {
       <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 px-4 w-full max-w-sm">
         <div className="bg-black/90 backdrop-blur-sm border border-[#ffcd10]/60 rounded-2xl p-4 shadow-2xl space-y-3">
           {/* Botão Garantir Minha Vaga */}
-          <a 
-            href={buildKiwifyUrl("https://pay.kiwify.com.br/lf9IZHj")} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="block bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-full text-base shadow-xl animate-pulse transition-all duration-300 transform hover:scale-105 border-2 border-black text-center"
-            style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
+          <button
             onClick={() => handleCheckoutClick('fixed-bottom-button')}
+            className="block w-full bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-full text-base shadow-xl animate-pulse transition-all duration-300 transform hover:scale-105 border-2 border-black text-center cursor-pointer"
+            style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
           >
             🎯 GARANTIR MINHA VAGA
-          </a>
+          </button>
           
           {/* Bandeiras de Pagamento */}
           <div className="flex justify-center">
