@@ -386,7 +386,7 @@ export default function Fature4000ComUnhasEm2025() {
         content_ids: ['curso-mariana-nails-2025'],
         content_type: 'product',
         currency: 'BRL',
-        value: 50.00,
+        value: 43.02,
         button_location: pendingButtonLocation,
         // Dados adicionais para melhor atribuição
         source_url: window.location.href,
@@ -433,7 +433,7 @@ export default function Fature4000ComUnhasEm2025() {
         content_ids: ['curso-mariana-nails-2025'],
         content_type: 'product',
         currency: 'BRL',
-        value: 50.00,
+        value: 43.02,
         source_url: window.location.href,
         fbc: fbc || undefined,
         fbp: fbp || undefined
