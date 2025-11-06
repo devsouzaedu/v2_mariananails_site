@@ -72,6 +72,9 @@ export default function RootLayout({
   const isPlataformaPage = pathname?.startsWith('/plataforma'); // Plataforma Mariposas
   return (
     <html lang="pt-BR" className={`${funnelSans.variable} ${ptSans.variable} ${playfair.variable} ${instrumentSerif.variable} ${instrumentSans.variable}`}>
+      <head>
+        <meta name="facebook-domain-verification" content="9jbaojiqhsgx0fwniftpqth4t23hof" />
+      </head>
       <body className="min-h-screen">
         {/* Condição para renderizar Navbar e banner apenas se NÃO for landing, ebook, ebookguiado, curso, fature, quiz ou plataforma */}
         {!isLandingPage && !isEbookPage && !isEbookGuiadoPage && !isCursoPage && !isFaturePage && !isQuizPage && !isPlataformaPage && (
