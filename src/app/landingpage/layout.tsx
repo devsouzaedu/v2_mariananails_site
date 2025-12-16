@@ -1,4 +1,5 @@
 import { Poppins } from 'next/font/google'
+import MetaKiwifyBridge from '@/components/MetaKiwifyBridge'
 
 // Configurar a fonte Poppins - somente para a landing page
 const poppins = Poppins({ 
@@ -23,6 +24,8 @@ export default function LandingPageLayout({ children }: { children: React.ReactN
         color: 'white',
         fontFamily: 'Poppins, sans-serif',
       }} className={poppins.className}>
+        {/* Bridge global para preservar fbp/fbc/event_id e anexar nos links para a Kiwify */}
+        <MetaKiwifyBridge />
         {/* Apenas o conteúdo da página, sem o Navbar e sem o Footer */}
         {children}
       </body>

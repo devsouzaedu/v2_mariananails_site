@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Script from 'next/script';
+import { initMetaIdsFromUrl, getPersistedMetaIds, getOrCreateEventId } from '@/lib/meta/metaIds';
 
 // Declaração global para o Facebook Pixel
 declare global {
@@ -285,13 +286,13 @@ export default function Fature4000ComUnhasEm2025() {
   // Função para construir URL do Kiwify com todos os parâmetros de rastreamento
   const buildKiwifyUrl = (baseUrl: string, email?: string): string => {
     if (typeof window === 'undefined') return baseUrl;
-    
-    // Método direto: pega todos os parâmetros da URL atual
-    const currentParams = window.location.search;
-    
-    // Captura também cookies do Facebook para rastreamento avançado
-    const fbc = getCookie('_fbc');
-    const fbp = getCookie('_fbp');
+
+    // Garantir que fbclid/fbp/fbc/event_id já foram capturados e persistidos
+    initMetaIdsFromUrl();
+
+    // Capturar cookies/valores persistidos do Meta (first-party)
+    const { fbc, fbp } = getPersistedMetaIds();
+    const eventId = getOrCreateEventId();
     const urlParams = getUrlParams();
     
     const allParams: Record<string, string> = {
@@ -299,45 +300,29 @@ export default function Fature4000ComUnhasEm2025() {
     };
     
     // Adicionar cookies do Facebook se existirem
-    if (fbc) allParams['_fbc'] = fbc;
-    if (fbp) allParams['_fbp'] = fbp;
+    if (fbc) {
+      allParams['fbc'] = fbc;
+      allParams['_fbc'] = fbc;
+    }
+    if (fbp) {
+      allParams['fbp'] = fbp;
+      allParams['_fbp'] = fbp;
+    }
+    // Persistir o mesmo event_id entre domínios (Kiwify precisa receber este valor)
+    allParams['event_id'] = eventId;
     
     // Adicionar email se fornecido (importante para atribuição)
     if (email && email.trim()) {
       allParams['email'] = email.trim();
       allParams['customer_email'] = email.trim(); // Formato Kiwify
     }
-    
-    // Se temos parâmetros na URL atual, usar método direto (mais simples)
-    if (currentParams && Object.keys(urlParams).length > 0) {
-      // Combinar parâmetros da URL com cookies do Facebook e email
-      const extraParams = [];
-      if (fbc) extraParams.push(`_fbc=${encodeURIComponent(fbc)}`);
-      if (fbp) extraParams.push(`_fbp=${encodeURIComponent(fbp)}`);
-      if (email && email.trim()) {
-        extraParams.push(`email=${encodeURIComponent(email.trim())}`);
-        extraParams.push(`customer_email=${encodeURIComponent(email.trim())}`);
-      }
-      
-      if (extraParams.length > 0) {
-        const separator = currentParams.includes('?') ? '&' : '?';
-        return `${baseUrl}${currentParams}&${extraParams.join('&')}`;
-      } else {
-        return `${baseUrl}${currentParams}`;
-      }
-    }
-    
-    // Fallback: método original se não há parâmetros na URL
-    if (Object.keys(allParams).length === 0) {
-      return baseUrl;
-    }
-    
-    // Construir query string
+
+    // Se não houver parâmetros, retornar URL original (mas mantendo event_id no mínimo)
     const queryString = Object.entries(allParams)
       .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
       .join('&');
-    
-    return `${baseUrl}?${queryString}`;
+
+    return queryString ? `${baseUrl}?${queryString}` : baseUrl;
   };
 
   // Função para gerar Event ID único (importante para deduplicação com CAPI)
@@ -373,9 +358,9 @@ export default function Fature4000ComUnhasEm2025() {
 
     // Disparar evento do Meta Pixel com email
     if (typeof window !== 'undefined' && window.fbq) {
-      const eventId = generateEventId();
-      const fbc = getCookie('_fbc');
-      const fbp = getCookie('_fbp');
+      initMetaIdsFromUrl();
+      const eventId = getOrCreateEventId();
+      const { fbc, fbp } = getPersistedMetaIds();
       
       console.log('Meta Pixel - Evento InitiateCheckout disparado:', pendingButtonLocation);
       

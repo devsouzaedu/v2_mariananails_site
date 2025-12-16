@@ -3,6 +3,7 @@ import React, { useState, useEffect, Suspense } from 'react';
 import Image from 'next/image';
 import Script from 'next/script';
 import { useSearchParams } from 'next/navigation';
+import { initMetaIdsFromUrl, getPersistedMetaIds, getOrCreateEventId } from '@/lib/meta/metaIds';
 
 // Declaração global para o Facebook Pixel
 declare global {
@@ -74,9 +75,12 @@ function ObrigadoContent() {
     // Aguardar um pouco para garantir que o pixel carregou
     const timer = setTimeout(() => {
       if (typeof window !== 'undefined' && window.fbq) {
-        const eventId = generateEventId();
-        const fbc = getCookie('_fbc');
-        const fbp = getCookie('_fbp');
+        // Garantir que event_id/fbp/fbc vindos da Kiwify (query) sejam persistidos
+        initMetaIdsFromUrl(window.location.search);
+
+        // Reutilizar SEMPRE o mesmo event_id do início do checkout
+        const eventId = (searchParams?.get('event_id') || undefined) ?? getOrCreateEventId();
+        const { fbc, fbp } = getPersistedMetaIds();
         
         console.log('🎉 Meta Pixel - Evento Purchase disparado');
         
@@ -104,8 +108,8 @@ function ObrigadoContent() {
           eventId: eventId,
           transactionId: transactionData.transactionId,
           value: transactionData.value,
-          _fbc: fbc,
-          _fbp: fbp
+          fbc: fbc,
+          fbp: fbp
         });
 
         // Também disparar evento CompleteRegistration (para funis de registro)

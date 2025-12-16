@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Script from 'next/script';
+import { initMetaIdsFromUrl, getPersistedMetaIds, getOrCreateEventId } from '@/lib/meta/metaIds';
 
 // Declaração global para o Facebook Pixel
 declare global {
@@ -327,8 +328,11 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
 
   // Função para construir URL do Kiwify com todos os parâmetros de rastreamento
   const buildKiwifyUrl = (baseUrl: string): string => {
-    const fbc = getCookie('_fbc');
-    const fbp = getCookie('_fbp');
+    if (typeof window === 'undefined') return baseUrl;
+
+    initMetaIdsFromUrl();
+    const { fbc, fbp } = getPersistedMetaIds();
+    const eventId = getOrCreateEventId();
     const urlParams = getUrlParams();
     
     const allParams: Record<string, string> = {
@@ -336,8 +340,15 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
     };
     
     // Adicionar cookies do Facebook se existirem
-    if (fbc) allParams['_fbc'] = fbc;
-    if (fbp) allParams['_fbp'] = fbp;
+    if (fbc) {
+      allParams['fbc'] = fbc;
+      allParams['_fbc'] = fbc;
+    }
+    if (fbp) {
+      allParams['fbp'] = fbp;
+      allParams['_fbp'] = fbp;
+    }
+    allParams['event_id'] = eventId;
     
     // Se não houver parâmetros, retornar URL original
     if (Object.keys(allParams).length === 0) {
@@ -360,9 +371,9 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
   // Função para tracking de evento InitiateCheckout
   const handleCheckoutClick = (buttonLocation: string) => {
     if (typeof window !== 'undefined' && window.fbq) {
-      const eventId = generateEventId();
-      const fbc = getCookie('_fbc');
-      const fbp = getCookie('_fbp');
+      initMetaIdsFromUrl();
+      const eventId = getOrCreateEventId();
+      const { fbc, fbp } = getPersistedMetaIds();
       
       console.log('Meta Pixel - Evento InitiateCheckout disparado:', buttonLocation);
       

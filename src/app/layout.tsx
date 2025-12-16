@@ -1,12 +1,14 @@
 "use client";
 import type { Metadata } from 'next';
 import { usePathname } from 'next/navigation';
+import Script from 'next/script';
 import { PT_Sans, Playfair_Display, Instrument_Serif, Instrument_Sans } from 'next/font/google'
 import localFont from 'next/font/local'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import MetaKiwifyBridge from '@/components/MetaKiwifyBridge'
 
 const funnelSans = localFont({
   src: [
@@ -73,6 +75,8 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${funnelSans.variable} ${ptSans.variable} ${playfair.variable} ${instrumentSerif.variable} ${instrumentSans.variable}`}>
       <head>
+        {/* Meta/Kiwify cross-domain bridge (captures fbclid→_fbc, reads _fbp, persists + decorates Kiwify URLs) */}
+        <Script src="/meta-kiwify-bridge.js" strategy="beforeInteractive" />
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{
@@ -93,6 +97,7 @@ export default function RootLayout({
         <meta name="facebook-domain-verification" content="9jbaojiqhsgx0fwniftpqth4t23hof" />
       </head>
       <body className="min-h-screen">
+        <MetaKiwifyBridge />
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe 
