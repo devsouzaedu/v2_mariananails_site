@@ -23,6 +23,9 @@ const COOKIE_KEYS = {
   eventId: 'mn_event_id',
 } as const;
 
+const CHECKOUT_CTX_KEY = '__mn_checkout_ctx' as const;
+type CheckoutCtx = { eventId: string; ts: number };
+
 function isBrowser(): boolean {
   return typeof window !== 'undefined' && typeof document !== 'undefined';
 }
@@ -119,7 +122,8 @@ export function persistMetaIds(ids: MetaIds): void {
 
   if (ids.eventId) {
     setLocalStorage(LS_KEYS.eventId, ids.eventId);
-    setCookie(COOKIE_KEYS.eventId, ids.eventId);
+    // event_id deve existir tempo suficiente para o fluxo de checkout, mas não "eternamente"
+    setCookie(COOKIE_KEYS.eventId, ids.eventId, 7);
   }
 }
 
@@ -177,6 +181,52 @@ export function getOrCreateEventId(): string {
 
   const created = generateEventId();
   persistMetaIds({ eventId: created });
+  return created;
+}
+
+/**
+ * Gera e persiste um NOVO event_id (útil para início de checkout).
+ * Importante: usar o mesmo event_id no `InitiateCheckout` (site) e no checkout externo (Kiwify).
+ */
+export function startNewCheckoutEventId(): string {
+  if (!isBrowser()) return generateEventId();
+  const created = generateEventId();
+  persistMetaIds({ eventId: created });
+  return created;
+}
+
+function getCheckoutCtx(): CheckoutCtx | undefined {
+  if (!isBrowser()) return undefined;
+  const w = window as any;
+  const ctx = w[CHECKOUT_CTX_KEY] as CheckoutCtx | undefined;
+  if (!ctx || !ctx.eventId || !ctx.ts) return undefined;
+  return ctx;
+}
+
+function setCheckoutCtx(ctx: CheckoutCtx): void {
+  if (!isBrowser()) return;
+  const w = window as any;
+  w[CHECKOUT_CTX_KEY] = ctx;
+}
+
+/**
+ * Retorna um event_id "de checkout" estável por alguns segundos (janela do clique).
+ * - Se já existir um ctx recente, reutiliza
+ * - Caso contrário, gera um novo e persiste (cookie + localStorage)
+ */
+export function getOrStartCheckoutEventId(maxAgeMs = 5000): string {
+  if (!isBrowser()) return generateEventId();
+
+  const ctx = getCheckoutCtx();
+  if (ctx && Date.now() - ctx.ts <= maxAgeMs) {
+    // Garantir persistência (caso algo tenha limpado cookies/LS)
+    persistMetaIds({ eventId: ctx.eventId });
+    return ctx.eventId;
+  }
+
+  const created = generateEventId();
+  persistMetaIds({ eventId: created });
+  setCheckoutCtx({ eventId: created, ts: Date.now() });
   return created;
 }
 

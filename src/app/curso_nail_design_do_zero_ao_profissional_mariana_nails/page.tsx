@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Script from 'next/script';
-import { initMetaIdsFromUrl, getPersistedMetaIds, getOrCreateEventId } from '@/lib/meta/metaIds';
+import { initMetaIdsFromUrl, getPersistedMetaIds, getOrStartCheckoutEventId } from '@/lib/meta/metaIds';
 
 // Declaração global para o Facebook Pixel
 declare global {
@@ -332,7 +332,6 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
 
     initMetaIdsFromUrl();
     const { fbc, fbp } = getPersistedMetaIds();
-    const eventId = getOrCreateEventId();
     const urlParams = getUrlParams();
     
     const allParams: Record<string, string> = {
@@ -348,7 +347,6 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
       allParams['fbp'] = fbp;
       allParams['_fbp'] = fbp;
     }
-    allParams['event_id'] = eventId;
     
     // Se não houver parâmetros, retornar URL original
     if (Object.keys(allParams).length === 0) {
@@ -372,7 +370,7 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
   const handleCheckoutClick = (buttonLocation: string) => {
     if (typeof window !== 'undefined' && window.fbq) {
       initMetaIdsFromUrl();
-      const eventId = getOrCreateEventId();
+      const eventId = getOrStartCheckoutEventId();
       const { fbc, fbp } = getPersistedMetaIds();
       
       console.log('Meta Pixel - Evento InitiateCheckout disparado:', buttonLocation);

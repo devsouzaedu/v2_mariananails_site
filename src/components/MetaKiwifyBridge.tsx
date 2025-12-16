@@ -1,70 +1,81 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import { initMetaIdsFromUrl, getOrCreateEventId, getPersistedMetaIds, mergeSearchParamsIntoUrl, appendMetaParamsToUrl } from '@/lib/meta/metaIds';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { useEffect } from "react";
+import {
+  getPersistedMetaIds,
+  getOrStartCheckoutEventId,
+  initMetaIdsFromUrl,
+  appendMetaParamsToUrl,
+} from "@/lib/meta/metaIds";
 
 function isKiwifyUrl(href: string): boolean {
   try {
-    const u = new URL(href, window.location.origin);
-    return u.hostname === 'pay.kiwify.com.br';
+    const u = new URL(href, window.location.href);
+    if (u.hostname === "pay.kiwify.com.br") return true;
+    return /\.kiwify\.com\.br$/i.test(u.hostname);
   } catch {
     return false;
   }
 }
 
-function decorateKiwifyAnchors(): void {
-  if (typeof document === 'undefined') return;
-
-  const anchors = Array.from(document.querySelectorAll<HTMLAnchorElement>('a[href]'));
-  const currentSearch = typeof window !== 'undefined' ? window.location.search : '';
-
-  anchors.forEach((a) => {
-    const href = a.getAttribute('href') || '';
-    if (!href) return;
-    if (!isKiwifyUrl(href)) return;
-
-    // Garantir event_id persistido antes de montar URL
-    const ids = { ...getPersistedMetaIds(), eventId: getOrCreateEventId() };
-    let nextHref = mergeSearchParamsIntoUrl(href, currentSearch);
-    nextHref = appendMetaParamsToUrl(nextHref, ids);
-    a.setAttribute('href', nextHref);
-  });
+function decorateKiwifyHref(href: string, includeEventId: boolean): string {
+  const persisted = getPersistedMetaIds();
+  const meta = {
+    fbp: persisted.fbp,
+    fbc: persisted.fbc,
+    eventId: includeEventId ? getOrStartCheckoutEventId() : undefined,
+  };
+  return appendMetaParamsToUrl(href, meta);
 }
 
 export default function MetaKiwifyBridge() {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
   useEffect(() => {
-    // 1) Capturar fbclid/fbp/fbc/event_id da URL e persistir em cookie/localStorage
+    if (typeof window === "undefined" || typeof document === "undefined") return;
+
+    // Captura fbclid → gera _fbc; lê/gera _fbp; persiste em cookie + localStorage.
     initMetaIdsFromUrl();
 
-    // 2) Decorar links já renderizados
-    decorateKiwifyAnchors();
-  }, [pathname, searchParams?.toString()]);
-
-  useEffect(() => {
-    // 3) Garantir que mesmo links dinâmicos (ou cliques rápidos) carreguem os params
-    const handler = (e: MouseEvent) => {
-      const target = e.target as HTMLElement | null;
-      const a = target?.closest?.('a') as HTMLAnchorElement | null;
-      if (!a) return;
-
-      const href = a.getAttribute('href') || '';
-      if (!href || !isKiwifyUrl(href)) return;
-
-      const ids = { ...getPersistedMetaIds(), eventId: getOrCreateEventId() };
-      let nextHref = mergeSearchParamsIntoUrl(href, window.location.search);
-      nextHref = appendMetaParamsToUrl(nextHref, ids);
-      a.setAttribute('href', nextHref);
+    const decorateAllLinks = () => {
+      const links = document.querySelectorAll<HTMLAnchorElement>('a[href]');
+      links.forEach((a) => {
+        if (!a.href) return;
+        if (!isKiwifyUrl(a.href)) return;
+        // Pré-decora só com fbp/fbc (sem event_id). O event_id é gerado no clique.
+        a.href = decorateKiwifyHref(a.href, false);
+      });
     };
 
-    document.addEventListener('click', handler, true);
-    return () => document.removeEventListener('click', handler, true);
+    decorateAllLinks();
+
+    // Observa novos links renderizados dinamicamente.
+    const observer = new MutationObserver(() => {
+      decorateAllLinks();
+    });
+    observer.observe(document.documentElement, { childList: true, subtree: true });
+
+    // Gera/“fixa” um event_id por clique de checkout e anexa na URL antes de navegar.
+    const onCheckoutIntent = (evt: Event) => {
+      const target = evt.target as Element | null;
+      const a = target?.closest?.("a[href]") as HTMLAnchorElement | null;
+      if (!a?.href) return;
+      if (!isKiwifyUrl(a.href)) return;
+
+      initMetaIdsFromUrl();
+      a.href = decorateKiwifyHref(a.href, true);
+    };
+
+    // capture=true para rodar antes dos handlers do React (onClick).
+    document.addEventListener("pointerdown", onCheckoutIntent, true);
+    document.addEventListener("mousedown", onCheckoutIntent, true); // fallback
+    document.addEventListener("click", onCheckoutIntent, true); // teclado / fallback final
+
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("pointerdown", onCheckoutIntent, true);
+      document.removeEventListener("mousedown", onCheckoutIntent, true);
+      document.removeEventListener("click", onCheckoutIntent, true);
+    };
   }, []);
 
   return null;
 }
-
-

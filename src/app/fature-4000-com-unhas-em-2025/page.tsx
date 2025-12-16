@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Script from 'next/script';
-import { initMetaIdsFromUrl, getPersistedMetaIds, getOrCreateEventId } from '@/lib/meta/metaIds';
+import { initMetaIdsFromUrl, getPersistedMetaIds, getOrStartCheckoutEventId } from '@/lib/meta/metaIds';
 
 // Declaração global para o Facebook Pixel
 declare global {
@@ -284,7 +284,7 @@ export default function Fature4000ComUnhasEm2025() {
   };
 
   // Função para construir URL do Kiwify com todos os parâmetros de rastreamento
-  const buildKiwifyUrl = (baseUrl: string, email?: string): string => {
+  const buildKiwifyUrl = (baseUrl: string, email?: string, checkoutEventId?: string): string => {
     if (typeof window === 'undefined') return baseUrl;
 
     // Garantir que fbclid/fbp/fbc/event_id já foram capturados e persistidos
@@ -292,7 +292,6 @@ export default function Fature4000ComUnhasEm2025() {
 
     // Capturar cookies/valores persistidos do Meta (first-party)
     const { fbc, fbp } = getPersistedMetaIds();
-    const eventId = getOrCreateEventId();
     const urlParams = getUrlParams();
     
     const allParams: Record<string, string> = {
@@ -309,7 +308,7 @@ export default function Fature4000ComUnhasEm2025() {
       allParams['_fbp'] = fbp;
     }
     // Persistir o mesmo event_id entre domínios (Kiwify precisa receber este valor)
-    allParams['event_id'] = eventId;
+    if (checkoutEventId) allParams['event_id'] = checkoutEventId;
     
     // Adicionar email se fornecido (importante para atribuição)
     if (email && email.trim()) {
@@ -359,7 +358,7 @@ export default function Fature4000ComUnhasEm2025() {
     // Disparar evento do Meta Pixel com email
     if (typeof window !== 'undefined' && window.fbq) {
       initMetaIdsFromUrl();
-      const eventId = getOrCreateEventId();
+      const eventId = getOrStartCheckoutEventId();
       const { fbc, fbp } = getPersistedMetaIds();
       
       console.log('Meta Pixel - Evento InitiateCheckout disparado:', pendingButtonLocation);
@@ -394,13 +393,14 @@ export default function Fature4000ComUnhasEm2025() {
       email: userEmail.toLowerCase().trim(),
       urlParams: getUrlParams(),
       currentUrlParams: window.location.search,
-      finalKiwifyUrl: buildKiwifyUrl("https://pay.kiwify.com.br/lf9IZHj", userEmail),
+      finalKiwifyUrl: buildKiwifyUrl("https://pay.kiwify.com.br/lf9IZHj", userEmail, getOrStartCheckoutEventId()),
       user_agent: navigator.userAgent,
       timestamp: new Date().toISOString()
     });
 
     // Redirecionar para Kiwify com email nos parâmetros
-    window.location.href = buildKiwifyUrl("https://pay.kiwify.com.br/lf9IZHj", userEmail);
+    const checkoutEventId = getOrStartCheckoutEventId();
+    window.location.href = buildKiwifyUrl("https://pay.kiwify.com.br/lf9IZHj", userEmail, checkoutEventId);
   };
 
   // Disparar evento ViewContent quando a página carregar
