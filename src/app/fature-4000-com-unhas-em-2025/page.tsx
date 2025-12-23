@@ -355,7 +355,7 @@ export default function Fature4000ComUnhasEm2025() {
       return;
     }
 
-    // Disparar evento do Meta Pixel com email
+    // Disparar evento do Meta Pixel (sem email - CAPI já envia via Kiwify)
     if (typeof window !== 'undefined' && window.fbq) {
       initMetaIdsFromUrl();
       const eventId = getOrStartCheckoutEventId();
@@ -363,7 +363,7 @@ export default function Fature4000ComUnhasEm2025() {
       
       console.log('Meta Pixel - Evento InitiateCheckout disparado:', pendingButtonLocation);
       
-      // Enviar evento com dados enriquecidos incluindo email
+      // Enviar evento apenas com dados do produto (email vai só para Kiwify/CAPI)
       window.fbq('track', 'InitiateCheckout', {
         content_name: 'Curso Mariana Nails - Fature +R$4000/Mês',
         content_category: 'Course',
@@ -372,18 +372,14 @@ export default function Fature4000ComUnhasEm2025() {
         currency: 'BRL',
         value: 43.02,
         button_location: pendingButtonLocation,
-        // Dados adicionais para melhor atribuição
-        source_url: window.location.href,
+        // Identificadores para matching (sem PII)
         fbc: fbc || undefined,
-        fbp: fbp || undefined,
-        // EMAIL CAPTURADO - Enriquece o evento!
-        email: userEmail.toLowerCase().trim()
+        fbp: fbp || undefined
       }, {
         eventID: eventId // Event ID para deduplicação com CAPI
       });
       
       console.log('✅ Evento InitiateCheckout enviado com Event ID:', eventId);
-      console.log('📧 Email capturado e incluído:', userEmail.toLowerCase().trim());
     }
     
     // Log dos parâmetros que estão sendo enviados
