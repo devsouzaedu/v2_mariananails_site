@@ -1,13 +1,12 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import Script from 'next/script';
-import { initMetaIdsFromUrl, getPersistedMetaIds, getOrStartCheckoutEventId } from '@/lib/meta/metaIds';
+import { getOrStartCheckoutEventId, generateEventId } from '@/lib/meta/metaIds';
 
-// Declaração global para o Facebook Pixel
+// Declaração global para dataLayer (GTM)
 declare global {
   interface Window {
-    fbq: any;
+    dataLayer: any[];
   }
 }
 
@@ -330,15 +329,16 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
   const buildKiwifyUrl = (baseUrl: string): string => {
     if (typeof window === 'undefined') return baseUrl;
 
-    initMetaIdsFromUrl();
-    const { fbc, fbp } = getPersistedMetaIds();
     const urlParams = getUrlParams();
     
     const allParams: Record<string, string> = {
       ...urlParams
     };
     
-    // Adicionar cookies do Facebook se existirem
+    // Capturar cookies do Facebook (gerados pelo GTM)
+    const fbc = getCookie('_fbc');
+    const fbp = getCookie('_fbp');
+    
     if (fbc) {
       allParams['fbc'] = fbc;
       allParams['_fbc'] = fbc;
@@ -361,74 +361,27 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
     return `${baseUrl}?${queryString}`;
   };
 
-  // Função para gerar Event ID único (importante para deduplicação com CAPI)
-  const generateEventId = () => {
-    return `${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-  };
-
-  // Função para tracking de evento InitiateCheckout
+  // Função para tracking de evento InitiateCheckout via dataLayer
   const handleCheckoutClick = (buttonLocation: string) => {
-    if (typeof window !== 'undefined' && window.fbq) {
-      initMetaIdsFromUrl();
+    if (typeof window !== 'undefined') {
       const eventId = getOrStartCheckoutEventId();
-      const { fbc, fbp } = getPersistedMetaIds();
       
-      console.log('Meta Pixel - Evento InitiateCheckout disparado:', buttonLocation);
-      
-      // Enviar evento com dados enriquecidos
-      window.fbq('track', 'InitiateCheckout', {
-        content_name: 'Curso Nail Design do Zero ao Profissional',
-        content_category: 'Course',
-        content_ids: ['curso-nail-design-mariana-nails'],
-        content_type: 'product',
-        currency: 'BRL',
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'initiate_checkout',
+        event_id: eventId,
         value: 50.00,
-        button_location: buttonLocation,
-        // Dados adicionais para melhor atribuição
-        source_url: window.location.href,
-        fbc: fbc || undefined,
-        fbp: fbp || undefined
-      }, {
-        eventID: eventId // Event ID para deduplicação com CAPI
+        currency: 'BRL'
       });
       
-      console.log('✅ Evento InitiateCheckout enviado com Event ID:', eventId);
+      console.log('✅ Evento initiate_checkout enviado via dataLayer com Event ID:', eventId);
     }
-    
-    // Log dos parâmetros que estão sendo enviados
-    console.log('Parâmetros de rastreamento capturados:', {
-      _fbc: getCookie('_fbc'),
-      _fbp: getCookie('_fbp'),
-      urlParams: getUrlParams(),
-      user_agent: navigator.userAgent,
-      timestamp: new Date().toISOString()
-    });
   };
 
-  // Disparar evento ViewContent quando a página de venda carregar
+  // ViewContent será disparado pelo GTM automaticamente
   useEffect(() => {
-    if (currentStep === questions.length + 2 && typeof window !== 'undefined' && window.fbq) {
-      const eventId = generateEventId();
-      const fbc = getCookie('_fbc');
-      const fbp = getCookie('_fbp');
-      
-      console.log('Meta Pixel - Evento ViewContent disparado');
-      
-      window.fbq('track', 'ViewContent', {
-        content_name: 'Curso Nail Design do Zero ao Profissional',
-        content_category: 'Course',
-        content_ids: ['curso-nail-design-mariana-nails'],
-        content_type: 'product',
-        currency: 'BRL',
-        value: 50.00,
-        source_url: window.location.href,
-        fbc: fbc || undefined,
-        fbp: fbp || undefined
-      }, {
-        eventID: eventId
-      });
-      
-      console.log('✅ Evento ViewContent enviado com Event ID:', eventId);
+    if (currentStep === questions.length + 2) {
+      console.log('📄 Página de venda carregada - GTM rastreia automaticamente');
     }
   }, [currentStep]);
 
@@ -668,25 +621,7 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
   const renderFinalSalesPage = () => {
     return (
       <div className="min-h-screen bg-black text-white">
-        {/* Meta Pixel Code */}
-        <Script
-          id="facebook-pixel"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              !function(f,b,e,v,n,t,s)
-              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-              n.queue=[];t=b.createElement(e);t.async=!0;
-              t.src=v;s=b.getElementsByTagName(e)[0];
-              s.parentNode.insertBefore(t,s)}(window, document,'script',
-              'https://connect.facebook.net/en_US/fbevents.js');
-              fbq('init', '734205242727008');
-              fbq('track', 'PageView');
-            `,
-          }}
-        />
+        {/* Meta Pixel será carregado via GTM */}
         
         {/* Banner de urgência */}
         <div className="bg-red-600 text-white text-center py-3 px-4">

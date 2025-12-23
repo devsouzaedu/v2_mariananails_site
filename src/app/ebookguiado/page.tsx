@@ -1,29 +1,28 @@
 "use client";
 import React, { useState } from 'react';
 import Image from 'next/image';
-import Script from 'next/script';
 
-// Declaração global para o Facebook Pixel
+// Declaração global para dataLayer (GTM)
 declare global {
   interface Window {
-    fbq: any;
+    dataLayer: any[];
   }
 }
 
 export default function EbookGuiado() {
   const [isDownloading, setIsDownloading] = useState(false);
 
-  // Função para tracking de evento de download
+  // Função para tracking de evento de download via dataLayer
   const handleDownloadClick = () => {
-    if (typeof window !== 'undefined' && window.fbq) {
-      console.log('Meta Pixel - Evento Lead (Download) disparado');
-      window.fbq('track', 'Lead', {
-        content_name: 'Caminhe com Direção O Poder de ser Guiada por um Método - Mariana Nails',
-        content_category: 'Ebook',
-        content_ids: ['ebook-caminhe-com-direcao-2025'],
-        value: 0.00, // Gratuito
+    if (typeof window !== 'undefined') {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'lead',
+        event_id: `${Date.now()}_${Math.random().toString(36).slice(2, 11)}`,
+        value: 0.00,
         currency: 'BRL'
       });
+      console.log('✅ Evento lead enviado via dataLayer');
     }
   };
 
@@ -73,33 +72,7 @@ export default function EbookGuiado() {
 
   return (
     <div className="min-h-screen bg-black text-white flex items-center justify-center px-6 py-12">
-      {/* Meta Pixel Code */}
-      <Script
-        id="facebook-pixel"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '734205242727008');
-            fbq('track', 'PageView');
-          `,
-        }}
-      />
-      <noscript>
-        <img
-          height="1"
-          width="1"
-          style={{ display: 'none' }}
-          src="https://www.facebook.com/tr?id=734205242727008&ev=PageView&noscript=1"
-        />
-      </noscript>
+      {/* Meta Pixel será carregado via GTM */}
 
       {/* Conteúdo Principal Centralizado */}
       <div className="max-w-lg w-full text-center space-y-8">

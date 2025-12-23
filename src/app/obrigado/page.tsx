@@ -1,14 +1,13 @@
 "use client";
 import React, { useState, useEffect, Suspense } from 'react';
 import Image from 'next/image';
-import Script from 'next/script';
 import { useSearchParams } from 'next/navigation';
-import { initMetaIdsFromUrl, getPersistedMetaIds, getOrCreateEventId } from '@/lib/meta/metaIds';
+import { generateEventId } from '@/lib/meta/metaIds';
 
-// Declaração global para o Facebook Pixel
+// Declaração global para dataLayer (GTM)
 declare global {
   interface Window {
-    fbq: any;
+    dataLayer: any[];
   }
 }
 
@@ -25,19 +24,6 @@ function ObrigadoContent() {
     productName: 'Curso Mariana Nails - Fature +R$4000/Mês'
   });
 
-  // Função para obter cookies
-  const getCookie = (name: string): string | null => {
-    if (typeof document === 'undefined') return null;
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop()?.split(';').shift() || null;
-    return null;
-  };
-
-  // Função para gerar Event ID único (importante para deduplicação com CAPI)
-  const generateEventId = () => {
-    return `${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-  };
 
   // Capturar dados da transação da URL (enviados pela Kiwify)
   useEffect(() => {
@@ -70,97 +56,37 @@ function ObrigadoContent() {
     }
   }, [searchParams]);
 
-  // Disparar evento Purchase quando a página carregar
+  // Disparar evento Purchase via dataLayer (GTM dispara o Meta Pixel)
   useEffect(() => {
-    // Aguardar um pouco para garantir que o pixel carregou
     const timer = setTimeout(() => {
-      if (typeof window !== 'undefined' && window.fbq) {
-        // Garantir que event_id/fbp/fbc vindos da Kiwify (query) sejam persistidos
-        initMetaIdsFromUrl(window.location.search);
-
-        // Reutilizar SEMPRE o mesmo event_id do início do checkout
-        const eventId = (searchParams?.get('event_id') || undefined) ?? getOrCreateEventId();
-        const { fbc, fbp } = getPersistedMetaIds();
+      if (typeof window !== 'undefined' && transactionData.transactionId) {
+        // Reutilizar event_id do checkout ou gerar novo
+        const eventId = searchParams?.get('event_id') || generateEventId();
         
-        console.log('🎉 Meta Pixel - Evento Purchase disparado');
-        
-        // Disparar evento de Purchase
-        window.fbq('track', 'Purchase', {
-          content_name: transactionData.productName,
-          content_category: 'Course',
-          content_ids: ['curso-mariana-nails-2025'],
-          content_type: 'product',
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'purchase',
+          event_id: eventId,
+          value: transactionData.value,
           currency: transactionData.currency,
-          value: transactionData.value,
-          transaction_id: transactionData.transactionId,
-          // Dados adicionais para melhor atribuição
-          source_url: window.location.href,
-          fbc: fbc || undefined,
-          fbp: fbp || undefined,
-          // Dados extras
-          num_items: 1,
-          status: 'completed'
-        }, {
-          eventID: eventId // Event ID para deduplicação com CAPI
+          transaction_id: transactionData.transactionId
         });
         
-        console.log('✅ Evento Purchase enviado com sucesso!', {
-          eventId: eventId,
-          transactionId: transactionData.transactionId,
+        console.log('✅ Evento purchase enviado via dataLayer:', {
+          event_id: eventId,
           value: transactionData.value,
-          fbc: fbc,
-          fbp: fbp
-        });
-
-        // Também disparar evento CompleteRegistration (para funis de registro)
-        window.fbq('track', 'CompleteRegistration', {
-          content_name: transactionData.productName,
           currency: transactionData.currency,
-          value: transactionData.value,
-          status: 'completed'
-        }, {
-          eventID: generateEventId()
+          transaction_id: transactionData.transactionId
         });
-
-        console.log('✅ Evento CompleteRegistration enviado');
-
-      } else {
-        console.warn('⚠️ Meta Pixel não carregado ainda');
       }
-    }, 1000); // Aguardar 1 segundo
+    }, 500);
 
     return () => clearTimeout(timer);
-  }, [transactionData]);
+  }, [transactionData, searchParams]);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black text-white">
-      {/* Meta Pixel Code */}
-      <Script
-        id="facebook-pixel"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '734205242727008');
-            fbq('track', 'PageView');
-          `,
-        }}
-      />
-      <noscript>
-        <img
-          height="1"
-          width="1"
-          style={{ display: 'none' }}
-          src="https://www.facebook.com/tr?id=734205242727008&ev=PageView&noscript=1"
-        />
-      </noscript>
+      {/* Meta Pixel será carregado via GTM */}
 
       {/* Container Principal */}
       <div className="max-w-4xl mx-auto px-6 py-12">

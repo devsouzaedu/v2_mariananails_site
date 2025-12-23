@@ -1,13 +1,12 @@
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import Script from 'next/script';
-import { initMetaIdsFromUrl, getPersistedMetaIds, getOrStartCheckoutEventId } from '@/lib/meta/metaIds';
+import { getOrStartCheckoutEventId, generateEventId } from '@/lib/meta/metaIds';
 
-// Declaração global para o Facebook Pixel
+// Declaração global para dataLayer (GTM)
 declare global {
   interface Window {
-    fbq: any;
+    dataLayer: any[];
   }
 }
 
@@ -287,18 +286,16 @@ export default function Fature4000ComUnhasEm2025() {
   const buildKiwifyUrl = (baseUrl: string, email?: string, checkoutEventId?: string): string => {
     if (typeof window === 'undefined') return baseUrl;
 
-    // Garantir que fbclid/fbp/fbc/event_id já foram capturados e persistidos
-    initMetaIdsFromUrl();
-
-    // Capturar cookies/valores persistidos do Meta (first-party)
-    const { fbc, fbp } = getPersistedMetaIds();
     const urlParams = getUrlParams();
     
     const allParams: Record<string, string> = {
       ...urlParams
     };
     
-    // Adicionar cookies do Facebook se existirem
+    // Capturar cookies do Facebook (gerados pelo GTM)
+    const fbc = getCookie('_fbc');
+    const fbp = getCookie('_fbp');
+    
     if (fbc) {
       allParams['fbc'] = fbc;
       allParams['_fbc'] = fbc;
@@ -307,6 +304,7 @@ export default function Fature4000ComUnhasEm2025() {
       allParams['fbp'] = fbp;
       allParams['_fbp'] = fbp;
     }
+    
     // Persistir o mesmo event_id entre domínios (Kiwify precisa receber este valor)
     if (checkoutEventId) allParams['event_id'] = checkoutEventId;
     
@@ -316,7 +314,6 @@ export default function Fature4000ComUnhasEm2025() {
       allParams['customer_email'] = email.trim(); // Formato Kiwify
     }
 
-    // Se não houver parâmetros, retornar URL original (mas mantendo event_id no mínimo)
     const queryString = Object.entries(allParams)
       .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
       .join('&');
@@ -324,10 +321,6 @@ export default function Fature4000ComUnhasEm2025() {
     return queryString ? `${baseUrl}?${queryString}` : baseUrl;
   };
 
-  // Função para gerar Event ID único (importante para deduplicação com CAPI)
-  const generateEventId = () => {
-    return `${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-  };
 
   // Função para abrir modal e capturar email antes do checkout
   const handleCheckoutClick = (buttonLocation: string) => {
@@ -355,31 +348,19 @@ export default function Fature4000ComUnhasEm2025() {
       return;
     }
 
-    // Disparar evento do Meta Pixel (sem email - CAPI já envia via Kiwify)
-    if (typeof window !== 'undefined' && window.fbq) {
-      initMetaIdsFromUrl();
+    // Disparar evento via dataLayer (GTM dispara o Meta Pixel)
+    if (typeof window !== 'undefined') {
       const eventId = getOrStartCheckoutEventId();
-      const { fbc, fbp } = getPersistedMetaIds();
       
-      console.log('Meta Pixel - Evento InitiateCheckout disparado:', pendingButtonLocation);
-      
-      // Enviar evento apenas com dados do produto (email vai só para Kiwify/CAPI)
-      window.fbq('track', 'InitiateCheckout', {
-        content_name: 'Curso Mariana Nails - Fature +R$4000/Mês',
-        content_category: 'Course',
-        content_ids: ['curso-mariana-nails-2025'],
-        content_type: 'product',
-        currency: 'BRL',
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'initiate_checkout',
+        event_id: eventId,
         value: 43.02,
-        button_location: pendingButtonLocation,
-        // Identificadores para matching (sem PII)
-        fbc: fbc || undefined,
-        fbp: fbp || undefined
-      }, {
-        eventID: eventId // Event ID para deduplicação com CAPI
+        currency: 'BRL'
       });
       
-      console.log('✅ Evento InitiateCheckout enviado com Event ID:', eventId);
+      console.log('✅ Evento initiate_checkout enviado via dataLayer com Event ID:', eventId);
     }
     
     // Log dos parâmetros que estão sendo enviados
@@ -399,87 +380,19 @@ export default function Fature4000ComUnhasEm2025() {
     window.location.href = buildKiwifyUrl("https://pay.kiwify.com.br/lf9IZHj", userEmail, checkoutEventId);
   };
 
-  // Disparar evento ViewContent quando a página carregar
+  // ViewContent será disparado pelo GTM automaticamente via PageView
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.fbq) {
-      const eventId = generateEventId();
-      const fbc = getCookie('_fbc');
-      const fbp = getCookie('_fbp');
-      
-      console.log('Meta Pixel - Evento ViewContent disparado');
-      
-      window.fbq('track', 'ViewContent', {
-        content_name: 'Curso Mariana Nails - Fature +R$4000/Mês',
-        content_category: 'Course',
-        content_ids: ['curso-mariana-nails-2025'],
-        content_type: 'product',
-        currency: 'BRL',
-        value: 43.02,
-        source_url: window.location.href,
-        fbc: fbc || undefined,
-        fbp: fbp || undefined
-      }, {
-        eventID: eventId
-      });
-      
-      console.log('✅ Evento ViewContent enviado com Event ID:', eventId);
-    }
+    // GTM já rastreia page_view automaticamente
+    console.log('📄 Página carregada - GTM rastreia automaticamente');
   }, []);
 
   return (
     <div className="min-h-screen bg-black text-gray-800">
-      {/* Meta Pixel Code */}
-      <Script
-        id="facebook-pixel"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '734205242727008');
-            fbq('track', 'PageView');
-          `,
-        }}
-      />
-      <noscript>
-        <img
-          height="1"
-          width="1"
-          style={{ display: 'none' }}
-          src="https://www.facebook.com/tr?id=734205242727008&ev=PageView&noscript=1"
-        />
-      </noscript>
+      {/* Meta Pixel será carregado via GTM */}
       
       {/* Estilos de Animação */}
       <style jsx>{animationStyles}</style>
 
-      {/* Script adicional para garantir UTM tracking (método direto) */}
-      <Script
-        id="utm-tracking-direct"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            // Método direto de captura de UTMs (backup/alternativo)
-            document.addEventListener('DOMContentLoaded', function() {
-              const params = window.location.search;
-              const buttons = document.querySelectorAll('a[href*="pay.kiwify.com.br"]');
-              
-              buttons.forEach(function(btn) {
-                if (params && !btn.href.includes('?') && !btn.href.includes(params)) {
-                  btn.href = btn.href + params;
-                  console.log('UTM tracking aplicado diretamente ao botão:', btn.href);
-                }
-              });
-            });
-          `,
-        }}
-      />
       
       {/* Banner Promocional Dinâmico */}
       <div className="bg-black text-white text-center py-3 px-4 relative overflow-hidden">
