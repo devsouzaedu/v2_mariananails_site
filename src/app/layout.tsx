@@ -84,7 +84,7 @@ export default function RootLayout({
                   event: 'purchase',
                   value: 43.02,
                   currency: 'BRL',
-                  transaction_id: 'kiwify_' + Date.now()
+                  transaction_id: 'txn_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9)
                 });
               `
             }}
