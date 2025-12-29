@@ -102,7 +102,7 @@ export default function RootLayout({
                 j.async=true;
                 j.src='https://s.mariananails.com.br/gtm.js?id='+i+dl;
                 f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','GTM-PMSQ8T3F');
+              })(window,document,'script','dataLayer','GTM-PDD4HPT8');
             `
           }}
         />
@@ -112,7 +112,7 @@ export default function RootLayout({
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe 
-            src="https://s.mariananails.com.br/ns.html?id=GTM-PMSQ8T3F"
+            src="https://s.mariananails.com.br/ns.html?id=GTM-PDD4HPT8"
             height="0" 
             width="0" 
             style={{display:'none',visibility:'hidden'}}

@@ -56,7 +56,7 @@ function ObrigadoContent() {
     }
   }, [searchParams]);
 
-  // Disparar evento Purchase via dataLayer (GTM dispara o Meta Pixel)
+  // Disparar evento Purchase via dataLayer
   useEffect(() => {
     const timer = setTimeout(() => {
       if (typeof window !== 'undefined' && transactionData.transactionId) {
@@ -86,7 +86,6 @@ function ObrigadoContent() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black text-white">
-      {/* Meta Pixel será carregado via GTM */}
 
       {/* Container Principal */}
       <div className="max-w-4xl mx-auto px-6 py-12">

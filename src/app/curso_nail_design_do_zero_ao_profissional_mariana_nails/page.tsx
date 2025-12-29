@@ -599,7 +599,6 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
   const renderFinalSalesPage = () => {
     return (
       <div className="min-h-screen bg-black text-white">
-        {/* Meta Pixel será carregado via GTM */}
         
         {/* Banner de urgência */}
         <div className="bg-red-600 text-white text-center py-3 px-4">

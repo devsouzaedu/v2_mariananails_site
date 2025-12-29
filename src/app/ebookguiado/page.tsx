@@ -72,7 +72,6 @@ export default function EbookGuiado() {
 
   return (
     <div className="min-h-screen bg-black text-white flex items-center justify-center px-6 py-12">
-      {/* Meta Pixel será carregado via GTM */}
 
       {/* Conteúdo Principal Centralizado */}
       <div className="max-w-lg w-full text-center space-y-8">

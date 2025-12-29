@@ -326,7 +326,7 @@ export default function Fature4000ComUnhasEm2025() {
       return;
     }
 
-    // Disparar evento via dataLayer (GTM dispara o Meta Pixel)
+    // Disparar evento via dataLayer
     if (typeof window !== 'undefined') {
       const eventId = getOrStartCheckoutEventId();
       
@@ -364,7 +364,6 @@ export default function Fature4000ComUnhasEm2025() {
 
   return (
     <div className="min-h-screen bg-black text-gray-800">
-      {/* Meta Pixel será carregado via GTM */}
       
       {/* Estilos de Animação */}
       <style jsx>{animationStyles}</style>
