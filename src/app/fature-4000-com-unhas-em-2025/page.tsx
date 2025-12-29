@@ -248,15 +248,6 @@ export default function Fature4000ComUnhasEm2025() {
     
     return () => clearTimeout(timer);
   }, []);
-  
-  // Função para obter cookies
-  const getCookie = (name: string): string | null => {
-    if (typeof document === 'undefined') return null;
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop()?.split(';').shift() || null;
-    return null;
-  };
 
   // Função para obter parâmetros UTM da URL atual - Versão otimizada
   const getUrlParams = (): Record<string, string> => {
@@ -291,19 +282,6 @@ export default function Fature4000ComUnhasEm2025() {
     const allParams: Record<string, string> = {
       ...urlParams
     };
-    
-    // Capturar cookies do Facebook (gerados pelo GTM)
-    const fbc = getCookie('_fbc');
-    const fbp = getCookie('_fbp');
-    
-    if (fbc) {
-      allParams['fbc'] = fbc;
-      allParams['_fbc'] = fbc;
-    }
-    if (fbp) {
-      allParams['fbp'] = fbp;
-      allParams['_fbp'] = fbp;
-    }
     
     // Persistir o mesmo event_id entre domínios (Kiwify precisa receber este valor)
     if (checkoutEventId) allParams['event_id'] = checkoutEventId;
@@ -365,8 +343,6 @@ export default function Fature4000ComUnhasEm2025() {
     
     // Log dos parâmetros que estão sendo enviados
     console.log('Parâmetros de rastreamento capturados:', {
-      _fbc: getCookie('_fbc'),
-      _fbp: getCookie('_fbp'),
       email: userEmail.toLowerCase().trim(),
       urlParams: getUrlParams(),
       currentUrlParams: window.location.search,

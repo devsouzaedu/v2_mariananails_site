@@ -1,5 +1,4 @@
 import { Poppins } from 'next/font/google'
-import MetaKiwifyBridge from '@/components/MetaKiwifyBridge'
 
 // Configurar a fonte Poppins - somente para a landing page
 const poppins = Poppins({ 

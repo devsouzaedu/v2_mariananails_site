@@ -7,7 +7,6 @@ import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
-import MetaKiwifyBridge from '@/components/MetaKiwifyBridge'
 
 const funnelSans = localFont({
   src: [
@@ -108,10 +107,8 @@ export default function RootLayout({
           }}
         />
         {/* End Google Tag Manager */}
-        <meta name="facebook-domain-verification" content="9jbaojiqhsgx0fwniftpqth4t23hof" />
       </head>
       <body className="min-h-screen">
-        <MetaKiwifyBridge />
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe 

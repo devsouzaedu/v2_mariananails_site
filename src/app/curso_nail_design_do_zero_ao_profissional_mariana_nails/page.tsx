@@ -293,15 +293,6 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
     }, 300);
   };
 
-  // Função para obter cookies
-  const getCookie = (name: string): string | null => {
-    if (typeof document === 'undefined') return null;
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop()?.split(';').shift() || null;
-    return null;
-  };
-
   // Função para obter parâmetros UTM da URL atual
   const getUrlParams = (): Record<string, string> => {
     if (typeof window === 'undefined') return {};
@@ -334,19 +325,6 @@ export default function CursoNailDesignDoZeroAoProfissionalMarianaNails() {
     const allParams: Record<string, string> = {
       ...urlParams
     };
-    
-    // Capturar cookies do Facebook (gerados pelo GTM)
-    const fbc = getCookie('_fbc');
-    const fbp = getCookie('_fbp');
-    
-    if (fbc) {
-      allParams['fbc'] = fbc;
-      allParams['_fbc'] = fbc;
-    }
-    if (fbp) {
-      allParams['fbp'] = fbp;
-      allParams['_fbp'] = fbp;
-    }
     
     // Se não houver parâmetros, retornar URL original
     if (Object.keys(allParams).length === 0) {
