@@ -74,6 +74,23 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${funnelSans.variable} ${ptSans.variable} ${playfair.variable} ${instrumentSerif.variable} ${instrumentSans.variable}`}>
       <head>
+        {/* Google tag (gtag.js) - GA4 */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-D92MV0VYXM" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-D92MV0VYXM', {
+                transport_url: 'https://s.mariananails.com.br/',
+                first_party_collection: true
+              });
+            `
+          }}
+        />
+        {/* End Google tag (gtag.js) */}
+        
         {/* DataLayer Push - Purchase Event (ANTES do GTM) */}
         {isObrigadoPage && (
           <script
