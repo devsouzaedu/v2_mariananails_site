@@ -71,9 +71,26 @@ export default function RootLayout({
   const isFaturePage = pathname === '/fature-4000-com-unhas-em-2025'; // Adicionada a nova rota aqui
   const isQuizPage = pathname === '/curso_nail_design_do_zero_ao_profissional_mariana_nails';
   const isPlataformaPage = pathname?.startsWith('/plataforma'); // Plataforma Mariposas
+  const isObrigadoPage = pathname === '/obrigado'; // Página de obrigado
   return (
     <html lang="pt-BR" className={`${funnelSans.variable} ${ptSans.variable} ${playfair.variable} ${instrumentSerif.variable} ${instrumentSans.variable}`}>
       <head>
+        {/* DataLayer Push - Purchase Event (ANTES do GTM) */}
+        {isObrigadoPage && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                  event: 'purchase',
+                  value: 43.02,
+                  currency: 'BRL',
+                  transaction_id: 'kiwify_' + Date.now()
+                });
+              `
+            }}
+          />
+        )}
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{
