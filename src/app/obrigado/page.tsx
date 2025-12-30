@@ -286,14 +286,6 @@ function ObrigadoContent() {
         </div>
 
       </div>
-
-      {/* Rodapé */}
-      <footer className="bg-black text-white py-6 px-6 text-center border-t border-gray-800 mt-12">
-        <p className="text-sm mb-2">COPYRIGHT 2025 – Mariana Nails – Todos os direitos reservados</p>
-        <p className="text-sm">
-          Suporte: <a href="mailto:suporte@mariananails.com" className="text-[#ffcd10] hover:underline">suporte@mariananails.com</a>
-        </p>
-      </footer>
     </div>
   );
 }
