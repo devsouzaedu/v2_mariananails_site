@@ -378,6 +378,16 @@ export default function Fature4000ComUnhasEm2025() {
       timestamp: new Date().toISOString()
     });
 
+    // Disparar evento initiate_checkout_pro para GTM com dados avançados de rastreamento
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      'event': 'initiate_checkout_pro',
+      'user_email': userEmail,
+      'fbp': getCookie('_fbp'),
+      'fbc': getCookie('_fbc')
+    });
+    console.log('✅ Evento initiate_checkout_pro enviado para dataLayer com fbp/fbc');
+
     // Redirecionar para Kiwify com email nos parâmetros
     const checkoutEventId = getOrStartCheckoutEventId();
     window.location.href = buildKiwifyUrl("https://pay.kiwify.com.br/lf9IZHj", userEmail, checkoutEventId);
