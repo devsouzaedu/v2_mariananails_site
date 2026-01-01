@@ -273,6 +273,17 @@ export default function Fature4000ComUnhasEm2025() {
     return urlParams;
   };
 
+  // Função para ler cookies do navegador
+  const getCookie = (name: string): string | null => {
+    if (typeof document === 'undefined') return null;
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) {
+      return parts.pop()?.split(';').shift() || null;
+    }
+    return null;
+  };
+
   // Função para construir URL do Kiwify com todos os parâmetros de rastreamento
   const buildKiwifyUrl = (baseUrl: string, email?: string, checkoutEventId?: string): string => {
     if (typeof window === 'undefined') return baseUrl;
@@ -290,6 +301,20 @@ export default function Fature4000ComUnhasEm2025() {
     if (email && email.trim()) {
       allParams['email'] = email.trim();
       allParams['customer_email'] = email.trim(); // Formato Kiwify
+    }
+
+    // Adicionar cookies do Facebook para rastreamento avançado
+    // _fbp = Facebook Browser ID (identificador do navegador)
+    // _fbc = Facebook Click ID (identificador do clique quando vem de anúncio)
+    const fbp = getCookie('_fbp');
+    const fbc = getCookie('_fbc');
+    
+    if (fbp) {
+      allParams['utm_content'] = fbp;
+    }
+    
+    if (fbc) {
+      allParams['utm_term'] = fbc;
     }
 
     const queryString = Object.entries(allParams)
@@ -346,6 +371,8 @@ export default function Fature4000ComUnhasEm2025() {
       email: userEmail.toLowerCase().trim(),
       urlParams: getUrlParams(),
       currentUrlParams: window.location.search,
+      fbp_cookie: getCookie('_fbp'),
+      fbc_cookie: getCookie('_fbc'),
       finalKiwifyUrl: buildKiwifyUrl("https://pay.kiwify.com.br/lf9IZHj", userEmail, getOrStartCheckoutEventId()),
       user_agent: navigator.userAgent,
       timestamp: new Date().toISOString()
