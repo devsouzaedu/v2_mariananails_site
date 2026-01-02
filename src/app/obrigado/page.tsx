@@ -145,30 +145,14 @@ function ObrigadoContent() {
               </div>
 
               <div className="flex items-start bg-black/50 p-4 rounded-lg">
-                <span className="text-3xl mr-4 flex-shrink-0">🎓</span>
-                <div>
-                  <h4 className="font-bold text-white mb-1">2. Acesse a Plataforma</h4>
-                  <p className="text-gray-300 text-sm mb-3">
-                    Entre na plataforma de ensino e comece suas aulas imediatamente. Seu acesso é VITALÍCIO!
-                  </p>
-                  <a 
-                    href="/plataforma/login" 
-                    className="inline-block bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105"
-                  >
-                    🚀 ACESSAR PLATAFORMA AGORA
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start bg-black/50 p-4 rounded-lg">
                 <span className="text-3xl mr-4 flex-shrink-0">💬</span>
                 <div>
-                  <h4 className="font-bold text-white mb-1">3. Entre no Grupo VIP do WhatsApp</h4>
+                  <h4 className="font-bold text-white mb-1">2. Entre no Grupo VIP do WhatsApp</h4>
                   <p className="text-gray-300 text-sm mb-3">
                     Junte-se a mais de 200 alunas ativas, tire dúvidas e receba suporte direto da Mariana!
                   </p>
                   <a 
-                    href="https://chat.whatsapp.com/SEU_LINK_DO_GRUPO" 
+                    href="https://chat.whatsapp.com/C4OEbYEh5e3ENVB70cu7v6" 
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105"
@@ -181,7 +165,7 @@ function ObrigadoContent() {
               <div className="flex items-start bg-black/50 p-4 rounded-lg">
                 <span className="text-3xl mr-4 flex-shrink-0">📄</span>
                 <div>
-                  <h4 className="font-bold text-white mb-1">4. Baixe Seus Certificados</h4>
+                  <h4 className="font-bold text-white mb-1">3. Baixe Seus Certificados</h4>
                   <p className="text-gray-300 text-sm">
                     Após concluir os módulos, você terá acesso a 3 certificados internacionais para baixar.
                   </p>
@@ -260,7 +244,7 @@ function ObrigadoContent() {
               📧 suporte@mariananails.com
             </a>
             <a 
-              href="https://wa.me/5511999999999?text=Olá,%20acabei%20de%20comprar%20o%20curso%20e%20preciso%20de%20ajuda"
+              href="https://wa.me/5511944598264?text=Olá,%20acabei%20de%20comprar%20o%20curso%20e%20preciso%20de%20ajuda"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300"
