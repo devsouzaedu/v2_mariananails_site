@@ -105,10 +105,10 @@ function ObrigadoContent() {
             🎉 Parabéns! Sua Compra Foi Confirmada!
           </h1>
           <p className="text-xl md:text-2xl text-white mb-2">
-            Bem-vinda Mariposa! 🦋 A partir de agora serei sua instrutora e amiga!
+            Bem-vinda à Família Mariana Nails! 💎
           </p>
           <p className="text-lg text-gray-300">
-            Sua jornada para mudar de vida através do trabalho de Nail Designer está prestes a começar!
+            Sua jornada para faturar +R$4.000/mês começa agora!
           </p>
         </div>
 
@@ -289,6 +289,4 @@ export default function ObrigadoPage() {
     </Suspense>
   );
 }
-
-
 
