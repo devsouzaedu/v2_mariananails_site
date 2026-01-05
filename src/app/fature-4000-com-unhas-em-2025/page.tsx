@@ -359,7 +359,7 @@ export default function Fature4000ComUnhasEm2025() {
       window.dataLayer.push({
         event: 'initiate_checkout',
         event_id: eventId,
-        value: 44.00,
+        value: 47.00,
         currency: 'BRL'
       });
       
@@ -627,7 +627,7 @@ export default function Fature4000ComUnhasEm2025() {
           </h2>
           <div className="bg-gray-900 p-6 rounded-xl border border-[#ffcd10] mb-6">
             <p className="text-white text-lg leading-relaxed mb-4">
-              Mesmo sendo iniciante, com apenas <strong className="text-[#ffcd10]">R$ 44,00</strong> você terá um ensino de alta qualidade - <strong className="text-[#ffcd10]">100 vezes mais barato</strong> que o ensino superior tradicional!
+              Mesmo sendo iniciante, com apenas <strong className="text-[#ffcd10]">R$ 47,00</strong> você terá um ensino de alta qualidade - <strong className="text-[#ffcd10]">100 vezes mais barato</strong> que o ensino superior tradicional!
             </p>
             <p className="text-[#ffcd10] text-xl font-bold">
               É assim que você vai sair do zero e se tornar uma profissional reconhecida, que ganha de <span className="text-2xl">R$ 5.000 a R$ 10.000 reais por mês</span>, atuando em um mercado em constante crescimento.
@@ -645,7 +645,7 @@ export default function Fature4000ComUnhasEm2025() {
             <div className="text-center">
               <span className="text-4xl block mb-2">💎</span>
               <p className="text-white text-base">Curso Iniciante ao Profissional</p>
-              <p className="text-[#ffcd10] font-bold text-2xl">R$ 44,00</p>
+              <p className="text-[#ffcd10] font-bold text-2xl">R$ 47,00</p>
               <p className="text-white text-sm">(valor real: R$ 197)</p>
             </div>
           </div>
@@ -805,7 +805,7 @@ export default function Fature4000ComUnhasEm2025() {
           </p>
           
           <div className="bg-gray-900 border-2 border-[#ffcd10] p-6 rounded-xl mb-8">
-            <h3 className="text-xl font-bold text-[#ffcd10] mb-4">O que você vai receber por apenas R$ 44,00:</h3>
+            <h3 className="text-xl font-bold text-[#ffcd10] mb-4">O que você vai receber por apenas R$ 47,00:</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-left text-white text-base">
               <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> Curso completo do zero ao profissional</div>
               <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> Acesso vitalício - aprenda no seu ritmo</div>
@@ -820,9 +820,9 @@ export default function Fature4000ComUnhasEm2025() {
 
           <div className="bg-black border-4 border-[#ffcd10] p-8 rounded-xl mb-8">
             <p className="text-white text-xl mb-2">Valor real: <span className="line-through">R$ 197,00</span></p>
-            <p className="text-6xl font-extrabold text-[#ffcd10] mb-2">R$ 44,00</p>
+            <p className="text-6xl font-extrabold text-[#ffcd10] mb-2">R$ 47,00</p>
             <p className="text-white text-xl">À vista!</p>
-            <p className="text-lg text-white mt-2 opacity-90">Você economiza R$ 153,00!</p>
+            <p className="text-lg text-white mt-2 opacity-90">Você economiza R$ 150,00!</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
@@ -836,7 +836,7 @@ export default function Fature4000ComUnhasEm2025() {
               </ul>
             </div>
             <div className="bg-gray-900 p-4 rounded-lg border border-[#ffcd10]">
-              <h4 className="text-[#ffcd10] font-bold mb-3 text-lg">✅ Nosso Curso (R$ 44,00):</h4>
+              <h4 className="text-[#ffcd10] font-bold mb-3 text-lg">✅ Nosso Curso (R$ 47,00):</h4>
               <ul className="text-white text-base space-y-2">
                 <li>✅ Perfeito para iniciantes - passo a passo</li>
                 <li>✅ Técnicas que encantam clientes</li>
@@ -866,7 +866,7 @@ export default function Fature4000ComUnhasEm2025() {
           </h2>
           <span className="text-6xl mb-4 block">✅</span>
           <p className="text-lg text-[#ffcd10] leading-relaxed">
-            Temos tanta certeza da qualidade do nosso curso que oferecemos uma <strong>garantia de satisfação completa</strong>. Se por qualquer motivo você não se sentir satisfeita, basta solicitar o reembolso total, sem burocracia ou letras miúdas. Seu investimento de apenas R$ 44,00 está 100% seguro! <strong>Satisfação completa ou seu dinheiro de volta.</strong>
+            Temos tanta certeza da qualidade do nosso curso que oferecemos uma <strong>garantia de satisfação completa</strong>. Se por qualquer motivo você não se sentir satisfeita, basta solicitar o reembolso total, sem burocracia ou letras miúdas. Seu investimento de apenas R$ 47,00 está 100% seguro! <strong>Satisfação completa ou seu dinheiro de volta.</strong>
           </p>
         </div>
       </section>
@@ -888,7 +888,7 @@ export default function Fature4000ComUnhasEm2025() {
             </div>
             <div className="bg-gray-900 p-4 rounded-lg shadow-md border border-pink-500">
               <h3 className="text-xl font-bold mb-2 text-[#ffcd10]">Quanto custa o curso?</h3>
-              <p className="text-[#ffcd10] text-base">O curso vale R$ 197,00, mas hoje você paga apenas R$ 44,00! Pagamento único, acesso vitalício, sem mensalidades ou taxas escondidas.</p>
+              <p className="text-[#ffcd10] text-base">O curso vale R$ 197,00, mas hoje você paga apenas R$ 47,00! Pagamento único, acesso vitalício, sem mensalidades ou taxas escondidas.</p>
             </div>
             <div className="bg-gray-900 p-4 rounded-lg shadow-md border border-pink-500">
               <h3 className="text-xl font-bold mb-2 text-[#ffcd10]">Recebo certificados ao finalizar o curso?</h3>
@@ -961,7 +961,7 @@ export default function Fature4000ComUnhasEm2025() {
                 <span className="line-through opacity-70">De R$ 197,00</span>
               </p>
               <p className="text-[#ffcd10] text-3xl font-extrabold">
-                R$ 44,00
+                R$ 47,00
               </p>
               <p className="text-red-400 text-sm font-bold mt-1 animate-pulse">
                 ⚠️ SOMENTE HOJE! Amanhã volta ao preço normal
@@ -1057,7 +1057,7 @@ export default function Fature4000ComUnhasEm2025() {
             onClick={() => handleCheckoutClick('fixed-bottom-button')}
             className="block w-full bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-3 px-4 rounded-full text-sm shadow-xl transition-all duration-300 transform hover:scale-105 text-center cursor-pointer"
           >
-            🎯 GARANTIR VAGA - R$ 44,00
+            🎯 GARANTIR VAGA - R$ 47,00
           </button>
           
           {/* Info compacta */}
