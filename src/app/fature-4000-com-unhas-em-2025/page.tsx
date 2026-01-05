@@ -439,8 +439,11 @@ export default function Fature4000ComUnhasEm2025() {
       {/* Cabeçalho Principal - Fundo Preto, Letras Amarelas */}
       <header className="bg-black text-[#ffcd10] py-6 px-6 text-center">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 leading-tight text-[#ffcd10] scroll-animate animate-fadeIn" data-animate> {/* Amarelo */}
-          Torne-se uma Nail Designer de Sucesso em 2026 - <br className="hidden md:inline"/> Curso Iniciante ao Profissional com Mariana Nails
+          Torne-se uma Nail Designer de Sucesso e Conquiste sua Independência Financeira
         </h1>
+        <p className="text-xl md:text-2xl font-semibold text-[#E4B7B2] mb-2 scroll-animate animate-fadeIn" data-animate>
+          Do Zero ao Profissional com Mariana Nails
+        </p>
         <p className="text-lg md:text-xl font-light max-w-3xl mx-auto text-[#ffcd10] mb-1 scroll-animate animate-slideInUp" data-animate>
           Mesmo que você nunca tenha pegado em uma lixa, você vai aprender do absoluto zero até se tornar uma profissional completa e conquistar sua independência financeira!
         </p>
@@ -643,7 +646,7 @@ export default function Fature4000ComUnhasEm2025() {
               <span className="text-4xl block mb-2">💎</span>
               <p className="text-white text-base">Curso Iniciante ao Profissional</p>
               <p className="text-[#ffcd10] font-bold text-2xl">R$ 44,00</p>
-              <p className="text-white text-sm">(valor real: R$ 300)</p>
+              <p className="text-white text-sm">(valor real: R$ 197)</p>
             </div>
           </div>
         </div>
@@ -795,7 +798,7 @@ export default function Fature4000ComUnhasEm2025() {
       <section className="py-8 px-6 bg-black text-[#ffcd10]">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-extrabold text-[#ffcd10] mb-4">
-            O Curso Completo Vale R$ 300,00 - Mas Você Não Vai Pagar Isso!
+            O Curso Completo Vale R$ 197,00 - Mas Você Não Vai Pagar Isso!
           </h2>
           <p className="text-white text-xl mb-6">
             Se você é iniciante e quer começar do zero, essa é a sua oportunidade de ouro!
@@ -816,10 +819,10 @@ export default function Fature4000ComUnhasEm2025() {
           </div>
 
           <div className="bg-black border-4 border-[#ffcd10] p-8 rounded-xl mb-8">
-            <p className="text-white text-xl mb-2">Valor real: <span className="line-through">R$ 300,00</span></p>
+            <p className="text-white text-xl mb-2">Valor real: <span className="line-through">R$ 197,00</span></p>
             <p className="text-6xl font-extrabold text-[#ffcd10] mb-2">R$ 44,00</p>
             <p className="text-white text-xl">À vista!</p>
-            <p className="text-lg text-white mt-2 opacity-90">Você economiza R$ 256,00!</p>
+            <p className="text-lg text-white mt-2 opacity-90">Você economiza R$ 153,00!</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
@@ -885,7 +888,7 @@ export default function Fature4000ComUnhasEm2025() {
             </div>
             <div className="bg-gray-900 p-4 rounded-lg shadow-md border border-pink-500">
               <h3 className="text-xl font-bold mb-2 text-[#ffcd10]">Quanto custa o curso?</h3>
-              <p className="text-[#ffcd10] text-base">O curso vale R$ 300,00, mas hoje você paga apenas R$ 44,00! Pagamento único, acesso vitalício, sem mensalidades ou taxas escondidas.</p>
+              <p className="text-[#ffcd10] text-base">O curso vale R$ 197,00, mas hoje você paga apenas R$ 44,00! Pagamento único, acesso vitalício, sem mensalidades ou taxas escondidas.</p>
             </div>
             <div className="bg-gray-900 p-4 rounded-lg shadow-md border border-pink-500">
               <h3 className="text-xl font-bold mb-2 text-[#ffcd10]">Recebo certificados ao finalizar o curso?</h3>
@@ -937,45 +940,72 @@ export default function Fature4000ComUnhasEm2025() {
       {/* Modal de Captura de Email */}
       {showEmailModal && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn">
-          <div className="relative bg-gradient-to-b from-gray-900 to-black border-2 border-[#ffcd10] rounded-2xl p-8 max-w-md w-full shadow-2xl animate-scaleIn">
+          <div className="relative bg-gradient-to-b from-gray-900 to-black border-2 border-[#ffcd10] rounded-2xl p-6 max-w-md w-full shadow-2xl animate-scaleIn max-h-[90vh] overflow-y-auto">
             {/* Botão Fechar */}
             <button
               onClick={() => setShowEmailModal(false)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl transition-colors"
+              className="absolute top-3 right-3 text-gray-400 hover:text-white text-2xl transition-colors z-10"
               aria-label="Fechar"
             >
               ✕
             </button>
 
-            {/* Ícone */}
-            <div className="text-center mb-4">
-              <span className="text-6xl">📧</span>
-            </div>
-
             {/* Título */}
-            <h3 className="text-2xl font-bold text-[#ffcd10] text-center mb-2">
-              Último Passo!
+            <h3 className="text-2xl font-bold text-[#ffcd10] text-center mb-3">
+              🎯 Garanta Sua Vaga Agora!
             </h3>
             
-            {/* Oferta de Preço */}
-            <div className="bg-gradient-to-r from-red-900/50 to-red-800/50 border border-red-500 rounded-xl p-3 mb-4 text-center animate-pulse">
+            {/* 1. PREÇO - Oferta */}
+            <div className="bg-gradient-to-r from-red-900/50 to-red-800/50 border border-red-500 rounded-xl p-4 mb-4 text-center">
               <p className="text-white text-sm mb-1">
-                <span className="line-through opacity-70">De R$ 300,00</span>
+                <span className="line-through opacity-70">De R$ 197,00</span>
               </p>
-              <p className="text-[#ffcd10] text-2xl font-extrabold">
-                Por apenas R$ 44,00
+              <p className="text-[#ffcd10] text-3xl font-extrabold">
+                R$ 44,00
               </p>
-              <p className="text-red-400 text-xs font-bold mt-1">
+              <p className="text-red-400 text-sm font-bold mt-1 animate-pulse">
                 ⚠️ SOMENTE HOJE! Amanhã volta ao preço normal
               </p>
             </div>
-            
-            <p className="text-white text-center mb-4 text-sm">
-              Insira seu melhor email para garantir sua vaga e receber acesso imediato ao curso:
-            </p>
 
-            {/* Formulário */}
-            <div className="space-y-4">
+            {/* 2. BENEFÍCIOS - Stack de Valor (ANTES do formulário) */}
+            <div className="bg-gray-800/50 rounded-xl p-4 mb-4">
+              <p className="text-[#ffcd10] text-sm font-bold mb-3 text-center">
+                ✨ O que você vai receber:
+              </p>
+              <div className="grid grid-cols-1 gap-2 text-white text-sm">
+                <div className="flex items-center">
+                  <span className="text-green-400 mr-2 text-lg">✓</span>
+                  <span>Curso completo do zero ao profissional</span>
+                </div>
+                <div className="flex items-center">
+                  <span className="text-green-400 mr-2 text-lg">✓</span>
+                  <span>+30 aulas em vídeo passo a passo</span>
+                </div>
+                <div className="flex items-center">
+                  <span className="text-green-400 mr-2 text-lg">✓</span>
+                  <span>3 Certificados internacionais</span>
+                </div>
+                <div className="flex items-center">
+                  <span className="text-green-400 mr-2 text-lg">✓</span>
+                  <span>Grupo VIP no WhatsApp</span>
+                </div>
+                <div className="flex items-center">
+                  <span className="text-green-400 mr-2 text-lg">✓</span>
+                  <span>Suporte 24 horas</span>
+                </div>
+                <div className="flex items-center">
+                  <span className="text-green-400 mr-2 text-lg">✓</span>
+                  <span>Acesso vitalício</span>
+                </div>
+              </div>
+            </div>
+
+            {/* 3. FORMULÁRIO - Email e Botão */}
+            <div className="space-y-3">
+              <p className="text-white text-center text-sm">
+                Insira seu email para garantir sua vaga:
+              </p>
               <div>
                 <input
                   type="email"
@@ -990,7 +1020,7 @@ export default function Fature4000ComUnhasEm2025() {
                       processCheckout();
                     }
                   }}
-                  className="w-full px-4 py-3 rounded-lg bg-gray-800 border-2 border-gray-700 text-white placeholder-gray-400 focus:border-[#ffcd10] focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 rounded-lg bg-gray-800 border-2 border-gray-700 text-white placeholder-gray-400 focus:border-[#ffcd10] focus:outline-none transition-colors text-base"
                   autoFocus
                 />
                 {emailError && (
@@ -1002,81 +1032,38 @@ export default function Fature4000ComUnhasEm2025() {
                 onClick={processCheckout}
                 className="w-full bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-4 px-6 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
               >
-                🎯 CONTINUAR PARA O PAGAMENTO
+                GARANTIR MINHA VAGA →
               </button>
 
               <p className="text-gray-400 text-xs text-center">
-                🔒 Seus dados estão seguros e protegidos
+                🔒 Pagamento 100% seguro • 7 dias de garantia
               </p>
-            </div>
-
-            {/* Benefícios Rápidos */}
-            <div className="mt-6 pt-6 border-t border-gray-700">
-              <p className="text-[#ffcd10] text-sm font-bold mb-3 text-center">
-                ✨ O que você vai receber:
-              </p>
-              <div className="space-y-2 text-white text-sm">
-                <div className="flex items-center">
-                  <span className="text-green-400 mr-2">✓</span>
-                  Acesso imediato ao curso completo
-                </div>
-                <div className="flex items-center">
-                  <span className="text-green-400 mr-2">✓</span>
-                  3 Certificados internacionais
-                </div>
-                <div className="flex items-center">
-                  <span className="text-green-400 mr-2">✓</span>
-                  Grupo VIP no WhatsApp
-                </div>
-                <div className="flex items-center">
-                  <span className="text-green-400 mr-2">✓</span>
-                  Suporte 24 horas
-                </div>
-              </div>
             </div>
           </div>
         </div>
       )}
 
-      {/* Rodapé - Fundo Preto */}
-      <footer className="bg-black text-white py-3 px-6 text-center">
+      {/* Rodapé - Fundo Preto - Com padding extra para o CTA flutuante */}
+      <footer className="bg-black text-white py-3 px-6 text-center pb-24">
         <p className="text-xs mb-1">COPYRIGHT 2025 – Mariana Nails – Todos os direitos reservados</p>
         <p className="text-xs">Suporte: <a href="mailto:suporte@mariananails.com" className="text-pink-400 hover:underline">suporte@mariananails.com</a></p>
       </footer>
 
-      {/* Seção Flutuante Completa */}
-      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 px-4 w-full max-w-sm">
-        <div className="bg-black/90 backdrop-blur-sm border border-[#ffcd10]/60 rounded-2xl p-4 shadow-2xl space-y-3">
+      {/* Seção Flutuante Compacta - Menos intrusiva */}
+      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 px-4 w-full max-w-xs">
+        <div className="bg-black/95 backdrop-blur-sm border border-[#ffcd10]/60 rounded-xl p-3 shadow-2xl">
           {/* Botão Garantir Minha Vaga */}
           <button
             onClick={() => handleCheckoutClick('fixed-bottom-button')}
-            className="block w-full bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-full text-base shadow-xl animate-pulse transition-all duration-300 transform hover:scale-105 border-2 border-black text-center cursor-pointer"
-            style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
+            className="block w-full bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-3 px-4 rounded-full text-sm shadow-xl transition-all duration-300 transform hover:scale-105 text-center cursor-pointer"
           >
-            🎯 GARANTIR MINHA VAGA
+            🎯 GARANTIR VAGA - R$ 44,00
           </button>
           
-          {/* Bandeiras de Pagamento */}
-          <div className="flex justify-center">
-            <Image
-              src="/images/bandeiras_1.png"
-              alt="Formas de pagamento seguras - Pix, Visa, Mastercard, Hipercard"
-              width={280}
-              height={56}
-              className="mx-auto"
-              priority
-            />
-          </div>
-          
-          {/* Texto Compacto */}
-          <div className="text-center">
-            <p className="text-white font-medium text-xs leading-tight">
-              <span className="text-[#ffcd10]">✓</span> Compra 100% segura - Acesso imediato
-            </p>
-            <p className="text-white font-medium text-xs leading-tight">
-              <span className="text-[#ffcd10]">✓</span> 7 dias de garantia ou dinheiro de volta
-            </p>
-          </div>
+          {/* Info compacta */}
+          <p className="text-white text-center text-xs mt-2 opacity-80">
+            ✓ Pagamento seguro • 7 dias de garantia
+          </p>
         </div>
       </div>
     </div>
