@@ -449,7 +449,7 @@ export default function Fature4000ComUnhasEm2025() {
         </p>
         <div className="inline-block bg-gray-900/80 border border-[#ffcd10]/50 rounded-xl px-6 py-3 scroll-animate animate-scaleIn" data-animate>
           <p className="text-white text-sm">Investimento equivalente a</p>
-          <p className="text-[#ffcd10] text-2xl font-bold">5x de R$ 9,40</p>
+          <p className="text-[#ffcd10] text-2xl font-bold">5x de R$ 10,41</p>
           <p className="text-gray-400 text-xs">ou R$ 47,00 à vista</p>
         </div>
       </header>
@@ -619,7 +619,7 @@ export default function Fature4000ComUnhasEm2025() {
             className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-full text-lg shadow-xl transition-all duration-300 transform hover:scale-105 inline-block animate-bounce cursor-pointer"
             style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
           >
-            Quero começar por 5x de R$ 9,40
+            Quero começar por 5x de R$ 10,41
           </button>
         </div>
       </section>
@@ -632,7 +632,7 @@ export default function Fature4000ComUnhasEm2025() {
           </h2>
           <div className="bg-gray-900 p-6 rounded-xl border border-[#ffcd10] mb-6">
             <p className="text-white text-lg leading-relaxed mb-4">
-              Mesmo sendo iniciante, com apenas <strong className="text-[#ffcd10]">5x de R$ 9,40</strong> você terá um ensino de alta qualidade — menos de <strong className="text-[#ffcd10]">R$ 10 por mês</strong> para mudar de vida!
+              Mesmo sendo iniciante, com apenas <strong className="text-[#ffcd10]">5x de R$ 10,41</strong> você terá um ensino de alta qualidade — menos de <strong className="text-[#ffcd10]">R$ 10 por mês</strong> para mudar de vida!
             </p>
             <p className="text-[#ffcd10] text-xl font-bold">
               É assim que você vai sair do zero e se tornar uma profissional reconhecida, que ganha de <span className="text-2xl">R$ 5.000 a R$ 10.000 reais por mês</span>, atuando em um mercado em constante crescimento.
@@ -650,7 +650,7 @@ export default function Fature4000ComUnhasEm2025() {
             <div className="text-center">
               <span className="text-4xl block mb-2">💎</span>
               <p className="text-white text-base">Curso Iniciante ao Profissional</p>
-              <p className="text-[#ffcd10] font-bold text-xl">5x R$ 9,40</p>
+              <p className="text-[#ffcd10] font-bold text-xl">5x R$ 10,41</p>
               <p className="text-white text-xs">(ou R$ 47 à vista)</p>
               <p className="text-white text-sm">(valor real: R$ 197)</p>
             </div>
@@ -795,7 +795,7 @@ export default function Fature4000ComUnhasEm2025() {
             className="bg-[#E4B7B2] hover:bg-pink-400 text-black font-bold py-3 px-6 rounded-full text-lg shadow-xl transition-all duration-300 transform hover:scale-105 inline-block animate-pulse cursor-pointer"
             style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
           >
-            Quero começar por 5x de R$ 9,40
+            Quero começar por 5x de R$ 10,41
           </button>
         </div>
       </section>
@@ -858,7 +858,7 @@ export default function Fature4000ComUnhasEm2025() {
             
             <p className="text-[#ffcd10] text-lg font-semibold mb-2">POR APENAS:</p>
             <div className="bg-[#ffcd10] text-black inline-block px-6 py-3 rounded-xl mb-4">
-              <p className="text-4xl md:text-5xl font-extrabold">5x de R$ 9,40</p>
+              <p className="text-4xl md:text-5xl font-extrabold">5x de R$ 10,41</p>
             </div>
             <p className="text-white text-lg">ou <strong className="text-[#ffcd10]">R$ 47,00</strong> à vista</p>
             
@@ -889,7 +889,7 @@ export default function Fature4000ComUnhasEm2025() {
               onClick={() => handleCheckoutClick('main-cta-section')}
               className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-full text-lg md:text-xl transition-all duration-300 transform hover:scale-105 shadow-lg inline-block cursor-pointer"
             >
-              SIM! Quero começar por 5x de R$ 9,40 →
+              SIM! Quero começar por 5x de R$ 10,41 →
             </button>
             <p className="text-gray-400 text-sm mt-3">
               🔒 Pagamento 100% seguro • Acesso imediato • 7 dias de garantia
@@ -906,7 +906,7 @@ export default function Fature4000ComUnhasEm2025() {
           </h2>
           <span className="text-6xl mb-4 block">✅</span>
           <p className="text-lg text-[#ffcd10] leading-relaxed">
-            Temos tanta certeza da qualidade do nosso curso que oferecemos uma <strong>garantia de satisfação completa</strong>. Se por qualquer motivo você não se sentir satisfeita, basta solicitar o reembolso total, sem burocracia ou letras miúdas. Seu investimento de apenas <strong>5x de R$ 9,40</strong> está 100% seguro! <strong>Satisfação completa ou seu dinheiro de volta.</strong>
+            Temos tanta certeza da qualidade do nosso curso que oferecemos uma <strong>garantia de satisfação completa</strong>. Se por qualquer motivo você não se sentir satisfeita, basta solicitar o reembolso total, sem burocracia ou letras miúdas. Seu investimento de apenas <strong>5x de R$ 10,41</strong> está 100% seguro! <strong>Satisfação completa ou seu dinheiro de volta.</strong>
           </p>
         </div>
       </section>
@@ -928,7 +928,7 @@ export default function Fature4000ComUnhasEm2025() {
             </div>
             <div className="bg-gray-900 p-4 rounded-lg shadow-md border border-pink-500">
               <h3 className="text-xl font-bold mb-2 text-[#ffcd10]">Quanto custa o curso?</h3>
-              <p className="text-[#ffcd10] text-base">O curso vale R$ 197,00, mas hoje você paga em até <strong>5x de R$ 9,40</strong> (ou R$ 47 à vista)! Acesso vitalício, sem mensalidades ou taxas escondidas.</p>
+              <p className="text-[#ffcd10] text-base">O curso vale R$ 197,00, mas hoje você paga em até <strong>5x de R$ 10,41</strong> (ou R$ 47 à vista)! Acesso vitalício, sem mensalidades ou taxas escondidas.</p>
             </div>
             <div className="bg-gray-900 p-4 rounded-lg shadow-md border border-pink-500">
               <h3 className="text-xl font-bold mb-2 text-[#ffcd10]">Recebo certificados ao finalizar o curso?</h3>
@@ -1001,7 +1001,7 @@ export default function Fature4000ComUnhasEm2025() {
                 <span className="line-through opacity-70">De R$ 197,00</span>
               </p>
               <p className="text-[#ffcd10] text-2xl font-extrabold">
-                5x de R$ 9,40
+                5x de R$ 10,41
               </p>
               <p className="text-white text-sm">ou R$ 47,00 à vista</p>
               <p className="text-red-400 text-sm font-bold mt-1 animate-pulse">
@@ -1073,7 +1073,7 @@ export default function Fature4000ComUnhasEm2025() {
                 onClick={processCheckout}
                 className="w-full bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-4 px-6 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
               >
-                SIM! Quero por 5x de R$ 9,40 →
+                SIM! Quero por 5x de R$ 10,41 →
               </button>
 
               <p className="text-gray-400 text-xs text-center">
@@ -1098,7 +1098,7 @@ export default function Fature4000ComUnhasEm2025() {
             onClick={() => handleCheckoutClick('fixed-bottom-button')}
             className="block w-full bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-3 px-4 rounded-full text-sm shadow-xl transition-all duration-300 transform hover:scale-105 text-center cursor-pointer"
           >
-            Começar por 5x R$ 9,40 →
+            Começar por 5x R$ 10,41 →
           </button>
           
           {/* Info compacta */}
