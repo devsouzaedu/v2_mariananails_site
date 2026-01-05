@@ -437,16 +437,21 @@ export default function Fature4000ComUnhasEm2025() {
       </div>
 
       {/* Cabeçalho Principal - Fundo Preto, Letras Amarelas */}
-      <header className="bg-black text-[#ffcd10] py-6 px-6 text-center">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 leading-tight text-[#ffcd10] scroll-animate animate-fadeIn" data-animate> {/* Amarelo */}
-          Torne-se uma Nail Designer de Sucesso e Conquiste sua Independência Financeira
+      <header className="bg-black text-[#ffcd10] py-8 px-6 text-center">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 leading-tight text-[#ffcd10] scroll-animate animate-fadeIn" data-animate>
+          O Método Completo para Faturar com Unhas
         </h1>
-        <p className="text-xl md:text-2xl font-semibold text-[#E4B7B2] mb-2 scroll-animate animate-fadeIn" data-animate>
-          Do Zero ao Profissional com Mariana Nails
+        <p className="text-xl md:text-2xl font-semibold text-[#E4B7B2] mb-3 scroll-animate animate-fadeIn" data-animate>
+          (Mesmo Começando do Absoluto Zero)
         </p>
-        <p className="text-lg md:text-xl font-light max-w-3xl mx-auto text-[#ffcd10] mb-1 scroll-animate animate-slideInUp" data-animate>
-          Mesmo que você nunca tenha pegado em uma lixa, você vai aprender do absoluto zero até se tornar uma profissional completa e conquistar sua independência financeira!
+        <p className="text-lg md:text-xl font-light max-w-3xl mx-auto text-white mb-4 scroll-animate animate-slideInUp" data-animate>
+          Domine as técnicas mais pedidas do mercado pagando <strong className="text-[#ffcd10]">menos de R$ 0,40 por dia</strong>.
         </p>
+        <div className="inline-block bg-gray-900/80 border border-[#ffcd10]/50 rounded-xl px-6 py-3 scroll-animate animate-scaleIn" data-animate>
+          <p className="text-white text-sm">Investimento equivalente a</p>
+          <p className="text-[#ffcd10] text-2xl font-bold">5x de R$ 9,40</p>
+          <p className="text-gray-400 text-xs">ou R$ 47,00 à vista</p>
+        </div>
       </header>
 
       {/* Seção de Benefícios - Fundo Preto, Cores Rosé */}
@@ -614,7 +619,7 @@ export default function Fature4000ComUnhasEm2025() {
             className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-full text-lg shadow-xl transition-all duration-300 transform hover:scale-105 inline-block animate-bounce cursor-pointer"
             style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
           >
-            🎯 GARANTIR MINHA VAGA
+            Quero começar por 5x de R$ 9,40
           </button>
         </div>
       </section>
@@ -627,7 +632,7 @@ export default function Fature4000ComUnhasEm2025() {
           </h2>
           <div className="bg-gray-900 p-6 rounded-xl border border-[#ffcd10] mb-6">
             <p className="text-white text-lg leading-relaxed mb-4">
-              Mesmo sendo iniciante, com apenas <strong className="text-[#ffcd10]">R$ 47,00</strong> você terá um ensino de alta qualidade - <strong className="text-[#ffcd10]">100 vezes mais barato</strong> que o ensino superior tradicional!
+              Mesmo sendo iniciante, com apenas <strong className="text-[#ffcd10]">5x de R$ 9,40</strong> você terá um ensino de alta qualidade — menos de <strong className="text-[#ffcd10]">R$ 10 por mês</strong> para mudar de vida!
             </p>
             <p className="text-[#ffcd10] text-xl font-bold">
               É assim que você vai sair do zero e se tornar uma profissional reconhecida, que ganha de <span className="text-2xl">R$ 5.000 a R$ 10.000 reais por mês</span>, atuando em um mercado em constante crescimento.
@@ -645,7 +650,8 @@ export default function Fature4000ComUnhasEm2025() {
             <div className="text-center">
               <span className="text-4xl block mb-2">💎</span>
               <p className="text-white text-base">Curso Iniciante ao Profissional</p>
-              <p className="text-[#ffcd10] font-bold text-2xl">R$ 47,00</p>
+              <p className="text-[#ffcd10] font-bold text-xl">5x R$ 9,40</p>
+              <p className="text-white text-xs">(ou R$ 47 à vista)</p>
               <p className="text-white text-sm">(valor real: R$ 197)</p>
             </div>
           </div>
@@ -789,71 +795,105 @@ export default function Fature4000ComUnhasEm2025() {
             className="bg-[#E4B7B2] hover:bg-pink-400 text-black font-bold py-3 px-6 rounded-full text-lg shadow-xl transition-all duration-300 transform hover:scale-105 inline-block animate-pulse cursor-pointer"
             style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
           >
-            🎯 GARANTIR MINHA VAGA
+            Quero começar por 5x de R$ 9,40
           </button>
         </div>
       </section>
 
-      {/* Nova Seção CTA Completa */}
+      {/* Seção "Pague com 1 Atendimento" - Ancoragem Comparativa */}
+      <section className="py-8 px-6 bg-gradient-to-b from-gray-900 to-black text-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="bg-gradient-to-r from-[#ffcd10]/20 to-[#E4B7B2]/20 border-2 border-[#ffcd10] rounded-2xl p-6 md:p-8">
+            <h2 className="text-2xl md:text-3xl font-extrabold text-[#ffcd10] mb-4">
+              💡 Pague o Curso Inteiro com Apenas 1 Atendimento
+            </h2>
+            <p className="text-lg text-white mb-4">
+              Você já parou para pensar?
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+              <div className="bg-black/50 rounded-xl p-4">
+                <p className="text-gray-400 text-sm">Investimento no curso</p>
+                <p className="text-[#ffcd10] text-2xl font-bold">R$ 47,00</p>
+              </div>
+              <div className="bg-black/50 rounded-xl p-4">
+                <p className="text-gray-400 text-sm">Valor médio de 1 atendimento</p>
+                <p className="text-green-400 text-2xl font-bold">R$ 50 a R$ 80</p>
+              </div>
+              <div className="bg-black/50 rounded-xl p-4">
+                <p className="text-gray-400 text-sm">Seu lucro já na 1ª cliente</p>
+                <p className="text-green-400 text-2xl font-bold">+ R$ 3 a R$ 33</p>
+              </div>
+            </div>
+            <p className="text-[#ffcd10] text-lg font-semibold">
+              ✨ Com a sua primeira cliente, você paga o curso todo e já tem lucro.<br/>
+              <span className="text-white">Todo o resto é dinheiro no seu bolso.</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Nova Seção CTA Completa - Reestruturada */}
       <section className="py-8 px-6 bg-black text-[#ffcd10]">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-[#ffcd10] mb-4">
-            O Curso Completo Vale R$ 197,00 - Mas Você Não Vai Pagar Isso!
-          </h2>
-          <p className="text-white text-xl mb-6">
-            Se você é iniciante e quer começar do zero, essa é a sua oportunidade de ouro!
-          </p>
           
+          {/* Stack de Valor */}
           <div className="bg-gray-900 border-2 border-[#ffcd10] p-6 rounded-xl mb-8">
-            <h3 className="text-xl font-bold text-[#ffcd10] mb-4">O que você vai receber por apenas R$ 47,00:</h3>
+            <h3 className="text-xl font-bold text-[#ffcd10] mb-4">✨ Tudo isso por menos de R$ 10 por mês:</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-left text-white text-base">
-              <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> Curso completo do zero ao profissional</div>
-              <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> Acesso vitalício - aprenda no seu ritmo</div>
-              <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> Área de membros estilo Netflix</div>
-              <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> Aulas práticas passo a passo</div>
-              <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> Didática simples para iniciantes</div>
-              <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> Suporte via WhatsApp</div>
-              <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> 3 Certificados Internacionais</div>
-              <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> Técnicas que aumentam faturamento</div>
+              <div className="flex items-center"><span className="text-green-400 mr-2">✓</span> Curso completo do zero ao profissional</div>
+              <div className="flex items-center"><span className="text-green-400 mr-2">✓</span> +30 aulas em vídeo passo a passo</div>
+              <div className="flex items-center"><span className="text-green-400 mr-2">✓</span> Acesso vitalício - aprenda no seu ritmo</div>
+              <div className="flex items-center"><span className="text-green-400 mr-2">✓</span> Área de membros estilo Netflix</div>
+              <div className="flex items-center"><span className="text-green-400 mr-2">✓</span> Didática simples para iniciantes</div>
+              <div className="flex items-center"><span className="text-green-400 mr-2">✓</span> Suporte via WhatsApp 24h</div>
+              <div className="flex items-center"><span className="text-green-400 mr-2">✓</span> 3 Certificados Internacionais</div>
+              <div className="flex items-center"><span className="text-green-400 mr-2">✓</span> Técnicas que encantam clientes</div>
             </div>
           </div>
 
-          <div className="bg-black border-4 border-[#ffcd10] p-8 rounded-xl mb-8">
-            <p className="text-white text-xl mb-2">Valor real: <span className="line-through">R$ 197,00</span></p>
-            <p className="text-6xl font-extrabold text-[#ffcd10] mb-2">R$ 47,00</p>
-            <p className="text-white text-xl">À vista!</p>
-            <p className="text-lg text-white mt-2 opacity-90">Você economiza R$ 150,00!</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <div className="bg-gray-900 p-4 rounded-lg border border-red-500">
-              <h4 className="text-red-500 font-bold mb-3 text-lg">❌ Cursos Comuns:</h4>
-              <ul className="text-white text-base space-y-2">
-                <li>❌ Difíceis para iniciantes</li>
-                <li>❌ Técnicas desvalorizadas</li>
-                <li>❌ Métodos ultrapassados</li>
-                <li>❌ Sem suporte para dúvidas</li>
-              </ul>
+          {/* Bloco de Preço - Visual Reestruturado */}
+          <div className="bg-gradient-to-b from-gray-900 to-black border-4 border-[#ffcd10] p-8 rounded-2xl mb-8">
+            <p className="text-gray-400 text-lg mb-1">DE:</p>
+            <p className="text-white text-2xl line-through opacity-60 mb-4">R$ 197,00</p>
+            
+            <p className="text-[#ffcd10] text-lg font-semibold mb-2">POR APENAS:</p>
+            <div className="bg-[#ffcd10] text-black inline-block px-6 py-3 rounded-xl mb-4">
+              <p className="text-4xl md:text-5xl font-extrabold">5x de R$ 9,40</p>
             </div>
-            <div className="bg-gray-900 p-4 rounded-lg border border-[#ffcd10]">
-              <h4 className="text-[#ffcd10] font-bold mb-3 text-lg">✅ Nosso Curso (R$ 47,00):</h4>
-              <ul className="text-white text-base space-y-2">
-                <li>✅ Perfeito para iniciantes - passo a passo</li>
-                <li>✅ Técnicas que encantam clientes</li>
-                <li>✅ Suporte 24h para suas dúvidas</li>
-                <li>✅ De iniciante a profissional de excelência</li>
-              </ul>
+            <p className="text-white text-lg">ou <strong className="text-[#ffcd10]">R$ 47,00</strong> à vista</p>
+            
+            <div className="mt-4 pt-4 border-t border-gray-700">
+              <p className="text-green-400 text-base">
+                💰 Menos de R$ 0,40 por dia para mudar sua vida
+              </p>
             </div>
           </div>
 
+          {/* Justificativa do Preço Baixo */}
+          <div className="bg-gray-900/50 border border-gray-700 rounded-xl p-6 mb-8 text-left">
+            <h4 className="text-[#ffcd10] font-bold text-lg mb-3 text-center">
+              🤔 "Por que um conteúdo tão completo por um valor tão acessível?"
+            </h4>
+            <p className="text-white text-base leading-relaxed">
+              "Eu poderia cobrar facilmente <strong className="text-[#ffcd10]">R$ 297</strong> por esse treinamento. 
+              Mas meu objetivo hoje não é o lucro imediato — é <strong className="text-[#ffcd10]">criar o maior case de sucesso 
+              de Nail Designers do Brasil</strong>. Eu quero que você entre, tenha resultados incríveis e seja a 
+              <strong className="text-[#ffcd10]"> prova viva</strong> de que meu método funciona. Por isso, derrubei a barreira de entrada."
+            </p>
+            <p className="text-right text-[#E4B7B2] mt-3 font-semibold">— Mariana Nails</p>
+          </div>
+
+          {/* CTA Principal */}
           <div className="mb-6">
             <button
               onClick={() => handleCheckoutClick('main-cta-section')}
-              className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-full text-lg md:text-xl uppercase transition-all duration-300 transform hover:scale-105 shadow-lg inline-block cursor-pointer"
-              style={{ fontFamily: 'var(--font-instrument-serif), serif' }}
+              className="bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-full text-lg md:text-xl transition-all duration-300 transform hover:scale-105 shadow-lg inline-block cursor-pointer"
             >
-              🎯 QUERO GARANTIR MINHA VAGA AGORA!
+              SIM! Quero começar por 5x de R$ 9,40 →
             </button>
+            <p className="text-gray-400 text-sm mt-3">
+              🔒 Pagamento 100% seguro • Acesso imediato • 7 dias de garantia
+            </p>
           </div>
         </div>
       </section>
@@ -866,7 +906,7 @@ export default function Fature4000ComUnhasEm2025() {
           </h2>
           <span className="text-6xl mb-4 block">✅</span>
           <p className="text-lg text-[#ffcd10] leading-relaxed">
-            Temos tanta certeza da qualidade do nosso curso que oferecemos uma <strong>garantia de satisfação completa</strong>. Se por qualquer motivo você não se sentir satisfeita, basta solicitar o reembolso total, sem burocracia ou letras miúdas. Seu investimento de apenas R$ 47,00 está 100% seguro! <strong>Satisfação completa ou seu dinheiro de volta.</strong>
+            Temos tanta certeza da qualidade do nosso curso que oferecemos uma <strong>garantia de satisfação completa</strong>. Se por qualquer motivo você não se sentir satisfeita, basta solicitar o reembolso total, sem burocracia ou letras miúdas. Seu investimento de apenas <strong>5x de R$ 9,40</strong> está 100% seguro! <strong>Satisfação completa ou seu dinheiro de volta.</strong>
           </p>
         </div>
       </section>
@@ -888,7 +928,7 @@ export default function Fature4000ComUnhasEm2025() {
             </div>
             <div className="bg-gray-900 p-4 rounded-lg shadow-md border border-pink-500">
               <h3 className="text-xl font-bold mb-2 text-[#ffcd10]">Quanto custa o curso?</h3>
-              <p className="text-[#ffcd10] text-base">O curso vale R$ 197,00, mas hoje você paga apenas R$ 47,00! Pagamento único, acesso vitalício, sem mensalidades ou taxas escondidas.</p>
+              <p className="text-[#ffcd10] text-base">O curso vale R$ 197,00, mas hoje você paga em até <strong>5x de R$ 9,40</strong> (ou R$ 47 à vista)! Acesso vitalício, sem mensalidades ou taxas escondidas.</p>
             </div>
             <div className="bg-gray-900 p-4 rounded-lg shadow-md border border-pink-500">
               <h3 className="text-xl font-bold mb-2 text-[#ffcd10]">Recebo certificados ao finalizar o curso?</h3>
@@ -960,9 +1000,10 @@ export default function Fature4000ComUnhasEm2025() {
               <p className="text-white text-sm mb-1">
                 <span className="line-through opacity-70">De R$ 197,00</span>
               </p>
-              <p className="text-[#ffcd10] text-3xl font-extrabold">
-                R$ 47,00
+              <p className="text-[#ffcd10] text-2xl font-extrabold">
+                5x de R$ 9,40
               </p>
+              <p className="text-white text-sm">ou R$ 47,00 à vista</p>
               <p className="text-red-400 text-sm font-bold mt-1 animate-pulse">
                 ⚠️ SOMENTE HOJE! Amanhã volta ao preço normal
               </p>
@@ -1032,7 +1073,7 @@ export default function Fature4000ComUnhasEm2025() {
                 onClick={processCheckout}
                 className="w-full bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-4 px-6 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
               >
-                GARANTIR MINHA VAGA →
+                SIM! Quero por 5x de R$ 9,40 →
               </button>
 
               <p className="text-gray-400 text-xs text-center">
@@ -1057,7 +1098,7 @@ export default function Fature4000ComUnhasEm2025() {
             onClick={() => handleCheckoutClick('fixed-bottom-button')}
             className="block w-full bg-[#ffcd10] hover:bg-yellow-500 text-black font-bold py-3 px-4 rounded-full text-sm shadow-xl transition-all duration-300 transform hover:scale-105 text-center cursor-pointer"
           >
-            🎯 GARANTIR VAGA - R$ 47,00
+            Começar por 5x R$ 9,40 →
           </button>
           
           {/* Info compacta */}
