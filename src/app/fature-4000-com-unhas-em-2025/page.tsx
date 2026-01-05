@@ -359,7 +359,7 @@ export default function Fature4000ComUnhasEm2025() {
       window.dataLayer.push({
         event: 'initiate_checkout',
         event_id: eventId,
-        value: 43.02,
+        value: 44.00,
         currency: 'BRL'
       });
       
@@ -439,10 +439,10 @@ export default function Fature4000ComUnhasEm2025() {
       {/* Cabeçalho Principal - Fundo Preto, Letras Amarelas */}
       <header className="bg-black text-[#ffcd10] py-6 px-6 text-center">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 leading-tight text-[#ffcd10] scroll-animate animate-fadeIn" data-animate> {/* Amarelo */}
-          Torne-se uma Nail Designer de Sucesso e Fature <br className="hidden md:inline"/> +R$4.000 por Mês em 2025 com Mariana Nails!
+          Torne-se uma Nail Designer de Sucesso em 2026 - <br className="hidden md:inline"/> Curso Iniciante ao Profissional com Mariana Nails
         </h1>
-        <p className="text-base md:text-lg font-light max-w-3xl mx-auto text-[#ffcd10] mb-1 scroll-animate animate-slideInUp" data-animate>
-          Conquiste sua independência financeira, seja sua própria chefe e transforme sua paixão por unhas em uma carreira lucrativa e valorizada no mercado da beleza!
+        <p className="text-lg md:text-xl font-light max-w-3xl mx-auto text-[#ffcd10] mb-1 scroll-animate animate-slideInUp" data-animate>
+          Mesmo que você nunca tenha pegado em uma lixa, você vai aprender do absoluto zero até se tornar uma profissional completa e conquistar sua independência financeira!
         </p>
       </header>
 
@@ -464,9 +464,9 @@ export default function Fature4000ComUnhasEm2025() {
                   onError={() => setIconGrowthError(true)}
                 />
               )}
-              <h3 className="text-xl font-bold mb-2" style={{ color: '#E4B7B2' }}>Do Zero ao Avançado</h3>
-              <p className="text-sm" style={{ color: '#F9F1F0' }}>
-                Mesmo sem experiência, você aprenderá todas as técnicas para se tornar uma Nail Designer completa e confiante.
+              <h3 className="text-xl font-bold mb-2" style={{ color: '#E4B7B2' }}>Perfeito Para Iniciantes</h3>
+              <p className="text-base" style={{ color: '#F9F1F0' }}>
+                Nunca mexeu com unhas? Sem problemas! Você vai aprender do absoluto zero até se tornar uma profissional completa e confiante.
               </p>
             </div>
             <div className="p-4 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-500 flex flex-col items-center transform hover:scale-105 scroll-animate animate-scaleIn" style={{ backgroundColor: '#000000', border: '1px solid #B76E79' }} data-animate>
@@ -481,8 +481,8 @@ export default function Fature4000ComUnhasEm2025() {
                 />
               )}
               <h3 className="text-xl font-bold mb-2" style={{ color: '#E4B7B2' }}>Fature +R$4.000/Mês</h3>
-              <p className="text-sm" style={{ color: '#F9F1F0' }}>
-                Descubra como transformar suas habilidades em uma fonte de renda sólida e lucrativa, alcançando sua independência financeira.
+              <p className="text-base" style={{ color: '#F9F1F0' }}>
+                Transforme sua paixão em renda! Mesmo começando do zero, você pode conquistar sua independência financeira.
               </p>
             </div>
             <div className="p-4 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-500 flex flex-col items-center transform hover:scale-105 scroll-animate animate-scaleIn" style={{ backgroundColor: '#000000', border: '1px solid #B76E79' }} data-animate>
@@ -497,7 +497,7 @@ export default function Fature4000ComUnhasEm2025() {
                 />
               )}
               <h3 className="text-xl font-bold mb-2" style={{ color: '#E4B7B2' }}>Certificação Internacional</h3>
-              <p className="text-sm" style={{ color: '#F9F1F0' }}>
+              <p className="text-base" style={{ color: '#F9F1F0' }}>
                 Receba 3 certificados internacionais que validarão suas habilidades e abrirão portas no mercado de trabalho.
               </p>
             </div>
@@ -517,10 +517,10 @@ export default function Fature4000ComUnhasEm2025() {
                 <span className="text-3xl mr-3">📚</span>
                 <h3 className="text-xl font-bold text-[#ffcd10]">Módulos Completos e Didáticos</h3>
               </div>
-              <ul className="text-[#ffcd10] space-y-2 text-sm">
-                <li className="flex items-start"><span className="text-lg mr-2">🎥</span>+ de 30 aulas em videoaula, passo a passo, pensadas para iniciantes.</li>
+              <ul className="text-[#ffcd10] space-y-2 text-base">
+                <li className="flex items-start"><span className="text-lg mr-2">🎥</span>+ de 30 aulas em videoaula, passo a passo, perfeitas para quem está começando do zero.</li>
                 <li className="flex items-start"><span className="text-lg mr-2">💎</span>Técnicas de alongamento na fibra de vidro com controle de produtos.</li>
-                <li className="flex items-start"><span className="text-lg mr-2">✂️</span>Cutilagem, esmaltação em gel.</li>
+                <li className="flex items-start"><span className="text-lg mr-2">✂️</span>Cutilagem e esmaltação em gel - explicado do básico.</li>
                 <li className="flex items-start"><span className="text-lg mr-2">🎨</span>Decoração 3D com gel sólido.</li>
                 <li className="flex items-start"><span className="text-lg mr-2">✨</span>Decorações com esfumado, baby color, baby boomer.</li>
                 <li className="flex items-start"><span className="text-lg mr-2">🔧</span>Remoção segura e manutenção.</li>
@@ -532,10 +532,10 @@ export default function Fature4000ComUnhasEm2025() {
                 <span className="text-3xl mr-3">⭐</span>
                 <h3 className="text-xl font-bold text-[#ffcd10]">Diferenciais Exclusivos</h3>
               </div>
-              <ul className="text-[#ffcd10] space-y-2 text-sm">
+              <ul className="text-[#ffcd10] space-y-2 text-base">
                 <li className="flex items-start"><span className="text-lg mr-2">🏆</span>3 Certificados Internacionais reconhecidos no mercado.</li>
-                <li className="flex items-start"><span className="text-lg mr-2">💬</span>Grupo exclusivo no WhatsApp com mais de 200 alunas ativas.</li>
-                <li className="flex items-start"><span className="text-lg mr-2">🕒</span>Suporte 24 horas para tirar todas suas dúvidas.</li>
+                <li className="flex items-start"><span className="text-lg mr-2">💬</span>Grupo exclusivo no WhatsApp com mais de 200 alunas iniciantes e profissionais.</li>
+                <li className="flex items-start"><span className="text-lg mr-2">🕒</span>Suporte 24 horas para tirar todas suas dúvidas de iniciante.</li>
                 <li className="flex items-start"><span className="text-lg mr-2">👩‍🏫</span>Contato direto com a Mariana para mentoria personalizada.</li>
                 <li className="flex items-start"><span className="text-lg mr-2">🤝</span>Comunidade exclusiva para networking e troca de experiências.</li>
                 <li className="flex items-start"><span className="text-lg mr-2">📄</span>Material de apoio em PDF para download.</li>
@@ -556,49 +556,49 @@ export default function Fature4000ComUnhasEm2025() {
             <div className="space-y-3">
               <div className="flex items-start">
                 <span className="text-[#ffcd10] text-xl mr-3 mt-1">✅</span>
-                <p className="text-white text-sm">Já é manicure e deseja aprimorar suas habilidades para oferecer os serviços mais modernos do mercado.</p>
+                <p className="text-white text-base">É iniciante e nunca trabalhou com unhas, mas quer começar uma nova profissão.</p>
               </div>
               <div className="flex items-start">
                 <span className="text-[#ffcd10] text-xl mr-3 mt-1">✅</span>
-                <p className="text-white text-sm">Está começando e quer aprender técnicas avançadas para ter um diferencial competitivo desde o início.</p>
+                <p className="text-white text-base">Está começando do zero e quer aprender o passo a passo completo.</p>
               </div>
               <div className="flex items-start">
                 <span className="text-[#ffcd10] text-xl mr-3 mt-1">✅</span>
-                <p className="text-white text-sm">Já fez cursos anteriormente, mas ainda não se sente pronta para atender clientes de forma profissional.</p>
+                <p className="text-white text-base">Nunca pegou em uma lixa mas sonha em trabalhar com unhas.</p>
               </div>
               <div className="flex items-start">
                 <span className="text-[#ffcd10] text-xl mr-3 mt-1">✅</span>
-                <p className="text-white text-sm">Quer aprender do zero e fazer parte do mundo das unhas, seja para ter uma renda extra ou transformar sua vida com uma nova profissão.</p>
+                <p className="text-white text-base">Quer aprender do absoluto zero e transformar sua vida com uma nova profissão.</p>
               </div>
               <div className="flex items-start">
                 <span className="text-[#ffcd10] text-xl mr-3 mt-1">✅</span>
-                <p className="text-white text-sm">Quer ter mais dinheiro para dar o melhor para sua família.</p>
+                <p className="text-white text-base">Quer ter mais dinheiro para dar o melhor para sua família.</p>
               </div>
               <div className="flex items-start">
                 <span className="text-[#ffcd10] text-xl mr-3 mt-1">✅</span>
-                <p className="text-white text-sm">Quer um passo a passo detalhado com tudo que precisa.</p>
+                <p className="text-white text-base">Quer um passo a passo detalhado, perfeito para iniciantes.</p>
               </div>
             </div>
             <div className="space-y-3">
               <div className="flex items-start">
                 <span className="text-[#ffcd10] text-xl mr-3 mt-1">✅</span>
-                <p className="text-white text-sm">Quer lotar sua agenda de clientes satisfeitas.</p>
+                <p className="text-white text-base">Quer conquistar suas primeiras clientes com confiança.</p>
               </div>
               <div className="flex items-start">
                 <span className="text-[#ffcd10] text-xl mr-3 mt-1">✅</span>
-                <p className="text-white text-sm">Quer entregar um trabalho de excelência.</p>
+                <p className="text-white text-base">Quer entregar um trabalho de excelência desde o início.</p>
               </div>
               <div className="flex items-start">
                 <span className="text-[#ffcd10] text-xl mr-3 mt-1">✅</span>
-                <p className="text-white text-sm">Quer viver das unhas.</p>
+                <p className="text-white text-base">Quer viver das unhas.</p>
               </div>
               <div className="flex items-start">
                 <span className="text-[#ffcd10] text-xl mr-3 mt-1">✅</span>
-                <p className="text-white text-sm">Quer descobrir os segredos que me tornaram valorizada e reconhecida.</p>
+                <p className="text-white text-base">Quer descobrir os segredos que me tornaram valorizada e reconhecida.</p>
               </div>
               <div className="flex items-start">
                 <span className="text-[#ffcd10] text-xl mr-3 mt-1">✅</span>
-                <p className="text-white text-sm">Quer conseguir muitas clientes fiéis e ganhar de R$ 5.000 a R$ 10.000 por mês.</p>
+                <p className="text-white text-base">Quer ganhar de R$ 5.000 a R$ 10.000 por mês trabalhando com unhas.</p>
               </div>
             </div>
           </div>
@@ -620,29 +620,30 @@ export default function Fature4000ComUnhasEm2025() {
       <section className="py-6 px-6 bg-black text-[#ffcd10]">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-extrabold text-[#E4B7B2] mb-4 scroll-animate animate-slideInRight" data-animate>
-            Você Não Precisa de Uma Faculdade Cara Para Ganhar 10 Mil Por Mês!
+            É Iniciante? Não Precisa de Faculdade Para Ganhar 10 Mil Por Mês!
           </h2>
           <div className="bg-gray-900 p-6 rounded-xl border border-[#ffcd10] mb-6">
             <p className="text-white text-lg leading-relaxed mb-4">
-              Um ensino de alta qualidade por um investimento <strong className="text-[#ffcd10]">100 vezes menor</strong> que o ensino superior tradicional, além de habilidades para exercer a sua profissão com confiança e segurança.
+              Mesmo sendo iniciante, com apenas <strong className="text-[#ffcd10]">R$ 44,00</strong> você terá um ensino de alta qualidade - <strong className="text-[#ffcd10]">100 vezes mais barato</strong> que o ensino superior tradicional!
             </p>
             <p className="text-[#ffcd10] text-xl font-bold">
-              É assim que você vai se tornar uma profissional reconhecida, que ganha de <span className="text-2xl">R$ 5.000 a R$ 10.000 reais por mês</span>, atuando em um mercado em constante crescimento.
+              É assim que você vai sair do zero e se tornar uma profissional reconhecida, que ganha de <span className="text-2xl">R$ 5.000 a R$ 10.000 reais por mês</span>, atuando em um mercado em constante crescimento.
             </p>
           </div>
           <div className="flex justify-center items-center space-x-8">
             <div className="text-center">
               <span className="text-4xl block mb-2">🎓</span>
-              <p className="text-white text-sm">Faculdade Tradicional</p>
-              <p className="text-red-500 font-bold">R$ 200.000+</p>
+              <p className="text-white text-base">Faculdade Tradicional</p>
+              <p className="text-red-500 font-bold text-lg">R$ 200.000+</p>
             </div>
             <div className="text-center">
               <span className="text-4xl block mb-2">VS</span>
             </div>
             <div className="text-center">
               <span className="text-4xl block mb-2">💎</span>
-              <p className="text-white text-sm">Curso Mariana Nails</p>
-              <p className="text-[#ffcd10] font-bold text-xl">R$ 50,00</p>
+              <p className="text-white text-base">Curso Iniciante ao Profissional</p>
+              <p className="text-[#ffcd10] font-bold text-2xl">R$ 44,00</p>
+              <p className="text-white text-sm">(valor real: R$ 300)</p>
             </div>
           </div>
         </div>
@@ -654,8 +655,8 @@ export default function Fature4000ComUnhasEm2025() {
           <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[#ffcd10] scroll-animate animate-fadeIn" data-animate>
             📱 Feedbacks Reais de Nossas Alunas
           </h2>
-          <p className="text-white mb-8 text-lg scroll-animate animate-slideInUp" data-animate>
-            Veja os resultados incríveis que nossas alunas estão conquistando após o curso!
+          <p className="text-white mb-8 text-xl scroll-animate animate-slideInUp" data-animate>
+            Veja os resultados incríveis das nossas alunas que começaram do zero!
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 scroll-animate animate-fadeInStagger" data-animate>
@@ -688,11 +689,11 @@ export default function Fature4000ComUnhasEm2025() {
           </div>
           
           <div className="bg-gray-900 border-2 border-[#ffcd10] p-6 rounded-xl max-w-3xl mx-auto scroll-animate animate-fadeIn" data-animate>
-            <h3 className="text-xl font-bold text-[#ffcd10] mb-3">💎 Transformações Reais</h3>
-            <p className="text-white text-sm leading-relaxed">
+            <h3 className="text-xl font-bold text-[#ffcd10] mb-3">💎 Transformações Reais de Iniciantes</h3>
+            <p className="text-white text-base leading-relaxed">
               Estes são apenas alguns dos <strong className="text-[#ffcd10]">centenas de feedbacks</strong> que 
-              recebemos diariamente! Nossas alunas não apenas aprendem as técnicas, mas também 
-              <strong className="text-[#ffcd10]"> conquistam sua independência financeira</strong> e se tornam 
+              recebemos diariamente! Muitas alunas começaram do zero absoluto e hoje 
+              <strong className="text-[#ffcd10]"> conquistaram sua independência financeira</strong> e se tornaram 
               referências em suas regiões.
             </p>
           </div>
@@ -705,8 +706,8 @@ export default function Fature4000ComUnhasEm2025() {
           <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[#ffcd10] scroll-animate animate-fadeIn" data-animate>
             🏆 Certificados Reconhecidos Internacionalmente
           </h2>
-          <p className="text-white mb-8 text-lg scroll-animate animate-slideInUp" data-animate>
-            Comprove sua qualificação com certificados que demonstram sua expertise profissional
+          <p className="text-white mb-8 text-xl scroll-animate animate-slideInUp" data-animate>
+            Mesmo sendo iniciante, você receberá certificados que demonstram sua qualificação profissional
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 scroll-animate animate-fadeInStagger" data-animate>
@@ -724,7 +725,7 @@ export default function Fature4000ComUnhasEm2025() {
                 />
               </div>
               <p className="text-[#ffcd10] font-bold mt-4 text-lg">Módulo 1 - Técnicas Fundamentais</p>
-              <p className="text-white text-sm mt-2">Certificação em técnicas básicas e intermediárias de nail design</p>
+              <p className="text-white text-base mt-2">Certificação em técnicas básicas e intermediárias de nail design - perfeito para iniciantes</p>
             </div>
             
             <div className="scroll-animate animate-scaleIn" data-animate>
@@ -741,13 +742,13 @@ export default function Fature4000ComUnhasEm2025() {
                 />
               </div>
               <p className="text-[#ffcd10] font-bold mt-4 text-lg">Módulo 2 - Técnicas Avançadas</p>
-              <p className="text-white text-sm mt-2">Certificação em técnicas profissionais e nail art avançada</p>
+              <p className="text-white text-base mt-2">Certificação em técnicas profissionais e nail art avançada</p>
             </div>
           </div>
           
           <div className="bg-gray-900 border-2 border-[#ffcd10] p-6 rounded-xl max-w-2xl mx-auto scroll-animate animate-fadeIn" data-animate>
             <h3 className="text-xl font-bold text-[#ffcd10] mb-3">✨ Valorização Profissional</h3>
-            <p className="text-white text-sm leading-relaxed">
+            <p className="text-white text-base leading-relaxed">
               Estes certificados internacionais não só comprovam sua qualificação, mas também agregam valor aos seus serviços, 
               permitindo que você <strong className="text-[#ffcd10]">cobre mais caro</strong> e seja reconhecida como uma 
               <strong className="text-[#ffcd10]"> profissional certificada</strong> no mercado da beleza.
@@ -764,16 +765,16 @@ export default function Fature4000ComUnhasEm2025() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 scroll-animate animate-fadeInStagger" data-animate>
             <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-pink-500 transform hover:scale-105 transition-all duration-300 scroll-animate animate-fadeIn" data-animate>
-              <p className="italic mb-2 text-[#ffcd10] text-sm">"Eu estava desempregada e desacreditada, mas o curso da Mariana Nails mudou minha vida! Hoje tenho minha própria clientela e faturo mais de R$4.000 por mês. É um sonho!"</p>
-              <p className="font-bold text-pink-400 text-xs">Ana Paula, 29 anos - São Paulo/SP</p>
+              <p className="italic mb-2 text-[#ffcd10] text-base">"Eu era completamente iniciante, nunca tinha mexido com unhas! O curso da Mariana Nails mudou minha vida! Hoje tenho minha própria clientela e faturo mais de R$4.000 por mês!"</p>
+              <p className="font-bold text-pink-400 text-sm">Ana Paula, 29 anos - São Paulo/SP</p>
             </div>
             <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-pink-500 transform hover:scale-105 transition-all duration-300 scroll-animate animate-fadeIn" data-animate>
-              <p className="italic mb-2 text-[#ffcd10] text-sm">"Sempre amei unhas, mas nunca pensei que poderia viver disso. O curso é super didático, e a Mariana é uma excelente professora. Conquistei minha independência!"</p>
-              <p className="font-bold text-pink-400 text-xs">Juliana Costa, 35 anos - Rio de Janeiro/RJ</p>
+              <p className="italic mb-2 text-[#ffcd10] text-base">"Comecei do zero absoluto! Sempre amei unhas, mas nunca pensei que poderia viver disso. O curso é super didático, perfeito para iniciantes. Conquistei minha independência!"</p>
+              <p className="font-bold text-pink-400 text-sm">Juliana Costa, 35 anos - Rio de Janeiro/RJ</p>
             </div>
             <div className="bg-gray-900 p-4 rounded-lg shadow-xl border border-pink-500 transform hover:scale-105 transition-all duration-300 scroll-animate animate-fadeIn" data-animate>
-              <p className="italic mb-2 text-[#ffcd10] text-sm">"Em menos de 3 meses após o curso, já estava com a agenda lotada! A qualidade do ensino é incrível, e o suporte me deu toda a confiança que eu precisava."</p>
-              <p className="font-bold text-pink-400 text-xs">Carla Santos, 25 anos - Belo Horizonte/MG</p>
+              <p className="italic mb-2 text-[#ffcd10] text-base">"Entrei como iniciante total e em menos de 3 meses após o curso, já estava com a agenda lotada! A qualidade do ensino é incrível para quem está começando!"</p>
+              <p className="font-bold text-pink-400 text-sm">Carla Santos, 25 anos - Belo Horizonte/MG</p>
             </div>
           </div>
         </div>
@@ -794,50 +795,50 @@ export default function Fature4000ComUnhasEm2025() {
       <section className="py-8 px-6 bg-black text-[#ffcd10]">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-extrabold text-[#ffcd10] mb-4">
-            Quando Somados, Só Esses Presentes Valem Mais de R$ 120 Reais!
+            O Curso Completo Vale R$ 300,00 - Mas Você Não Vai Pagar Isso!
           </h2>
-          <p className="text-white text-lg mb-6">
-            Mas você não vai pagar tudo isso se garantir a sua vaga HOJE.
+          <p className="text-white text-xl mb-6">
+            Se você é iniciante e quer começar do zero, essa é a sua oportunidade de ouro!
           </p>
           
           <div className="bg-gray-900 border-2 border-[#ffcd10] p-6 rounded-xl mb-8">
-            <h3 className="text-xl font-bold text-[#ffcd10] mb-4">O que você vai receber:</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-left text-white">
-              <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> Acesso vitalício ao curso</div>
+            <h3 className="text-xl font-bold text-[#ffcd10] mb-4">O que você vai receber por apenas R$ 44,00:</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-left text-white text-base">
+              <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> Curso completo do zero ao profissional</div>
+              <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> Acesso vitalício - aprenda no seu ritmo</div>
               <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> Área de membros estilo Netflix</div>
-              <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> As melhores técnicas</div>
-              <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> Aulas práticas</div>
-              <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> Aulas em vídeo sem enrolação</div>
-              <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> Didática realmente simples</div>
+              <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> Aulas práticas passo a passo</div>
+              <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> Didática simples para iniciantes</div>
               <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> Suporte via WhatsApp</div>
+              <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> 3 Certificados Internacionais</div>
               <div className="flex items-center"><span className="text-[#ffcd10] mr-2">✅</span> Técnicas que aumentam faturamento</div>
             </div>
           </div>
 
           <div className="bg-black border-4 border-[#ffcd10] p-8 rounded-xl mb-8">
-            <p className="text-white text-lg mb-2">De R$ 120,00</p>
-            <p className="text-6xl font-extrabold text-[#ffcd10] mb-2">R$ 50,00</p>
+            <p className="text-white text-xl mb-2">Valor real: <span className="line-through">R$ 300,00</span></p>
+            <p className="text-6xl font-extrabold text-[#ffcd10] mb-2">R$ 44,00</p>
             <p className="text-white text-xl">À vista!</p>
-            <p className="text-sm text-white mt-2 opacity-75">Com R$ 70,00 de DESCONTO!</p>
+            <p className="text-lg text-white mt-2 opacity-90">Você economiza R$ 256,00!</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <div className="bg-gray-900 p-4 rounded-lg border border-red-500">
-              <h4 className="text-red-500 font-bold mb-3">❌ Cursos Comuns:</h4>
-              <ul className="text-white text-sm space-y-1">
-                <li>❌ Aulas teóricas rasas</li>
+              <h4 className="text-red-500 font-bold mb-3 text-lg">❌ Cursos Comuns:</h4>
+              <ul className="text-white text-base space-y-2">
+                <li>❌ Difíceis para iniciantes</li>
                 <li>❌ Técnicas desvalorizadas</li>
                 <li>❌ Métodos ultrapassados</li>
-                <li>❌ Resultado: profissional zézinha</li>
+                <li>❌ Sem suporte para dúvidas</li>
               </ul>
             </div>
             <div className="bg-gray-900 p-4 rounded-lg border border-[#ffcd10]">
-              <h4 className="text-[#ffcd10] font-bold mb-3">✅ Nosso Curso:</h4>
-              <ul className="text-white text-sm space-y-1">
-                <li>✅ Aulas teóricas sólidas e prática detalhada</li>
+              <h4 className="text-[#ffcd10] font-bold mb-3 text-lg">✅ Nosso Curso (R$ 44,00):</h4>
+              <ul className="text-white text-base space-y-2">
+                <li>✅ Perfeito para iniciantes - passo a passo</li>
                 <li>✅ Técnicas que encantam clientes</li>
-                <li>✅ Instrutora com mais de 2 anos de experiência</li>
-                <li>✅ Resultado: uma profissional de excelência</li>
+                <li>✅ Suporte 24h para suas dúvidas</li>
+                <li>✅ De iniciante a profissional de excelência</li>
               </ul>
             </div>
           </div>
@@ -861,8 +862,8 @@ export default function Fature4000ComUnhasEm2025() {
             Sua Satisfação Garantida ou Seu Dinheiro de Volta!
           </h2>
           <span className="text-6xl mb-4 block">✅</span>
-          <p className="text-base text-[#ffcd10] leading-relaxed">
-            Temos tanta certeza da qualidade do nosso curso que oferecemos uma <strong>garantia de satisfação completa</strong>. Se por qualquer motivo você não se sentir satisfeita, basta solicitar o reembolso total, sem burocracia ou letras miúdas. Seu investimento está 100% seguro! <strong>Satisfação completa ou seu dinheiro de volta.</strong>
+          <p className="text-lg text-[#ffcd10] leading-relaxed">
+            Temos tanta certeza da qualidade do nosso curso que oferecemos uma <strong>garantia de satisfação completa</strong>. Se por qualquer motivo você não se sentir satisfeita, basta solicitar o reembolso total, sem burocracia ou letras miúdas. Seu investimento de apenas R$ 44,00 está 100% seguro! <strong>Satisfação completa ou seu dinheiro de volta.</strong>
           </p>
         </div>
       </section>
@@ -875,20 +876,20 @@ export default function Fature4000ComUnhasEm2025() {
           </h2>
           <div className="space-y-4">
             <div className="bg-gray-900 p-4 rounded-lg shadow-md border border-pink-500">
-              <h3 className="text-lg font-bold mb-2 text-[#ffcd10]">Preciso de experiência prévia para fazer o curso?</h3>
-              <p className="text-[#ffcd10] text-sm">Não! O curso foi desenvolvido do zero ao avançado, ideal para quem nunca teve contato com o mundo das unhas e para profissionais que buscam aprimoramento.</p>
+              <h3 className="text-xl font-bold mb-2 text-[#ffcd10]">Sou totalmente iniciante. Esse curso é para mim?</h3>
+              <p className="text-[#ffcd10] text-base">SIM! O curso foi feito especialmente para iniciantes! Você vai aprender do absoluto zero, mesmo que nunca tenha pegado em uma lixa. Explicamos tudo passo a passo!</p>
             </div>
             <div className="bg-gray-900 p-4 rounded-lg shadow-md border border-pink-500">
-              <h3 className="text-lg font-bold mb-2 text-[#ffcd10]">Preciso ter todos os materiais para começar o curso?</h3>
-              <p className="text-[#ffcd10] text-sm">Não necessariamente. No curso, ensinamos detalhadamente quais materiais você precisará, onde comprá-los com os melhores preços e como montar seu kit inicial.</p>
+              <h3 className="text-xl font-bold mb-2 text-[#ffcd10]">Preciso ter todos os materiais para começar?</h3>
+              <p className="text-[#ffcd10] text-base">Não! No curso ensinamos detalhadamente quais materiais você precisará, onde comprá-los com os melhores preços e como montar seu kit inicial de iniciante.</p>
             </div>
             <div className="bg-gray-900 p-4 rounded-lg shadow-md border border-pink-500">
-              <h3 className="text-lg font-bold mb-2 text-[#ffcd10]">O pagamento é único ou mensal?</h3>
-              <p className="text-[#ffcd10] text-sm">O pagamento é único! Você paga apenas uma vez e tem acesso vitalício a todas as aulas, módulos e futuras atualizações do curso. Sem mensalidades ou taxas escondidas.</p>
+              <h3 className="text-xl font-bold mb-2 text-[#ffcd10]">Quanto custa o curso?</h3>
+              <p className="text-[#ffcd10] text-base">O curso vale R$ 300,00, mas hoje você paga apenas R$ 44,00! Pagamento único, acesso vitalício, sem mensalidades ou taxas escondidas.</p>
             </div>
             <div className="bg-gray-900 p-4 rounded-lg shadow-md border border-pink-500">
-              <h3 className="text-lg font-bold mb-2 text-[#ffcd10]">Recebo certificados ao finalizar o curso?</h3>
-              <p className="text-[#ffcd10] text-sm">Sim! Ao concluir os módulos, você receberá 3 certificados internacionais, que comprovam sua qualificação e são reconhecidos no mercado da beleza.</p>
+              <h3 className="text-xl font-bold mb-2 text-[#ffcd10]">Recebo certificados ao finalizar o curso?</h3>
+              <p className="text-[#ffcd10] text-base">Sim! Ao concluir os módulos, você receberá 3 certificados internacionais, que comprovam sua qualificação e são reconhecidos no mercado da beleza.</p>
             </div>
           </div>
         </div>
@@ -955,7 +956,21 @@ export default function Fature4000ComUnhasEm2025() {
             <h3 className="text-2xl font-bold text-[#ffcd10] text-center mb-2">
               Último Passo!
             </h3>
-            <p className="text-white text-center mb-6">
+            
+            {/* Oferta de Preço */}
+            <div className="bg-gradient-to-r from-red-900/50 to-red-800/50 border border-red-500 rounded-xl p-3 mb-4 text-center animate-pulse">
+              <p className="text-white text-sm mb-1">
+                <span className="line-through opacity-70">De R$ 300,00</span>
+              </p>
+              <p className="text-[#ffcd10] text-2xl font-extrabold">
+                Por apenas R$ 44,00
+              </p>
+              <p className="text-red-400 text-xs font-bold mt-1">
+                ⚠️ SOMENTE HOJE! Amanhã volta ao preço normal
+              </p>
+            </div>
+            
+            <p className="text-white text-center mb-4 text-sm">
               Insira seu melhor email para garantir sua vaga e receber acesso imediato ao curso:
             </p>
 
