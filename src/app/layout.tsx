@@ -71,7 +71,7 @@ export default function RootLayout({
   const isQuizPage = pathname === '/curso_nail_design_do_zero_ao_profissional_mariana_nails';
   const isPlataformaPage = pathname?.startsWith('/plataforma'); // Plataforma Mariposas
   const isObrigadoPage = pathname === '/obrigado'; // Página de obrigado
-  const isCutilagemPage = pathname === '/cutilagem-avancada'; // Landing page Cutilagem Avançada
+  const isCutilagemPage = pathname === '/cutilagem-avancada' || pathname === '/cutilagem'; // Landing pages Cutilagem
   return (
     <html lang="pt-BR" className={`${funnelSans.variable} ${ptSans.variable} ${playfair.variable} ${instrumentSerif.variable} ${instrumentSans.variable}`}>
       <head>
