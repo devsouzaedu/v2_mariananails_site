@@ -23,14 +23,14 @@ const funnelSans = localFont({
   display: 'swap'
 })
 
-const ptSans = PT_Sans({ 
+const ptSans = PT_Sans({
   weight: ['400', '700'],
   subsets: ['latin'],
   variable: '--font-pt-sans',
   display: 'swap'
 })
 
-const playfair = Playfair_Display({ 
+const playfair = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-playfair',
   display: 'swap'
@@ -53,8 +53,8 @@ const instrumentSans = Instrument_Sans({
 // Se precisar de metadados dinâmicos, considere movê-los para page.tsx ou usar a API generateMetadata.
 // Por ora, vamos manter a exportação comentada ou remover se não for usada dinamicamente aqui.
 // export const metadata: Metadata = {
-  // title: 'Mariana Nails - Especialista em Nail Design',
-  // description: 'Serviços de manicure e pedicure de alta qualidade em Barueri e Alphaville. Cursos de Nail Design e Nail Art.',
+// title: 'Mariana Nails - Especialista em Nail Design',
+// description: 'Serviços de manicure e pedicure de alta qualidade em Barueri e Alphaville. Cursos de Nail Design e Nail Art.',
 // }
 
 export default function RootLayout({
@@ -71,6 +71,7 @@ export default function RootLayout({
   const isQuizPage = pathname === '/curso_nail_design_do_zero_ao_profissional_mariana_nails';
   const isPlataformaPage = pathname?.startsWith('/plataforma'); // Plataforma Mariposas
   const isObrigadoPage = pathname === '/obrigado'; // Página de obrigado
+  const isCutilagemPage = pathname === '/cutilagem-avancada'; // Landing page Cutilagem Avançada
   return (
     <html lang="pt-BR" className={`${funnelSans.variable} ${ptSans.variable} ${playfair.variable} ${instrumentSerif.variable} ${instrumentSans.variable}`}>
       <head>
@@ -90,7 +91,7 @@ export default function RootLayout({
           }}
         />
         {/* End Google tag (gtag.js) */}
-        
+
         {/* DataLayer Push - Purchase Event (ANTES do GTM) */}
         {isObrigadoPage && (
           <script
@@ -128,19 +129,19 @@ export default function RootLayout({
       <body className="min-h-screen">
         {/* Google Tag Manager (noscript) */}
         <noscript>
-          <iframe 
+          <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-PDD4HPT8"
-            height="0" 
-            width="0" 
-            style={{display:'none',visibility:'hidden'}}
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
           />
         </noscript>
         {/* End Google Tag Manager (noscript) */}
         {/* Condição para renderizar Navbar e banner apenas se NÃO for landing, ebook, ebookguiado, curso, fature, quiz, plataforma ou obrigado */}
-        {!isLandingPage && !isEbookPage && !isEbookGuiadoPage && !isCursoPage && !isFaturePage && !isQuizPage && !isPlataformaPage && !isObrigadoPage && (
+        {!isLandingPage && !isEbookPage && !isEbookGuiadoPage && !isCursoPage && !isFaturePage && !isQuizPage && !isPlataformaPage && !isObrigadoPage && !isCutilagemPage && (
           <>
             <div className="fixed inset-0 pointer-events-none z-0">
-              <div className="absolute inset-0 bg-primary-50 opacity-30 mix-blend-multiply" style={{ 
+              <div className="absolute inset-0 bg-primary-50 opacity-30 mix-blend-multiply" style={{
                 backgroundImage: 'radial-gradient(#ec4899 0.5px, transparent 0.5px), radial-gradient(#ec4899 0.5px, transparent 0.5px)',
                 backgroundSize: '20px 20px',
                 backgroundPosition: '0 0, 10px 10px',
@@ -150,12 +151,12 @@ export default function RootLayout({
             <Navbar />
           </>
         )}
-        <main className={`flex-grow relative z-10 ${isLandingPage || isEbookPage || isEbookGuiadoPage || isCursoPage || isFaturePage || isQuizPage || isPlataformaPage || isObrigadoPage ? '' : 'pt-20'}`}>
+        <main className={`flex-grow relative z-10 ${isLandingPage || isEbookPage || isEbookGuiadoPage || isCursoPage || isFaturePage || isQuizPage || isPlataformaPage || isObrigadoPage || isCutilagemPage ? '' : 'pt-20'}`}>
           {children}
         </main>
         {/* Condição para renderizar Footer e WhatsAppButton apenas se NÃO for ebook, ebookguiado, curso, fature, quiz, plataforma ou obrigado */}
-        {!isEbookPage && !isEbookGuiadoPage && !isCursoPage && !isFaturePage && !isQuizPage && !isPlataformaPage && !isObrigadoPage && <Footer />}
-        {!isEbookPage && !isEbookGuiadoPage && !isCursoPage && !isFaturePage && !isQuizPage && !isPlataformaPage && !isObrigadoPage && <WhatsAppButton />}
+        {!isEbookPage && !isEbookGuiadoPage && !isCursoPage && !isFaturePage && !isQuizPage && !isPlataformaPage && !isObrigadoPage && !isCutilagemPage && <Footer />}
+        {!isEbookPage && !isEbookGuiadoPage && !isCursoPage && !isFaturePage && !isQuizPage && !isPlataformaPage && !isObrigadoPage && !isCutilagemPage && <WhatsAppButton />}
       </body>
     </html>
   )
