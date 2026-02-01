@@ -1,7 +1,7 @@
 "use client";
 import type { Metadata } from 'next';
 import { usePathname } from 'next/navigation';
-import { PT_Sans, Playfair_Display, Instrument_Serif, Instrument_Sans } from 'next/font/google'
+import { PT_Sans, Playfair_Display, Instrument_Serif, Instrument_Sans, Montserrat, Poppins, Lora } from 'next/font/google'
 import localFont from 'next/font/local'
 import './globals.css'
 import Navbar from '@/components/Navbar'
@@ -49,6 +49,26 @@ const instrumentSans = Instrument_Sans({
   display: 'swap'
 })
 
+// Fontes para a landing page de Cutilagem
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  variable: '--font-montserrat',
+  display: 'swap'
+})
+
+const poppins = Poppins({
+  weight: ['300', '400', '500', '600', '700'],
+  subsets: ['latin'],
+  variable: '--font-poppins',
+  display: 'swap'
+})
+
+const lora = Lora({
+  subsets: ['latin'],
+  variable: '--font-lora',
+  display: 'swap'
+})
+
 // A metadata não pode ser exportada de um client component diretamente.
 // Se precisar de metadados dinâmicos, considere movê-los para page.tsx ou usar a API generateMetadata.
 // Por ora, vamos manter a exportação comentada ou remover se não for usada dinamicamente aqui.
@@ -73,7 +93,7 @@ export default function RootLayout({
   const isObrigadoPage = pathname === '/obrigado'; // Página de obrigado
   const isCutilagemPage = pathname === '/cutilagem-avancada' || pathname === '/cutilagem'; // Landing pages Cutilagem
   return (
-    <html lang="pt-BR" className={`${funnelSans.variable} ${ptSans.variable} ${playfair.variable} ${instrumentSerif.variable} ${instrumentSans.variable}`}>
+    <html lang="pt-BR" className={`${funnelSans.variable} ${ptSans.variable} ${playfair.variable} ${instrumentSerif.variable} ${instrumentSans.variable} ${montserrat.variable} ${poppins.variable} ${lora.variable}`}>
       <head>
         {/* Google tag (gtag.js) - GA4 */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-D92MV0VYXM" />
