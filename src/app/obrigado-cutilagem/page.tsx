@@ -1,51 +1,12 @@
 "use client";
 import React from 'react';
+import Image from 'next/image';
 import Head from 'next/head';
 
 // ============================================
 // CONFIGURAÇÕES
 // ============================================
 const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/C4OEbYEh5e3ENVB70cu7v6";
-
-// ============================================
-// COMPONENTES
-// ============================================
-
-// Botão CTA Verde para WhatsApp
-const CTAButton = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
-    <a
-        href={WHATSAPP_GROUP_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`
-      inline-flex items-center justify-center gap-3
-      bg-[#25D366] hover:bg-[#128C7E]
-      text-white font-bold text-lg md:text-xl
-      py-4 px-8 rounded-full
-      shadow-lg shadow-[#25D366]/30
-      transition-all duration-300 transform hover:scale-[1.02]
-      uppercase tracking-wide
-      font-[family-name:var(--font-montserrat)]
-      ${className}
-    `}
-    >
-        <i className="fa-brands fa-whatsapp text-2xl"></i>
-        {children}
-    </a>
-);
-
-// Item de benefício
-const BenefitItem = ({ icon, title, description }: { icon: string, title: string, description: string }) => (
-    <div className="flex items-start gap-4 p-4 bg-[#111] border border-gray-800 rounded-xl">
-        <div className="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-[#22C55E]/20 to-[#22C55E]/5 rounded-full flex items-center justify-center">
-            <span className="text-2xl">{icon}</span>
-        </div>
-        <div>
-            <h3 className="text-white font-bold mb-1 font-[family-name:var(--font-montserrat)]">{title}</h3>
-            <p className="text-gray-400 text-sm font-[family-name:var(--font-poppins)]">{description}</p>
-        </div>
-    </div>
-);
 
 // ============================================
 // PÁGINA PRINCIPAL
@@ -58,152 +19,122 @@ export default function ObrigadoCutilagemPage() {
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
             </Head>
 
-            <div className="min-h-screen bg-[#0a0a0a] text-white font-[family-name:var(--font-poppins)]">
+            <div className="min-h-screen bg-gradient-to-b from-[#E8E0F0] via-[#D4E8E4] to-[#C8E0D8] font-[family-name:var(--font-poppins)]">
 
-                {/* ========== HERO SECTION ========== */}
-                <section className="relative px-4 py-12 md:py-20">
-                    <div className="max-w-3xl mx-auto text-center">
+                {/* ========== CONTEÚDO PRINCIPAL ========== */}
+                <div className="max-w-md mx-auto px-6 py-10">
 
-                        {/* Ícone de Sucesso */}
-                        <div className="mb-8">
-                            <div className="w-24 h-24 mx-auto bg-gradient-to-br from-[#22C55E] to-[#16A34A] rounded-full flex items-center justify-center shadow-lg shadow-[#22C55E]/30 animate-pulse">
-                                <i className="fa-solid fa-check text-4xl text-white"></i>
-                            </div>
-                        </div>
-
-                        {/* Título Principal */}
-                        <h1 className="text-3xl md:text-5xl font-black mb-4 leading-tight font-[family-name:var(--font-montserrat)]">
-                            <span className="bg-gradient-to-r from-[#D4AF37] via-[#F4E4BC] to-[#D4AF37] bg-clip-text text-transparent">Parabéns</span>, meu amor!
+                    {/* Título Principal */}
+                    <div className="text-center mb-6">
+                        <h1 className="text-3xl md:text-4xl font-bold text-[#9B4D96] mb-2 font-[family-name:var(--font-montserrat)]">
+                            Parabéns, meu amor!
                         </h1>
-
-                        <p className="text-xl md:text-2xl text-gray-300 mb-8 font-[family-name:var(--font-poppins)]">
-                            Sua compra foi confirmada com sucesso! 🎉
+                        <p className="text-gray-600 text-sm">
+                            Leia o que escrevi aqui pra você com muita atenção...
                         </p>
+                    </div>
 
-                        {/* Divisor */}
-                        <div className="w-20 h-1 bg-gradient-to-r from-[#D4AF37] to-[#F4E4BC] mx-auto mb-8 rounded-full"></div>
+                    {/* Imagem do Produto */}
+                    <div className="flex justify-center mb-8">
+                        <div className="relative w-40 h-40">
+                            <Image
+                                src="/images/card_imagem_mariana1.png"
+                                alt="Mariana Nails"
+                                width={160}
+                                height={160}
+                                className="w-full h-full object-cover rounded-full border-4 border-white shadow-lg"
+                            />
+                        </div>
+                    </div>
 
-                        {/* Mensagem Principal */}
-                        <div className="bg-[#111] border border-gray-800 rounded-2xl p-6 md:p-8 mb-10 text-left">
-                            <p className="text-lg md:text-xl text-white leading-relaxed mb-6 font-[family-name:var(--font-lora)] italic">
-                                "Leia o que escrevi aqui pra você com muita atenção..."
-                            </p>
+                    {/* Mensagem Selecionada */}
+                    <div className="text-center mb-8">
+                        <h2 className="text-xl text-gray-700 mb-2 font-[family-name:var(--font-poppins)]">
+                            <span className="text-[#6B9B8A] font-semibold">Você foi selecionada</span> para<br />
+                            ler o meu{' '}
+                            <span className="font-[family-name:var(--font-lora)] italic text-2xl md:text-3xl text-[#9B4D96] block mt-1">
+                                diário de uma nail designer
+                            </span>
+                        </h2>
+                    </div>
 
-                            <p className="text-gray-300 leading-relaxed mb-6">
-                                Você foi selecionada para ler o meu <strong className="text-[#22C55E]">Diário de uma Nail Designer</strong> —
-                                um lugar onde vou compartilhar <strong className="text-white">semanalmente um conteúdo gratuito</strong> para você aplicar e avançar na sua carreira.
-                            </p>
+                    {/* Descrição */}
+                    <div className="text-center mb-8">
+                        <p className="text-gray-600 text-sm leading-relaxed">
+                            Um lugar onde vou compartilhar semanalmente um conteúdo gratuito para você aplicar e avançar na sua carreira.
+                        </p>
+                    </div>
 
-                            <h2 className="text-xl font-bold text-white mb-4 font-[family-name:var(--font-montserrat)]">
-                                Você vai receber dicas de aperfeiçoamento de:
-                            </h2>
+                    {/* Divisor */}
+                    <div className="border-t border-gray-300 my-8"></div>
 
-                            <div className="space-y-4 mb-6">
-                                <BenefitItem
-                                    icon="💅"
-                                    title="Técnicas Avançadas"
-                                    description="Alongamento, acabamento e decoração que vão impressionar suas clientes"
-                                />
-                                <BenefitItem
-                                    icon="✨"
-                                    title="Posicionamento & Redes Sociais"
-                                    description="Captação de clientes e como se destacar no Instagram"
-                                />
-                                <BenefitItem
-                                    icon="🥰"
-                                    title="Atendimento & Gestão"
-                                    description="Fidelização de clientes e gestão financeira do seu negócio"
-                                />
+                    {/* Seção de Benefícios */}
+                    <div className="mb-8">
+                        <h3 className="text-center text-gray-700 font-semibold mb-6 font-[family-name:var(--font-montserrat)]">
+                            Você vai receber dicas de aperfeiçoamento de:
+                        </h3>
+
+                        <div className="space-y-4">
+                            {/* Item 1 */}
+                            <div className="flex items-start gap-3">
+                                <span className="text-xl">💅</span>
+                                <p className="text-gray-600 text-sm">
+                                    <strong className="text-gray-700">Técnicas de alongamento, acabamento e decoração</strong>
+                                </p>
                             </div>
 
-                            <div className="bg-gradient-to-r from-[#22C55E]/20 to-transparent border-l-4 border-[#22C55E] p-4 rounded-r-xl">
-                                <p className="text-white font-semibold font-[family-name:var(--font-montserrat)]">
-                                    <i className="fa-solid fa-gift text-[#22C55E] mr-2"></i>
-                                    Tudo sem pagar um centavo por isso!
+                            {/* Item 2 */}
+                            <div className="flex items-start gap-3">
+                                <span className="text-xl">✨</span>
+                                <p className="text-gray-600 text-sm">
+                                    <strong className="text-gray-700">Posicionamento, Redes Sociais e Captação de Clientes</strong>
+                                </p>
+                            </div>
+
+                            {/* Item 3 */}
+                            <div className="flex items-start gap-3">
+                                <span className="text-xl">🥰</span>
+                                <p className="text-gray-600 text-sm">
+                                    <strong className="text-gray-700">Atendimento, Fidelização de Clientes e Gestão Financeira</strong>
                                 </p>
                             </div>
                         </div>
-
-                        {/* Pergunta CTA */}
-                        <p className="text-xl text-white mb-6 font-[family-name:var(--font-montserrat)]">
-                            Quer aproveitar essa oportunidade de ler meu<br />
-                            <span className="text-[#22C55E] font-bold">Diário de Nail Designer</span>?
-                        </p>
-
-                        {/* Botão CTA */}
-                        <CTAButton className="mb-6">
-                            CLIQUE AQUI PARA ENTRAR NO GRUPO!
-                        </CTAButton>
-
-                        <p className="text-sm text-gray-500">
-                            <i className="fa-solid fa-lock mr-2"></i>
-                            Grupo exclusivo e gratuito no WhatsApp
-                        </p>
-
                     </div>
-                </section>
 
-                {/* ========== SEÇÃO EXTRA: PRÓXIMOS PASSOS ========== */}
-                <section className="py-12 px-4 bg-[#111]">
-                    <div className="max-w-3xl mx-auto">
-                        <h2 className="text-2xl font-bold text-center mb-8 text-white font-[family-name:var(--font-montserrat)]">
-                            <i className="fa-solid fa-arrow-right text-[#22C55E] mr-2"></i>
-                            Próximos Passos
-                        </h2>
-
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div className="bg-[#0a0a0a] border border-gray-800 rounded-xl p-5 text-center">
-                                <div className="w-12 h-12 mx-auto bg-[#22C55E] rounded-full flex items-center justify-center mb-3 text-white font-bold font-[family-name:var(--font-montserrat)]">
-                                    1
-                                </div>
-                                <h3 className="text-white font-semibold mb-2 font-[family-name:var(--font-montserrat)]">Acesse seu E-mail</h3>
-                                <p className="text-gray-400 text-sm">Você receberá o acesso ao material no e-mail cadastrado</p>
-                            </div>
-
-                            <div className="bg-[#0a0a0a] border border-gray-800 rounded-xl p-5 text-center">
-                                <div className="w-12 h-12 mx-auto bg-[#22C55E] rounded-full flex items-center justify-center mb-3 text-white font-bold font-[family-name:var(--font-montserrat)]">
-                                    2
-                                </div>
-                                <h3 className="text-white font-semibold mb-2 font-[family-name:var(--font-montserrat)]">Entre no Grupo</h3>
-                                <p className="text-gray-400 text-sm">Clique no botão acima e participe do grupo exclusivo</p>
-                            </div>
-
-                            <div className="bg-[#0a0a0a] border border-gray-800 rounded-xl p-5 text-center">
-                                <div className="w-12 h-12 mx-auto bg-[#22C55E] rounded-full flex items-center justify-center mb-3 text-white font-bold font-[family-name:var(--font-montserrat)]">
-                                    3
-                                </div>
-                                <h3 className="text-white font-semibold mb-2 font-[family-name:var(--font-montserrat)]">Aplique o Conteúdo</h3>
-                                <p className="text-gray-400 text-sm">Coloque em prática e veja sua carreira decolar!</p>
-                            </div>
+                    {/* Box Destaque */}
+                    <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-5 mb-8 flex items-center gap-4 shadow-sm">
+                        <div className="w-10 h-10 bg-[#6B9B8A] rounded-full flex items-center justify-center flex-shrink-0">
+                            <i className="fa-solid fa-check text-white"></i>
                         </div>
-                    </div>
-                </section>
-
-                {/* ========== CTA FINAL ========== */}
-                <section className="py-12 px-4 bg-[#0a0a0a]">
-                    <div className="max-w-xl mx-auto text-center">
-                        <p className="text-gray-400 mb-6 font-[family-name:var(--font-poppins)]">
-                            Não perca essa oportunidade única!
+                        <p className="text-gray-700 font-medium text-sm">
+                            Tudo sem pagar um centavo por isso!
                         </p>
-                        <CTAButton>
-                            ENTRAR NO GRUPO AGORA
-                        </CTAButton>
                     </div>
-                </section>
 
-                {/* ========== FOOTER ========== */}
-                <footer className="py-8 px-4 bg-black text-center border-t border-gray-900">
-                    <p className="text-gray-600 text-sm mb-2">
-                        © {new Date().getFullYear()} Mariana Nails. Todos os direitos reservados.
-                    </p>
-                    <div className="flex flex-wrap justify-center gap-4 text-xs text-gray-700">
-                        <a href="#" className="hover:text-gray-400">Termos de Uso</a>
-                        <span>•</span>
-                        <a href="#" className="hover:text-gray-400">Política de Privacidade</a>
-                        <span>•</span>
-                        <a href="#" className="hover:text-gray-400">Suporte</a>
+                    {/* Card CTA Final */}
+                    <div className="bg-gradient-to-br from-[#2D1B4E] to-[#1A1030] rounded-3xl p-6 text-center shadow-xl">
+                        <p className="text-white text-lg mb-4 font-[family-name:var(--font-montserrat)]">
+                            Quer aproveitar essa oportunidade de ler meu diário de{' '}
+                            <span className="text-[#9B4D96] font-semibold">Nail Designer</span>?
+                        </p>
+
+                        <a
+                            href={WHATSAPP_GROUP_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-4 px-6 rounded-full transition-all duration-300 transform hover:scale-[1.02] uppercase text-sm tracking-wide shadow-lg shadow-[#25D366]/30"
+                        >
+                            <i className="fa-brands fa-whatsapp text-xl"></i>
+                            CLIQUE AQUI PARA ENTRAR NO GRUPO!
+                        </a>
                     </div>
-                </footer>
+
+                    {/* Footer pequeno */}
+                    <div className="text-center mt-8 text-xs text-gray-500">
+                        <p>© {new Date().getFullYear()} Mariana Nails</p>
+                    </div>
+
+                </div>
             </div>
         </>
     );
