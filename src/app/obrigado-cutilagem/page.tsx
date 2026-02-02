@@ -19,119 +19,134 @@ export default function ObrigadoCutilagemPage() {
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
             </Head>
 
-            <div className="min-h-screen bg-gradient-to-b from-[#E8E0F0] via-[#D4E8E4] to-[#C8E0D8] font-[family-name:var(--font-poppins)]">
+            <div className="min-h-screen bg-white font-[family-name:var(--font-poppins)]">
+
+                {/* ========== HEADER COM LOGO ========== */}
+                <header className="py-6 px-4 border-b border-gray-100">
+                    <div className="max-w-lg mx-auto flex justify-center">
+                        <Image
+                            src="/images/logo_mca.png"
+                            alt="Manual de Cutilagem Avançada"
+                            width={280}
+                            height={140}
+                            className="h-auto"
+                            priority
+                        />
+                    </div>
+                </header>
 
                 {/* ========== CONTEÚDO PRINCIPAL ========== */}
-                <div className="max-w-md mx-auto px-6 py-10">
+                <div className="max-w-lg mx-auto px-6 py-10">
 
                     {/* Título Principal */}
-                    <div className="text-center mb-6">
-                        <h1 className="text-3xl md:text-4xl font-bold text-[#9B4D96] mb-2 font-[family-name:var(--font-montserrat)]">
+                    <div className="text-center mb-8">
+                        <h1 className="text-4xl md:text-5xl font-black text-[#EC4899] mb-4 font-[family-name:var(--font-montserrat)]">
                             Parabéns, meu amor!
                         </h1>
-                        <p className="text-gray-600 text-sm">
-                            Leia o que escrevi aqui pra você com muita atenção...
+                        <p className="text-gray-700 text-lg md:text-xl">
+                            Leia o que escrevi aqui pra você com <strong className="text-black">muita atenção...</strong>
                         </p>
                     </div>
 
-                    {/* Imagem do Produto */}
-                    <div className="flex justify-center mb-8">
-                        <div className="relative w-40 h-40">
+                    {/* Imagem da Mariana */}
+                    <div className="flex justify-center mb-10">
+                        <div className="relative">
                             <Image
-                                src="/images/card_imagem_mariana1.png"
+                                src="/images/mariana_png.png"
                                 alt="Mariana Nails"
-                                width={160}
-                                height={160}
-                                className="w-full h-full object-cover rounded-full border-4 border-white shadow-lg"
+                                width={220}
+                                height={280}
+                                className="h-auto drop-shadow-xl"
                             />
                         </div>
                     </div>
 
                     {/* Mensagem Selecionada */}
-                    <div className="text-center mb-8">
-                        <h2 className="text-xl text-gray-700 mb-2 font-[family-name:var(--font-poppins)]">
-                            <span className="text-[#6B9B8A] font-semibold">Você foi selecionada</span> para<br />
-                            ler o meu{' '}
-                            <span className="font-[family-name:var(--font-lora)] italic text-2xl md:text-3xl text-[#9B4D96] block mt-1">
-                                diário de uma nail designer
-                            </span>
+                    <div className="text-center mb-10">
+                        <h2 className="text-2xl md:text-3xl text-black mb-3 font-[family-name:var(--font-montserrat)] leading-tight">
+                            <span className="text-[#EC4899] font-bold">Você foi selecionada</span> para<br />
+                            ler o meu
                         </h2>
+                        <p className="font-[family-name:var(--font-lora)] italic text-4xl md:text-5xl text-black leading-tight">
+                            diário de uma<br />
+                            <span className="text-[#EC4899]">nail designer</span>
+                        </p>
                     </div>
 
                     {/* Descrição */}
-                    <div className="text-center mb-8">
-                        <p className="text-gray-600 text-sm leading-relaxed">
-                            Um lugar onde vou compartilhar semanalmente um conteúdo gratuito para você aplicar e avançar na sua carreira.
+                    <div className="text-center mb-10">
+                        <p className="text-gray-700 text-lg md:text-xl leading-relaxed">
+                            Um lugar onde vou compartilhar <strong className="text-black">semanalmente</strong> um conteúdo <strong className="text-[#EC4899]">gratuito</strong> para você aplicar e avançar na sua carreira.
                         </p>
                     </div>
 
                     {/* Divisor */}
-                    <div className="border-t border-gray-300 my-8"></div>
+                    <div className="border-t-2 border-[#EC4899]/20 my-10"></div>
 
                     {/* Seção de Benefícios */}
-                    <div className="mb-8">
-                        <h3 className="text-center text-gray-700 font-semibold mb-6 font-[family-name:var(--font-montserrat)]">
+                    <div className="mb-10">
+                        <h3 className="text-center text-black font-bold text-2xl md:text-3xl mb-8 font-[family-name:var(--font-montserrat)]">
                             Você vai receber dicas de aperfeiçoamento de:
                         </h3>
 
-                        <div className="space-y-4">
+                        <div className="space-y-6">
                             {/* Item 1 */}
-                            <div className="flex items-start gap-3">
-                                <span className="text-xl">💅</span>
-                                <p className="text-gray-600 text-sm">
-                                    <strong className="text-gray-700">Técnicas de alongamento, acabamento e decoração</strong>
+                            <div className="flex items-start gap-4 bg-gray-50 p-5 rounded-2xl">
+                                <span className="text-3xl">💅</span>
+                                <p className="text-black text-lg md:text-xl">
+                                    <strong className="text-[#EC4899]">Técnicas</strong> de alongamento, acabamento e decoração
                                 </p>
                             </div>
 
                             {/* Item 2 */}
-                            <div className="flex items-start gap-3">
-                                <span className="text-xl">✨</span>
-                                <p className="text-gray-600 text-sm">
-                                    <strong className="text-gray-700">Posicionamento, Redes Sociais e Captação de Clientes</strong>
+                            <div className="flex items-start gap-4 bg-gray-50 p-5 rounded-2xl">
+                                <span className="text-3xl">✨</span>
+                                <p className="text-black text-lg md:text-xl">
+                                    <strong className="text-[#EC4899]">Posicionamento</strong>, Redes Sociais e Captação de Clientes
                                 </p>
                             </div>
 
                             {/* Item 3 */}
-                            <div className="flex items-start gap-3">
-                                <span className="text-xl">🥰</span>
-                                <p className="text-gray-600 text-sm">
-                                    <strong className="text-gray-700">Atendimento, Fidelização de Clientes e Gestão Financeira</strong>
+                            <div className="flex items-start gap-4 bg-gray-50 p-5 rounded-2xl">
+                                <span className="text-3xl">🥰</span>
+                                <p className="text-black text-lg md:text-xl">
+                                    <strong className="text-[#EC4899]">Atendimento</strong>, Fidelização de Clientes e Gestão Financeira
                                 </p>
                             </div>
                         </div>
                     </div>
 
                     {/* Box Destaque */}
-                    <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-5 mb-8 flex items-center gap-4 shadow-sm">
-                        <div className="w-10 h-10 bg-[#6B9B8A] rounded-full flex items-center justify-center flex-shrink-0">
-                            <i className="fa-solid fa-check text-white"></i>
+                    <div className="bg-[#EC4899]/10 border-2 border-[#EC4899]/30 rounded-2xl p-6 mb-10 flex items-center gap-4">
+                        <div className="w-14 h-14 bg-[#EC4899] rounded-full flex items-center justify-center flex-shrink-0">
+                            <i className="fa-solid fa-check text-white text-xl"></i>
                         </div>
-                        <p className="text-gray-700 font-medium text-sm">
+                        <p className="text-black font-bold text-xl md:text-2xl font-[family-name:var(--font-montserrat)]">
                             Tudo sem pagar um centavo por isso!
                         </p>
                     </div>
 
                     {/* Card CTA Final */}
-                    <div className="bg-gradient-to-br from-[#2D1B4E] to-[#1A1030] rounded-3xl p-6 text-center shadow-xl">
-                        <p className="text-white text-lg mb-4 font-[family-name:var(--font-montserrat)]">
+                    <div className="bg-gradient-to-br from-[#EC4899] to-[#BE185D] rounded-3xl p-8 text-center shadow-2xl shadow-[#EC4899]/30">
+                        <p className="text-white text-xl md:text-2xl mb-6 font-[family-name:var(--font-montserrat)] leading-relaxed">
                             Quer aproveitar essa oportunidade de ler meu diário de{' '}
-                            <span className="text-[#9B4D96] font-semibold">Nail Designer</span>?
+                            <span className="font-bold underline">Nail Designer</span>?
                         </p>
 
                         <a
                             href={WHATSAPP_GROUP_URL}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-4 px-6 rounded-full transition-all duration-300 transform hover:scale-[1.02] uppercase text-sm tracking-wide shadow-lg shadow-[#25D366]/30"
+                            className="inline-flex items-center justify-center gap-3 w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-5 px-8 rounded-full transition-all duration-300 transform hover:scale-[1.02] uppercase text-lg tracking-wide shadow-lg"
                         >
-                            <i className="fa-brands fa-whatsapp text-xl"></i>
+                            <i className="fa-brands fa-whatsapp text-2xl"></i>
                             CLIQUE AQUI PARA ENTRAR NO GRUPO!
                         </a>
                     </div>
 
                     {/* Footer pequeno */}
-                    <div className="text-center mt-8 text-xs text-gray-500">
-                        <p>© {new Date().getFullYear()} Mariana Nails</p>
+                    <div className="text-center mt-10 text-sm text-gray-400">
+                        <p>© {new Date().getFullYear()} Mariana Nails • Todos os direitos reservados</p>
                     </div>
 
                 </div>
