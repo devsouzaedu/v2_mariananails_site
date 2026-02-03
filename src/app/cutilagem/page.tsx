@@ -108,19 +108,24 @@ export default function CutilagemLandingPage() {
                 <section className="relative px-4 py-8 md:py-12">
                     <div className="max-w-5xl mx-auto">
 
-                        {/* Logo do Produto */}
+                        {/* Título + Logo do Produto */}
                         <div className="text-center mb-8">
-                            <div className="inline-block mb-6">
+                            {/* Título em letras garrafais - visível apenas no mobile */}
+                            <h1 className="md:hidden text-3xl font-black uppercase tracking-tight text-white mb-4 font-[family-name:var(--font-montserrat)]">
+                                O Manual de<br />
+                                <span className="text-4xl bg-gradient-to-r from-[#D4AF37] via-[#F4E4BC] to-[#D4AF37] bg-clip-text text-transparent">Cutilagem Avançada</span>
+                            </h1>
+                            <div className="inline-block mb-4 md:mb-6">
                                 <Image
                                     src="/images/logo_mca.png"
                                     alt="O Manual de Cutilagem Avançada"
                                     width={400}
                                     height={200}
-                                    className="w-full max-w-[320px] md:max-w-[400px] h-auto mx-auto"
+                                    className="w-full max-w-[200px] md:max-w-[400px] h-auto mx-auto"
                                     priority
                                 />
                             </div>
-                            <p className="text-gray-400 text-lg md:text-xl tracking-wider uppercase font-[family-name:var(--font-poppins)]">Para Nail Designer</p>
+                            <p className="text-gray-400 text-base md:text-xl tracking-wider uppercase font-[family-name:var(--font-poppins)]">Para Nail Designer</p>
                         </div>
 
                         {/* Imagem Principal + Copy */}
@@ -137,8 +142,8 @@ export default function CutilagemLandingPage() {
                                         className="relative z-10 w-full max-w-[400px] h-auto object-contain mx-auto drop-shadow-2xl"
                                         priority
                                     />
-                                    {/* Badge flutuante */}
-                                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 bg-black/80 backdrop-blur-sm border border-[#D4AF37]/50 rounded-full px-4 py-2">
+                                    {/* Badge flutuante - apenas desktop */}
+                                    <div className="hidden md:block absolute bottom-4 left-1/2 -translate-x-1/2 z-20 bg-black/80 backdrop-blur-sm border border-[#D4AF37]/50 rounded-full px-4 py-2">
                                         <p className="text-sm text-gray-300">
                                             <strong className="text-[#D4AF37]">Mariana Nails</strong> • Especialista em Nail Design
                                         </p>
@@ -217,8 +222,9 @@ export default function CutilagemLandingPage() {
                             O que você recebe <span className="text-[#22C55E]">HOJE:</span>
                         </h2>
 
-                        {/* Grid de Módulos visualmente atraente */}
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+                        {/* Grid de Módulos - Cards no desktop, texto simples no mobile */}
+                        {/* Desktop: Cards coloridos */}
+                        <div className="hidden md:grid grid-cols-4 gap-4 mb-10">
                             {/* Módulo 1 - Cutilagem com Alicate */}
                             <div className="group relative bg-gradient-to-b from-[#C41E3A] to-[#8B0000] rounded-xl overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-[#C41E3A]/30">
                                 <div className="p-4 text-center">
@@ -263,6 +269,14 @@ export default function CutilagemLandingPage() {
                                 <div className="h-1 bg-[#D4AF37] w-full absolute bottom-0"></div>
                             </div>
                         </div>
+
+                        {/* Mobile: Lista simples de texto */}
+                        <ul className="md:hidden space-y-3 mb-10 text-center">
+                            <li className="text-white text-lg font-medium"><i className="fa-solid fa-check text-[#22C55E] mr-2"></i>Cutilagem com Alicate</li>
+                            <li className="text-white text-lg font-medium"><i className="fa-solid fa-check text-[#22C55E] mr-2"></i>Cutilagem Combinada</li>
+                            <li className="text-white text-lg font-medium"><i className="fa-solid fa-check text-[#22C55E] mr-2"></i>Cutilagem com Cera</li>
+                            <li className="text-white text-lg font-medium"><i className="fa-solid fa-check text-[#22C55E] mr-2"></i>Apostila Completa em PDF</li>
+                        </ul>
 
                         {/* Descrição dos itens */}
                         <div className="space-y-4">
