@@ -18,6 +18,7 @@ const PARCELAS = "3x";
 // Botão CTA Verde (igual à referência)
 const CTAButton = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
     <a
+        id="btn-checkout-mca"
         href={CHECKOUT_URL}
         target="_blank"
         rel="noopener noreferrer"
@@ -455,7 +456,7 @@ export default function CutilagemLandingPage() {
                         <span>•</span>
                         <a href="#" className="hover:text-gray-400">Política de Privacidade</a>
                         <span>•</span>
-                        <a href="#" className="hover:text-gray-400">Suporte</a>
+                        <a id="btn-whatsapp-mca" href="https://wa.me/5511944598264" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">Suporte via WhatsApp</a>
                     </div>
                 </footer>
             </div>
