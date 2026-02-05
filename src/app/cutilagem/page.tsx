@@ -108,23 +108,12 @@ export default function CutilagemLandingPage() {
                 <section className="relative px-4 py-8 md:py-12">
                     <div className="max-w-5xl mx-auto">
 
-                        {/* Título + Logo do Produto */}
+                        {/* Título do Produto */}
                         <div className="text-center mb-8">
-                            {/* Título em letras garrafais - visível apenas no mobile */}
-                            <h1 className="md:hidden text-3xl font-black uppercase tracking-tight text-white mb-4 font-[family-name:var(--font-montserrat)]">
+                            <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-white mb-4 font-[family-name:var(--font-montserrat)]">
                                 O Manual de<br />
-                                <span className="text-4xl bg-gradient-to-r from-[#D4AF37] via-[#F4E4BC] to-[#D4AF37] bg-clip-text text-transparent">Cutilagem Avançada</span>
+                                <span className="text-4xl md:text-6xl bg-gradient-to-r from-[#D4AF37] via-[#F4E4BC] to-[#D4AF37] bg-clip-text text-transparent">Cutilagem Avançada</span>
                             </h1>
-                            <div className="inline-block mb-4 md:mb-6">
-                                <Image
-                                    src="/images/logo_mca.png"
-                                    alt="O Manual de Cutilagem Avançada"
-                                    width={400}
-                                    height={200}
-                                    className="w-full max-w-[200px] md:max-w-[400px] h-auto mx-auto"
-                                    priority
-                                />
-                            </div>
                             <p className="text-gray-400 text-base md:text-xl tracking-wider uppercase font-[family-name:var(--font-poppins)]">Para Nail Designer</p>
                         </div>
 
@@ -170,12 +159,24 @@ export default function CutilagemLandingPage() {
                                         <span className="text-3xl text-[#22C55E] font-bold">R$</span>
                                         <span className="text-7xl md:text-8xl font-black text-[#22C55E]">{PRECO_PARCELADO}</span>
                                     </div>
+                                    <p className="text-sm text-gray-400">ou R$ {PRECO_AVISTA} à vista</p>
                                 </div>
 
                                 <CTAButton>
                                     SIM, QUERO COMPRAR AGORA!
                                 </CTAButton>
                                 <p className="text-xs text-gray-500 mt-3 text-center">Acesso imediato • Pagamento seguro</p>
+
+                                {/* Imagem de cutícula */}
+                                <div className="mt-6">
+                                    <Image
+                                        src="/images/cuticula_b.png"
+                                        alt="Resultado de cutilagem profissional"
+                                        width={400}
+                                        height={300}
+                                        className="w-full max-w-[350px] h-auto mx-auto rounded-xl shadow-lg"
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -204,12 +205,11 @@ export default function CutilagemLandingPage() {
 
                         <div className="bg-[#0a0a0a] border border-gray-800 rounded-xl p-6 md:p-8">
                             <ul className="space-y-4">
-                                <CheckItem>Fazer uma cutilagem fundinha, sem dar bife e sem machucar a cliente</CheckItem>
-                                <CheckItem>Reduzir o tempo de atendimento pela metade (mais clientes = mais lucro)</CheckItem>
-                                <CheckItem>Cobrar mais caro por um acabamento visivelmente superior</CheckItem>
-                                <CheckItem>Aprender a técnica do corte contínuo de uma vez por todas</CheckItem>
-                                <CheckItem>Ter confiança ao pegar o alicate, sem medo de errar</CheckItem>
-                                <CheckItem>Deixar a cutícula pronta para receber qualquer tipo de esmaltação</CheckItem>
+                                <CheckItem>✅ Fazer uma cutilagem fundinha, sem dar bife e sem machucar a cliente</CheckItem>
+                                <CheckItem>✅ Cobrar mais caro por um acabamento visivelmente superior</CheckItem>
+                                <CheckItem>✅ Aprender a técnica do corte contínuo de uma vez por todas</CheckItem>
+                                <CheckItem>✅ Ter confiança ao pegar o alicate, sem medo de errar</CheckItem>
+                                <CheckItem>✅ Deixar a cutícula pronta para receber qualquer tipo de esmaltação</CheckItem>
                             </ul>
                         </div>
                     </div>
@@ -222,135 +222,57 @@ export default function CutilagemLandingPage() {
                             O que você recebe <span className="text-[#22C55E]">HOJE:</span>
                         </h2>
 
-                        {/* Grid de Módulos - Cards no desktop, texto simples no mobile */}
-                        {/* Desktop: Cards coloridos */}
-                        <div className="hidden md:grid grid-cols-4 gap-4 mb-10">
+                        {/* Grid de Capas dos Módulos */}
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
                             {/* Módulo 1 - Cutilagem com Alicate */}
-                            <div className="group relative bg-gradient-to-b from-[#C41E3A] to-[#8B0000] rounded-xl overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-[#C41E3A]/30">
-                                <div className="p-4 text-center">
-                                    <p className="text-xs text-white/70 font-medium mb-1">O Manual de</p>
-                                    <h4 className="text-lg font-bold text-white leading-tight mb-1">Cutilagem<br />Avançada</h4>
-                                    <div className="h-px bg-[#D4AF37] w-12 mx-auto my-2"></div>
-                                    <p className="text-sm font-bold text-[#D4AF37]">Cutilagem com Alicate</p>
-                                </div>
-                                <div className="h-1 bg-[#D4AF37] w-full absolute bottom-0"></div>
+                            <div className="group relative rounded-xl overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-lg">
+                                <Image
+                                    src="/images/capa_mca_cutilagem_com_alicate.png"
+                                    alt="Cutilagem com Alicate"
+                                    width={300}
+                                    height={400}
+                                    className="w-full h-auto rounded-xl"
+                                />
                             </div>
 
                             {/* Módulo 2 - Cutilagem Combinada */}
-                            <div className="group relative bg-gradient-to-b from-[#FF8C00] to-[#CC7000] rounded-xl overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-[#FF8C00]/30">
-                                <div className="p-4 text-center">
-                                    <p className="text-xs text-white/70 font-medium mb-1">O Manual de</p>
-                                    <h4 className="text-lg font-bold text-white leading-tight mb-1">Cutilagem<br />Avançada</h4>
-                                    <div className="h-px bg-white/50 w-12 mx-auto my-2"></div>
-                                    <p className="text-sm font-bold text-white">Cutilagem Combinada</p>
-                                </div>
-                                <div className="h-1 bg-[#D4AF37] w-full absolute bottom-0"></div>
+                            <div className="group relative rounded-xl overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-lg">
+                                <Image
+                                    src="/images/capa_mca_cutilagem_combinada.png"
+                                    alt="Cutilagem Combinada"
+                                    width={300}
+                                    height={400}
+                                    className="w-full h-auto rounded-xl"
+                                />
                             </div>
 
                             {/* Módulo 3 - Cutilagem com Cera */}
-                            <div className="group relative bg-gradient-to-b from-[#FFD700] to-[#B8860B] rounded-xl overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-[#FFD700]/30">
-                                <div className="p-4 text-center">
-                                    <p className="text-xs text-black/60 font-medium mb-1">O Manual de</p>
-                                    <h4 className="text-lg font-bold text-black leading-tight mb-1">Cutilagem<br />Avançada</h4>
-                                    <div className="h-px bg-black/30 w-12 mx-auto my-2"></div>
-                                    <p className="text-sm font-bold text-[#8B0000]">Cutilagem com Cera</p>
-                                </div>
-                                <div className="h-1 bg-[#8B0000] w-full absolute bottom-0"></div>
+                            <div className="group relative rounded-xl overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-lg">
+                                <Image
+                                    src="/images/capa_mca_cutiagem_com_cera.png"
+                                    alt="Cutilagem com Cera"
+                                    width={300}
+                                    height={400}
+                                    className="w-full h-auto rounded-xl"
+                                />
                             </div>
 
-                            {/* Módulo 4 - Apostila */}
-                            <div className="group relative bg-gradient-to-b from-[#1E3A8A] to-[#1E40AF] rounded-xl overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-[#1E3A8A]/30">
-                                <div className="p-4 text-center">
-                                    <p className="text-xs text-white/70 font-medium mb-1">O Manual de</p>
-                                    <h4 className="text-lg font-bold text-white leading-tight mb-1">Cutilagem<br />Avançada</h4>
-                                    <div className="h-px bg-white/50 w-12 mx-auto my-2"></div>
-                                    <p className="text-sm font-bold text-[#D4AF37]">Apostila</p>
+                            {/* Módulo 4 - Apostila (BÔNUS) */}
+                            <div className="group relative rounded-xl overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-lg">
+                                <div className="absolute top-2 right-2 z-10 bg-[#22C55E] text-white text-xs font-bold px-2 py-1 rounded">
+                                    BÔNUS
                                 </div>
-                                <div className="h-1 bg-[#D4AF37] w-full absolute bottom-0"></div>
-                            </div>
-                        </div>
-
-                        {/* Mobile: Lista simples de texto */}
-                        <ul className="md:hidden space-y-3 mb-10 text-center">
-                            <li className="text-white text-lg font-medium"><i className="fa-solid fa-check text-[#22C55E] mr-2"></i>Cutilagem com Alicate</li>
-                            <li className="text-white text-lg font-medium"><i className="fa-solid fa-check text-[#22C55E] mr-2"></i>Cutilagem Combinada</li>
-                            <li className="text-white text-lg font-medium"><i className="fa-solid fa-check text-[#22C55E] mr-2"></i>Cutilagem com Cera</li>
-                            <li className="text-white text-lg font-medium"><i className="fa-solid fa-check text-[#22C55E] mr-2"></i>Apostila Completa em PDF</li>
-                        </ul>
-
-                        {/* Descrição dos itens */}
-                        <div className="space-y-4">
-                            {/* Item 1 */}
-                            <div className="bg-[#111] border border-gray-800 rounded-xl p-5 flex flex-col md:flex-row items-center gap-5">
-                                <div className="w-16 h-16 flex-shrink-0 bg-gradient-to-br from-[#C41E3A] to-[#8B0000] rounded-lg flex items-center justify-center">
-                                    <i className="fa-solid fa-video text-2xl text-white"></i>
-                                </div>
-                                <div className="flex-1 text-center md:text-left">
-                                    <h3 className="text-lg font-bold text-white mb-1 font-[family-name:var(--font-montserrat)]">Cutilagem com Alicate</h3>
-                                    <p className="text-gray-400 text-sm font-[family-name:var(--font-poppins)]">Técnica clássica dominada - corte contínuo perfeito</p>
-                                </div>
-                                <div className="text-right">
-                                    <span className="text-gray-500 line-through text-sm">R$ 67</span>
-                                </div>
-                            </div>
-
-                            {/* Item 2 */}
-                            <div className="bg-[#111] border border-gray-800 rounded-xl p-5 flex flex-col md:flex-row items-center gap-5">
-                                <div className="w-16 h-16 flex-shrink-0 bg-gradient-to-br from-[#FF8C00] to-[#CC7000] rounded-lg flex items-center justify-center">
-                                    <i className="fa-solid fa-hand-sparkles text-2xl text-white"></i>
-                                </div>
-                                <div className="flex-1 text-center md:text-left">
-                                    <h3 className="text-lg font-bold text-white mb-1 font-[family-name:var(--font-montserrat)]">Cutilagem Combinada</h3>
-                                    <p className="text-gray-400 text-sm font-[family-name:var(--font-poppins)]">Combine pusher + alicate para resultado profissional</p>
-                                </div>
-                                <div className="text-right">
-                                    <span className="text-gray-500 line-through text-sm">R$ 67</span>
-                                </div>
-                            </div>
-
-                            {/* Item 3 */}
-                            <div className="bg-[#111] border border-gray-800 rounded-xl p-5 flex flex-col md:flex-row items-center gap-5">
-                                <div className="w-16 h-16 flex-shrink-0 bg-gradient-to-br from-[#FFD700] to-[#B8860B] rounded-lg flex items-center justify-center">
-                                    <i className="fa-solid fa-fire text-2xl text-white"></i>
-                                </div>
-                                <div className="flex-1 text-center md:text-left">
-                                    <h3 className="text-lg font-bold text-white mb-1 font-[family-name:var(--font-montserrat)]">Cutilagem com Cera</h3>
-                                    <p className="text-gray-400 text-sm font-[family-name:var(--font-poppins)]">Método inovador para cutículas sensíveis</p>
-                                </div>
-                                <div className="text-right">
-                                    <span className="text-gray-500 line-through text-sm">R$ 47</span>
-                                </div>
-                            </div>
-
-                            {/* Item 4 - Apostila */}
-                            <div className="bg-[#111] border border-gray-800 rounded-xl p-5 flex flex-col md:flex-row items-center gap-5">
-                                <div className="w-16 h-16 flex-shrink-0 bg-gradient-to-br from-[#1E3A8A] to-[#1E40AF] rounded-lg flex items-center justify-center">
-                                    <i className="fa-solid fa-book text-2xl text-white"></i>
-                                </div>
-                                <div className="flex-1 text-center md:text-left">
-                                    <h3 className="text-lg font-bold text-white mb-1 font-[family-name:var(--font-montserrat)]">Apostila Completa em PDF</h3>
-                                    <p className="text-gray-400 text-sm font-[family-name:var(--font-poppins)]">Download para consultar sempre que precisar</p>
-                                </div>
-                                <div className="text-right">
-                                    <span className="text-gray-500 line-through text-sm">R$ 47</span>
-                                </div>
-                            </div>
-
-                            {/* Bônus */}
-                            <div className="bg-gradient-to-r from-[#22C55E]/20 to-[#111] border border-[#22C55E]/50 rounded-xl p-5 flex flex-col md:flex-row items-center gap-5">
-                                <div className="w-16 h-16 flex-shrink-0 bg-[#22C55E] rounded-lg flex items-center justify-center">
-                                    <i className="fa-solid fa-gift text-2xl text-white"></i>
-                                </div>
-                                <div className="flex-1 text-center md:text-left">
-                                    <div className="inline-block bg-[#22C55E] text-white text-xs font-bold px-2 py-1 rounded mb-2 font-[family-name:var(--font-montserrat)]">BÔNUS EXCLUSIVO</div>
-                                    <h3 className="text-lg font-bold text-white mb-1 font-[family-name:var(--font-montserrat)]">Checklist de Materiais Profissionais</h3>
-                                    <p className="text-gray-300 text-sm font-[family-name:var(--font-poppins)]">Lista completa dos materiais que eu uso no meu ateliê</p>
-                                </div>
-                                <div className="text-right">
-                                    <span className="text-[#22C55E] font-bold">GRÁTIS</span>
-                                </div>
+                                <Image
+                                    src="/images/capa_mca_apostila.png"
+                                    alt="Apostila - BÔNUS"
+                                    width={300}
+                                    height={400}
+                                    className="w-full h-auto rounded-xl"
+                                />
                             </div>
                         </div>
+
+
                     </div>
                 </section>
 
@@ -358,15 +280,11 @@ export default function CutilagemLandingPage() {
                 <section className="py-12 px-4 bg-[#0a0a0a]">
                     <div className="max-w-xl mx-auto">
                         <div className="bg-[#111] border-2 border-[#C41E3A]/50 rounded-2xl overflow-hidden shadow-2xl shadow-[#C41E3A]/10">
-                            {/* Header do Card com Logo */}
+                            {/* Header do Card */}
                             <div className="bg-gradient-to-r from-[#8B0000] to-[#C41E3A] py-5 px-6 text-center">
-                                <Image
-                                    src="/images/logo_mca.png"
-                                    alt="O Manual de Cutilagem Avançada"
-                                    width={200}
-                                    height={100}
-                                    className="w-40 h-auto mx-auto mb-2"
-                                />
+                                <h3 className="text-2xl font-black text-white mb-1 font-[family-name:var(--font-montserrat)]">
+                                    O Manual de <span className="bg-gradient-to-r from-[#D4AF37] via-[#F4E4BC] to-[#D4AF37] bg-clip-text text-transparent">Cutilagem Avançada</span>
+                                </h3>
                                 <p className="text-white/90 font-medium text-sm uppercase tracking-wider">Oferta Especial de Lançamento</p>
                             </div>
 
@@ -445,13 +363,9 @@ export default function CutilagemLandingPage() {
                 {/* ========== CTA FINAL ========== */}
                 <section className="py-16 px-4 bg-gradient-to-b from-[#0a0a0a] to-[#111]">
                     <div className="max-w-xl mx-auto text-center">
-                        <Image
-                            src="/images/logo_mca.png"
-                            alt="O Manual de Cutilagem Avançada"
-                            width={180}
-                            height={90}
-                            className="w-36 h-auto mx-auto mb-6 opacity-80"
-                        />
+                        <h3 className="text-2xl md:text-3xl font-black text-white mb-2 font-[family-name:var(--font-montserrat)]">
+                            O Manual de <span className="bg-gradient-to-r from-[#D4AF37] via-[#F4E4BC] to-[#D4AF37] bg-clip-text text-transparent">Cutilagem Avançada</span>
+                        </h3>
                         <p className="text-white mb-6 text-lg">Essa oferta pode sair do ar a qualquer momento</p>
                         <CTAButton className="mb-4">
                             SIM, QUERO COMPRAR AGORA!
