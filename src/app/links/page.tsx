@@ -48,11 +48,11 @@ export default function LinksPage() {
     },
     {
       imageSrc: '/images/smn_topo_link1.png',
-      href: 'https://hub.la/r/xxSjRNqIbWOrKe4Z8bFu',
+      href: 'https://hub.la/r/St5rvAgOZLJUs03WOEzA',
     },
     {
       imageSrc: '/images/IMPS_topo_link1.png',
-      href: 'https://hub.la/r/St5rvAgOZLJUs03WOEzA',
+      href: 'https://hub.la/r/xxSjRNqIbWOrKe4Z8bFu',
     },
   ];
 
