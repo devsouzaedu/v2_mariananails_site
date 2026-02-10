@@ -6,7 +6,7 @@ import Head from 'next/head';
 // ============================================
 // CONFIGURAÇÕES
 // ============================================
-const CHECKOUT_URL = "#"; // Adicionar URL do checkout aqui
+const CHECKOUT_URL = "https://hub.la/r/xxSjRNqIbWOrKe4Z8bFu";
 const WHATSAPP_URL = "https://wa.me/5511944598264?text=Oi!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Curso%20Presencial%20Nail%20Designer%20em%20Barueri";
 
 // ============================================
