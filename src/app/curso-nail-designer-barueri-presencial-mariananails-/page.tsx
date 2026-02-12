@@ -194,11 +194,22 @@ export default function CursoNailDesignerBarueriPage() {
                                             <p className="text-gray-400 text-sm">Endereço enviado após confirmação</p>
                                         </div>
                                     </div>
-                                    <div className="flex items-center gap-3">
+                                    <div className="flex items-center gap-3 mb-4">
                                         <i className="fa-solid fa-certificate text-2xl text-[#D4AF37]"></i>
                                         <div>
                                             <p className="text-white font-bold text-lg">Certificado Incluso</p>
                                             <p className="text-gray-400 text-sm">Reconhecido no mercado</p>
+                                        </div>
+                                    </div>
+
+                                    {/* Preço do Curso */}
+                                    <div className="border-t border-[#D4AF37]/30 pt-4 mt-2">
+                                        <div className="flex items-center gap-3">
+                                            <i className="fa-solid fa-tag text-2xl text-[#22C55E]"></i>
+                                            <div>
+                                                <p className="text-white font-bold text-lg">Investimento: <span className="text-[#22C55E] text-2xl">R$ 900,00</span></p>
+                                                <p className="text-gray-400 text-sm">Taxa de inscrição: <span className="text-white font-semibold">R$ 100,00</span></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -364,6 +375,16 @@ export default function CursoNailDesignerBarueriPage() {
                                         <i className="fa-solid fa-certificate text-3xl text-[#D4AF37] mb-2"></i>
                                         <p className="text-gray-400 text-sm">Certificado</p>
                                     </div>
+                                </div>
+
+                                {/* Preço */}
+                                <div className="mb-6">
+                                    <div className="flex items-baseline justify-center gap-2 mb-2">
+                                        <span className="text-2xl text-[#22C55E] font-[family-name:var(--font-montserrat)]">R$</span>
+                                        <span className="text-6xl md:text-7xl font-black text-[#22C55E] font-[family-name:var(--font-montserrat)]">900</span>
+                                        <span className="text-2xl text-[#22C55E] font-[family-name:var(--font-montserrat)]">,00</span>
+                                    </div>
+                                    <p className="text-gray-400 font-[family-name:var(--font-poppins)] text-sm">Taxa de inscrição: <span className="text-white font-semibold">R$ 100,00</span></p>
                                 </div>
 
                                 <div className="space-y-4">

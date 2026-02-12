@@ -1,7 +1,8 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import Image from 'next/image';
 import Head from 'next/head';
+import { useSearchParams } from 'next/navigation';
 
 // ============================================
 // CONFIGURAÇÕES
@@ -16,10 +17,10 @@ const PARCELAS = "3x";
 // ============================================
 
 // Botão CTA Verde (igual à referência)
-const CTAButton = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
+const CTAButton = ({ children, className = "", href }: { children: React.ReactNode, className?: string, href?: string }) => (
     <a
         id="btn-checkout-mca"
-        href={CHECKOUT_URL}
+        href={href || CHECKOUT_URL}
         target="_blank"
         rel="noopener noreferrer"
         className={`
@@ -91,7 +92,15 @@ const CheckItem = ({ children }: { children: React.ReactNode }) => (
 // ============================================
 // PÁGINA PRINCIPAL
 // ============================================
-export default function CutilagemLandingPage() {
+function CutilagemContent() {
+    const searchParams = useSearchParams();
+    const fbclid = searchParams.get('fbclid');
+
+    // Monta a URL de checkout com fbclid se presente
+    const checkoutUrl = fbclid
+        ? `${CHECKOUT_URL}${CHECKOUT_URL.includes('?') ? '&' : '?'}fbclid=${encodeURIComponent(fbclid)}`
+        : CHECKOUT_URL;
+
     return (
         <>
             {/* Font Awesome CDN */}
@@ -162,7 +171,7 @@ export default function CutilagemLandingPage() {
                                     <p className="text-sm text-gray-400">ou R$ {PRECO_AVISTA} à vista</p>
                                 </div>
 
-                                <CTAButton>
+                                <CTAButton href={checkoutUrl}>
                                     SIM, QUERO COMPRAR AGORA!
                                 </CTAButton>
                                 <p className="text-xs text-gray-500 mt-3 text-center">Acesso imediato • Pagamento seguro</p>
@@ -302,7 +311,7 @@ export default function CutilagemLandingPage() {
                                     <p className="text-gray-400 font-[family-name:var(--font-poppins)]">Ou R$ {PRECO_AVISTA} à vista</p>
                                 </div>
 
-                                <CTAButton className="mb-6">
+                                <CTAButton className="mb-6" href={checkoutUrl}>
                                     SIM, QUERO COMPRAR AGORA!
                                 </CTAButton>
 
@@ -325,7 +334,7 @@ export default function CutilagemLandingPage() {
                         <p className="text-white text-lg mb-8 font-[family-name:var(--font-poppins)]">
                             Ou finalmente dominar a cutilagem e <strong className="text-[#22C55E]">entregar um trabalho digno de elogios</strong> toda vez que a cliente postar no Instagram.
                         </p>
-                        <CTAButton className="max-w-md mx-auto">
+                        <CTAButton className="max-w-md mx-auto" href={checkoutUrl}>
                             SIM, QUERO COMPRAR AGORA!
                         </CTAButton>
                     </div>
@@ -367,7 +376,7 @@ export default function CutilagemLandingPage() {
                             O Manual de <span className="bg-gradient-to-r from-[#D4AF37] via-[#F4E4BC] to-[#D4AF37] bg-clip-text text-transparent">Cutilagem Avançada</span>
                         </h3>
                         <p className="text-white mb-6 text-lg">Essa oferta pode sair do ar a qualquer momento</p>
-                        <CTAButton className="mb-4">
+                        <CTAButton className="mb-4" href={checkoutUrl}>
                             SIM, QUERO COMPRAR AGORA!
                         </CTAButton>
                         <p className="text-xs text-gray-400">Pagamento 100% seguro • Acesso imediato após confirmação</p>
@@ -389,5 +398,13 @@ export default function CutilagemLandingPage() {
                 </footer>
             </div>
         </>
+    );
+}
+
+export default function CutilagemLandingPage() {
+    return (
+        <Suspense fallback={<div className="min-h-screen bg-[#0a0a0a]" />}>
+            <CutilagemContent />
+        </Suspense>
     );
 }
