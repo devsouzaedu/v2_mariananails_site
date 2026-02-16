@@ -94,6 +94,7 @@ export default function RootLayout({
   const isCutilagemPage = pathname === '/cutilagem-avancada' || pathname === '/cutilagem' || pathname === '/obrigado-cutilagem'; // Landing pages Cutilagem
   const isLinksPage = pathname === '/links'; // Página de links
   const isCursoPresencialPage = pathname === '/curso-nail-designer-barueri-presencial-mariananails-'; // Landing page Curso Presencial
+  const isCFRPage = pathname === '/cfr' || pathname === '/obrigado-cfr'; // Landing pages CFR - Código da Fibra Realista
   return (
     <html lang="pt-BR" className={`${funnelSans.variable} ${ptSans.variable} ${playfair.variable} ${instrumentSerif.variable} ${instrumentSans.variable} ${montserrat.variable} ${poppins.variable} ${lora.variable}`}>
       <head>
@@ -160,7 +161,7 @@ export default function RootLayout({
         </noscript>
         {/* End Google Tag Manager (noscript) */}
         {/* Condição para renderizar Navbar e banner apenas se NÃO for landing, ebook, ebookguiado, curso, fature, quiz, plataforma ou obrigado */}
-        {!isLandingPage && !isEbookPage && !isEbookGuiadoPage && !isCursoPage && !isFaturePage && !isQuizPage && !isPlataformaPage && !isObrigadoPage && !isCutilagemPage && !isLinksPage && !isCursoPresencialPage && (
+        {!isLandingPage && !isEbookPage && !isEbookGuiadoPage && !isCursoPage && !isFaturePage && !isQuizPage && !isPlataformaPage && !isObrigadoPage && !isCutilagemPage && !isLinksPage && !isCursoPresencialPage && !isCFRPage && (
           <>
             <div className="fixed inset-0 pointer-events-none z-0">
               <div className="absolute inset-0 bg-primary-50 opacity-30 mix-blend-multiply" style={{
@@ -173,12 +174,12 @@ export default function RootLayout({
             <Navbar />
           </>
         )}
-        <main className={`flex-grow relative z-10 ${isLandingPage || isEbookPage || isEbookGuiadoPage || isCursoPage || isFaturePage || isQuizPage || isPlataformaPage || isObrigadoPage || isCutilagemPage || isLinksPage || isCursoPresencialPage ? '' : 'pt-20'}`}>
+        <main className={`flex-grow relative z-10 ${isLandingPage || isEbookPage || isEbookGuiadoPage || isCursoPage || isFaturePage || isQuizPage || isPlataformaPage || isObrigadoPage || isCutilagemPage || isLinksPage || isCursoPresencialPage || isCFRPage ? '' : 'pt-20'}`}>
           {children}
         </main>
         {/* Condição para renderizar Footer e WhatsAppButton apenas se NÃO for ebook, ebookguiado, curso, fature, quiz, plataforma ou obrigado */}
-        {!isEbookPage && !isEbookGuiadoPage && !isCursoPage && !isFaturePage && !isQuizPage && !isPlataformaPage && !isObrigadoPage && !isCutilagemPage && !isLinksPage && !isCursoPresencialPage && <Footer />}
-        {!isEbookPage && !isEbookGuiadoPage && !isCursoPage && !isFaturePage && !isQuizPage && !isPlataformaPage && !isObrigadoPage && !isCutilagemPage && !isLinksPage && !isCursoPresencialPage && <WhatsAppButton />}
+        {!isEbookPage && !isEbookGuiadoPage && !isCursoPage && !isFaturePage && !isQuizPage && !isPlataformaPage && !isObrigadoPage && !isCutilagemPage && !isLinksPage && !isCursoPresencialPage && !isCFRPage && <Footer />}
+        {!isEbookPage && !isEbookGuiadoPage && !isCursoPage && !isFaturePage && !isQuizPage && !isPlataformaPage && !isObrigadoPage && !isCutilagemPage && !isLinksPage && !isCursoPresencialPage && !isCFRPage && <WhatsAppButton />}
       </body>
     </html>
   )
