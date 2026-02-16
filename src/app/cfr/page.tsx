@@ -7,7 +7,7 @@ import { useSearchParams } from 'next/navigation';
 // ============================================
 // CONFIGURAÇÕES
 // ============================================
-const CHECKOUT_URL = "https://pay.hub.la/INSERIR_LINK_CFR_AQUI";
+const CHECKOUT_URL = "https://hub.la/r/X8iHoCihAcVW6f5ZNel5";
 const PRECO_PARCELADO = "19,70";
 const PRECO_AVISTA = "97,00";
 const PARCELAS = "12x";

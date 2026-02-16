@@ -7,7 +7,7 @@ import Head from 'next/head';
 // CONFIGURAÇÕES
 // ============================================
 const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/C4OEbYEh5e3ENVB70cu7v6";
-const ORDER_BUMP_URL = "https://pay.hub.la/INSERIR_LINK_CFR_UPSELL_AQUI";
+const ORDER_BUMP_URL = "https://hub.la/r/X8iHoCihAcVW6f5ZNel5";
 
 // ============================================
 // COMPONENTE: Countdown Timer para Order Bump
