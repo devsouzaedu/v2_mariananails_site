@@ -222,86 +222,116 @@ function CFRContent() {
                         </h2>
 
                         {/* Grid de Módulos */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
                             {/* Módulo 1 */}
-                            <div className="group bg-gradient-to-br from-[#1a1a1a] to-[#111] border border-gray-800 rounded-xl p-6 transform hover:scale-[1.02] transition-all duration-300 shadow-lg hover:border-[#D4AF37]/30">
-                                <div className="flex items-center gap-3 mb-4">
-                                    <div className="w-10 h-10 bg-[#D4AF37]/20 rounded-lg flex items-center justify-center">
-                                        <span className="text-[#D4AF37] font-bold text-lg">1</span>
-                                    </div>
-                                    <h3 className="text-lg font-bold text-white font-[family-name:var(--font-montserrat)]">Preparação da Unha Natural</h3>
+                            <div className="group bg-gradient-to-br from-[#1a1a1a] to-[#111] border border-gray-800 rounded-xl overflow-hidden transform hover:scale-[1.02] transition-all duration-300 shadow-lg hover:border-[#D4AF37]/30">
+                                <div className="relative w-full aspect-[4/3]">
+                                    <Image src="/images/Capa_CFR_Anatomia.png" alt="Anatomia das Unhas" fill className="object-cover" />
                                 </div>
-                                <p className="text-gray-400 text-sm leading-relaxed">
-                                    Como preparar a unha natural corretamente para receber a fibra, garantindo aderência e durabilidade sem danificar a unha da cliente.
-                                </p>
+                                <div className="p-5">
+                                    <div className="flex items-center gap-3 mb-3">
+                                        <div className="w-8 h-8 bg-[#D4AF37]/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                            <span className="text-[#D4AF37] font-bold text-sm">1</span>
+                                        </div>
+                                        <h3 className="text-base font-bold text-white font-[family-name:var(--font-montserrat)]">Anatomia das Unhas</h3>
+                                    </div>
+                                    <p className="text-gray-400 text-sm leading-relaxed">
+                                        Entenda a estrutura completa da unha natural para trabalhar com segurança e precisão em cada alongamento.
+                                    </p>
+                                </div>
                             </div>
 
                             {/* Módulo 2 */}
-                            <div className="group bg-gradient-to-br from-[#1a1a1a] to-[#111] border border-gray-800 rounded-xl p-6 transform hover:scale-[1.02] transition-all duration-300 shadow-lg hover:border-[#D4AF37]/30">
-                                <div className="flex items-center gap-3 mb-4">
-                                    <div className="w-10 h-10 bg-[#D4AF37]/20 rounded-lg flex items-center justify-center">
-                                        <span className="text-[#D4AF37] font-bold text-lg">2</span>
-                                    </div>
-                                    <h3 className="text-lg font-bold text-white font-[family-name:var(--font-montserrat)]">Aplicação da Fibra de Vidro</h3>
+                            <div className="group bg-gradient-to-br from-[#1a1a1a] to-[#111] border border-gray-800 rounded-xl overflow-hidden transform hover:scale-[1.02] transition-all duration-300 shadow-lg hover:border-[#D4AF37]/30">
+                                <div className="relative w-full aspect-[4/3]">
+                                    <Image src="/images/Capa_CFR_Teoria da Aplicacao da Fibra.png" alt="Teoria da Aplicação da Fibra" fill className="object-cover" />
                                 </div>
-                                <p className="text-gray-400 text-sm leading-relaxed">
-                                    Técnica exclusiva de aplicação da fibra para um resultado fino, leve e com aspecto completamente natural. Sem aquele visual de unha postiça.
-                                </p>
+                                <div className="p-5">
+                                    <div className="flex items-center gap-3 mb-3">
+                                        <div className="w-8 h-8 bg-[#D4AF37]/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                            <span className="text-[#D4AF37] font-bold text-sm">2</span>
+                                        </div>
+                                        <h3 className="text-base font-bold text-white font-[family-name:var(--font-montserrat)]">Teoria da Aplicação da Fibra</h3>
+                                    </div>
+                                    <p className="text-gray-400 text-sm leading-relaxed">
+                                        Domine toda a teoria por trás da aplicação da fibra de vidro, entendendo cada etapa do processo para resultados perfeitos.
+                                    </p>
+                                </div>
                             </div>
 
                             {/* Módulo 3 */}
-                            <div className="group bg-gradient-to-br from-[#1a1a1a] to-[#111] border border-gray-800 rounded-xl p-6 transform hover:scale-[1.02] transition-all duration-300 shadow-lg hover:border-[#D4AF37]/30">
-                                <div className="flex items-center gap-3 mb-4">
-                                    <div className="w-10 h-10 bg-[#D4AF37]/20 rounded-lg flex items-center justify-center">
-                                        <span className="text-[#D4AF37] font-bold text-lg">3</span>
-                                    </div>
-                                    <h3 className="text-lg font-bold text-white font-[family-name:var(--font-montserrat)]">Curvatura C e Modelagem</h3>
+                            <div className="group bg-gradient-to-br from-[#1a1a1a] to-[#111] border border-gray-800 rounded-xl overflow-hidden transform hover:scale-[1.02] transition-all duration-300 shadow-lg hover:border-[#D4AF37]/30">
+                                <div className="relative w-full aspect-[4/3]">
+                                    <Image src="/images/Capa_CFR_Preparando a Fibra de Vidro.png" alt="Preparando a Fibra de Vidro" fill className="object-cover" />
                                 </div>
-                                <p className="text-gray-400 text-sm leading-relaxed">
-                                    O segredo da curvatura perfeita que faz a unha ter o formato ideal. Pinçagem, modelagem e ajuste fino para um acabamento de alto padrão.
-                                </p>
+                                <div className="p-5">
+                                    <div className="flex items-center gap-3 mb-3">
+                                        <div className="w-8 h-8 bg-[#D4AF37]/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                            <span className="text-[#D4AF37] font-bold text-sm">3</span>
+                                        </div>
+                                        <h3 className="text-base font-bold text-white font-[family-name:var(--font-montserrat)]">Preparando a Fibra de Vidro</h3>
+                                    </div>
+                                    <p className="text-gray-400 text-sm leading-relaxed">
+                                        Aprenda a preparar e manipular a fibra de vidro corretamente para garantir aderência, durabilidade e um acabamento impecável.
+                                    </p>
+                                </div>
                             </div>
 
                             {/* Módulo 4 */}
-                            <div className="group bg-gradient-to-br from-[#1a1a1a] to-[#111] border border-gray-800 rounded-xl p-6 transform hover:scale-[1.02] transition-all duration-300 shadow-lg hover:border-[#D4AF37]/30">
-                                <div className="flex items-center gap-3 mb-4">
-                                    <div className="w-10 h-10 bg-[#D4AF37]/20 rounded-lg flex items-center justify-center">
-                                        <span className="text-[#D4AF37] font-bold text-lg">4</span>
-                                    </div>
-                                    <h3 className="text-lg font-bold text-white font-[family-name:var(--font-montserrat)]">Acabamento Realista</h3>
+                            <div className="group bg-gradient-to-br from-[#1a1a1a] to-[#111] border border-gray-800 rounded-xl overflow-hidden transform hover:scale-[1.02] transition-all duration-300 shadow-lg hover:border-[#D4AF37]/30">
+                                <div className="relative w-full aspect-[4/3]">
+                                    <Image src="/images/Capa_CFR_Construcao Amendoada.png" alt="Construção Amendoada" fill className="object-cover" />
                                 </div>
-                                <p className="text-gray-400 text-sm leading-relaxed">
-                                    Técnicas avançadas de lixamento, nivelamento e selagem que tornam o alongamento invisível. O toque final que separa o amador do profissional.
-                                </p>
+                                <div className="p-5">
+                                    <div className="flex items-center gap-3 mb-3">
+                                        <div className="w-8 h-8 bg-[#D4AF37]/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                            <span className="text-[#D4AF37] font-bold text-sm">4</span>
+                                        </div>
+                                        <h3 className="text-base font-bold text-white font-[family-name:var(--font-montserrat)]">Construção Amendoada</h3>
+                                    </div>
+                                    <p className="text-gray-400 text-sm leading-relaxed">
+                                        Técnica completa para criar o formato amendoado perfeito, o mais pedido pelas clientes, com acabamento natural e elegante.
+                                    </p>
+                                </div>
                             </div>
 
                             {/* Módulo 5 */}
-                            <div className="group bg-gradient-to-br from-[#1a1a1a] to-[#111] border border-gray-800 rounded-xl p-6 transform hover:scale-[1.02] transition-all duration-300 shadow-lg hover:border-[#D4AF37]/30">
-                                <div className="flex items-center gap-3 mb-4">
-                                    <div className="w-10 h-10 bg-[#D4AF37]/20 rounded-lg flex items-center justify-center">
-                                        <span className="text-[#D4AF37] font-bold text-lg">5</span>
-                                    </div>
-                                    <h3 className="text-lg font-bold text-white font-[family-name:var(--font-montserrat)]">Manutenção e Reposição</h3>
+                            <div className="group bg-gradient-to-br from-[#1a1a1a] to-[#111] border border-gray-800 rounded-xl overflow-hidden transform hover:scale-[1.02] transition-all duration-300 shadow-lg hover:border-[#D4AF37]/30">
+                                <div className="relative w-full aspect-[4/3]">
+                                    <Image src="/images/Capa_CFR_Construcao Quadrada.png" alt="Construção Quadrada" fill className="object-cover" />
                                 </div>
-                                <p className="text-gray-400 text-sm leading-relaxed">
-                                    Como fazer a manutenção correta sem comprometer a unha natural. Reposição profissional que garante a fidelização da cliente.
-                                </p>
+                                <div className="p-5">
+                                    <div className="flex items-center gap-3 mb-3">
+                                        <div className="w-8 h-8 bg-[#D4AF37]/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                            <span className="text-[#D4AF37] font-bold text-sm">5</span>
+                                        </div>
+                                        <h3 className="text-base font-bold text-white font-[family-name:var(--font-montserrat)]">Construção Quadrada</h3>
+                                    </div>
+                                    <p className="text-gray-400 text-sm leading-relaxed">
+                                        Domine a construção do formato quadrado com precisão, garantindo simetria e um visual limpo e profissional.
+                                    </p>
+                                </div>
                             </div>
 
                             {/* BÔNUS */}
-                            <div className="group bg-gradient-to-br from-[#1a1a1a] to-[#111] border border-[#22C55E]/30 rounded-xl p-6 transform hover:scale-[1.02] transition-all duration-300 shadow-lg hover:border-[#22C55E]/60 relative">
-                                <div className="absolute top-3 right-3 bg-[#22C55E] text-white text-xs font-bold px-2 py-1 rounded">
+                            <div className="group bg-gradient-to-br from-[#1a1a1a] to-[#111] border border-[#22C55E]/30 rounded-xl overflow-hidden transform hover:scale-[1.02] transition-all duration-300 shadow-lg hover:border-[#22C55E]/60 relative">
+                                <div className="absolute top-3 right-3 z-10 bg-[#22C55E] text-white text-xs font-bold px-2 py-1 rounded">
                                     BÔNUS
                                 </div>
-                                <div className="flex items-center gap-3 mb-4">
-                                    <div className="w-10 h-10 bg-[#22C55E]/20 rounded-lg flex items-center justify-center">
-                                        <i className="fa-solid fa-gift text-[#22C55E]"></i>
-                                    </div>
-                                    <h3 className="text-lg font-bold text-white font-[family-name:var(--font-montserrat)]">Guia de Materiais e Fornecedores</h3>
+                                <div className="relative w-full aspect-[4/3]">
+                                    <Image src="/images/Capa_CFR_ Apostila de Apoio.png" alt="Apostila de Apoio" fill className="object-cover" />
                                 </div>
-                                <p className="text-gray-400 text-sm leading-relaxed">
-                                    Lista completa dos melhores materiais e fornecedores que a Mariana usa. Economize tempo e dinheiro investindo nos produtos certos desde o início.
-                                </p>
+                                <div className="p-5">
+                                    <div className="flex items-center gap-3 mb-3">
+                                        <div className="w-8 h-8 bg-[#22C55E]/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                            <i className="fa-solid fa-gift text-[#22C55E]"></i>
+                                        </div>
+                                        <h3 className="text-base font-bold text-white font-[family-name:var(--font-montserrat)]">Apostila de Apoio</h3>
+                                    </div>
+                                    <p className="text-gray-400 text-sm leading-relaxed">
+                                        Material completo de apoio para você consultar sempre que precisar. Revise cada técnica no seu ritmo e aplique com confiança.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -362,29 +392,50 @@ function CFRContent() {
                     </div>
                 </section>
 
-                {/* ========== SOBRE A EXPERT ========== */}
-                <section className="py-12 px-4 bg-[#0a0a0a]">
-                    <div className="max-w-4xl mx-auto">
-                        <div className="flex flex-col md:flex-row items-center gap-8 bg-gradient-to-br from-[#111] to-[#0a0a0a] border border-gray-800 rounded-2xl p-6 md:p-10">
-                            <div className="w-48 md:w-56 flex-shrink-0 relative">
-                                {/* Efeito de brilho */}
-                                <div className="absolute inset-0 bg-gradient-to-r from-[#C41E3A]/20 to-[#D4AF37]/20 blur-2xl rounded-full"></div>
-                                <Image
-                                    src="/images/mariana_site.png"
-                                    alt="Mariana Nails"
-                                    width={224}
-                                    height={224}
-                                    className="relative z-10 w-full h-auto rounded-2xl border-4 border-[#D4AF37]/50 shadow-xl"
-                                />
+                {/* ========== SOBRE A EXPERT (Estilo Amanda) ========== */}
+                <section className="relative py-16 px-4 bg-[#0a0a0a] overflow-hidden">
+                    {/* Background gradient sutil */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#1a0a00]/60 via-[#0a0a0a] to-[#0a0a0a]"></div>
+
+                    <div className="relative z-10 max-w-5xl mx-auto">
+                        {/* Título grande no estilo Amanda */}
+                        <h3 className="text-3xl md:text-5xl font-black uppercase mb-10 text-center font-[family-name:var(--font-montserrat)]">
+                            <span className="text-white">QUEM É </span>
+                            <span className="bg-gradient-to-r from-[#D4AF37] via-[#F4E4BC] to-[#D4AF37] bg-clip-text text-transparent">MARIANA NAILS?</span>
+                        </h3>
+
+                        <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                            {/* Texto lado esquerdo */}
+                            <div className="w-full md:w-1/2 text-center md:text-left order-2 md:order-1">
+                                <p className="text-gray-200 leading-relaxed text-base md:text-lg font-[family-name:var(--font-poppins)] mb-5">
+                                    Instrutora Master e autoridade em nail design com mais de <strong className="text-[#D4AF37] underline decoration-[#D4AF37]/50">8 anos de experiência</strong>. Especialista em alongamento com fibra de vidro, Molde F1, Molde Ruso e Molde Dual Frame.
+                                </p>
+                                <p className="text-gray-300 leading-relaxed text-base md:text-lg font-[family-name:var(--font-poppins)] mb-5">
+                                    Já formou mais de <strong className="text-white">500 alunas</strong> que hoje faturam de R$ 3.000 a R$ 10.000 por mês.
+                                </p>
+                                <p className="text-gray-300 leading-relaxed text-base md:text-lg font-[family-name:var(--font-poppins)] mb-5">
+                                    Reconhecida como a maior vendedora de instrução de nail designer no digital, Mariana criou o <strong className="text-white">Código da Fibra Realista</strong> para ensinar seu método exclusivo de alongamento com aspecto natural e acabamento impecável.
+                                </p>
+                                <p className="text-[#D4AF37] leading-relaxed text-base md:text-lg font-bold font-[family-name:var(--font-montserrat)]">
+                                    E agora, chegou a hora de compartilhar com você!
+                                </p>
                             </div>
-                            <div className="text-center md:text-left">
-                                <h3 className="text-2xl font-bold text-[#D4AF37] mb-3 font-[family-name:var(--font-montserrat)]">Quem é Mariana Nails?</h3>
-                                <p className="text-gray-300 leading-relaxed text-lg font-[family-name:var(--font-lora)] mb-4">
-                                    Instrutora Master e autoridade em nail design com mais de <strong className="text-white">8 anos de experiência</strong>. Especialista em alongamento com fibra de vidro, Molde F1, Molde Ruso e Molde Dual Frame. Já formou mais de 500 alunas que hoje faturam de R$ 3.000 a R$ 10.000 por mês.
-                                </p>
-                                <p className="text-gray-400 leading-relaxed font-[family-name:var(--font-poppins)]">
-                                    Reconhecida como a maior vendedora de instrução de nail designer no digital, Mariana criou o Código da Fibra Realista para ensinar seu método exclusivo de alongamento com aspecto natural e acabamento impecável.
-                                </p>
+
+                            {/* Imagem lado direito */}
+                            <div className="w-full md:w-1/2 flex justify-center order-1 md:order-2">
+                                <div className="relative">
+                                    {/* Halo de luz atrás da imagem */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[#D4AF37]/20 via-[#C41E3A]/10 to-transparent blur-3xl rounded-full scale-110"></div>
+                                    {/* Glow inferior */}
+                                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-20 bg-[#D4AF37]/15 blur-2xl rounded-full"></div>
+                                    <Image
+                                        src="/images/mariana_png.png"
+                                        alt="Mariana Nails - Especialista em Fibra de Vidro"
+                                        width={450}
+                                        height={550}
+                                        className="relative z-10 w-full max-w-[380px] h-auto object-contain mx-auto drop-shadow-2xl"
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
