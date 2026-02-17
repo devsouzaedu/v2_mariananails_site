@@ -88,6 +88,176 @@ const CheckItem = ({ children }: { children: React.ReactNode }) => (
         <span>{children}</span>
     </li>
 );
+// Dados dos módulos
+const MODULES = [
+    { num: "1", title: "Anatomia das Unhas", img: "/images/Capa_CFR_Anatomia.png", desc: "Entenda a estrutura completa da unha natural para trabalhar com segurança e precisão em cada alongamento.", bonus: false },
+    { num: "2", title: "Teoria da Aplicação da Fibra", img: "/images/Capa_CFR_Teoria da Aplicacao da Fibra.png", desc: "Domine toda a teoria por trás da aplicação da fibra de vidro, entendendo cada etapa do processo para resultados perfeitos.", bonus: false },
+    { num: "3", title: "Preparando a Fibra de Vidro", img: "/images/Capa_CFR_Preparando a Fibra de Vidro.png", desc: "Aprenda a preparar e manipular a fibra de vidro corretamente para garantir aderência, durabilidade e um acabamento impecável.", bonus: false },
+    { num: "4", title: "Construção Amendoada", img: "/images/Capa_CFR_Construcao Amendoada.png", desc: "Técnica completa para criar o formato amendoado perfeito, o mais pedido pelas clientes, com acabamento natural e elegante.", bonus: false },
+    { num: "5", title: "Construção Quadrada", img: "/images/Capa_CFR_Construcao Quadrada.png", desc: "Domine a construção do formato quadrado com precisão, garantindo simetria e um visual limpo e profissional.", bonus: false },
+    { num: "", title: "Apostila de Apoio", img: "/images/Capa_CFR_ Apostila de Apoio.png", desc: "Material completo de apoio para você consultar sempre que precisar. Revise cada técnica no seu ritmo e aplique com confiança.", bonus: true },
+];
+
+// Carrossel de Módulos com auto-scroll e swipe
+const ModulesCarousel = () => {
+    const [current, setCurrent] = useState(0);
+    const touchStart = React.useRef<number | null>(null);
+    const touchEnd = React.useRef<number | null>(null);
+    const autoplayRef = React.useRef<NodeJS.Timeout | null>(null);
+    const total = MODULES.length;
+
+    const goTo = React.useCallback((idx: number) => {
+        setCurrent(((idx % total) + total) % total);
+    }, [total]);
+
+    const next = React.useCallback(() => goTo(current + 1), [current, goTo]);
+    const prev = React.useCallback(() => goTo(current - 1), [current, goTo]);
+
+    // Auto-scroll
+    useEffect(() => {
+        autoplayRef.current = setInterval(() => {
+            setCurrent(prev => (prev + 1) % total);
+        }, 3500);
+        return () => { if (autoplayRef.current) clearInterval(autoplayRef.current); };
+    }, [total]);
+
+    // Pause on interaction
+    const resetAutoplay = React.useCallback(() => {
+        if (autoplayRef.current) clearInterval(autoplayRef.current);
+        autoplayRef.current = setInterval(() => {
+            setCurrent(prev => (prev + 1) % total);
+        }, 3500);
+    }, [total]);
+
+    // Touch handlers
+    const onTouchStart = (e: React.TouchEvent) => {
+        touchStart.current = e.targetTouches[0].clientX;
+        touchEnd.current = null;
+    };
+    const onTouchMove = (e: React.TouchEvent) => {
+        touchEnd.current = e.targetTouches[0].clientX;
+    };
+    const onTouchEnd = () => {
+        if (!touchStart.current || !touchEnd.current) return;
+        const diff = touchStart.current - touchEnd.current;
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) next(); else prev();
+            resetAutoplay();
+        }
+        touchStart.current = null;
+        touchEnd.current = null;
+    };
+
+    // Mouse drag handlers
+    const mouseStart = React.useRef<number | null>(null);
+    const onMouseDown = (e: React.MouseEvent) => { mouseStart.current = e.clientX; };
+    const onMouseUp = (e: React.MouseEvent) => {
+        if (mouseStart.current === null) return;
+        const diff = mouseStart.current - e.clientX;
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) next(); else prev();
+            resetAutoplay();
+        }
+        mouseStart.current = null;
+    };
+
+    const mod = MODULES[current];
+
+    return (
+        <section className="py-12 px-4 bg-gradient-to-b from-[#111] to-[#0a0a0a]">
+            <div className="max-w-3xl mx-auto">
+                <h2 className="text-2xl md:text-3xl font-bold text-center mb-10 text-white font-[family-name:var(--font-montserrat)]">
+                    O que você recebe <span className="text-[#22C55E]">HOJE:</span>
+                </h2>
+
+                {/* Carousel container */}
+                <div
+                    className="relative select-none"
+                    onTouchStart={onTouchStart}
+                    onTouchMove={onTouchMove}
+                    onTouchEnd={onTouchEnd}
+                    onMouseDown={onMouseDown}
+                    onMouseUp={onMouseUp}
+                >
+                    {/* Card */}
+                    <div className={`bg-gradient-to-br from-[#1a1a1a] to-[#111] border ${mod.bonus ? 'border-[#22C55E]/40' : 'border-gray-800'} rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 relative`}>
+                        {/* Badge BÔNUS */}
+                        {mod.bonus && (
+                            <div className="absolute top-4 right-4 z-20 bg-[#22C55E] text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+                                BÔNUS
+                            </div>
+                        )}
+
+                        {/* Número do módulo */}
+                        {!mod.bonus && (
+                            <div className="absolute top-4 left-4 z-20 w-10 h-10 bg-[#D4AF37] rounded-full flex items-center justify-center shadow-lg">
+                                <span className="text-black font-bold text-lg">{mod.num}</span>
+                            </div>
+                        )}
+
+                        {/* Imagem - SEM CROP, imagem inteira */}
+                        <div className="w-full bg-black/30">
+                            <Image
+                                src={mod.img}
+                                alt={mod.title}
+                                width={800}
+                                height={600}
+                                className="w-full h-auto object-contain"
+                                priority={current === 0}
+                            />
+                        </div>
+
+                        {/* Texto */}
+                        <div className="p-5 md:p-6">
+                            <h3 className="text-lg md:text-xl font-bold text-white font-[family-name:var(--font-montserrat)] mb-2">
+                                {mod.title}
+                            </h3>
+                            <p className="text-gray-400 text-sm md:text-base leading-relaxed">
+                                {mod.desc}
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Setas de navegação */}
+                    <button
+                        onClick={() => { prev(); resetAutoplay(); }}
+                        className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all duration-200 shadow-lg"
+                        aria-label="Anterior"
+                    >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" /></svg>
+                    </button>
+                    <button
+                        onClick={() => { next(); resetAutoplay(); }}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all duration-200 shadow-lg"
+                        aria-label="Próximo"
+                    >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" /></svg>
+                    </button>
+                </div>
+
+                {/* Dots */}
+                <div className="flex justify-center gap-2 mt-6">
+                    {MODULES.map((_, i) => (
+                        <button
+                            key={i}
+                            onClick={() => { goTo(i); resetAutoplay(); }}
+                            className={`w-3 h-3 rounded-full transition-all duration-300 ${i === current
+                                ? (MODULES[i].bonus ? 'bg-[#22C55E] scale-125' : 'bg-[#D4AF37] scale-125')
+                                : 'bg-gray-600 hover:bg-gray-400'
+                                }`}
+                            aria-label={`Slide ${i + 1}`}
+                        />
+                    ))}
+                </div>
+
+                {/* Counter */}
+                <p className="text-center text-gray-500 text-sm mt-3 font-[family-name:var(--font-poppins)]">
+                    {current + 1} de {total}
+                </p>
+            </div>
+        </section>
+    );
+};
 
 // ============================================
 // PÁGINA PRINCIPAL
@@ -214,128 +384,8 @@ function CFRContent() {
                     </div>
                 </section>
 
-                {/* ========== O QUE VOCÊ VAI APRENDER ========== */}
-                <section className="py-12 px-4 bg-gradient-to-b from-[#111] to-[#0a0a0a]">
-                    <div className="max-w-5xl mx-auto">
-                        <h2 className="text-2xl md:text-3xl font-bold text-center mb-10 text-white font-[family-name:var(--font-montserrat)]">
-                            O que você recebe <span className="text-[#22C55E]">HOJE:</span>
-                        </h2>
-
-                        {/* Grid de Módulos */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
-                            {/* Módulo 1 */}
-                            <div className="group bg-gradient-to-br from-[#1a1a1a] to-[#111] border border-gray-800 rounded-xl overflow-hidden transform hover:scale-[1.02] transition-all duration-300 shadow-lg hover:border-[#D4AF37]/30">
-                                <div className="relative w-full aspect-[4/3]">
-                                    <Image src="/images/Capa_CFR_Anatomia.png" alt="Anatomia das Unhas" fill className="object-cover" />
-                                </div>
-                                <div className="p-5">
-                                    <div className="flex items-center gap-3 mb-3">
-                                        <div className="w-8 h-8 bg-[#D4AF37]/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                                            <span className="text-[#D4AF37] font-bold text-sm">1</span>
-                                        </div>
-                                        <h3 className="text-base font-bold text-white font-[family-name:var(--font-montserrat)]">Anatomia das Unhas</h3>
-                                    </div>
-                                    <p className="text-gray-400 text-sm leading-relaxed">
-                                        Entenda a estrutura completa da unha natural para trabalhar com segurança e precisão em cada alongamento.
-                                    </p>
-                                </div>
-                            </div>
-
-                            {/* Módulo 2 */}
-                            <div className="group bg-gradient-to-br from-[#1a1a1a] to-[#111] border border-gray-800 rounded-xl overflow-hidden transform hover:scale-[1.02] transition-all duration-300 shadow-lg hover:border-[#D4AF37]/30">
-                                <div className="relative w-full aspect-[4/3]">
-                                    <Image src="/images/Capa_CFR_Teoria da Aplicacao da Fibra.png" alt="Teoria da Aplicação da Fibra" fill className="object-cover" />
-                                </div>
-                                <div className="p-5">
-                                    <div className="flex items-center gap-3 mb-3">
-                                        <div className="w-8 h-8 bg-[#D4AF37]/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                                            <span className="text-[#D4AF37] font-bold text-sm">2</span>
-                                        </div>
-                                        <h3 className="text-base font-bold text-white font-[family-name:var(--font-montserrat)]">Teoria da Aplicação da Fibra</h3>
-                                    </div>
-                                    <p className="text-gray-400 text-sm leading-relaxed">
-                                        Domine toda a teoria por trás da aplicação da fibra de vidro, entendendo cada etapa do processo para resultados perfeitos.
-                                    </p>
-                                </div>
-                            </div>
-
-                            {/* Módulo 3 */}
-                            <div className="group bg-gradient-to-br from-[#1a1a1a] to-[#111] border border-gray-800 rounded-xl overflow-hidden transform hover:scale-[1.02] transition-all duration-300 shadow-lg hover:border-[#D4AF37]/30">
-                                <div className="relative w-full aspect-[4/3]">
-                                    <Image src="/images/Capa_CFR_Preparando a Fibra de Vidro.png" alt="Preparando a Fibra de Vidro" fill className="object-cover" />
-                                </div>
-                                <div className="p-5">
-                                    <div className="flex items-center gap-3 mb-3">
-                                        <div className="w-8 h-8 bg-[#D4AF37]/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                                            <span className="text-[#D4AF37] font-bold text-sm">3</span>
-                                        </div>
-                                        <h3 className="text-base font-bold text-white font-[family-name:var(--font-montserrat)]">Preparando a Fibra de Vidro</h3>
-                                    </div>
-                                    <p className="text-gray-400 text-sm leading-relaxed">
-                                        Aprenda a preparar e manipular a fibra de vidro corretamente para garantir aderência, durabilidade e um acabamento impecável.
-                                    </p>
-                                </div>
-                            </div>
-
-                            {/* Módulo 4 */}
-                            <div className="group bg-gradient-to-br from-[#1a1a1a] to-[#111] border border-gray-800 rounded-xl overflow-hidden transform hover:scale-[1.02] transition-all duration-300 shadow-lg hover:border-[#D4AF37]/30">
-                                <div className="relative w-full aspect-[4/3]">
-                                    <Image src="/images/Capa_CFR_Construcao Amendoada.png" alt="Construção Amendoada" fill className="object-cover" />
-                                </div>
-                                <div className="p-5">
-                                    <div className="flex items-center gap-3 mb-3">
-                                        <div className="w-8 h-8 bg-[#D4AF37]/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                                            <span className="text-[#D4AF37] font-bold text-sm">4</span>
-                                        </div>
-                                        <h3 className="text-base font-bold text-white font-[family-name:var(--font-montserrat)]">Construção Amendoada</h3>
-                                    </div>
-                                    <p className="text-gray-400 text-sm leading-relaxed">
-                                        Técnica completa para criar o formato amendoado perfeito, o mais pedido pelas clientes, com acabamento natural e elegante.
-                                    </p>
-                                </div>
-                            </div>
-
-                            {/* Módulo 5 */}
-                            <div className="group bg-gradient-to-br from-[#1a1a1a] to-[#111] border border-gray-800 rounded-xl overflow-hidden transform hover:scale-[1.02] transition-all duration-300 shadow-lg hover:border-[#D4AF37]/30">
-                                <div className="relative w-full aspect-[4/3]">
-                                    <Image src="/images/Capa_CFR_Construcao Quadrada.png" alt="Construção Quadrada" fill className="object-cover" />
-                                </div>
-                                <div className="p-5">
-                                    <div className="flex items-center gap-3 mb-3">
-                                        <div className="w-8 h-8 bg-[#D4AF37]/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                                            <span className="text-[#D4AF37] font-bold text-sm">5</span>
-                                        </div>
-                                        <h3 className="text-base font-bold text-white font-[family-name:var(--font-montserrat)]">Construção Quadrada</h3>
-                                    </div>
-                                    <p className="text-gray-400 text-sm leading-relaxed">
-                                        Domine a construção do formato quadrado com precisão, garantindo simetria e um visual limpo e profissional.
-                                    </p>
-                                </div>
-                            </div>
-
-                            {/* BÔNUS */}
-                            <div className="group bg-gradient-to-br from-[#1a1a1a] to-[#111] border border-[#22C55E]/30 rounded-xl overflow-hidden transform hover:scale-[1.02] transition-all duration-300 shadow-lg hover:border-[#22C55E]/60 relative">
-                                <div className="absolute top-3 right-3 z-10 bg-[#22C55E] text-white text-xs font-bold px-2 py-1 rounded">
-                                    BÔNUS
-                                </div>
-                                <div className="relative w-full aspect-[4/3]">
-                                    <Image src="/images/Capa_CFR_ Apostila de Apoio.png" alt="Apostila de Apoio" fill className="object-cover" />
-                                </div>
-                                <div className="p-5">
-                                    <div className="flex items-center gap-3 mb-3">
-                                        <div className="w-8 h-8 bg-[#22C55E]/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                                            <i className="fa-solid fa-gift text-[#22C55E]"></i>
-                                        </div>
-                                        <h3 className="text-base font-bold text-white font-[family-name:var(--font-montserrat)]">Apostila de Apoio</h3>
-                                    </div>
-                                    <p className="text-gray-400 text-sm leading-relaxed">
-                                        Material completo de apoio para você consultar sempre que precisar. Revise cada técnica no seu ritmo e aplique com confiança.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                {/* ========== O QUE VOCÊ VAI APRENDER - CARROSSEL ========== */}
+                <ModulesCarousel />
 
                 {/* ========== PREÇO FINAL ========== */}
                 <section className="py-12 px-4 bg-[#0a0a0a]">
