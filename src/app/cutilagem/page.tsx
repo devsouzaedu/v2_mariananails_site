@@ -294,6 +294,54 @@ function CutilagemContent() {
                     </div>
                 </section>
 
+                {/* ========== FEEDBACKS DAS ALUNAS ========== */}
+                <section className="py-12 px-4 bg-[#0a0a0a]">
+                    <div className="max-w-5xl mx-auto">
+                        <h2 className="text-2xl md:text-3xl font-bold text-center mb-3 text-white font-[family-name:var(--font-montserrat)]">
+                            Veja o que as alunas estão <span className="text-[#22C55E]">falando:</span>
+                        </h2>
+                        <p className="text-gray-400 text-center mb-10 font-[family-name:var(--font-poppins)]">
+                            Feedbacks reais das nossas alunas no WhatsApp
+                        </p>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+                            <div className="rounded-2xl overflow-hidden border border-gray-800 shadow-lg hover:border-[#22C55E]/30 transition-all duration-300 hover:shadow-[#22C55E]/10 hover:shadow-xl">
+                                <Image
+                                    src="/images/feedback_alunas_MCA.PNG (1).PNG"
+                                    alt="Feedback de aluna - Conversa WhatsApp sobre o Manual de Cutilagem Avançada"
+                                    width={400}
+                                    height={800}
+                                    className="w-full h-auto"
+                                    loading="lazy"
+                                    sizes="(max-width: 768px) 100vw, 33vw"
+                                />
+                            </div>
+                            <div className="rounded-2xl overflow-hidden border border-gray-800 shadow-lg hover:border-[#22C55E]/30 transition-all duration-300 hover:shadow-[#22C55E]/10 hover:shadow-xl">
+                                <Image
+                                    src="/images/feedback_alunas_MCA.PNG (2).PNG"
+                                    alt="Feedback de aluna - Conversa WhatsApp sobre o Manual de Cutilagem Avançada"
+                                    width={400}
+                                    height={800}
+                                    className="w-full h-auto"
+                                    loading="lazy"
+                                    sizes="(max-width: 768px) 100vw, 33vw"
+                                />
+                            </div>
+                            <div className="rounded-2xl overflow-hidden border border-gray-800 shadow-lg hover:border-[#22C55E]/30 transition-all duration-300 hover:shadow-[#22C55E]/10 hover:shadow-xl">
+                                <Image
+                                    src="/images/feedback_alunas_MCA.PNG (3).PNG"
+                                    alt="Feedback de aluna - Conversa WhatsApp sobre o Manual de Cutilagem Avançada"
+                                    width={400}
+                                    height={800}
+                                    className="w-full h-auto"
+                                    loading="lazy"
+                                    sizes="(max-width: 768px) 100vw, 33vw"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 {/* ========== PREÇO FINAL ========== */}
                 <section className="py-12 px-4 bg-[#0a0a0a]">
                     <div className="max-w-xl mx-auto">
