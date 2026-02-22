@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect, Suspense } from 'react';
 import Image from 'next/image';
-import Head from 'next/head';
 import { useSearchParams } from 'next/navigation';
 
 // ============================================
@@ -203,7 +202,8 @@ const ModulesCarousel = () => {
                                 width={800}
                                 height={600}
                                 className="w-full h-auto object-contain"
-                                priority={current === 0}
+                                loading="lazy"
+                                sizes="(max-width: 768px) 100vw, 700px"
                             />
                         </div>
 
@@ -274,9 +274,7 @@ function CFRContent() {
     return (
         <>
             {/* Font Awesome CDN */}
-            <Head>
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-            </Head>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
             <div className="min-h-screen bg-[#0a0a0a] text-white font-[family-name:var(--font-poppins)]">
 
@@ -309,6 +307,8 @@ function CFRContent() {
                                         height={500}
                                         className="relative z-10 w-full max-w-[400px] h-auto object-contain mx-auto drop-shadow-2xl"
                                         priority
+                                        fetchPriority="high"
+                                        sizes="(max-width: 768px) 100vw, 400px"
                                     />
                                     {/* Badge flutuante - apenas desktop */}
                                     <div className="hidden md:block absolute bottom-4 left-1/2 -translate-x-1/2 z-20 bg-black/80 backdrop-blur-sm border border-[#D4AF37]/50 rounded-full px-4 py-2">
@@ -484,6 +484,8 @@ function CFRContent() {
                                         width={450}
                                         height={550}
                                         className="relative z-10 w-full max-w-[380px] h-auto object-contain mx-auto drop-shadow-2xl"
+                                        loading="lazy"
+                                        sizes="(max-width: 768px) 100vw, 380px"
                                     />
                                 </div>
                             </div>
