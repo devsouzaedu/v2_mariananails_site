@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect, Suspense } from 'react';
 import Image from 'next/image';
-import Head from 'next/head';
 import { useSearchParams } from 'next/navigation';
 
 // ============================================
@@ -104,9 +103,7 @@ function CutilagemContent() {
     return (
         <>
             {/* Font Awesome CDN */}
-            <Head>
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-            </Head>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
             <div className="min-h-screen bg-[#0a0a0a] text-white font-[family-name:var(--font-poppins)]">
 
@@ -139,6 +136,8 @@ function CutilagemContent() {
                                         height={500}
                                         className="relative z-10 w-full max-w-[400px] h-auto object-contain mx-auto drop-shadow-2xl"
                                         priority
+                                        fetchPriority="high"
+                                        sizes="(max-width: 768px) 100vw, 400px"
                                     />
                                     {/* Badge flutuante - apenas desktop */}
                                     <div className="hidden md:block absolute bottom-4 left-1/2 -translate-x-1/2 z-20 bg-black/80 backdrop-blur-sm border border-[#D4AF37]/50 rounded-full px-4 py-2">
@@ -184,6 +183,8 @@ function CutilagemContent() {
                                         width={400}
                                         height={300}
                                         className="w-full max-w-[350px] h-auto mx-auto rounded-xl shadow-lg"
+                                        loading="lazy"
+                                        sizes="(max-width: 768px) 100vw, 350px"
                                     />
                                 </div>
                             </div>
@@ -241,6 +242,8 @@ function CutilagemContent() {
                                     width={300}
                                     height={400}
                                     className="w-full h-auto rounded-xl"
+                                    loading="lazy"
+                                    sizes="(max-width: 768px) 50vw, 25vw"
                                 />
                             </div>
 
@@ -252,6 +255,8 @@ function CutilagemContent() {
                                     width={300}
                                     height={400}
                                     className="w-full h-auto rounded-xl"
+                                    loading="lazy"
+                                    sizes="(max-width: 768px) 50vw, 25vw"
                                 />
                             </div>
 
@@ -263,6 +268,8 @@ function CutilagemContent() {
                                     width={300}
                                     height={400}
                                     className="w-full h-auto rounded-xl"
+                                    loading="lazy"
+                                    sizes="(max-width: 768px) 50vw, 25vw"
                                 />
                             </div>
 
@@ -277,6 +284,8 @@ function CutilagemContent() {
                                     width={300}
                                     height={400}
                                     className="w-full h-auto rounded-xl"
+                                    loading="lazy"
+                                    sizes="(max-width: 768px) 50vw, 25vw"
                                 />
                             </div>
                         </div>
@@ -353,6 +362,8 @@ function CutilagemContent() {
                                     width={224}
                                     height={224}
                                     className="relative z-10 w-full h-auto rounded-2xl border-4 border-[#D4AF37]/50 shadow-xl"
+                                    loading="lazy"
+                                    sizes="(max-width: 768px) 192px, 224px"
                                 />
                             </div>
                             <div className="text-center md:text-left">
