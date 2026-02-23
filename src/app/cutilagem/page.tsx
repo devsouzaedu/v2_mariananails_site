@@ -114,7 +114,7 @@ export default function CutilagemLandingPage() {
                             {/* Imagem de cutícula */}
                             <div className="mt-6">
                                 <Image
-                                    src="/images/cuticula_b.png"
+                                    src="/images/unha_bemfeita_cuticula.jpeg"
                                     alt="Resultado de cutilagem profissional"
                                     width={400}
                                     height={300}
