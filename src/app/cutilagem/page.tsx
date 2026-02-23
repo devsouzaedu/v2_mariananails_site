@@ -5,7 +5,7 @@ import { UrgencyHeader, CTAButtonWithParams } from './components';
 // ============================================
 // CONFIGURAÇÕES
 // ============================================
-const PRECO_PARCELADO = "5,33";
+const PRECO_PARCELADO = "5,29";
 const PRECO_AVISTA = "14,90";
 const PARCELAS = "3x";
 
@@ -90,7 +90,7 @@ export default function CutilagemLandingPage() {
                             {/* Preço Hero - Box Verde igual à referência */}
                             <div className="bg-gradient-to-b from-[#1a1a1a] to-[#0f0f0f] border-2 border-[#22C55E]/50 rounded-2xl p-6 mb-6 shadow-lg shadow-[#22C55E]/10">
                                 <p className="text-white text-base mb-2">
-                                    Preço de Lançamento: <span className="text-red-500 line-through font-bold">R$ 200,00</span>
+                                    Preço de Lançamento: <span className="text-red-500 line-through font-bold">R$ 308,00</span>
                                 </p>
                                 <p className="text-white text-lg mb-4">Somente hoje por apenas {PARCELAS} de:</p>
                                 <div className="flex items-baseline justify-center md:justify-start gap-2 my-2">
@@ -295,7 +295,7 @@ export default function CutilagemLandingPage() {
 
                             {/* Preço */}
                             <div className="mb-6">
-                                <p className="text-white text-sm mb-2 font-[family-name:var(--font-poppins)]">De: <span className="text-red-500 line-through">R$ 200,00</span></p>
+                                <p className="text-white text-sm mb-2 font-[family-name:var(--font-poppins)]">De: <span className="text-red-500 line-through">R$ 308,00</span></p>
                                 <p className="text-white mb-4 font-[family-name:var(--font-poppins)]">Por apenas {PARCELAS} de:</p>
                                 <div className="flex items-baseline justify-center gap-2 mb-2">
                                     <span className="text-2xl text-[#22C55E] font-[family-name:var(--font-montserrat)]">R$</span>
