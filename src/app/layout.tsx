@@ -98,6 +98,9 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${funnelSans.variable} ${ptSans.variable} ${playfair.variable} ${instrumentSerif.variable} ${instrumentSans.variable} ${montserrat.variable} ${poppins.variable} ${lora.variable}`}>
       <head>
+        {/* Hotjar / Contentsquare Tracking */}
+        <script src="https://t.contentsquare.net/uxa/8736e3ed49401.js" async />
+
         {/* Google tag (gtag.js) - GA4 */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-D92MV0VYXM" />
         <script
