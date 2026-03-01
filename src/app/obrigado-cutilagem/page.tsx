@@ -100,20 +100,20 @@ const TopBannerTimer = () => {
 // COMPONENTE: Card de Produto no Combo
 // ============================================
 const ProductCard = ({ src, alt, name, price }: { src: string; alt: string; name: string; price: string }) => (
-    <div className="bg-[#141414] rounded-xl border border-white/10 overflow-hidden">
-        <div className="aspect-square relative">
+    <div className="bg-[#141414] rounded-xl border border-white/10 overflow-hidden flex items-center gap-4 p-3">
+        <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
             <Image
                 src={src}
                 alt={alt}
-                width={200}
-                height={200}
+                width={64}
+                height={64}
                 className="w-full h-full object-cover"
                 loading="lazy"
             />
         </div>
-        <div className="p-3 text-center">
-            <p className="text-white text-xs font-bold leading-tight mb-1">{name}</p>
-            <p className="text-gray-500 text-xs line-through">R$ {price}</p>
+        <div className="flex-1 min-w-0">
+            <p className="text-white text-sm font-bold leading-tight">{name}</p>
+            <p className="text-gray-500 text-xs line-through mt-0.5">R$ {price}</p>
         </div>
     </div>
 );
@@ -299,7 +299,7 @@ export default function ObrigadoCutilagemPage() {
                                 {/* ========== 3 PRODUTOS DO COMBO ========== */}
                                 <div className="mb-5">
                                     <p className="text-white text-xs font-bold uppercase tracking-wider mb-3 text-center">O que vem no combo:</p>
-                                    <div className="grid grid-cols-3 gap-2">
+                                    <div className="grid grid-cols-1 gap-2">
                                         <ProductCard
                                             src="/images/SMN_sistema_mariana_nails.png"
                                             alt="Sistema Mariana Nails"

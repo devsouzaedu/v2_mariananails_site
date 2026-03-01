@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import Image from 'next/image';
-import { UrgencyHeader, CTAButtonWithParams } from './components';
+import { UrgencyHeader, CTAButtonWithParams, ModuleGallery } from './components';
 
 // ============================================
 // CONFIGURAÇÕES
@@ -168,63 +168,8 @@ export default function CutilagemLandingPage() {
                         O que você recebe <span className="text-[#22C55E]">HOJE:</span>
                     </h2>
 
-                    {/* Grid de Capas dos Módulos */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-                        {/* Módulo 1 - Cutilagem com Alicate */}
-                        <div className="group relative rounded-xl overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-lg">
-                            <Image
-                                src="/images/capa_mca_cutilagem_com_alicate.png"
-                                alt="Cutilagem com Alicate"
-                                width={300}
-                                height={400}
-                                className="w-full h-auto rounded-xl"
-                                loading="lazy"
-                                sizes="(max-width: 768px) 50vw, 25vw"
-                            />
-                        </div>
-
-                        {/* Módulo 2 - Cutilagem Combinada */}
-                        <div className="group relative rounded-xl overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-lg">
-                            <Image
-                                src="/images/capa_mca_cutilagem_combinada.png"
-                                alt="Cutilagem Combinada"
-                                width={300}
-                                height={400}
-                                className="w-full h-auto rounded-xl"
-                                loading="lazy"
-                                sizes="(max-width: 768px) 50vw, 25vw"
-                            />
-                        </div>
-
-                        {/* Módulo 3 - Cutilagem com Cera */}
-                        <div className="group relative rounded-xl overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-lg">
-                            <Image
-                                src="/images/capa_mca_cutiagem_com_cera.png"
-                                alt="Cutilagem com Cera"
-                                width={300}
-                                height={400}
-                                className="w-full h-auto rounded-xl"
-                                loading="lazy"
-                                sizes="(max-width: 768px) 50vw, 25vw"
-                            />
-                        </div>
-
-                        {/* Módulo 4 - Apostila (BÔNUS) */}
-                        <div className="group relative rounded-xl overflow-hidden transform hover:scale-105 transition-all duration-300 shadow-lg">
-                            <div className="absolute top-2 right-2 z-10 bg-[#22C55E] text-white text-xs font-bold px-2 py-1 rounded">
-                                BÔNUS
-                            </div>
-                            <Image
-                                src="/images/capa_mca_apostila.png"
-                                alt="Apostila - BÔNUS"
-                                width={300}
-                                height={400}
-                                className="w-full h-auto rounded-xl"
-                                loading="lazy"
-                                sizes="(max-width: 768px) 50vw, 25vw"
-                            />
-                        </div>
-                    </div>
+                    {/* Grid de Capas dos Módulos - Interactive */}
+                    <ModuleGallery />
 
 
                 </div>
