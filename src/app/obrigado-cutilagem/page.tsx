@@ -97,16 +97,67 @@ const TopBannerTimer = () => {
 };
 
 // ============================================
-// COMPONENTE: Card de Produto no Combo
+// DADOS DOS PRODUTOS DO COMBO
 // ============================================
-const ProductCard = ({ src, alt, name, price }: { src: string; alt: string; name: string; price: string }) => (
-    <div className="bg-[#141414] rounded-xl border border-white/10 overflow-hidden flex items-center gap-4 p-3">
-        <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+const COMBO_PRODUCTS = [
+    {
+        id: 1,
+        src: "/images/SMN_sistema_mariana_nails.png",
+        alt: "Sistema Mariana Nails",
+        name: "Sistema Mariana Nails",
+        price: "47,90",
+        description: "O sistema completo que a Mariana usa no dia a dia para garantir resultados perfeitos em todas as clientes. Aprenda o passo a passo do método que já transformou centenas de nail designers.",
+        highlights: [
+            "Método completo passo a passo",
+            "Técnicas exclusivas da Mariana",
+            "Resultados profissionais garantidos",
+            "Aplicável desde a primeira aula",
+        ],
+    },
+    {
+        id: 2,
+        src: "/images/square_GDL_capa.png",
+        alt: "O Código da Fibra Realista",
+        name: "O Código da Fibra Realista",
+        price: "14,90",
+        description: "Domine a técnica da fibra realista e ofereça um serviço premium para suas clientes. Aprenda a criar unhas com fibra que parecem naturais e duram muito mais.",
+        highlights: [
+            "Fibra com acabamento natural",
+            "Maior durabilidade",
+            "Técnica passo a passo",
+            "Diferencial competitivo",
+        ],
+    },
+    {
+        id: 3,
+        src: "/images/square_AMF1_CAPA.png",
+        alt: "Arquitetura do Molde F1",
+        name: "Arquitetura do Molde F1",
+        price: "14,90",
+        description: "A técnica de moldagem F1 para criar alongamentos perfeitos com curvatura ideal. Aprenda a posicionar o molde corretamente e construir unhas simétricas e impecáveis.",
+        highlights: [
+            "Posicionamento perfeito do molde",
+            "Curvatura C ideal",
+            "Simetria em todas as unhas",
+            "Alongamentos impecáveis",
+        ],
+    },
+];
+
+// ============================================
+// COMPONENTE: Card de Produto no Combo (clicável)
+// ============================================
+const ProductCard = ({ src, alt, name, price, onClick }: { src: string; alt: string; name: string; price: string; onClick: () => void }) => (
+    <button
+        onClick={onClick}
+        className="w-full bg-[#141414] rounded-xl border border-white/10 overflow-hidden flex items-center gap-4 p-3 cursor-pointer hover:border-white/25 hover:bg-[#1a1a1a] transition-all duration-200 group text-left"
+    >
+        <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 ring-1 ring-white/10 group-hover:ring-white/25 transition-all">
             <Image
                 src={src}
                 alt={alt}
-                width={64}
-                height={64}
+                width={80}
+                height={80}
                 className="w-full h-full object-cover"
                 loading="lazy"
             />
@@ -114,15 +165,105 @@ const ProductCard = ({ src, alt, name, price }: { src: string; alt: string; name
         <div className="flex-1 min-w-0">
             <p className="text-white text-sm font-bold leading-tight">{name}</p>
             <p className="text-gray-500 text-xs line-through mt-0.5">R$ {price}</p>
+            <p className="text-[#22C55E] text-[10px] font-bold mt-1.5 uppercase tracking-wide opacity-70 group-hover:opacity-100 transition-opacity">Toque para ver mais →</p>
         </div>
-    </div>
+    </button>
 );
+
+// ============================================
+// COMPONENTE: Modal de Produto Expandido
+// ============================================
+const ProductModal = ({ product, onClose }: { product: typeof COMBO_PRODUCTS[0]; onClose: () => void }) => {
+    useEffect(() => {
+        document.body.style.overflow = 'hidden';
+        const handleKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+        window.addEventListener('keydown', handleKey);
+        return () => {
+            document.body.style.overflow = '';
+            window.removeEventListener('keydown', handleKey);
+        };
+    }, [onClose]);
+
+    return (
+        <div
+            className="fixed inset-0 z-[9999] flex items-center justify-center"
+            onClick={onClose}
+            role="dialog"
+            aria-modal="true"
+            style={{ animation: 'prodModalFadeIn 0.25s ease-out' }}
+        >
+            <div className="absolute inset-0 bg-black/85 backdrop-blur-md" />
+            <div
+                className="relative z-10 w-full max-w-md mx-4 max-h-[90vh] overflow-y-auto rounded-2xl bg-[#111] border border-white/10 shadow-2xl"
+                onClick={(e) => e.stopPropagation()}
+                style={{ animation: 'prodModalSlideUp 0.3s ease-out' }}
+            >
+                {/* Close */}
+                <button
+                    onClick={onClose}
+                    className="absolute top-3 right-3 z-20 bg-black/60 backdrop-blur-sm hover:bg-white/20 text-white rounded-full w-9 h-9 flex items-center justify-center transition-all duration-200 cursor-pointer"
+                    aria-label="Fechar"
+                >
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+
+                {/* Product Image */}
+                <div className="relative w-full bg-[#0a0a0a] flex items-center justify-center p-6">
+                    <Image
+                        src={product.src}
+                        alt={product.alt}
+                        width={280}
+                        height={280}
+                        className="w-full max-w-[260px] h-auto rounded-xl shadow-lg"
+                    />
+                </div>
+
+                {/* Details */}
+                <div className="p-5">
+                    <h3 className="text-xl font-black text-white mb-1 font-[family-name:var(--font-montserrat)]">
+                        {product.name}
+                    </h3>
+                    <p className="text-gray-500 text-sm line-through mb-3">Valor separado: R$ {product.price}</p>
+                    <p className="text-gray-300 text-sm leading-relaxed mb-5">
+                        {product.description}
+                    </p>
+
+                    {/* Highlights */}
+                    <div className="space-y-2.5 mb-5">
+                        {product.highlights.map((h, i) => (
+                            <div key={i} className="flex items-center gap-3">
+                                <div className="w-5 h-5 bg-[#22C55E]/20 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <svg className="w-3 h-3 text-[#22C55E]" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                    </svg>
+                                </div>
+                                <span className="text-white text-sm font-medium">{h}</span>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Included tag */}
+                    <div className="bg-[#22C55E]/10 border border-[#22C55E]/25 rounded-xl py-3 px-4 text-center">
+                        <p className="text-[#22C55E] text-sm font-bold">
+                            ✅ Incluído no Combo Nail Designer de Sucesso
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
 
 // ============================================
 // PÁGINA PRINCIPAL
 // ============================================
 export default function ObrigadoCutilagemPage() {
     const [bumpChecked, setBumpChecked] = useState(false);
+    const [expandedProduct, setExpandedProduct] = useState<number | null>(null);
+
+    const activeProduct = expandedProduct !== null ? COMBO_PRODUCTS.find(p => p.id === expandedProduct) : null;
 
     return (
         <>
@@ -300,24 +441,16 @@ export default function ObrigadoCutilagemPage() {
                                 <div className="mb-5">
                                     <p className="text-white text-xs font-bold uppercase tracking-wider mb-3 text-center">O que vem no combo:</p>
                                     <div className="grid grid-cols-1 gap-2">
-                                        <ProductCard
-                                            src="/images/SMN_sistema_mariana_nails.png"
-                                            alt="Sistema Mariana Nails"
-                                            name="Sistema Mariana Nails"
-                                            price="47,90"
-                                        />
-                                        <ProductCard
-                                            src="/images/square_GDL_capa.png"
-                                            alt="O Código da Fibra Realista"
-                                            name="O Código da Fibra Realista"
-                                            price="14,90"
-                                        />
-                                        <ProductCard
-                                            src="/images/square_AMF1_CAPA.png"
-                                            alt="Arquitetura do Molde F1"
-                                            name="Arquitetura do Molde F1"
-                                            price="14,90"
-                                        />
+                                        {COMBO_PRODUCTS.map((product) => (
+                                            <ProductCard
+                                                key={product.id}
+                                                src={product.src}
+                                                alt={product.alt}
+                                                name={product.name}
+                                                price={product.price}
+                                                onClick={() => setExpandedProduct(product.id)}
+                                            />
+                                        ))}
                                     </div>
                                 </div>
 
@@ -423,6 +556,14 @@ export default function ObrigadoCutilagemPage() {
                 </div>
             </div>
 
+            {/* Modal de Produto Expandido */}
+            {activeProduct && (
+                <ProductModal
+                    product={activeProduct}
+                    onClose={() => setExpandedProduct(null)}
+                />
+            )}
+
             <style jsx global>{`
                 @keyframes orderBumpPulse {
                     0%, 100% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.05); }
@@ -431,6 +572,14 @@ export default function ObrigadoCutilagemPage() {
                 @keyframes ctaPulse {
                     0%, 100% { box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3); }
                     50% { box-shadow: 0 4px 30px rgba(34, 197, 94, 0.5); }
+                }
+                @keyframes prodModalFadeIn {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
+                }
+                @keyframes prodModalSlideUp {
+                    from { opacity: 0; transform: translateY(30px) scale(0.95); }
+                    to { opacity: 1; transform: translateY(0) scale(1); }
                 }
             `}</style>
         </>
