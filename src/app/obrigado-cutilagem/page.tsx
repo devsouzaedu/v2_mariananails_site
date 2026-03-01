@@ -64,6 +64,39 @@ const CountdownTimer = () => {
 };
 
 // ============================================
+// COMPONENTE: Top Banner Countdown (02:06)
+// ============================================
+const TopBannerTimer = () => {
+    const [time, setTime] = useState({ minutes: 2, seconds: 6 });
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setTime(prev => {
+                if (prev.seconds > 0) {
+                    return { ...prev, seconds: prev.seconds - 1 };
+                } else if (prev.minutes > 0) {
+                    return { minutes: prev.minutes - 1, seconds: 59 };
+                } else {
+                    return { minutes: 2, seconds: 6 };
+                }
+            });
+        }, 1000);
+        return () => clearInterval(timer);
+    }, []);
+
+    return (
+        <div className="w-full bg-[#C41E3A] py-2.5 px-4 text-center">
+            <p className="text-white text-sm md:text-base font-bold">
+                ⏳ Essa oferta expira em{' '}
+                <span className="font-black text-base md:text-lg">
+                    {String(time.minutes).padStart(2, '0')}:{String(time.seconds).padStart(2, '0')}
+                </span>
+            </p>
+        </div>
+    );
+};
+
+// ============================================
 // COMPONENTE: Card de Produto no Combo
 // ============================================
 const ProductCard = ({ src, alt, name, price }: { src: string; alt: string; name: string; price: string }) => (
@@ -94,6 +127,9 @@ export default function ObrigadoCutilagemPage() {
     return (
         <>
             <div className="min-h-screen bg-[#0a0a0a] text-white font-[family-name:var(--font-poppins)]">
+
+                {/* ========== TOP BANNER TIMER ========== */}
+                <TopBannerTimer />
 
                 {/* ========== HEADER COM LOGO ========== */}
                 <header className="py-5 px-4 border-b border-gray-800/50">
