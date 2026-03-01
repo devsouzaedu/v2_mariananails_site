@@ -6,13 +6,13 @@ import Image from 'next/image';
 // CONFIGURAÇÕES
 // ============================================
 const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/C4OEbYEh5e3ENVB70cu7v6";
-const AMF1_CHECKOUT_URL = "https://pay.hub.la/nmyzWHZYUaKMhf5eD3sP";
-const AMF1_PRECO_PARCELADO = "5,30";
-const AMF1_PRECO_AVISTA = "14,90";
-const AMF1_PARCELAS = "3x";
+const COMBO_CHECKOUT_URL = "https://pay.hub.la/DnlbWknGq7EVsblY3yG9";
+const COMBO_PRECO_AVISTA = "27,90";
+const COMBO_PARCELAS = "3x";
+const COMBO_PRECO_PARCELADO = "9,97";
 
 // ============================================
-// SVG Icons inline (sem Font Awesome CDN)
+// SVG Icons inline
 // ============================================
 const CheckIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
     <svg className={className} fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
@@ -21,10 +21,7 @@ const LockIcon = () => (
     <svg className="w-4 h-4 inline mr-1" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" /></svg>
 );
 const ShieldIcon = () => (
-    <svg className="w-6 h-6 text-[#22C55E]" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5C17.944 5.656 18 6.323 18 7c0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.677.056-1.344.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
-);
-const StarIcon = () => (
-    <svg className="w-5 h-5 text-[#D4AF37]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+    <svg className="w-5 h-5 text-[#22C55E] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5C17.944 5.656 18 6.323 18 7c0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.677.056-1.344.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
 );
 const WarningIcon = () => (
     <svg className="w-5 h-5 text-[#C41E3A] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" /></svg>
@@ -67,6 +64,28 @@ const CountdownTimer = () => {
 };
 
 // ============================================
+// COMPONENTE: Card de Produto no Combo
+// ============================================
+const ProductCard = ({ src, alt, name, price }: { src: string; alt: string; name: string; price: string }) => (
+    <div className="bg-[#141414] rounded-xl border border-white/10 overflow-hidden">
+        <div className="aspect-square relative">
+            <Image
+                src={src}
+                alt={alt}
+                width={200}
+                height={200}
+                className="w-full h-full object-cover"
+                loading="lazy"
+            />
+        </div>
+        <div className="p-3 text-center">
+            <p className="text-white text-xs font-bold leading-tight mb-1">{name}</p>
+            <p className="text-gray-500 text-xs line-through">R$ {price}</p>
+        </div>
+    </div>
+);
+
+// ============================================
 // PÁGINA PRINCIPAL
 // ============================================
 export default function ObrigadoCutilagemPage() {
@@ -95,10 +114,10 @@ export default function ObrigadoCutilagemPage() {
 
                     {/* Título Principal */}
                     <div className="text-center mb-6">
-                        <h1 className="text-3xl md:text-4xl font-black bg-gradient-to-r from-[#D4AF37] via-[#F4E4BC] to-[#D4AF37] bg-clip-text text-transparent mb-3 font-[family-name:var(--font-montserrat)]">
+                        <h1 className="text-3xl md:text-4xl font-black text-white mb-3 font-[family-name:var(--font-montserrat)]">
                             Parabéns, meu amor!
                         </h1>
-                        <p className="text-gray-300 text-base md:text-lg">
+                        <p className="text-gray-400 text-base md:text-lg">
                             Leia o que escrevi aqui pra você com <strong className="text-white">muita atenção...</strong>
                         </p>
                     </div>
@@ -106,7 +125,7 @@ export default function ObrigadoCutilagemPage() {
                     {/* Imagem da Mariana */}
                     <div className="flex justify-center mb-8">
                         <div className="relative">
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#D4AF37]/15 to-transparent blur-2xl rounded-full scale-110"></div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent blur-2xl rounded-full scale-110"></div>
                             <Image
                                 src="/images/mariana_png.png"
                                 alt="Mariana Nails"
@@ -120,58 +139,58 @@ export default function ObrigadoCutilagemPage() {
                     {/* Mensagem Selecionada */}
                     <div className="text-center mb-8">
                         <h2 className="text-xl md:text-2xl text-white mb-2 font-[family-name:var(--font-montserrat)] leading-tight">
-                            <span className="bg-gradient-to-r from-[#D4AF37] via-[#F4E4BC] to-[#D4AF37] bg-clip-text text-transparent font-bold">Você foi selecionada</span> para<br />
+                            <span className="text-white font-bold">Você foi selecionada</span> para<br />
                             ler o meu
                         </h2>
                         <p className="font-[family-name:var(--font-lora)] italic text-3xl md:text-4xl text-white leading-tight">
                             diário de uma<br />
-                            <span className="bg-gradient-to-r from-[#D4AF37] via-[#F4E4BC] to-[#D4AF37] bg-clip-text text-transparent">nail designer</span>
+                            <span className="text-gray-300">nail designer</span>
                         </p>
                     </div>
 
                     {/* Descrição */}
                     <div className="text-center mb-8">
-                        <p className="text-gray-300 text-base md:text-lg leading-relaxed">
-                            Um lugar onde vou compartilhar <strong className="text-white">semanalmente</strong> um conteúdo <strong className="text-[#D4AF37]">gratuito</strong> para você aplicar e avançar na sua carreira.
+                        <p className="text-gray-400 text-base md:text-lg leading-relaxed">
+                            Um lugar onde vou compartilhar <strong className="text-white">semanalmente</strong> um conteúdo <strong className="text-white">gratuito</strong> para você aplicar e avançar na sua carreira.
                         </p>
                     </div>
 
                     {/* Benefícios compactos */}
                     <div className="mb-8">
                         <div className="space-y-3">
-                            <div className="flex items-center gap-3 bg-white/5 border border-white/10 p-4 rounded-xl">
+                            <div className="flex items-center gap-3 bg-white/[0.03] border border-white/10 p-4 rounded-xl">
                                 <span className="text-2xl">💅</span>
-                                <p className="text-gray-200 text-base">
-                                    <strong className="text-[#D4AF37]">Técnicas</strong> de alongamento, acabamento e decoração
+                                <p className="text-gray-300 text-base">
+                                    <strong className="text-white">Técnicas</strong> de alongamento, acabamento e decoração
                                 </p>
                             </div>
-                            <div className="flex items-center gap-3 bg-white/5 border border-white/10 p-4 rounded-xl">
+                            <div className="flex items-center gap-3 bg-white/[0.03] border border-white/10 p-4 rounded-xl">
                                 <span className="text-2xl">✨</span>
-                                <p className="text-gray-200 text-base">
-                                    <strong className="text-[#D4AF37]">Posicionamento</strong>, Redes Sociais e Captação de Clientes
+                                <p className="text-gray-300 text-base">
+                                    <strong className="text-white">Posicionamento</strong>, Redes Sociais e Captação de Clientes
                                 </p>
                             </div>
-                            <div className="flex items-center gap-3 bg-white/5 border border-white/10 p-4 rounded-xl">
+                            <div className="flex items-center gap-3 bg-white/[0.03] border border-white/10 p-4 rounded-xl">
                                 <span className="text-2xl">🥰</span>
-                                <p className="text-gray-200 text-base">
-                                    <strong className="text-[#D4AF37]">Atendimento</strong>, Fidelização e Gestão Financeira
+                                <p className="text-gray-300 text-base">
+                                    <strong className="text-white">Atendimento</strong>, Fidelização e Gestão Financeira
                                 </p>
                             </div>
                         </div>
                     </div>
 
                     {/* Box Destaque */}
-                    <div className="bg-[#D4AF37]/10 border-2 border-[#D4AF37]/30 rounded-2xl p-5 mb-8 flex items-center gap-4">
-                        <div className="w-12 h-12 bg-[#D4AF37] rounded-full flex items-center justify-center flex-shrink-0">
-                            <CheckIcon className="w-5 h-5 text-black" />
+                    <div className="bg-[#22C55E]/10 border border-[#22C55E]/25 rounded-2xl p-5 mb-8 flex items-center gap-4">
+                        <div className="w-11 h-11 bg-[#22C55E] rounded-full flex items-center justify-center flex-shrink-0">
+                            <CheckIcon className="w-5 h-5 text-white" />
                         </div>
-                        <p className="text-white font-bold text-lg md:text-xl font-[family-name:var(--font-montserrat)]">
+                        <p className="text-white font-bold text-lg font-[family-name:var(--font-montserrat)]">
                             Tudo sem pagar um centavo por isso!
                         </p>
                     </div>
 
                     {/* ================================================================ */}
-                    {/* ========== UPSELL AMF1 — A ARQUITETURA DO MOLDE F1 ========== */}
+                    {/* ========== UPSELL COMBO — NAIL DESIGNER DE SUCESSO ========== */}
                     {/* ================================================================ */}
 
                     {/* Seta pulsante */}
@@ -182,7 +201,7 @@ export default function ObrigadoCutilagemPage() {
                     </div>
 
                     <div className="mb-8 relative">
-                        <div className={`relative overflow-hidden rounded-2xl border-[3px] transition-all duration-500 ${bumpChecked ? 'border-[#22C55E] shadow-2xl shadow-[#22C55E]/20' : 'border-[#D4AF37] shadow-2xl shadow-[#D4AF37]/20'}`}
+                        <div className={`relative overflow-hidden rounded-2xl border-[3px] transition-all duration-500 ${bumpChecked ? 'border-[#22C55E] shadow-2xl shadow-[#22C55E]/20' : 'border-white/20 shadow-2xl shadow-white/5'}`}
                             style={{ animation: 'orderBumpPulse 2s ease-in-out infinite' }}>
 
                             {/* Header do Upsell */}
@@ -207,151 +226,122 @@ export default function ObrigadoCutilagemPage() {
                                     onClick={() => setBumpChecked(!bumpChecked)}
                                     className="w-full flex items-start gap-4 text-left mb-5 group cursor-pointer"
                                 >
-                                    <div className={`w-7 h-7 rounded-md border-2 flex-shrink-0 mt-1 flex items-center justify-center transition-all duration-300 ${bumpChecked ? 'bg-[#22C55E] border-[#22C55E]' : 'border-gray-500 group-hover:border-[#D4AF37]'}`}>
+                                    <div className={`w-7 h-7 rounded-md border-2 flex-shrink-0 mt-1 flex items-center justify-center transition-all duration-300 ${bumpChecked ? 'bg-[#22C55E] border-[#22C55E]' : 'border-gray-500 group-hover:border-white'}`}>
                                         {bumpChecked && <CheckIcon className="w-4 h-4 text-white" />}
                                     </div>
                                     <div>
                                         <p className="text-white font-black text-lg md:text-xl font-[family-name:var(--font-montserrat)] leading-tight">
-                                            SIM! Eu quero <span className="bg-gradient-to-r from-[#D4AF37] via-[#F4E4BC] to-[#D4AF37] bg-clip-text text-transparent">A Arquitetura do Molde F1</span> com desconto exclusivo!
+                                            SIM! Eu quero o <span className="text-[#22C55E]">Combo Nail Designer de Sucesso</span> com desconto exclusivo!
                                         </p>
                                         <p className="text-gray-400 text-sm mt-1">Marque a caixa para garantir essa condição única</p>
                                     </div>
                                 </button>
 
-                                {/* Capa do Produto */}
-                                <div className="flex justify-center mb-5">
-                                    <div className="rounded-xl overflow-hidden border-2 border-[#D4AF37]/30 shadow-lg shadow-[#D4AF37]/10 w-[200px]">
+                                {/* Capa do COMBO */}
+                                <div className="flex justify-center mb-6">
+                                    <div className="rounded-xl overflow-hidden border border-white/15 shadow-lg w-[220px]">
                                         <Image
-                                            src="/images/square_AMF1_CAPA.png"
-                                            alt="A Arquitetura do Molde F1 - Capa"
-                                            width={200}
-                                            height={200}
+                                            src="/images/square_COMBO_capa.png"
+                                            alt="Combo Nail Designer de Sucesso - Capa"
+                                            width={220}
+                                            height={220}
                                             className="w-full h-auto"
                                         />
                                     </div>
                                 </div>
 
-                                {/* ========== GALERIA DE RESULTADOS ========== */}
+                                {/* Título do Combo */}
                                 <div className="mb-5">
-                                    <p className="text-[#D4AF37] text-sm font-bold uppercase tracking-wider mb-3 text-center">Veja os resultados com o Molde F1:</p>
-                                    <div className="grid grid-cols-3 gap-2">
-                                        <div className="rounded-xl overflow-hidden border border-[#D4AF37]/20 aspect-square">
-                                            <Image
-                                                src="/images/fotos_am_usar_molde_f1 (1).jpg"
-                                                alt="Resultado Molde F1 - aplicação profissional"
-                                                width={200}
-                                                height={200}
-                                                className="w-full h-full object-cover"
-                                                loading="lazy"
-                                            />
-                                        </div>
-                                        <div className="rounded-xl overflow-hidden border border-[#D4AF37]/20 aspect-square">
-                                            <Image
-                                                src="/images/fotos_am_usar_molde_f1 (2).jpg"
-                                                alt="Resultado Molde F1 - acabamento perfeito"
-                                                width={200}
-                                                height={200}
-                                                className="w-full h-full object-cover"
-                                                loading="lazy"
-                                            />
-                                        </div>
-                                        <div className="rounded-xl overflow-hidden border border-[#D4AF37]/20 aspect-square">
-                                            <Image
-                                                src="/images/fotos_am_usar_molde_f1 (3).jpg"
-                                                alt="Resultado Molde F1 - unha natural"
-                                                width={200}
-                                                height={200}
-                                                className="w-full h-full object-cover"
-                                                loading="lazy"
-                                            />
-                                        </div>
-                                    </div>
-                                    <p className="text-gray-500 text-xs text-center mt-2">Trabalhos reais feitos com a técnica do Molde F1</p>
-                                </div>
-
-                                {/* Produto */}
-                                <div className="mb-5">
-                                    <h4 className="text-white font-bold text-xl md:text-2xl mb-3 font-[family-name:var(--font-montserrat)] text-center">
-                                        A Arquitetura do <span className="bg-gradient-to-r from-[#D4AF37] via-[#F4E4BC] to-[#D4AF37] bg-clip-text text-transparent">Molde F1</span>
+                                    <h4 className="text-white font-bold text-xl md:text-2xl mb-2 font-[family-name:var(--font-montserrat)] text-center">
+                                        Combo — Nail Designer de Sucesso
                                     </h4>
-                                    <p className="text-gray-300 text-base mb-4 leading-relaxed text-center">
-                                        O método completo para dominar o <strong className="text-white">Molde F1</strong> e criar alongamentos com <strong className="text-[#D4AF37]">curvatura C perfeita, estrutura impecável e acabamento profissional</strong>.
+                                    <p className="text-gray-400 text-sm text-center leading-relaxed">
+                                        Leve <strong className="text-white">3 cursos completos</strong> pelo preço que não paga nem <strong className="text-white">um deles separado</strong>.
                                     </p>
+                                </div>
 
-                                    {/* O que está incluso */}
-                                    <div className="bg-[#1a1a1a] rounded-xl p-4 mb-4 border border-gray-800">
-                                        <p className="text-white font-bold text-sm uppercase tracking-wider mb-3">O que você recebe:</p>
-                                        <ul className="space-y-2.5">
-                                            <li className="flex items-center gap-2.5">
-                                                <CheckIcon className="w-4 h-4 text-[#22C55E] flex-shrink-0" />
-                                                <span className="text-gray-300 text-sm">Técnica completa de aplicação do Molde F1</span>
-                                            </li>
-                                            <li className="flex items-center gap-2.5">
-                                                <CheckIcon className="w-4 h-4 text-[#22C55E] flex-shrink-0" />
-                                                <span className="text-gray-300 text-sm">Como conseguir a curvatura C perfeita</span>
-                                            </li>
-                                            <li className="flex items-center gap-2.5">
-                                                <CheckIcon className="w-4 h-4 text-[#22C55E] flex-shrink-0" />
-                                                <span className="text-gray-300 text-sm">Construção em diferentes formatos de unha</span>
-                                            </li>
-                                            <li className="flex items-center gap-2.5">
-                                                <CheckIcon className="w-4 h-4 text-[#22C55E] flex-shrink-0" />
-                                                <span className="text-gray-300 text-sm">Acabamento profissional e duradouro</span>
-                                            </li>
-                                            <li className="flex items-center gap-2.5">
-                                                <span className="w-4 h-4 flex items-center justify-center flex-shrink-0 text-[#D4AF37] text-xs font-bold">🎁</span>
-                                                <span className="text-[#D4AF37] text-sm font-semibold">BÔNUS: Material de apoio completo</span>
-                                            </li>
-                                        </ul>
+                                {/* ========== 3 PRODUTOS DO COMBO ========== */}
+                                <div className="mb-5">
+                                    <p className="text-white text-xs font-bold uppercase tracking-wider mb-3 text-center">O que vem no combo:</p>
+                                    <div className="grid grid-cols-3 gap-2">
+                                        <ProductCard
+                                            src="/images/SMN_sistema_mariana_nails.png"
+                                            alt="Sistema Mariana Nails"
+                                            name="Sistema Mariana Nails"
+                                            price="47,90"
+                                        />
+                                        <ProductCard
+                                            src="/images/square_GDL_capa.png"
+                                            alt="O Código da Fibra Realista"
+                                            name="O Código da Fibra Realista"
+                                            price="14,90"
+                                        />
+                                        <ProductCard
+                                            src="/images/square_AMF1_CAPA.png"
+                                            alt="Arquitetura do Molde F1"
+                                            name="Arquitetura do Molde F1"
+                                            price="14,90"
+                                        />
                                     </div>
                                 </div>
 
-                                {/* Garantia + Prova Social compactos */}
-                                <div className="bg-[#1a1a1a] rounded-xl p-4 mb-4 border border-[#22C55E]/20">
-                                    <div className="flex items-start gap-3 mb-1">
+                                {/* Valor separado vs combo */}
+                                <div className="bg-white/[0.03] rounded-xl p-4 mb-5 border border-white/10">
+                                    <div className="space-y-2.5">
+                                        <div className="flex justify-between items-center text-sm">
+                                            <span className="text-gray-400">Sistema Mariana Nails</span>
+                                            <span className="text-gray-500 line-through">R$ 47,90</span>
+                                        </div>
+                                        <div className="flex justify-between items-center text-sm">
+                                            <span className="text-gray-400">Código da Fibra Realista</span>
+                                            <span className="text-gray-500 line-through">R$ 14,90</span>
+                                        </div>
+                                        <div className="flex justify-between items-center text-sm">
+                                            <span className="text-gray-400">Arquitetura do Molde F1</span>
+                                            <span className="text-gray-500 line-through">R$ 14,90</span>
+                                        </div>
+                                        <div className="border-t border-white/10 pt-2.5 flex justify-between items-center">
+                                            <span className="text-gray-300 font-bold text-sm">Total se comprar separado:</span>
+                                            <span className="text-red-500 line-through font-bold">R$ 77,70</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Garantia */}
+                                <div className="bg-[#1a1a1a] rounded-xl p-4 mb-5 border border-[#22C55E]/20">
+                                    <div className="flex items-center gap-3">
                                         <ShieldIcon />
-                                        <p className="text-white font-bold text-sm">Garantia de 7 dias — Risco ZERO</p>
+                                        <div>
+                                            <p className="text-white font-bold text-sm">Garantia de 7 dias — Risco ZERO</p>
+                                            <p className="text-gray-500 text-xs mt-0.5">Não gostou? Devolvo 100% sem perguntas.</p>
+                                        </div>
                                     </div>
-                                    <p className="text-gray-400 text-sm leading-relaxed">
-                                        Não gostou? Devolvo 100% do seu dinheiro em até 7 dias. <strong className="text-[#22C55E]">Sem perguntas.</strong>
-                                    </p>
                                 </div>
 
-                                {/* Prova Social */}
-                                <div className="bg-gradient-to-r from-[#D4AF37]/10 to-[#D4AF37]/5 rounded-xl p-4 mb-5 border border-[#D4AF37]/20">
-                                    <div className="flex items-center gap-1 mb-2 justify-center">
-                                        <StarIcon /><StarIcon /><StarIcon /><StarIcon /><StarIcon />
-                                    </div>
-                                    <p className="text-gray-300 text-sm text-center italic font-[family-name:var(--font-lora)]">
-                                        &quot;Depois que aprendi a técnica do Molde F1 da Mariana, meu acabamento ficou outro nível. Minhas clientes notaram a diferença na hora!&quot;
-                                    </p>
-                                    <p className="text-[#D4AF37] text-xs font-bold text-center mt-2">— Aluna da Mariana</p>
-                                </div>
-
-                                {/* Preço */}
-                                <div className="bg-[#1a1a1a] rounded-xl p-5 mb-5 text-center border border-gray-800">
+                                {/* Preço do Combo */}
+                                <div className="bg-[#1a1a1a] rounded-xl p-5 mb-5 text-center border border-white/10">
                                     <p className="text-gray-400 text-sm mb-1">
-                                        Preço normal: <span className="text-red-500 line-through font-bold">R$ 308,00</span>
+                                        De <span className="text-red-500 line-through font-bold">R$ 297,00</span> por apenas:
                                     </p>
-                                    <p className="text-white text-base mb-2 font-semibold">Somente nesta página, leve por apenas {AMF1_PARCELAS} de:</p>
+                                    <p className="text-white text-base mb-2 font-semibold">Leve os 3 cursos por {COMBO_PARCELAS} de:</p>
                                     <div className="flex items-baseline justify-center gap-1">
                                         <span className="text-2xl text-[#22C55E] font-bold font-[family-name:var(--font-montserrat)]">R$</span>
-                                        <span className="text-6xl md:text-7xl font-black text-[#22C55E] font-[family-name:var(--font-montserrat)]">{AMF1_PRECO_PARCELADO}</span>
+                                        <span className="text-6xl md:text-7xl font-black text-[#22C55E] font-[family-name:var(--font-montserrat)]">{COMBO_PRECO_PARCELADO}</span>
                                     </div>
-                                    <p className="text-gray-400 text-sm mt-1">ou R$ {AMF1_PRECO_AVISTA} à vista</p>
-                                    <p className="text-[#22C55E] font-bold text-sm mt-2">Economia de mais de R$ 290! 💰</p>
+                                    <p className="text-gray-400 text-sm mt-1">ou <strong className="text-white">R$ {COMBO_PRECO_AVISTA}</strong> à vista</p>
+                                    <p className="text-[#22C55E] font-bold text-sm mt-2">Economia de mais de R$ 269! 💰</p>
                                 </div>
 
                                 {/* CTA do Upsell */}
                                 <a
-                                    id="btn-upsell-amf1"
-                                    href={AMF1_CHECKOUT_URL}
+                                    id="btn-upsell-combo"
+                                    href={COMBO_CHECKOUT_URL}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="block w-full text-center bg-[#22C55E] hover:bg-[#16A34A] text-white font-black text-lg md:text-xl py-5 px-8 rounded-full shadow-lg shadow-[#22C55E]/30 transition-all duration-300 transform hover:scale-[1.02] uppercase tracking-wide font-[family-name:var(--font-montserrat)]"
                                     style={{ animation: 'ctaPulse 2s ease-in-out infinite' }}
                                 >
-                                    🔥 QUERO DOMINAR O MOLDE F1!
+                                    🔥 QUERO O COMBO COMPLETO!
                                 </a>
 
                                 <p className="text-center text-gray-500 text-xs mt-3">
@@ -363,17 +353,17 @@ export default function ObrigadoCutilagemPage() {
                                 <div className="mt-5 bg-[#C41E3A]/10 border border-[#C41E3A]/30 rounded-lg p-3 flex items-start gap-2">
                                     <WarningIcon />
                                     <p className="text-[#C41E3A] text-sm font-bold">
-                                        Essa oferta de {AMF1_PARCELAS} de R${AMF1_PRECO_PARCELADO} é EXCLUSIVA para quem acabou de comprar o Manual de Cutilagem. Se sair desta página, o preço volta ao normal.
+                                        Essa oferta de R$ {COMBO_PRECO_AVISTA} pelos 3 cursos é EXCLUSIVA para quem acabou de comprar o Manual de Cutilagem. Se sair desta página, o preço volta ao normal.
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {/* ========== FIM UPSELL AMF1 ========== */}
+                    {/* ========== FIM UPSELL COMBO ========== */}
 
                     {/* Card CTA Final - WhatsApp */}
-                    <div className="bg-gradient-to-br from-[#D4AF37] to-[#B8941F] rounded-3xl p-7 text-center shadow-2xl shadow-[#D4AF37]/20">
-                        <p className="text-black text-lg md:text-xl mb-5 font-[family-name:var(--font-montserrat)] leading-relaxed">
+                    <div className="bg-white/[0.05] border border-white/10 rounded-3xl p-7 text-center">
+                        <p className="text-white text-lg md:text-xl mb-5 font-[family-name:var(--font-montserrat)] leading-relaxed">
                             Quer aproveitar essa oportunidade de ler meu diário de{' '}
                             <span className="font-bold underline">Nail Designer</span>?
                         </p>
@@ -399,8 +389,8 @@ export default function ObrigadoCutilagemPage() {
 
             <style jsx global>{`
                 @keyframes orderBumpPulse {
-                    0%, 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.15); }
-                    50% { box-shadow: 0 0 35px rgba(212, 175, 55, 0.3); }
+                    0%, 100% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.05); }
+                    50% { box-shadow: 0 0 25px rgba(255, 255, 255, 0.1); }
                 }
                 @keyframes ctaPulse {
                     0%, 100% { box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3); }
