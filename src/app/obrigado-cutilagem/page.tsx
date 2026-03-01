@@ -6,10 +6,10 @@ import Image from 'next/image';
 // CONFIGURAÇÕES
 // ============================================
 const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/C4OEbYEh5e3ENVB70cu7v6";
-const CFR_CHECKOUT_URL = "https://hub.la/r/X8iHoCihAcVW6f5ZNel5";
-const CFR_PRECO_PARCELADO = "5,30";
-const CFR_PRECO_AVISTA = "14,90";
-const CFR_PARCELAS = "3x";
+const AMF1_CHECKOUT_URL = "https://pay.hub.la/nmyzWHZYUaKMhf5eD3sP";
+const AMF1_PRECO_PARCELADO = "5,30";
+const AMF1_PRECO_AVISTA = "14,90";
+const AMF1_PARCELAS = "3x";
 
 // ============================================
 // SVG Icons inline (sem Font Awesome CDN)
@@ -71,20 +71,19 @@ const CountdownTimer = () => {
 // ============================================
 export default function ObrigadoCutilagemPage() {
     const [bumpChecked, setBumpChecked] = useState(false);
-    const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
 
     return (
         <>
             <div className="min-h-screen bg-[#0a0a0a] text-white font-[family-name:var(--font-poppins)]">
 
                 {/* ========== HEADER COM LOGO ========== */}
-                <header className="py-6 px-4 border-b border-gray-800/50">
+                <header className="py-5 px-4 border-b border-gray-800/50">
                     <div className="max-w-lg mx-auto flex justify-center">
                         <Image
                             src="/images/logo_mca.png"
                             alt="Manual de Cutilagem Avançada"
-                            width={280}
-                            height={140}
+                            width={240}
+                            height={120}
                             className="h-auto brightness-110"
                             priority
                         />
@@ -92,114 +91,105 @@ export default function ObrigadoCutilagemPage() {
                 </header>
 
                 {/* ========== CONTEÚDO PRINCIPAL ========== */}
-                <div className="max-w-lg mx-auto px-6 py-10">
+                <div className="max-w-lg mx-auto px-6 py-8">
 
                     {/* Título Principal */}
-                    <div className="text-center mb-8">
-                        <h1 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-[#D4AF37] via-[#F4E4BC] to-[#D4AF37] bg-clip-text text-transparent mb-4 font-[family-name:var(--font-montserrat)]">
+                    <div className="text-center mb-6">
+                        <h1 className="text-3xl md:text-4xl font-black bg-gradient-to-r from-[#D4AF37] via-[#F4E4BC] to-[#D4AF37] bg-clip-text text-transparent mb-3 font-[family-name:var(--font-montserrat)]">
                             Parabéns, meu amor!
                         </h1>
-                        <p className="text-gray-300 text-lg md:text-xl">
+                        <p className="text-gray-300 text-base md:text-lg">
                             Leia o que escrevi aqui pra você com <strong className="text-white">muita atenção...</strong>
                         </p>
                     </div>
 
                     {/* Imagem da Mariana */}
-                    <div className="flex justify-center mb-10">
+                    <div className="flex justify-center mb-8">
                         <div className="relative">
                             <div className="absolute inset-0 bg-gradient-to-t from-[#D4AF37]/15 to-transparent blur-2xl rounded-full scale-110"></div>
                             <Image
                                 src="/images/mariana_png.png"
                                 alt="Mariana Nails"
-                                width={220}
-                                height={280}
+                                width={200}
+                                height={260}
                                 className="relative z-10 h-auto drop-shadow-xl"
                             />
                         </div>
                     </div>
 
                     {/* Mensagem Selecionada */}
-                    <div className="text-center mb-10">
-                        <h2 className="text-2xl md:text-3xl text-white mb-3 font-[family-name:var(--font-montserrat)] leading-tight">
+                    <div className="text-center mb-8">
+                        <h2 className="text-xl md:text-2xl text-white mb-2 font-[family-name:var(--font-montserrat)] leading-tight">
                             <span className="bg-gradient-to-r from-[#D4AF37] via-[#F4E4BC] to-[#D4AF37] bg-clip-text text-transparent font-bold">Você foi selecionada</span> para<br />
                             ler o meu
                         </h2>
-                        <p className="font-[family-name:var(--font-lora)] italic text-4xl md:text-5xl text-white leading-tight">
+                        <p className="font-[family-name:var(--font-lora)] italic text-3xl md:text-4xl text-white leading-tight">
                             diário de uma<br />
                             <span className="bg-gradient-to-r from-[#D4AF37] via-[#F4E4BC] to-[#D4AF37] bg-clip-text text-transparent">nail designer</span>
                         </p>
                     </div>
 
                     {/* Descrição */}
-                    <div className="text-center mb-10">
-                        <p className="text-gray-300 text-lg md:text-xl leading-relaxed">
+                    <div className="text-center mb-8">
+                        <p className="text-gray-300 text-base md:text-lg leading-relaxed">
                             Um lugar onde vou compartilhar <strong className="text-white">semanalmente</strong> um conteúdo <strong className="text-[#D4AF37]">gratuito</strong> para você aplicar e avançar na sua carreira.
                         </p>
                     </div>
 
-                    {/* Divisor */}
-                    <div className="border-t-2 border-[#D4AF37]/20 my-10"></div>
-
-                    {/* Seção de Benefícios */}
-                    <div className="mb-10">
-                        <h3 className="text-center text-white font-bold text-2xl md:text-3xl mb-8 font-[family-name:var(--font-montserrat)]">
-                            Você vai receber dicas de aperfeiçoamento de:
-                        </h3>
-
-                        <div className="space-y-4">
-                            <div className="flex items-start gap-4 bg-white/5 border border-white/10 p-5 rounded-2xl backdrop-blur-sm">
-                                <span className="text-3xl">💅</span>
-                                <p className="text-gray-200 text-lg md:text-xl">
+                    {/* Benefícios compactos */}
+                    <div className="mb-8">
+                        <div className="space-y-3">
+                            <div className="flex items-center gap-3 bg-white/5 border border-white/10 p-4 rounded-xl">
+                                <span className="text-2xl">💅</span>
+                                <p className="text-gray-200 text-base">
                                     <strong className="text-[#D4AF37]">Técnicas</strong> de alongamento, acabamento e decoração
                                 </p>
                             </div>
-                            <div className="flex items-start gap-4 bg-white/5 border border-white/10 p-5 rounded-2xl backdrop-blur-sm">
-                                <span className="text-3xl">✨</span>
-                                <p className="text-gray-200 text-lg md:text-xl">
+                            <div className="flex items-center gap-3 bg-white/5 border border-white/10 p-4 rounded-xl">
+                                <span className="text-2xl">✨</span>
+                                <p className="text-gray-200 text-base">
                                     <strong className="text-[#D4AF37]">Posicionamento</strong>, Redes Sociais e Captação de Clientes
                                 </p>
                             </div>
-                            <div className="flex items-start gap-4 bg-white/5 border border-white/10 p-5 rounded-2xl backdrop-blur-sm">
-                                <span className="text-3xl">🥰</span>
-                                <p className="text-gray-200 text-lg md:text-xl">
-                                    <strong className="text-[#D4AF37]">Atendimento</strong>, Fidelização de Clientes e Gestão Financeira
+                            <div className="flex items-center gap-3 bg-white/5 border border-white/10 p-4 rounded-xl">
+                                <span className="text-2xl">🥰</span>
+                                <p className="text-gray-200 text-base">
+                                    <strong className="text-[#D4AF37]">Atendimento</strong>, Fidelização e Gestão Financeira
                                 </p>
                             </div>
                         </div>
                     </div>
 
                     {/* Box Destaque */}
-                    <div className="bg-[#D4AF37]/10 border-2 border-[#D4AF37]/30 rounded-2xl p-6 mb-10 flex items-center gap-4">
-                        <div className="w-14 h-14 bg-[#D4AF37] rounded-full flex items-center justify-center flex-shrink-0">
-                            <CheckIcon className="w-6 h-6 text-black" />
+                    <div className="bg-[#D4AF37]/10 border-2 border-[#D4AF37]/30 rounded-2xl p-5 mb-8 flex items-center gap-4">
+                        <div className="w-12 h-12 bg-[#D4AF37] rounded-full flex items-center justify-center flex-shrink-0">
+                            <CheckIcon className="w-5 h-5 text-black" />
                         </div>
-                        <p className="text-white font-bold text-xl md:text-2xl font-[family-name:var(--font-montserrat)]">
+                        <p className="text-white font-bold text-lg md:text-xl font-[family-name:var(--font-montserrat)]">
                             Tudo sem pagar um centavo por isso!
                         </p>
                     </div>
 
                     {/* ================================================================ */}
-                    {/* ========== UPSELL CFR — O CÓDIGO DA FIBRA REALISTA ========== */}
+                    {/* ========== UPSELL AMF1 — A ARQUITETURA DO MOLDE F1 ========== */}
                     {/* ================================================================ */}
 
                     {/* Seta pulsante */}
                     <div className="text-center mb-3">
-                        <span className="inline-block text-[#C41E3A] text-xl md:text-2xl font-black animate-bounce">
+                        <span className="inline-block text-[#C41E3A] text-lg md:text-xl font-black animate-bounce">
                             👇 ESPERA! TENHO ALGO ESPECIAL PRA VOCÊ 👇
                         </span>
                     </div>
 
-                    <div className="mb-10 relative">
+                    <div className="mb-8 relative">
                         <div className={`relative overflow-hidden rounded-2xl border-[3px] transition-all duration-500 ${bumpChecked ? 'border-[#22C55E] shadow-2xl shadow-[#22C55E]/20' : 'border-[#D4AF37] shadow-2xl shadow-[#D4AF37]/20'}`}
                             style={{ animation: 'orderBumpPulse 2s ease-in-out infinite' }}>
 
                             {/* Header do Upsell */}
                             <div className="bg-gradient-to-r from-[#8B0000] to-[#C41E3A] py-3 px-5">
-                                <div className="flex items-center justify-between">
-                                    <div className="flex items-center gap-2">
-                                        <span className="text-yellow-300 text-lg">⚡</span>
-                                        <span className="text-white font-black text-sm md:text-base uppercase tracking-wide">Oferta Exclusiva — Somente Nesta Página!</span>
-                                    </div>
+                                <div className="flex items-center gap-2">
+                                    <span className="text-yellow-300 text-lg">⚡</span>
+                                    <span className="text-white font-black text-sm md:text-base uppercase tracking-wide">Oferta Exclusiva — Somente Nesta Página!</span>
                                 </div>
                             </div>
 
@@ -222,20 +212,33 @@ export default function ObrigadoCutilagemPage() {
                                     </div>
                                     <div>
                                         <p className="text-white font-black text-lg md:text-xl font-[family-name:var(--font-montserrat)] leading-tight">
-                                            SIM! Eu quero o <span className="bg-gradient-to-r from-[#D4AF37] via-[#F4E4BC] to-[#D4AF37] bg-clip-text text-transparent">Código da Fibra Realista</span> com desconto exclusivo!
+                                            SIM! Eu quero <span className="bg-gradient-to-r from-[#D4AF37] via-[#F4E4BC] to-[#D4AF37] bg-clip-text text-transparent">A Arquitetura do Molde F1</span> com desconto exclusivo!
                                         </p>
                                         <p className="text-gray-400 text-sm mt-1">Marque a caixa para garantir essa condição única</p>
                                     </div>
                                 </button>
 
+                                {/* Capa do Produto */}
+                                <div className="flex justify-center mb-5">
+                                    <div className="rounded-xl overflow-hidden border-2 border-[#D4AF37]/30 shadow-lg shadow-[#D4AF37]/10 w-[200px]">
+                                        <Image
+                                            src="/images/square_AMF1_CAPA.png"
+                                            alt="A Arquitetura do Molde F1 - Capa"
+                                            width={200}
+                                            height={200}
+                                            className="w-full h-auto"
+                                        />
+                                    </div>
+                                </div>
+
                                 {/* ========== GALERIA DE RESULTADOS ========== */}
-                                <div className="mb-6">
-                                    <p className="text-[#D4AF37] text-sm font-bold uppercase tracking-wider mb-3 text-center">Resultados reais das alunas:</p>
+                                <div className="mb-5">
+                                    <p className="text-[#D4AF37] text-sm font-bold uppercase tracking-wider mb-3 text-center">Veja os resultados com o Molde F1:</p>
                                     <div className="grid grid-cols-3 gap-2">
                                         <div className="rounded-xl overflow-hidden border border-[#D4AF37]/20 aspect-square">
                                             <Image
-                                                src="/images/fotos_fibra_realista (1).jpeg"
-                                                alt="Resultado fibra realista - acabamento natural"
+                                                src="/images/fotos_am_usar_molde_f1 (1).jpg"
+                                                alt="Resultado Molde F1 - aplicação profissional"
                                                 width={200}
                                                 height={200}
                                                 className="w-full h-full object-cover"
@@ -244,8 +247,8 @@ export default function ObrigadoCutilagemPage() {
                                         </div>
                                         <div className="rounded-xl overflow-hidden border border-[#D4AF37]/20 aspect-square">
                                             <Image
-                                                src="/images/fotos_fibra_realista (1).jpg"
-                                                alt="Resultado fibra realista - french perfeita"
+                                                src="/images/fotos_am_usar_molde_f1 (2).jpg"
+                                                alt="Resultado Molde F1 - acabamento perfeito"
                                                 width={200}
                                                 height={200}
                                                 className="w-full h-full object-cover"
@@ -254,8 +257,8 @@ export default function ObrigadoCutilagemPage() {
                                         </div>
                                         <div className="rounded-xl overflow-hidden border border-[#D4AF37]/20 aspect-square">
                                             <Image
-                                                src="/images/fotos_fibra_realista (2).jpg"
-                                                alt="Resultado fibra realista - unha delicada"
+                                                src="/images/fotos_am_usar_molde_f1 (3).jpg"
+                                                alt="Resultado Molde F1 - unha natural"
                                                 width={200}
                                                 height={200}
                                                 className="w-full h-full object-cover"
@@ -263,16 +266,16 @@ export default function ObrigadoCutilagemPage() {
                                             />
                                         </div>
                                     </div>
-                                    <p className="text-gray-500 text-xs text-center mt-2">Trabalhos reais feitos com a técnica da Fibra Realista</p>
+                                    <p className="text-gray-500 text-xs text-center mt-2">Trabalhos reais feitos com a técnica do Molde F1</p>
                                 </div>
 
                                 {/* Produto */}
                                 <div className="mb-5">
                                     <h4 className="text-white font-bold text-xl md:text-2xl mb-3 font-[family-name:var(--font-montserrat)] text-center">
-                                        O Código da <span className="bg-gradient-to-r from-[#D4AF37] via-[#F4E4BC] to-[#D4AF37] bg-clip-text text-transparent">Fibra Realista</span>
+                                        A Arquitetura do <span className="bg-gradient-to-r from-[#D4AF37] via-[#F4E4BC] to-[#D4AF37] bg-clip-text text-transparent">Molde F1</span>
                                     </h4>
-                                    <p className="text-gray-300 text-base md:text-lg mb-4 leading-relaxed text-center">
-                                        O método completo para fazer <strong className="text-white">alongamentos em fibra de vidro com acabamento 100% natural e realista</strong> — que ninguém vai perceber que é alongamento.
+                                    <p className="text-gray-300 text-base mb-4 leading-relaxed text-center">
+                                        O método completo para dominar o <strong className="text-white">Molde F1</strong> e criar alongamentos com <strong className="text-[#D4AF37]">curvatura C perfeita, estrutura impecável e acabamento profissional</strong>.
                                     </p>
 
                                     {/* O que está incluso */}
@@ -281,66 +284,36 @@ export default function ObrigadoCutilagemPage() {
                                         <ul className="space-y-2.5">
                                             <li className="flex items-center gap-2.5">
                                                 <CheckIcon className="w-4 h-4 text-[#22C55E] flex-shrink-0" />
-                                                <span className="text-gray-300 text-sm">Módulo 1 — Anatomia das Unhas</span>
+                                                <span className="text-gray-300 text-sm">Técnica completa de aplicação do Molde F1</span>
                                             </li>
                                             <li className="flex items-center gap-2.5">
                                                 <CheckIcon className="w-4 h-4 text-[#22C55E] flex-shrink-0" />
-                                                <span className="text-gray-300 text-sm">Módulo 2 — Teoria da Aplicação da Fibra</span>
+                                                <span className="text-gray-300 text-sm">Como conseguir a curvatura C perfeita</span>
                                             </li>
                                             <li className="flex items-center gap-2.5">
                                                 <CheckIcon className="w-4 h-4 text-[#22C55E] flex-shrink-0" />
-                                                <span className="text-gray-300 text-sm">Módulo 3 — Preparando a Fibra de Vidro</span>
+                                                <span className="text-gray-300 text-sm">Construção em diferentes formatos de unha</span>
                                             </li>
                                             <li className="flex items-center gap-2.5">
                                                 <CheckIcon className="w-4 h-4 text-[#22C55E] flex-shrink-0" />
-                                                <span className="text-gray-300 text-sm">Módulo 4 — Construção Amendoada</span>
-                                            </li>
-                                            <li className="flex items-center gap-2.5">
-                                                <CheckIcon className="w-4 h-4 text-[#22C55E] flex-shrink-0" />
-                                                <span className="text-gray-300 text-sm">Módulo 5 — Construção Quadrada</span>
+                                                <span className="text-gray-300 text-sm">Acabamento profissional e duradouro</span>
                                             </li>
                                             <li className="flex items-center gap-2.5">
                                                 <span className="w-4 h-4 flex items-center justify-center flex-shrink-0 text-[#D4AF37] text-xs font-bold">🎁</span>
-                                                <span className="text-[#D4AF37] text-sm font-semibold">BÔNUS: Apostila de Apoio Completa</span>
+                                                <span className="text-[#D4AF37] text-sm font-semibold">BÔNUS: Material de apoio completo</span>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
 
-                                {/* ========== QUEBRAS DE OBJEÇÃO ========== */}
-
-                                {/* Objeção 1: "Será que funciona pra mim?" */}
-                                <div className="bg-[#1a1a1a] rounded-xl p-4 mb-4 border border-gray-800">
-                                    <div className="flex items-start gap-3 mb-2">
-                                        <span className="text-2xl">🤔</span>
-                                        <p className="text-white font-bold text-sm">&quot;Será que funciona mesmo?&quot;</p>
-                                    </div>
-                                    <p className="text-gray-400 text-sm leading-relaxed">
-                                        O método já foi usado por <strong className="text-white">mais de 500 alunas</strong> que hoje faturam de R$ 3.000 a R$ 10.000/mês. A técnica funciona pra quem é iniciante e pra quem já trabalha com unhas — é só seguir o passo a passo.
-                                    </p>
-                                </div>
-
-                                {/* Objeção 2: "E se eu não gostar?" */}
+                                {/* Garantia + Prova Social compactos */}
                                 <div className="bg-[#1a1a1a] rounded-xl p-4 mb-4 border border-[#22C55E]/20">
-                                    <div className="flex items-start gap-3 mb-2">
+                                    <div className="flex items-start gap-3 mb-1">
                                         <ShieldIcon />
-                                        <div>
-                                            <p className="text-white font-bold text-sm">Garantia de 7 dias — Risco ZERO</p>
-                                        </div>
+                                        <p className="text-white font-bold text-sm">Garantia de 7 dias — Risco ZERO</p>
                                     </div>
                                     <p className="text-gray-400 text-sm leading-relaxed">
-                                        Se por qualquer motivo você sentir que o curso não é pra você, basta pedir seu dinheiro de volta em até 7 dias. <strong className="text-[#22C55E]">Sem perguntas, sem burocracia.</strong> O risco é todo meu.
-                                    </p>
-                                </div>
-
-                                {/* Objeção 3: "Não tenho tempo" */}
-                                <div className="bg-[#1a1a1a] rounded-xl p-4 mb-4 border border-gray-800">
-                                    <div className="flex items-start gap-3 mb-2">
-                                        <span className="text-2xl">⏰</span>
-                                        <p className="text-white font-bold text-sm">&quot;Não tenho tempo agora...&quot;</p>
-                                    </div>
-                                    <p className="text-gray-400 text-sm leading-relaxed">
-                                        O acesso é <strong className="text-white">vitalício</strong>. Você assiste no seu ritmo, quando quiser, quantas vezes quiser. São aulas curtas e diretas, sem enrolação. Em poucas horas você já domina a técnica.
+                                        Não gostou? Devolvo 100% do seu dinheiro em até 7 dias. <strong className="text-[#22C55E]">Sem perguntas.</strong>
                                     </p>
                                 </div>
 
@@ -350,35 +323,35 @@ export default function ObrigadoCutilagemPage() {
                                         <StarIcon /><StarIcon /><StarIcon /><StarIcon /><StarIcon />
                                     </div>
                                     <p className="text-gray-300 text-sm text-center italic font-[family-name:var(--font-lora)]">
-                                        &quot;Depois que aprendi a técnica da fibra realista da Mariana, minhas clientes passaram a indicar meu trabalho. Minha agenda lotou em 2 semanas!&quot;
+                                        &quot;Depois que aprendi a técnica do Molde F1 da Mariana, meu acabamento ficou outro nível. Minhas clientes notaram a diferença na hora!&quot;
                                     </p>
-                                    <p className="text-[#D4AF37] text-xs font-bold text-center mt-2">— Aluna do CFR</p>
+                                    <p className="text-[#D4AF37] text-xs font-bold text-center mt-2">— Aluna da Mariana</p>
                                 </div>
 
                                 {/* Preço */}
                                 <div className="bg-[#1a1a1a] rounded-xl p-5 mb-5 text-center border border-gray-800">
                                     <p className="text-gray-400 text-sm mb-1">
-                                        Preço normal: <span className="text-red-500 line-through font-bold">R$ 300,00</span>
+                                        Preço normal: <span className="text-red-500 line-through font-bold">R$ 308,00</span>
                                     </p>
-                                    <p className="text-white text-base mb-2 font-semibold">Somente nesta página, leve por apenas {CFR_PARCELAS} de:</p>
+                                    <p className="text-white text-base mb-2 font-semibold">Somente nesta página, leve por apenas {AMF1_PARCELAS} de:</p>
                                     <div className="flex items-baseline justify-center gap-1">
                                         <span className="text-2xl text-[#22C55E] font-bold font-[family-name:var(--font-montserrat)]">R$</span>
-                                        <span className="text-6xl md:text-7xl font-black text-[#22C55E] font-[family-name:var(--font-montserrat)]">{CFR_PRECO_PARCELADO}</span>
+                                        <span className="text-6xl md:text-7xl font-black text-[#22C55E] font-[family-name:var(--font-montserrat)]">{AMF1_PRECO_PARCELADO}</span>
                                     </div>
-                                    <p className="text-gray-400 text-sm mt-1">ou R$ {CFR_PRECO_AVISTA} à vista</p>
-                                    <p className="text-[#22C55E] font-bold text-sm mt-2">Economia de mais de R$ 285! 💰</p>
+                                    <p className="text-gray-400 text-sm mt-1">ou R$ {AMF1_PRECO_AVISTA} à vista</p>
+                                    <p className="text-[#22C55E] font-bold text-sm mt-2">Economia de mais de R$ 290! 💰</p>
                                 </div>
 
                                 {/* CTA do Upsell */}
                                 <a
-                                    id="btn-upsell-cfr"
-                                    href={CFR_CHECKOUT_URL}
+                                    id="btn-upsell-amf1"
+                                    href={AMF1_CHECKOUT_URL}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="block w-full text-center bg-[#22C55E] hover:bg-[#16A34A] text-white font-black text-lg md:text-xl py-5 px-8 rounded-full shadow-lg shadow-[#22C55E]/30 transition-all duration-300 transform hover:scale-[1.02] uppercase tracking-wide font-[family-name:var(--font-montserrat)]"
                                     style={{ animation: 'ctaPulse 2s ease-in-out infinite' }}
                                 >
-                                    🔥 QUERO DOMINAR A FIBRA REALISTA!
+                                    🔥 QUERO DOMINAR O MOLDE F1!
                                 </a>
 
                                 <p className="text-center text-gray-500 text-xs mt-3">
@@ -386,57 +359,21 @@ export default function ObrigadoCutilagemPage() {
                                     Pagamento 100% seguro • Acesso imediato • 7 dias de garantia
                                 </p>
 
-                                {/* ========== FAQ - MAIS OBJEÇÕES ========== */}
-                                <div className="mt-6 space-y-2">
-                                    <p className="text-gray-400 text-xs uppercase tracking-wider text-center mb-3 font-bold">Perguntas frequentes</p>
-
-                                    {[
-                                        {
-                                            q: "Preciso ter experiência com fibra?",
-                                            a: "Não! O curso começa do zero, desde a anatomia da unha. Mesmo que você nunca tenha trabalhado com fibra de vidro, vai conseguir acompanhar e aprender."
-                                        },
-                                        {
-                                            q: "Por quanto tempo terei acesso?",
-                                            a: "O acesso é vitalício. Você pode assistir quantas vezes quiser, quando quiser, para sempre."
-                                        },
-                                        {
-                                            q: "Posso pedir reembolso?",
-                                            a: "Sim! Você tem 7 dias de garantia incondicional. Se não ficar satisfeita, devolvemos 100% do seu dinheiro sem nenhuma pergunta."
-                                        },
-                                    ].map((faq, i) => (
-                                        <button
-                                            key={i}
-                                            onClick={() => setExpandedFaq(expandedFaq === i ? null : i)}
-                                            className="w-full text-left bg-[#1a1a1a] border border-gray-800 rounded-lg overflow-hidden transition-all duration-200"
-                                        >
-                                            <div className="flex items-center justify-between p-3">
-                                                <span className="text-white text-sm font-semibold">{faq.q}</span>
-                                                <svg className={`w-4 h-4 text-gray-400 transition-transform duration-200 flex-shrink-0 ml-2 ${expandedFaq === i ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
-                                            </div>
-                                            {expandedFaq === i && (
-                                                <div className="px-3 pb-3">
-                                                    <p className="text-gray-400 text-sm leading-relaxed">{faq.a}</p>
-                                                </div>
-                                            )}
-                                        </button>
-                                    ))}
-                                </div>
-
                                 {/* Aviso de urgência */}
                                 <div className="mt-5 bg-[#C41E3A]/10 border border-[#C41E3A]/30 rounded-lg p-3 flex items-start gap-2">
                                     <WarningIcon />
                                     <p className="text-[#C41E3A] text-sm font-bold">
-                                        Essa oferta de {CFR_PARCELAS} de R${CFR_PRECO_PARCELADO} é EXCLUSIVA para quem acabou de comprar o Manual de Cutilagem. Se você sair desta página, o preço volta para R$300.
+                                        Essa oferta de {AMF1_PARCELAS} de R${AMF1_PRECO_PARCELADO} é EXCLUSIVA para quem acabou de comprar o Manual de Cutilagem. Se sair desta página, o preço volta ao normal.
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {/* ========== FIM UPSELL CFR ========== */}
+                    {/* ========== FIM UPSELL AMF1 ========== */}
 
                     {/* Card CTA Final - WhatsApp */}
-                    <div className="bg-gradient-to-br from-[#D4AF37] to-[#B8941F] rounded-3xl p-8 text-center shadow-2xl shadow-[#D4AF37]/20">
-                        <p className="text-black text-xl md:text-2xl mb-6 font-[family-name:var(--font-montserrat)] leading-relaxed">
+                    <div className="bg-gradient-to-br from-[#D4AF37] to-[#B8941F] rounded-3xl p-7 text-center shadow-2xl shadow-[#D4AF37]/20">
+                        <p className="text-black text-lg md:text-xl mb-5 font-[family-name:var(--font-montserrat)] leading-relaxed">
                             Quer aproveitar essa oportunidade de ler meu diário de{' '}
                             <span className="font-bold underline">Nail Designer</span>?
                         </p>
@@ -453,7 +390,7 @@ export default function ObrigadoCutilagemPage() {
                     </div>
 
                     {/* Footer pequeno */}
-                    <div className="text-center mt-10 text-sm text-gray-600">
+                    <div className="text-center mt-8 text-sm text-gray-600">
                         <p>© {new Date().getFullYear()} Mariana Nails • Todos os direitos reservados</p>
                     </div>
 
