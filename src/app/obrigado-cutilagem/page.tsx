@@ -116,7 +116,7 @@ const COMBO_PRODUCTS = [
     },
     {
         id: 2,
-        src: "/images/square_GDL_capa.png",
+        src: "/images/capa_CFR_1.png",
         alt: "O Código da Fibra Realista",
         name: "O Código da Fibra Realista",
         price: "14,90",
@@ -140,6 +140,20 @@ const COMBO_PRODUCTS = [
             "Curvatura C ideal",
             "Simetria em todas as unhas",
             "Alongamentos impecáveis",
+        ],
+    },
+    {
+        id: 4,
+        src: "/images/capa_CFR_1.png",
+        alt: "Geometria do Lixamento",
+        name: "Geometria do Lixamento",
+        price: "14,90",
+        description: "Aprenda a técnica correta de lixamento que garante unhas perfeitas, simétricas e com acabamento profissional. Domine os ângulos e movimentos certos para cada formato de unha.",
+        highlights: [
+            "Lixamento com precisão geométrica",
+            "Formatos perfeitos de unha",
+            "Acabamento profissional",
+            "Técnica exclusiva passo a passo",
         ],
     },
 ];
@@ -433,7 +447,7 @@ export default function ObrigadoCutilagemPage() {
                                         Combo — Nail Designer de Sucesso
                                     </h4>
                                     <p className="text-gray-400 text-sm text-center leading-relaxed">
-                                        Leve <strong className="text-white">3 cursos completos</strong> pelo preço que não paga nem <strong className="text-white">um deles separado</strong>.
+                                        Leve <strong className="text-white">4 cursos completos</strong> pelo preço que não paga nem <strong className="text-white">um deles separado</strong>.
                                     </p>
                                 </div>
 
@@ -469,9 +483,13 @@ export default function ObrigadoCutilagemPage() {
                                             <span className="text-gray-400">Arquitetura do Molde F1</span>
                                             <span className="text-gray-500 line-through">R$ 14,90</span>
                                         </div>
+                                        <div className="flex justify-between items-center text-sm">
+                                            <span className="text-gray-400">Geometria do Lixamento</span>
+                                            <span className="text-gray-500 line-through">R$ 14,90</span>
+                                        </div>
                                         <div className="border-t border-white/10 pt-2.5 flex justify-between items-center">
                                             <span className="text-gray-300 font-bold text-sm">Total se comprar separado:</span>
-                                            <span className="text-red-500 line-through font-bold">R$ 77,70</span>
+                                            <span className="text-red-500 line-through font-bold">R$ 92,60</span>
                                         </div>
                                     </div>
                                 </div>
@@ -492,7 +510,7 @@ export default function ObrigadoCutilagemPage() {
                                     <p className="text-gray-400 text-sm mb-1">
                                         De <span className="text-red-500 line-through font-bold">R$ 297,00</span> por apenas:
                                     </p>
-                                    <p className="text-white text-base mb-2 font-semibold">Leve os 3 cursos por {COMBO_PARCELAS} de:</p>
+                                    <p className="text-white text-base mb-2 font-semibold">Leve os 4 cursos por {COMBO_PARCELAS} de:</p>
                                     <div className="flex items-baseline justify-center gap-1">
                                         <span className="text-2xl text-[#22C55E] font-bold font-[family-name:var(--font-montserrat)]">R$</span>
                                         <span className="text-6xl md:text-7xl font-black text-[#22C55E] font-[family-name:var(--font-montserrat)]">{COMBO_PRECO_PARCELADO}</span>
@@ -522,7 +540,7 @@ export default function ObrigadoCutilagemPage() {
                                 <div className="mt-5 bg-[#C41E3A]/10 border border-[#C41E3A]/30 rounded-lg p-3 flex items-start gap-2">
                                     <WarningIcon />
                                     <p className="text-[#C41E3A] text-sm font-bold">
-                                        Essa oferta de R$ {COMBO_PRECO_AVISTA} pelos 3 cursos é EXCLUSIVA para quem acabou de comprar o Manual de Cutilagem. Se sair desta página, o preço volta ao normal.
+                                        Essa oferta de R$ {COMBO_PRECO_AVISTA} pelos 4 cursos é EXCLUSIVA para quem acabou de comprar o Manual de Cutilagem. Se sair desta página, o preço volta ao normal.
                                     </p>
                                 </div>
                             </div>
