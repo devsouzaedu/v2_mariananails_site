@@ -144,7 +144,7 @@ const COMBO_PRODUCTS = [
     },
     {
         id: 4,
-        src: "/images/capa_CFR_1.png",
+        src: "/images/square_GDL_capa.png",
         alt: "Geometria do Lixamento",
         name: "Geometria do Lixamento",
         price: "14,90",
