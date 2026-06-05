@@ -2,11 +2,14 @@
 
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import AnimatedBanner from './AnimatedBanner'
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [showCursosSubmenu, setShowCursosSubmenu] = useState(false)
+  const pathname = usePathname()
+  const isHome = pathname === '/'
 
   // Impedir rolagem quando o menu estiver aberto
   useEffect(() => {
@@ -29,26 +32,39 @@ export default function Navbar() {
     setShowCursosSubmenu(!showCursosSubmenu)
   }
 
+  const linkClass = isHome 
+    ? "text-gray-300 hover:text-[#D4AF37] px-3 py-2 text-sm font-medium transition-colors"
+    : "text-gray-800 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors";
+
   return (
     <>
       <AnimatedBanner />
-      <nav className="bg-white/80 backdrop-blur-md fixed w-full z-20 shadow-sm top-7">
+      <nav className={`${isHome ? 'bg-black/80 border-b border-white/10' : 'bg-white/80 shadow-sm'} backdrop-blur-md fixed w-full z-20 top-7`}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-14">
             <div className="flex-shrink-0">
-              {/* Logo removida */}
+              {/* Logo ou Nome do Espaço */}
+              {isHome ? (
+                <span className="text-[#D4AF37] font-black tracking-wider text-lg uppercase font-[family-name:var(--font-montserrat)]">
+                  Mariana Nails
+                </span>
+              ) : (
+                <span className="text-gray-900 font-bold tracking-wide text-lg font-serif">
+                  Mariana Nails
+                </span>
+              )}
             </div>
             
             {/* Desktop menu */}
             <div className="hidden md:block">
               <div className="ml-10 flex items-center space-x-8">
-                <Link href="/" className="text-gray-800 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                <Link href="/" className={linkClass}>
                   Início
                 </Link>
-                <Link href="/servicos" className="text-gray-800 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                <Link href="/servicos" className={linkClass}>
                   Serviços
                 </Link>
-                <Link href="/galeria" className="text-gray-800 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                <Link href="/galeria" className={linkClass}>
                   Galeria
                 </Link>
                 
@@ -56,7 +72,7 @@ export default function Navbar() {
                 <div className="relative">
                   <button 
                     onClick={toggleCursosSubmenu}
-                    className="text-gray-800 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors flex items-center"
+                    className={`${isHome ? 'text-gray-300 hover:text-[#D4AF37]' : 'text-gray-800 hover:text-primary-600'} px-3 py-2 text-sm font-medium transition-colors flex items-center`}
                   >
                     Cursos
                     <svg 
@@ -72,17 +88,17 @@ export default function Navbar() {
                   
                   {/* Submenu de Cursos */}
                   {showCursosSubmenu && (
-                    <div className="absolute left-0 mt-1 w-48 bg-white rounded-md shadow-lg py-1 z-30">
+                    <div className={`absolute left-0 mt-1 w-48 ${isHome ? 'bg-[#111] border border-gray-800' : 'bg-white'} rounded-md shadow-lg py-1 z-30`}>
                       <Link 
                         href="/cursos" 
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600"
+                        className={`block px-4 py-2 text-sm ${isHome ? 'text-gray-300 hover:bg-gray-800 hover:text-[#D4AF37]' : 'text-gray-700 hover:bg-primary-50 hover:text-primary-600'}`}
                         onClick={() => setShowCursosSubmenu(false)}
                       >
                         Cursos Básicos
                       </Link>
                       <Link 
                         href="/cursos/especializacao" 
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600"
+                        className={`block px-4 py-2 text-sm ${isHome ? 'text-gray-300 hover:bg-gray-800 hover:text-[#D4AF37]' : 'text-gray-700 hover:bg-primary-50 hover:text-primary-600'}`}
                         onClick={() => setShowCursosSubmenu(false)}
                       >
                         Especializações
@@ -91,14 +107,14 @@ export default function Navbar() {
                   )}
                 </div>
                 
-                <Link href="/contato" className="text-gray-800 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">
+                <Link href="/contato" className={linkClass}>
                   Contato
                 </Link>
                 <a 
                   href="https://wa.me/5511944598264?text=Oi!%20gostaria%20de%20agendar%20um%20atendimento%20de%20unhas!%20vim%20do%20site" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="btn-primary text-sm"
+                  className={`${isHome ? 'bg-[#22C55E] hover:bg-[#16A34A] text-white px-5 py-2.5 rounded-full uppercase tracking-wide transition-all duration-300 transform hover:scale-[1.02] shadow-md shadow-[#22C55E]/20 text-xs font-bold font-[family-name:var(--font-montserrat)]' : 'btn-primary text-sm'}`}
                 >
                   Agende Agora
                 </a>
@@ -109,7 +125,7 @@ export default function Navbar() {
             <div className="md:hidden">
               <button
                 type="button"
-                className="inline-flex items-center justify-center p-2 rounded-md text-gray-800 hover:text-primary-600 hover:bg-primary-50 focus:outline-none"
+                className={`inline-flex items-center justify-center p-2 rounded-md ${isHome ? 'text-gray-300 hover:text-white hover:bg-gray-900' : 'text-gray-800 hover:text-primary-600 hover:bg-primary-50'} focus:outline-none`}
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-expanded={isMenuOpen}
               >
@@ -131,11 +147,11 @@ export default function Navbar() {
 
       {/* Mobile menu overlay - fora do nav para evitar problemas de aninhamento */}
       {isMenuOpen && (
-        <div className="fixed inset-0 bg-pink-50 z-50 flex flex-col">
+        <div className={`fixed inset-0 ${isHome ? 'bg-[#0a0a0a]' : 'bg-pink-50'} z-50 flex flex-col`}>
           <div className="absolute top-4 right-4">
             <button
               type="button"
-              className="inline-flex items-center justify-center p-3 rounded-full bg-white shadow-md text-gray-800 hover:text-primary-600 focus:outline-none"
+              className={`inline-flex items-center justify-center p-3 rounded-full ${isHome ? 'bg-gray-900 text-gray-300 hover:text-white' : 'bg-white text-gray-800 hover:text-primary-600'} shadow-md focus:outline-none`}
               onClick={closeMenu}
               aria-label="Fechar menu"
             >
@@ -147,19 +163,19 @@ export default function Navbar() {
           
           <div className="flex flex-col items-center justify-center flex-grow space-y-8 px-5 py-20">
             <Link href="/" 
-              className="text-primary-700 hover:text-primary-800 block text-2xl font-handwritten font-medium"
+              className={`${isHome ? 'text-gray-300 hover:text-[#D4AF37]' : 'text-primary-700 hover:text-primary-800'} block text-2xl font-handwritten font-medium`}
               onClick={closeMenu}
             >
               Início
             </Link>
             <Link href="/servicos" 
-              className="text-primary-700 hover:text-primary-800 block text-2xl font-handwritten font-medium"
+              className={`${isHome ? 'text-gray-300 hover:text-[#D4AF37]' : 'text-primary-700 hover:text-primary-800'} block text-2xl font-handwritten font-medium`}
               onClick={closeMenu}
             >
               Serviços
             </Link>
             <Link href="/galeria" 
-              className="text-primary-700 hover:text-primary-800 block text-2xl font-handwritten font-medium"
+              className={`${isHome ? 'text-gray-300 hover:text-[#D4AF37]' : 'text-primary-700 hover:text-primary-800'} block text-2xl font-handwritten font-medium`}
               onClick={closeMenu}
             >
               Galeria
@@ -168,13 +184,13 @@ export default function Navbar() {
             {/* Seção de cursos no menu mobile */}
             <div className="flex flex-col items-center space-y-4">
               <Link href="/cursos" 
-                className="text-primary-700 hover:text-primary-800 block text-2xl font-handwritten font-medium"
+                className={`${isHome ? 'text-gray-300 hover:text-[#D4AF37]' : 'text-primary-700 hover:text-primary-800'} block text-2xl font-handwritten font-medium`}
                 onClick={closeMenu}
               >
                 Cursos Básicos
               </Link>
               <Link href="/cursos/especializacao" 
-                className="text-primary-600 hover:text-primary-800 block text-xl font-handwritten font-medium"
+                className={`${isHome ? 'text-gray-400 hover:text-[#D4AF37]' : 'text-primary-600 hover:text-primary-800'} block text-xl font-handwritten font-medium`}
                 onClick={closeMenu}
               >
                 Especializações
@@ -182,7 +198,7 @@ export default function Navbar() {
             </div>
             
             <Link href="/contato" 
-              className="text-primary-700 hover:text-primary-800 block text-2xl font-handwritten font-medium"
+              className={`${isHome ? 'text-gray-300 hover:text-[#D4AF37]' : 'text-primary-700 hover:text-primary-800'} block text-2xl font-handwritten font-medium`}
               onClick={closeMenu}
             >
               Contato
@@ -191,7 +207,7 @@ export default function Navbar() {
               href="https://wa.me/5511944598264?text=Oi!%20gostaria%20de%20agendar%20um%20atendimento%20de%20unhas!%20vim%20do%20site" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="btn-primary text-xl px-8 py-4 mt-6"
+              className={`${isHome ? 'bg-[#22C55E] hover:bg-[#16A34A] text-white shadow-lg shadow-[#22C55E]/20' : 'btn-primary'} text-xl px-8 py-4 mt-6`}
               onClick={closeMenu}
             >
               Agende Agora
@@ -202,11 +218,11 @@ export default function Navbar() {
             <img 
               src="/images/logo_mariana_nails.png" 
               alt="Mariana Nails" 
-              className="h-10 w-auto opacity-80"
+              className={`h-10 w-auto ${isHome ? 'brightness-0 invert' : ''} opacity-80`}
             />
           </div>
         </div>
       )}
     </>
   )
-} 
+}
