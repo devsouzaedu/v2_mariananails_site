@@ -95,6 +95,7 @@ export default function RootLayout({
   const isLinksPage = pathname === '/links'; // Página de links
   const isCursoPresencialPage = pathname === '/curso-nail-designer-barueri-presencial-mariananails-'; // Landing page Curso Presencial
   const isCFRPage = pathname === '/cfr' || pathname === '/obrigado-cfr'; // Landing pages CFR - Código da Fibra Realista
+  const isHome = pathname === '/';
   return (
     <html lang="pt-BR" className={`${funnelSans.variable} ${ptSans.variable} ${playfair.variable} ${instrumentSerif.variable} ${instrumentSans.variable} ${montserrat.variable} ${poppins.variable} ${lora.variable}`}>
       <head>
@@ -177,7 +178,13 @@ export default function RootLayout({
             <Navbar />
           </>
         )}
-        <main className={`flex-grow relative z-10 ${isLandingPage || isEbookPage || isEbookGuiadoPage || isCursoPage || isFaturePage || isQuizPage || isPlataformaPage || isObrigadoPage || isCutilagemPage || isLinksPage || isCursoPresencialPage || isCFRPage ? '' : 'pt-20'}`}>
+        <main className={`flex-grow relative z-10 ${
+          isLandingPage || isEbookPage || isEbookGuiadoPage || isCursoPage || isFaturePage || isQuizPage || isPlataformaPage || isObrigadoPage || isCutilagemPage || isLinksPage || isCursoPresencialPage || isCFRPage 
+            ? '' 
+            : isHome 
+              ? 'pt-0' 
+              : 'pt-14'
+        }`}>
           {children}
         </main>
         {/* Condição para renderizar Footer e WhatsAppButton apenas se NÃO for ebook, ebookguiado, curso, fature, quiz, plataforma ou obrigado */}

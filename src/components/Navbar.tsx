@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
-import AnimatedBanner from './AnimatedBanner'
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -38,21 +37,26 @@ export default function Navbar() {
 
   return (
     <>
-      <AnimatedBanner />
-      <nav className={`${isHome ? 'bg-black/80 border-b border-white/10' : 'bg-white/80 shadow-sm'} backdrop-blur-md fixed w-full z-20 top-7`}>
+      <nav className={`${isHome ? 'bg-black/80 border-b border-white/10' : 'bg-white/80 shadow-sm'} backdrop-blur-md fixed w-full z-20 top-0`}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-14">
-            <div className="flex-shrink-0">
+            <div className="flex-shrink-0 flex items-center">
               {/* Logo ou Nome do Espaço */}
-              {isHome ? (
-                <span className="text-[#D4AF37] font-black tracking-wider text-lg uppercase font-[family-name:var(--font-montserrat)]">
-                  Mariana Nails
-                </span>
-              ) : (
-                <span className="text-gray-900 font-bold tracking-wide text-lg font-serif">
-                  Mariana Nails
-                </span>
-              )}
+              <Link href="/" className="flex items-center">
+                {isHome ? (
+                  <img 
+                    src="/images/logo%20mARIANA%20NAILS%20BRANCA.png" 
+                    alt="Mariana Nails" 
+                    className="h-10 w-auto"
+                  />
+                ) : (
+                  <img 
+                    src="/images/logo%20mARIANA%20NAILS%20PRETO.png" 
+                    alt="Mariana Nails" 
+                    className="h-10 w-auto"
+                  />
+                )}
+              </Link>
             </div>
             
             {/* Desktop menu */}
@@ -215,11 +219,19 @@ export default function Navbar() {
           </div>
           
           <div className="pb-12 flex justify-center">
-            <img 
-              src="/images/logo_mariana_nails.png" 
-              alt="Mariana Nails" 
-              className={`h-10 w-auto ${isHome ? 'brightness-0 invert' : ''} opacity-80`}
-            />
+            {isHome ? (
+              <img 
+                src="/images/logo%20mARIANA%20NAILS%20BRANCA.png" 
+                alt="Mariana Nails" 
+                className="h-10 w-auto opacity-80"
+              />
+            ) : (
+              <img 
+                src="/images/logo%20mARIANA%20NAILS%20PRETO.png" 
+                alt="Mariana Nails" 
+                className="h-10 w-auto opacity-80"
+              />
+            )}
           </div>
         </div>
       )}
