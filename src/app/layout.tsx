@@ -107,10 +107,29 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
-              window.dataLayer.push({
+              var testEventCode = null;
+              try {
+                if (typeof window !== 'undefined') {
+                  var match = window.location.search.match(/[?&]test_event_code=([^&]+)/);
+                  if (match) {
+                    testEventCode = decodeURIComponent(match[1]);
+                    sessionStorage.setItem('test_event_code', testEventCode);
+                  } else {
+                    testEventCode = sessionStorage.getItem('test_event_code');
+                  }
+                }
+              } catch (e) {
+                console.warn('Erro ao processar test_event_code:', e);
+              }
+              
+              var gtmInitObj = {
                 'gtm.start': new Date().getTime(),
                 event: 'gtm.js'
-              });
+              };
+              if (testEventCode) {
+                gtmInitObj.test_event_code = testEventCode;
+              }
+              window.dataLayer.push(gtmInitObj);
             `
           }}
         />
