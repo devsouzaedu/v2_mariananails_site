@@ -1,6 +1,7 @@
 "use client";
 import type { Metadata } from 'next';
 import { usePathname } from 'next/navigation';
+import Script from 'next/script';
 import { PT_Sans, Playfair_Display, Instrument_Serif, Instrument_Sans, Montserrat, Poppins, Lora } from 'next/font/google'
 import localFont from 'next/font/local'
 import './globals.css'
@@ -99,22 +100,43 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${funnelSans.variable} ${ptSans.variable} ${playfair.variable} ${instrumentSerif.variable} ${instrumentSans.variable} ${montserrat.variable} ${poppins.variable} ${lora.variable}`}>
       <head>
-        {/* Google Tag Manager */}
-        <script
+        {/* Google Tag Manager - Inicialização do dataLayer */}
+        <Script
+          id="gtm-init"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src="https://s.mariananails.com.br/3iaeewkrfsnp.js?"+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','7=GQpOISYmWjU0KkcuIj9PQwZTQUhDTRMLTQMSFBsKGQQeDxoKAUUUCh1AERQ%3D');
+              window.dataLayer = window.dataLayer || [];
+              window.dataLayer.push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+              });
             `
           }}
         />
-        {/* End Google Tag Manager */}
+        {/* Google Tag Manager - Script do Stape Custom Loader */}
+        <Script
+          id="gtm-script"
+          src="https://s.mariananails.com.br/3iaeewkrfsnp.js?7=GQpOISYmWjU0KkcuIj9PQwZTQUhDTRMLTQMSFBsKGQQeDxoKAUUUCh1AERQ%3D"
+          strategy="afterInteractive"
+        />
 
         {/* Hotjar / Contentsquare Tracking */}
-        <script src="https://t.contentsquare.net/uxa/8736e3ed49401.js" async />
+        <Script
+          id="contentsquare-script"
+          src="https://t.contentsquare.net/uxa/8736e3ed49401.js"
+          strategy="afterInteractive"
+        />
 
         {/* Google tag (gtag.js) - GA4 */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-D92MV0VYXM" />
-        <script
+        <Script
+          id="ga4-script"
+          src="https://www.googletagmanager.com/gtag/js?id=G-D92MV0VYXM"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="ga4-config"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -127,11 +149,12 @@ export default function RootLayout({
             `
           }}
         />
-        {/* End Google tag (gtag.js) */}
 
-        {/* DataLayer Push - Purchase Event (ANTES do GTM) */}
+        {/* DataLayer Push - Purchase Event */}
         {isObrigadoPage && (
-          <script
+          <Script
+            id="purchase-event-script"
+            strategy="afterInteractive"
             dangerouslySetInnerHTML={{
               __html: `
                 window.dataLayer = window.dataLayer || [];
