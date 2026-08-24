@@ -5,8 +5,8 @@ import { UrgencyHeader, CTAButtonWithParams, ModuleGallery } from './components'
 // ============================================
 // CONFIGURAÇÕES
 // ============================================
-const PRECO_PARCELADO = "5,29";
-const PRECO_AVISTA = "14,90";
+const PRECO_PARCELADO = "12,38";
+const PRECO_AVISTA = "34,90";
 const PARCELAS = "3x";
 
 // ============================================
