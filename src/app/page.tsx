@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Metadata } from 'next';
+import WhatsAppIcon from '@/components/WhatsAppIcon';
 
 // ============================================
 // METADADOS DE SEO
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   description: 'Visite o Mariana Nails Studio em Santana de Parnaíba. Alongamento premium de unhas (fibra e molde F1), manicure tradicional, spa dos pés e mãos com Mariana e Simone. Cursos presenciais VIP.',
   openGraph: {
     title: 'Mariana Nails Studio | Alongamento, Manicure e Cursos em Santana de Parnaíba',
-    description: 'Espaço exclusivo Mariana Nails Studio. Atendimento com Mariana e Simone. Alongamentos premium, esmaltação em gel, spa dos pés e das mãos. Cursos presenciais VIP a partir de R$ 1.000,00.',
+    description: 'Espaço exclusivo Mariana Nails Studio. Atendimento com Mariana e Simone. Alongamentos premium, esmaltação em gel, spa dos pés e das mãos. Formação VIP de Nail Designer com a Mariana.',
     type: 'website',
     url: 'https://mariananails.com.br/',
     locale: 'pt_BR',
@@ -322,22 +323,18 @@ export default function Home() {
                   Inicie uma profissão altamente lucrativa ou aperfeiçoe suas técnicas de alongamento com a mentoria exclusiva e presencial da Mariana. Um treinamento 100% VIP no estúdio, adaptado ao seu ritmo.
                 </p>
 
-                <div className="mb-6">
-                  <p className="text-xs text-gray-400 uppercase tracking-widest font-bold mb-1">Preço da Formação</p>
-                  <p className="text-2xl md:text-3xl font-black text-[#D4AF37] font-[family-name:var(--font-montserrat)]">
-                    A partir de R$ 1.000,00
-                  </p>
-                  <p className="text-xs text-gray-500 mt-1">Materiais para uso no curso inclusos + Certificado Profissional</p>
-                </div>
+                <p className="text-xs text-gray-500 mb-6">Materiais para uso no curso inclusos + Certificado Profissional</p>
 
-                <a 
-                  href="https://wa.me/5511944598264?text=Oi%20Mariana!%20Gostaria%20de%20receber%20informacoes%20sobre%20a%20Formacao%20Presencial%20VIP%20de%20Nail%20Designer!" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="inline-block bg-[#22C55E] hover:bg-[#16A34A] text-white font-bold text-center py-4 px-8 rounded-full uppercase tracking-wide transition-all duration-300 transform hover:scale-[1.02] shadow-lg shadow-[#22C55E]/20 text-xs md:text-sm font-[family-name:var(--font-montserrat)]"
+                <a
+                  href="https://wa.me/5511944598264?text=Oi%20Mariana!%20Gostaria%20de%20saber%20os%20valores%20e%20as%20datas%20da%20Formacao%20VIP%20de%20Nail%20Designer!"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-3 bg-[#22C55E] hover:bg-[#16A34A] text-white font-bold text-center py-4 px-8 rounded-full uppercase tracking-wide transition-all duration-300 transform hover:scale-[1.02] shadow-lg shadow-[#22C55E]/20 text-xs md:text-sm font-[family-name:var(--font-montserrat)]"
                 >
-                  Garantir minha vaga VIP
+                  <WhatsAppIcon />
+                  Consultar valores com a Mariana
                 </a>
+                <p className="text-xs text-gray-500 mt-3">Tire suas dúvidas e consulte valores diretamente pelo WhatsApp</p>
               </div>
 
               <div className="relative h-[300px] md:h-[400px] rounded-2xl overflow-hidden border border-gray-800">

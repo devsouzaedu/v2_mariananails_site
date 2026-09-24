@@ -37,7 +37,11 @@ body {
     font-family: var(--font-instrument-sans), sans-serif;
   }
   a {
-    @apply text-primary-600 hover:text-primary-700 transition-colors;
+    @apply text-primary-600 transition-colors;
+  }
+  /* :where() zera a especificidade para que classes utilitárias (ex: text-white) prevaleçam no hover */
+  :where(a):hover {
+    @apply text-primary-700;
   }
   
   /* Títulos podem usar a fonte manuscrita para um visual mais divertido */

@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function Footer() {
   return (
-    <footer className="bg-secondary-950 text-white">
+    <footer className="bg-black text-white border-t border-gray-900">
       <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <div>
@@ -31,27 +31,27 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-5 text-white">Links Rápidos</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/" className="text-gray-300 hover:text-primary-300 transition-colors">
+                <Link href="/" className="text-gray-300 hover:text-[#D4AF37] transition-colors">
                   Início
                 </Link>
               </li>
               <li>
-                <Link href="/servicos" className="text-gray-300 hover:text-primary-300 transition-colors">
+                <Link href="/servicos" className="text-gray-300 hover:text-[#D4AF37] transition-colors">
                   Serviços
                 </Link>
               </li>
               <li>
-                <Link href="/galeria" className="text-gray-300 hover:text-primary-300 transition-colors">
+                <Link href="/galeria" className="text-gray-300 hover:text-[#D4AF37] transition-colors">
                   Galeria
                 </Link>
               </li>
               <li>
-                <Link href="/cursos" className="text-gray-300 hover:text-primary-300 transition-colors">
+                <Link href="/cursos" className="text-gray-300 hover:text-[#D4AF37] transition-colors">
                   Cursos
                 </Link>
               </li>
               <li>
-                <Link href="/contato" className="text-gray-300 hover:text-primary-300 transition-colors">
+                <Link href="/contato" className="text-gray-300 hover:text-[#D4AF37] transition-colors">
                   Contato
                 </Link>
               </li>

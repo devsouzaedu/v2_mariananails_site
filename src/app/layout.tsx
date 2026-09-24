@@ -188,7 +188,11 @@ export default function RootLayout({
           />
         )}
       </head>
-      <body className="min-h-screen">
+      <body className={`min-h-screen ${
+        isLandingPage || isEbookPage || isEbookGuiadoPage || isCursoPage || isFaturePage || isQuizPage || isPlataformaPage || isObrigadoPage || isCutilagemPage || isLinksPage || isCursoPresencialPage || isCFRPage
+          ? ''
+          : 'bg-[#0a0a0a]'
+      }`}>
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
@@ -199,19 +203,9 @@ export default function RootLayout({
           />
         </noscript>
         {/* End Google Tag Manager (noscript) */}
-        {/* Condição para renderizar Navbar e banner apenas se NÃO for landing, ebook, ebookguiado, curso, fature, quiz, plataforma ou obrigado */}
+        {/* Condição para renderizar Navbar apenas se NÃO for landing, ebook, ebookguiado, curso, fature, quiz, plataforma ou obrigado */}
         {!isLandingPage && !isEbookPage && !isEbookGuiadoPage && !isCursoPage && !isFaturePage && !isQuizPage && !isPlataformaPage && !isObrigadoPage && !isCutilagemPage && !isLinksPage && !isCursoPresencialPage && !isCFRPage && (
-          <>
-            <div className="fixed inset-0 pointer-events-none z-0">
-              <div className="absolute inset-0 bg-primary-50 opacity-30 mix-blend-multiply" style={{
-                backgroundImage: 'radial-gradient(#ec4899 0.5px, transparent 0.5px), radial-gradient(#ec4899 0.5px, transparent 0.5px)',
-                backgroundSize: '20px 20px',
-                backgroundPosition: '0 0, 10px 10px',
-                opacity: 0.05
-              }}></div>
-            </div>
-            <Navbar />
-          </>
+          <Navbar />
         )}
         <main className={`flex-grow relative z-10 ${
           isLandingPage || isEbookPage || isEbookGuiadoPage || isCursoPage || isFaturePage || isQuizPage || isPlataformaPage || isObrigadoPage || isCutilagemPage || isLinksPage || isCursoPresencialPage || isCFRPage 
