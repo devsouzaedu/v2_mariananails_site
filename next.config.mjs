@@ -12,7 +12,7 @@ const cspHeader = `
   frame-ancestors 'self' https://tagassistant.google.com;
   object-src 'none';
   base-uri 'self';
-  form-action 'self';
+  form-action 'self' https://www.facebook.com https://*.facebook.com https://s.mariananails.com.br https://pay.hub.la;
 `.replace(/\s{2,}/g, ' ').trim();
 
 const nextConfig = {
