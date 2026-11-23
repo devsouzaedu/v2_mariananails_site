@@ -2,13 +2,14 @@
 
 const cspHeader = `
   default-src 'self';
-  script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://*.googletagmanager.com https://tagassistant.google.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://s.mariananails.com.br https://connect.facebook.net https://*.facebook.com https://*.doubleclick.net https://*.googleadservices.com https://*.google.com https://*.google.com.br https://t.contentsquare.net;
-  script-src-elem 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://*.googletagmanager.com https://tagassistant.google.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://s.mariananails.com.br https://connect.facebook.net https://*.facebook.com https://*.doubleclick.net https://*.googleadservices.com https://*.google.com https://*.google.com.br https://t.contentsquare.net;
+  script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://www.googletagmanager.com https://*.googletagmanager.com https://tagassistant.google.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://s.mariananails.com.br https://connect.facebook.net https://*.facebook.com https://*.doubleclick.net https://*.googleadservices.com https://*.google.com https://*.google.com.br https://t.contentsquare.net https://*.contentsquare.net;
   style-src 'self' 'unsafe-inline';
   img-src 'self' data: blob: https://www.googletagmanager.com https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://tagassistant.google.com https://s.mariananails.com.br https://www.facebook.com https://*.facebook.com https://*.fbcdn.net https://*.doubleclick.net https://*.googleadservices.com https://*.google.com https://*.google.com.br;
   font-src 'self' data:;
   connect-src 'self' https://www.googletagmanager.com https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://tagassistant.google.com https://s.mariananails.com.br https://connect.facebook.net https://www.facebook.com https://*.facebook.com https://*.run.app https://*.a.run.app https://*.on.aws https://*.amazonaws.com https://*.doubleclick.net https://*.googleadservices.com https://*.google.com https://*.google.com.br https://t.contentsquare.net https://*.contentsquare.net https://*.supabase.co wss://*.supabase.co;
   frame-src 'self' https://www.googletagmanager.com https://tagassistant.google.com https://s.mariananails.com.br https://www.facebook.com https://*.facebook.com https://*.doubleclick.net https://www.youtube.com https://pay.hub.la;
+  worker-src 'self' blob:;
+  child-src 'self' blob: https://www.googletagmanager.com https://tagassistant.google.com https://s.mariananails.com.br https://www.facebook.com https://*.facebook.com https://*.doubleclick.net https://www.youtube.com https://pay.hub.la;
   frame-ancestors 'self' https://tagassistant.google.com;
   object-src 'none';
   base-uri 'self';
