@@ -1,11 +1,17 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
+
+export const viewport: Viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    themeColor: '#0a0a0a',
+};
 
 export const metadata: Metadata = {
-    title: 'Manual de Cutilagem Avançada | Mariana Nails - Técnica Profissional para Nail Designer',
-    description: 'Aprenda a técnica de cutilagem profissional com Mariana Nails. Manual completo com corte contínuo, cutilagem com alicate, combinada e com cera. Domine a base de todo serviço de unhas de qualidade.',
+    title: 'O Manual de Cutilagem Avançada | Mariana Nails - Cutilagem Funda, Limpa e Sem Bife',
+    description: 'Domine a cutilagem funda, limpa e sem bife reduzindo seu tempo em mesa. Aprenda corte contínuo, cutilagem com alicate, combinada e com cera por apenas 3x de R$ 12,38.',
     openGraph: {
-        title: 'Manual de Cutilagem Avançada | Mariana Nails',
-        description: 'Copie os movimentos de uma cutilagem perfeita e entregue unhas impecáveis para suas clientes. Manual completo por apenas 3x de R$12,38.',
+        title: 'O Manual de Cutilagem Avançada | Mariana Nails',
+        description: 'Domine uma cutilagem funda, limpa e sem bife em menos tempo na mesa. Acesso imediato por apenas 3x de R$ 12,38.',
         type: 'website',
         url: 'https://mariananails.com.br/cutilagem',
         locale: 'pt_BR',
