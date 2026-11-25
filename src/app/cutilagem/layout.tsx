@@ -1,9 +1,26 @@
 import type { Metadata, Viewport } from 'next';
+import { Playfair_Display, Inter } from 'next/font/google';
+
+const playfairDisplay = Playfair_Display({
+    subsets: ['latin'],
+    style: ['normal', 'italic'],
+    variable: '--font-playfair-cutilagem',
+    display: 'swap',
+    preload: true,
+});
+
+const interCutilagem = Inter({
+    subsets: ['latin'],
+    weight: ['400', '500', '600', '700', '800'],
+    variable: '--font-inter-cutilagem',
+    display: 'swap',
+    preload: true,
+});
 
 export const viewport: Viewport = {
     width: 'device-width',
     initialScale: 1,
-    themeColor: '#0a0a0a',
+    themeColor: '#140F0B',
 };
 
 export const metadata: Metadata = {
@@ -23,5 +40,9 @@ export default function CutilagemLayout({
 }: {
     children: React.ReactNode;
 }) {
-    return <>{children}</>;
+    return (
+        <div className={`${playfairDisplay.variable} ${interCutilagem.variable}`}>
+            {children}
+        </div>
+    );
 }
